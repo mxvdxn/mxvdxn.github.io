@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dan Pradana</title>
+    <title>D†P | Dan Pradana</title>
     <style>
         * {
             margin: 0;
@@ -11,80 +11,214 @@
             box-sizing: border-box;
         }
 
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+
         body {
             font-family: "SF Mono", "Roboto Mono", Consolas, monospace;
-            line-height: 1.5;
+            line-height: 1.2;
             color: #000;
             background: #fff;
             padding: 2rem;
-            font-size: 14px;
-            max-width: 1000px;
+            font-size: 13px;
+            max-width: 900px;
             margin: 0 auto;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
 
         .header {
-            margin-bottom: 4rem;
+            margin-bottom: 6rem;
+            position: relative;
         }
 
         h1 {
-            font-size: 14px;
+            font-size: 24px;
             font-weight: bold;
             margin-bottom: 1rem;
+            letter-spacing: 0.2em;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1:after {
+            position: absolute;
+            top: -10px;
+            right: -30px;
+            font-size: 16px;
+            opacity: 0.5;
         }
 
         h2 {
-            font-size: 14px;
-            font-weight: bold;
+            font-size: 13px;
+            font-weight: normal;
             margin-bottom: 2rem;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        h2:before {
+            content: "///";
+            margin-right: 1rem;
+            opacity: 0.5;
         }
 
         .roles {
-            margin-bottom: 2rem;
+            margin: 2rem 0;
+            line-height: 1.6;
+            max-width: 80%;
+        }
+
+        .roles span {
+            display: block;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        /* Remove the cross next to the roles */
+        .roles span:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            opacity: 0; /* Hide the cross */
         }
 
         .bio {
             max-width: 600px;
+            margin-top: 3rem;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .bio:before {
+            content: "▼";
+            position: absolute;
+            left: 2rem;
+            top: 0;
         }
 
         .section {
-            margin-top: 4rem;
+            margin-top: 6rem;
+            border-top: 1px solid #000;
+            padding-top: 3rem;
+            position: relative;
+        }
+
+        .section:before {
+            content: "†††";
+            position: absolute;
+            top: -10px;
+            right: 0;
+            font-size: 14px;
+            background: #fff;
+            padding: 0 1rem;
         }
 
         .work-item {
-            margin-bottom: 1.5rem;
-            padding-left: 1.2rem;
-            text-indent: -1.2rem;
+            margin-bottom: 2rem;
+            padding-left: 3rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .work-item:hover {
+            padding-left: 3rem;
+        }
+
+        .work-item:before {
+            content: "→";
+            position: absolute;
+            left: 1rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .work-item:hover:before {
+            opacity: 1;
         }
 
         .year {
             font-weight: bold;
+            margin-right: 1rem;
+            position: relative;
+        }
+
+        .year:after {
+            content: "//";
+            margin-left: 1rem;
+            opacity: 0.5;
         }
 
         .title-link {
             color: inherit;
-            text-decoration: none;
-            font-weight: bold;
+            text-decoration: underline;
+            position: relative;
+            transition: all 0.2s ease;
         }
 
         .title-link:hover {
-            text-decoration: underline;
+            letter-spacing: 0.05em;
+            background-color: #f0f0f0;
         }
 
         .partnerships {
-            margin-top: 4rem;
+            margin-top: 6rem;
+            border-top: 1px solid #000;
+            padding-top: 3rem;
+            position: relative;
+        }
+        
+        .partnerships:before {
+            content: "†††";
+            position: absolute;
+            top: -10px;
+            right: 0;
+            font-size: 14px;
+            background: #fff;
+            padding: 0 1rem;
         }
 
         .partner {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+       
+        /* Remove the cross next to the partner */
+        .partner:before {
+            content: "";
+             position: absolute;
+            left: 0;
+            opacity: 0;  /* Hide the cross */
+        }
+
+        .partner a {
+            color: inherit;
+            text-decoration: underline;
+            transition: all 0.2s ease;
+        }
+
+        .partner a:hover {
+            letter-spacing: 0.05em;
+            background-color: #f0f0f0;
         }
 
         .footer {
             margin-top: 6rem;
-            padding-top: 2rem;
+            padding-top: 3rem;
             border-top: 1px solid #000;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 13px;
         }
 
         .links {
@@ -92,21 +226,55 @@
             gap: 2rem;
         }
 
-        a {
+        .links a {
             color: inherit;
-            text-decoration: none;
+            text-decoration: underline;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.2s ease;
         }
 
-        a:hover {
-            text-decoration: underline;
+        .links a:hover {
+            letter-spacing: 0.05em;
+            background-color: #f0f0f0;
         }
+
+       /* Remove the cross from the footer */
+        .footer > div:last-child {
+            position: relative;
+        }
+
+        .footer > div:last-child:after {
+           content: "";
+           position: absolute;
+           right: -10px;
+           opacity: 0;
+        }
+
+        .links a:before {
+          display: none;
+        }
+
 
         @media (max-width: 600px) {
             body {
-                padding: 1rem;
+                padding: 1.5rem;
+            }
+
+            .bio {
+                padding-left: 2rem;
+            }
+
+            .work-item {
+                padding-left: 2rem;
             }
 
             .footer {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .links {
                 flex-direction: column;
                 gap: 1rem;
             }
@@ -118,14 +286,14 @@
         <h1>Dan Pradana</h1>
         
         <div class="roles">
-            ✎ Creative Direction 
-            ☑ Prompt Design 
-            ⭘ GenAI Exploration 
-            ◉ Based in Jakarta, Indonesia
+            <span>☑ Creative Direction</span>
+            <span>✎ Prompt Design</span>
+            <span>⭘ GenAI Exploration</span>
+            <span>◉ Based in Jakarta, Indonesia</span>
         </div>
         
         <div class="bio">
-            A decade in ads, now exploring creative direction in generative AI, merging technology and creativity to develop visual concepts and explore new ideas.
+            A DECADE IN ADS, NOW EXPLORING CREATIVE DIRECTION IN GENERATIVE AI, MERGING TECHNOLOGY AND CREATIVITY TO DEVELOP VISUAL CONCEPTS AND EXPLORE NEW IDEAS.
         </div>
     </div>
 
@@ -133,40 +301,40 @@
         <h2>Selected AI Video Works</h2>
         
         <div class="work-item">
-            • <span class="year">2025</span> // <a href="https://x.com/mxvdxn/status/1880558083526762862" target="_blank" rel="noopener" class="title-link">Serpent's Throne</a>. Lust, desire, and violence unravel in Sangra Island's chaotic underworld.
+            <span class="year">2025</span><a href="https://x.com/mxvdxn/status/1880558083526762862" target="_blank" rel="noopener" class="title-link">Serpent's Throne</a>. LUST, DESIRE, AND VIOLENCE UNRAVEL IN SANGRA ISLAND'S CHAOTIC UNDERWORLD.
         </div>
 
         <div class="work-item">
-            • <span class="year">2025</span> // <a href="https://x.com/mxvdxn/status/1877406890940051634" target="_blank" rel="noopener" class="title-link">† † †</a>. Haute couture collides with dystopia, revealing fragile beauty within chaos.
+            <span class="year">2025</span><a href="https://x.com/mxvdxn/status/1877406890940051634" target="_blank" rel="noopener" class="title-link">† † †</a>. HAUTE COUTURE COLLIDES WITH DYSTOPIA, REVEALING FRAGILE BEAUTY WITHIN CHAOS.
         </div>
 
         <div class="work-item">
-            • <span class="year">2025</span> // <a href="https://x.com/mxvdxn/status/1874796628210778618" target="_blank" rel="noopener" class="title-link">Asian Pop Culture Madness</a>. A bold tribute to the vibrant spectrum of Japanese pop culture.
+            <span class="year">2025</span><a href="https://x.com/mxvdxn/status/1874796628210778618" target="_blank" rel="noopener" class="title-link">ASIAN POP CULTURE MADNESS</a>. A BOLD TRIBUTE TO THE VIBRANT SPECTRUM OF JAPANESE POP CULTURE.
         </div>
 
         <div class="work-item">
-            • <span class="year">2024</span> // <a href="https://x.com/mxvdxn/status/1871546004304257185" target="_blank" rel="noopener" class="title-link">Slow Now</a>. Indie rock vibes meet wanderlust in a fresh take on travel storytelling.
+            <span class="year">2024</span><a href="https://x.com/mxvdxn/status/1871546004304257185" target="_blank" rel="noopener" class="title-link">SLOW NOW</a>. INDIE ROCK VIBES MEET WANDERLUST IN A FRESH TAKE ON TRAVEL STORYTELLING.
         </div>
 
         <div class="work-item">
-            • <span class="year">2024</span> // <a href="https://x.com/mxvdxn/status/1869794321513476361" target="_blank" rel="noopener" class="title-link">Sangra Island</a>. A lawless Southeast Asian island steeped in mystery and raw energy.
+            <span class="year">2024</span><a href="https://x.com/mxvdxn/status/1869794321513476361" target="_blank" rel="noopener" class="title-link">SANGRA ISLAND</a>. A LAWLESS SOUTHEAST ASIAN ISLAND STEEPED IN MYSTERY AND RAW ENERGY.
         </div>
     </div>
 
     <div class="partnerships">
         <h2>Creative Partnerships</h2>
         <div class="partner">
-            <a href="https://hailuoai.video/" target="_blank" rel="noopener">Hailuo Minimax</a>
+            <a href="https://hailuoai.video/" target="_blank" rel="noopener">HAILUO MINIMAX</a>
         </div>
     </div>
 
     <div class="footer">
         <div class="links">
-            <a href="mailto:danifpradana@gmail.com">Email</a>
+            <a href="mailto:danifpradana@gmail.com">EMAIL</a>
             <a href="https://x.com/mxvdxn" target="_blank" rel="noopener">X</a>
-            <a href="https://mxvdxn.gumroad.com" target="_blank" rel="noopener">Gumroad</a>
+            <a href="https://mxvdxn.gumroad.com" target="_blank" rel="noopener">GUMROAD</a>
         </div>
-        <div>© 2025 Dan Pradana</div>
+        <div>© 2025 Dan Pradana. All rights reserved.</div>
     </div>
 </body>
 </html>
