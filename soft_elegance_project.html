@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D†P | Soft Elegance: AI-Generated Intimacy in Portraiture</title>
+    <title>D†P | Dan Pradana</title>
     <style>
-        /* Existing Styles (from your previous file) */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
         }
 
         body {
@@ -26,7 +34,7 @@
         }
 
         .header {
-            margin-bottom: 4rem;
+            margin-bottom: 4rem; /* Adjusted margin */
             position: relative;
         }
 
@@ -50,7 +58,7 @@
         h2 {
             font-size: 13px;
             font-weight: normal;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.5rem; /* Adjusted margin */
             letter-spacing: 0.15em;
             position: relative;
         }
@@ -61,116 +69,347 @@
             opacity: 0.5;
         }
 
-        .description {
+        .roles {
+            margin: 1.5rem 0; /* Adjusted margin */
+            line-height: 1.6;
+            max-width: 80%;
+        }
+
+        .roles span {
+            display: block;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        /* Remove the cross next to the roles */
+        .roles span:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            opacity: 0; /* Hide the cross */
+        }
+
+        .bio {
             max-width: 600px;
-            margin-top: 2rem;
+            margin-top: 2rem; /* Adjusted margin */
             padding-left: 4rem;
             position: relative;
             font-size: 11px;
             line-height: 1.6;
         }
 
-        .description:before {
+        .bio:before {
             content: "▼";
             position: absolute;
             left: 2rem;
             top: 0;
         }
 
-        .image-container {
-            margin-top: 4rem;
-            text-align: center; /* Center the image */
-            cursor: pointer; /* Change cursor to indicate it's clickable */
-        }
-
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px; /* Optional: Add rounded corners */
-        }
-
-        .back-link {
-            margin-top: 4rem;
-            padding-top: 3rem;
+        .section {
+            margin-top: 4rem; /* Adjusted margin */
             border-top: 1px solid #000;
-            text-align: left;
-            font-size: 13px;
+            padding-top: 3rem;
+            position: relative;
         }
 
-        .back-link a {
+        .section:before {
+            content: "†††";
+            position: absolute;
+            top: -10px;
+            right: 0;
+            font-size: 14px;
+            background: #fff;
+            padding: 0 1rem;
+        }
+
+      .work-items-container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 2rem; /* Adjust the gap between work items */
+          padding-left: 1rem;
+      }
+
+        .work-item {
+            margin-bottom: 0;
+            padding-left: 0;
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column; /* Stack year and image */
+            align-items: flex-start;
+             width: calc(33.33% - 2rem); /* Divide into 3 columns */
+        }
+
+        .work-item:hover {
+            padding-left: 0;
+        }
+
+
+       .work-item .title {
+            font-weight: bold;
+            margin-right: 0;
+            margin-bottom: 0.5rem; /* Add some space between year and image */
+            position: relative;
+            white-space: nowrap; /* Prevent the year from wrapping */
+        }
+
+
+        .work-item a {
+           display: block;
+            width: 100%; /* Make the container fill the width */
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+        }
+
+       .work-item a img {
+             width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 16 / 9; /* Maintain the landscape aspect ratio */
+            object-fit: cover;
+            transition: transform 0.3s ease;
+             border-radius: 10px;
+        }
+    
+         .work-item a:hover img {
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+        .title-link {
+            color: inherit;
+            text-decoration: underline;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .title-link:hover {
+            letter-spacing: 0.05em;
+            background-color: #f0f0f0;
+        }
+
+        .partnerships {
+            margin-top: 4rem; /* Adjusted margin */
+            border-top: 1px solid #000;
+            padding-top: 3rem;
+            position: relative;
+        }
+        
+        .partnerships:before {
+            content: "†††";
+            position: absolute;
+            top: -10px;
+            right: 0;
+            font-size: 14px;
+            background: #fff;
+            padding: 0 1rem;
+        }
+
+        .partner {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+       
+        /* Remove the cross next to the partner */
+        .partner:before {
+            content: "";
+             position: absolute;
+            left: 0;
+            opacity: 0;  /* Hide the cross */
+        }
+
+        .partner a {
             color: inherit;
             text-decoration: underline;
             transition: all 0.2s ease;
         }
 
-        .back-link a:hover {
+        .partner a:hover {
             letter-spacing: 0.05em;
             background-color: #f0f0f0;
         }
+
+        .footer {
+            margin-top: 4rem; /* Adjusted margin */
+            padding-top: 3rem;
+            border-top: 1px solid #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .links a {
+            color: inherit;
+            text-decoration: underline;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.2s ease;
+        }
+
+        .links a:hover {
+            letter-spacing: 0.05em;
+            background-color: #f0f0f0;
+        }
+
+       /* Remove the cross from the footer */
+        .footer > div:last-child {
+            position: relative;
+        }
+
+        .footer > div:last-child:after {
+           content: "";
+           position: absolute;
+           right: -10px;
+           opacity: 0;
+        }
+
+        .links a:before {
+          display: none;
+        }
+
+       /* Projects Section */
+        .projects {
+            margin-top: 4rem;
+            border-top: 1px solid #000;
+            padding-top: 3rem;
+            position: relative;
+        }
+
+        .projects:before {
+            content: "†††";
+            position: absolute;
+            top: -10px;
+            right: 0;
+            font-size: 14px;
+            background: #fff;
+            padding: 0 1rem;
+        }
+
+        .projects ul {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+
+        .projects li {
+            position: relative;
+            margin-bottom: 1rem;
+            padding-left: 2rem; /* Space for the bullet point */
+        }
+
+        .projects li:before {
+            content: "•"; /* Bullet point */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+
 
         @media (max-width: 600px) {
             body {
                 padding: 1.5rem;
             }
 
-            .description {
+            .bio {
                 padding-left: 2rem;
             }
-        }
+
+           .work-items-container {
+                 padding-left: 0; /* Remove padding on smaller screens */
+                 gap: 1rem;
+           }
 
 
-        /* Styles for the overlay */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
-            display: none; /* Hidden by default */
-            justify-content: center; /* Center content horizontally */
-            align-items: center; /* Center content vertically */
-            z-index: 1000; /* Ensure it's on top of everything */
-        }
+            .work-item {
+                padding-left: 0;
+                width: 100%; /* Full width on small screens */
+            }
 
-        .overlay img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-            object-fit: contain;
+            .footer {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .links {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Soft Elegance: AI-Generated Intimacy in Portraiture</h1>
+        <h1>Dan Pradana</h1>
+        
+        <div class="roles">
+            <span>☑ Creative Direction</span>
+            <span>✎ GenAI Research & Exploration</span>
+            <span>◉ Based in Jakarta, Indonesia</span>
+        </div>
+        
+        <div class="bio">
+            A decade in ads, now researching and experimenting with generative AI, merging technology and creativity to unlock new ideas.
+        </div>
     </div>
 
-    <div class="description">
-        This project examines intimacy and vulnerability through the lens of generative AI. Minimalist compositions, soft fabrics, and natural light emphasize emotional depth and human form. The images were generated using Flux 1.0 via Freepik and finalized in Adobe Lightroom for tonal balance and aesthetic refinement.
+    <div class="section">
+        <h2>Selected AI Video Works</h2>
+        
+         <div class="work-items-container">
+            <div class="work-item">
+               <span class="title">Asian Pop Culture Madness</span><a href="https://x.com/mxvdxn/status/1880558083526762862" target="_blank" rel="noopener"><img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/0102-Cover.jpg?raw=true" alt="Asian Pop Culture Madness"></a>
+            </div>
+
+             <div class="work-item">
+               <span class="title">† † †</span><a href="https://x.com/mxvdxn/status/1877406890940051634" target="_blank" rel="noopener"><img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/0109-Cover.jpg?raw=true" alt="† † †"></a>
+              </div>
+        
+             <div class="work-item">
+                <span class="title">Serpent's Throne</span><a href="https://x.com/mxvdxn/status/1880558083526762862" target="_blank" rel="noopener"><img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/TAHTA%20ULAR-Cover.jpg?raw=true" alt="Serpent's Throne"></a>
+             </div>
+    
+          <div class="work-item">
+               <span class="title">Slow Now</span> <a href="https://x.com/mxvdxn/status/1871546004304257185" target="_blank" rel="noopener"><img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/1224-Cover.jpg?raw=true" alt="Slow Now"></a>
+            </div>
+
+           <div class="work-item">
+               <span class="title">Sangra Island</span><a href="https://x.com/mxvdxn/status/1869794321513476361" target="_blank" rel="noopener"><img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/Sangra%20Island-Cover.jpg?raw=true" alt="Sangra Island"></a>
+           </div>
+           <div class="work-item">
+                <span class="title">K-Pop Idol Deathmatch</span><a href="https://x.com/mxvdxn/status/1880962175176769566" target="_blank" rel="noopener"><img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/K-Pop%20Deathmatch-Cover.jpg?raw=true" alt="K-Pop Idol Deathmatch"></a>
+            </div>
+        </div>
     </div>
 
-    <div class="image-container" onclick="openOverlay()">
-        <img id="clickableImage" src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/Soft%20Elegance.jpg?raw=true" alt="Soft Elegance">
+    <div class="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li><a href="https://mxvdxn.github.io/soft_elegance_project.html" class="title-link">Soft Elegance: AI-Generated Intimacy in Portraiture</a></li>
+        </ul>
     </div>
 
-    <div class="back-link">
-        <a href="https://mxvdxn.github.io/">← Back to Main</a>
+
+    <div class="partnerships">
+        <h2>Creative Partnerships</h2>
+        <div class="partner">
+            <a href="https://hailuoai.video/" target="_blank" rel="noopener">HAILUO MINIMAX</a>
+        </div>
     </div>
 
-    <!-- The Overlay (hidden by default) -->
-    <div class="overlay" onclick="closeOverlay()">
-        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/Soft%20Elegance.jpg?raw=true" alt="Soft Elegance">
+    <div class="footer">
+        <div class="links">
+            <a href="mailto:danifpradana@gmail.com">EMAIL</a>
+            <a href="https://x.com/mxvdxn" target="_blank" rel="noopener">X</a>
+            <a href="https://mxvdxn.gumroad.com" target="_blank" rel="noopener">GUMROAD</a>
+        </div>
+        <div>© 2025 Dan Pradana. All rights reserved.</div>
     </div>
-
-    <script>
-        function openOverlay() {
-            document.querySelector('.overlay').style.display = 'flex'; /* Show overlay */
-        }
-
-        function closeOverlay() {
-            document.querySelector('.overlay').style.display = 'none'; /* Hide overlay */
-        }
-    </script>
 </body>
 </html>
