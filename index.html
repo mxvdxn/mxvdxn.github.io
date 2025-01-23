@@ -274,6 +274,43 @@
           display: none;
         }
 
+       /* Projects Section */
+        .projects {
+            margin-top: 4rem;
+            border-top: 1px solid #000;
+            padding-top: 3rem;
+            position: relative;
+        }
+
+        .projects:before {
+            content: "†††";
+            position: absolute;
+            top: -10px;
+            right: 0;
+            font-size: 14px;
+            background: #fff;
+            padding: 0 1rem;
+        }
+
+        .projects ul {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+
+        .projects li {
+            position: relative;
+            margin-bottom: 1rem;
+            padding-left: 2rem; /* Space for the bullet point */
+        }
+
+        .projects li:before {
+            content: "•"; /* Bullet point */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+
 
         @media (max-width: 600px) {
             body {
@@ -350,6 +387,14 @@
             </div>
         </div>
     </div>
+
+    <div class="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li><a href="https://mxvdxn.github.io/soft_elegance_project.html" class="title-link">Soft Elegance: AI-Generated Intimacy in Portraiture</a></li>
+        </ul>
+    </div>
+
 
     <div class="partnerships">
         <h2>Creative Partnerships</h2>
