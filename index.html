@@ -81,17 +81,18 @@
         }
 
         .roles {
-            margin: 1.5rem 0; /* Adjusted margin */
+             margin: 1.5rem 0; /* Adjusted margin */
             line-height: 1.6;
             max-width: 80%;
+            white-space: nowrap; /* Prevent wrapping */
+           
         }
 
-        .roles span {
-            display: block;
-            position: relative;
-            padding-left: 2rem;
-        }
-
+         .roles span {
+             display: block;
+             position: relative;
+              padding-left: 0;
+          }
         /* Remove the cross next to the roles */
         .roles span:before {
             content: "";
@@ -115,6 +116,32 @@
             left: 2rem;
             top: 0;
         }
+        
+         .partnership {
+           margin-top: 1rem;
+           padding-left: 4rem;
+           position: relative;
+           font-size: 11px;
+           line-height: 1.6;
+           
+        }
+        
+          .partnership:before {
+            content: "▼";
+            position: absolute;
+            left: 2rem;
+            top: 0;
+        }
+        
+        .partnership a {
+            color: inherit;
+            text-decoration: underline;
+            transition: all 0.2s ease;
+         }
+        .partnership a:hover {
+           letter-spacing: 0.05em;
+           background-color: #f0f0f0;
+         }
 
         .section {
             margin-top: 4rem; /* Adjusted margin */
@@ -204,6 +231,7 @@
             border-top: 1px solid #000;
             padding-top: 3rem;
             position: relative;
+             display: none;
         }
         
         .partnerships:before {
@@ -214,6 +242,7 @@
             font-size: 14px;
             background: #fff;
             padding: 0 1rem;
+             
         }
 
         .partner {
@@ -359,14 +388,18 @@
     <div class="header">
         <h1>Dan Pradana</h1>
         
-        <div class="roles">
-             <span>☑ Creative Direction</span>
-            <span>✎ Gen AI Applied Research</span>
-            <span>◉ Based in Jakarta, Indonesia</span>
+         <div class="roles">
+           <span>> Initializing...</span>
+           <span>> Creative Direction | Gen AI Applied Research | Jakarta, ID</span>
+          <span>> status: Experimenting with Generative AI & Creativity</span>
         </div>
         
         <div class="bio">
-            A decade in ads, now researching and experimenting with generative AI, merging technology and creativity to unlock new ideas.
+           A decade in ads, now leveraging AI to explore new frontiers of ideas.  <br>
+        Finding new creative possibilities through technology. 
+        </div>
+          <div class="partnership">
+          <span > Creative Partner of  <a href="https://hailuoai.video/" target="_blank" rel="noopener">HAILUO MINIMAX</a></span>
         </div>
     </div>
 
@@ -414,11 +447,8 @@
     </div>
 
 
-    <div class="partnerships">
-        <h2>Creative Partnerships</h2>
-        <div class="partner">
-            <a href="https://hailuoai.video/" target="_blank" rel="noopener">HAILUO MINIMAX</a>
-        </div>
+    <div class="partnerships" >
+       
     </div>
 
     <div class="footer">
