@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dan Pradana - GEN-Z//404 Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset & Base Styles */
+        body, h1, p { 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: normal;
+        }
+        body { 
+            line-height: 1.7; 
+            color: #1a1a1a; 
+            background-color: #fff;
+             letter-spacing: -0.01em;
+        }
+        a { 
+            text-decoration: none; 
+            color: inherit;
+            transition: opacity 0.2s ease;
+        }
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* Layout Structure */
+        .section { 
+            padding: 32px;
+            margin: 0 auto;
+        }
+        .section_nav,  .section_body, .section_footer { 
+            max-width: 1240px; 
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        
+        /* Mobile Nav */
+        .section_mobile_nav { 
+            display: none; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 24px 32px;
+            max-width: 1240px; 
+            margin: 0 auto;
+             border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        .section_mobile_nav img { width: 40px; }
+        .socials { display: flex; gap: 16px; }
+
+       /* Navigation */
+       .nav_logo_container{
+            display: flex; 
+            justify-content: flex-start; 
+            align-items: center; 
+             padding: 10px 32px;
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+        
+        .logo_area {
+            display: flex;
+           align-items:center;
+            margin: 0;
+             margin-right: 30px;
+             
+        }
+        .logo_area img {
+            width: 80px;
+            height: auto;
+           
+           
+        }
+
+       /* Portfolio Section */
+       .section_body {
+            padding: 48px 32px;
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+        .portfolio_title{
+              text-align: center;
+              margin-bottom: 20px;
+        }
+          .portfolio_description{
+              text-align: center;
+               margin-bottom: 40px;
+              font-size: 0.9rem;
+              color: #777;
+        }
+         .image_grid{
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+              gap: 16px;
+           }
+         .image_container{
+           width: 100%;
+           overflow: hidden;
+             border-radius: 8px;
+           cursor:pointer;
+         }
+           .image_container img{
+             width: 100%;
+            display: block;
+            aspect-ratio: 16 / 9; /* Set aspect ratio to 16:9 */
+            object-fit: cover;
+            transition: all 0.2s ease;
+        }
+           .image_container:hover img{
+            transform: scale(1.05);
+          }
+          
+          .modal {
+              display: none; /* Hidden by default */
+             position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+             width: 100%;
+            height: 100%;
+             overflow: auto;
+             background-color: rgba(0,0,0,0.9);
+            align-items: center;
+              justify-content: center;
+        }
+           .modal_content {
+               width: auto;
+               max-width: 80%;
+             max-height: 90%;
+            display: flex;
+              align-items: center;
+              justify-content: center;
+        }
+        .modal_content img{
+               max-width: 100%;
+                max-height: 100%;
+              object-fit: contain;
+           
+        }
+        .close_modal{
+              position: absolute;
+              top: 20px;
+            right: 20px;
+             font-size: 30px;
+             cursor: pointer;
+           color: white;
+        }
+         .modal.show{
+             display: flex;
+        }
+
+        /* Footer */
+       .section_footer { 
+            padding: 48px 32px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            color: rgba(0,0,0,0.6);
+        }
+         .footer_caption {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .footer_caption a {
+            display: inline-block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .footer_caption p {
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Styles */
+       @media (max-width: 768px) {
+            .section_mobile_nav { display: flex; }
+             .section_body{ padding: 24px;}
+            .image_grid{
+               grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="section_mobile_nav">
+        <img src="https://cdn.prod.website-files.com/649b0d75305cdd13b1d9f7f8/654c0c7862e41f90908f568d_NN_Logo.svg" alt="Logo" style="width: 50px;"/>
+        <div class="socials">
+            <a href="#" target="_blank"><img src="https://cdn.prod.website-files.com/649b0d75305cdd13b1d9f7f8/64a1ee1c2dad273f7268de00_linkedin.svg" alt="LinkedIn" style="width: 20px; margin:0 5px;"/></a>
+            <a href="#" target="_blank"><img src="https://cdn.prod.website-files.com/649b0d75305cdd13b1d9f7f8/654c192684e8bfe917237e3d_X.svg" alt="X"  style="width: 20px; margin:0 5px;"/></a>
+        </div>
+    </section>
+    <div class="nav_logo_container">
+       <div class="logo_area">
+                <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/mxvdxn_logo.png?raw=true" alt="mxvdxn Logo"/>
+            </div>
+    </div>
+
+
+    <section class="section_body">
+         <h1 class="portfolio_title">GEN-Z//404</h1>
+        <p class="portfolio_description">
+             A visual dive into the digital-native rebellion. Echoes of a generation—unfiltered, restless, untamed. Created with MidJourney V6.1.
+        </p>
+      <div class="image_grid">
+           <!-- Images will be inserted here -->
+        </div>
+           <div id="myModal" class="modal">
+                <div class="modal_content">
+                     <span class="close_modal" onclick="closeModal()">&times;</span>
+                   <img id="modalImg"  />
+              </div>
+           </div>
+    </section>
+    
+    <section class="section_footer">
+        <div class="footer_caption">
+            <p style="text-align: right;">© 2025 Dan Pradana. All rights reserved.</p>
+        </div>
+    </section>
+
+    <script>
+        const imageGrid = document.querySelector('.image_grid');
+        const modal = document.getElementById('myModal');
+       const modalImg = document.getElementById('modalImg');
+
+        for (let i = 1; i <= 20; i++) {
+            const imageUrl = `https://github.com/mxvdxn/mxvdxn.github.io/blob/main/Portfolio%20-%20Genz_404/urban_${i}.png?raw=true`;
+              const container = document.createElement('div');
+              container.classList.add('image_container');
+
+
+           const imgElement = document.createElement('img');
+             imgElement.src = imageUrl;
+              imgElement.alt = `Urban Nomad ${i}`;
+              container.appendChild(imgElement);
+
+               container.addEventListener('click', function() {
+                    modal.classList.add('show')
+                  modalImg.src =  imageUrl
+             });
+            imageGrid.appendChild(container);
+
+
+        }
+
+
+        function closeModal(){
+              modal.classList.remove('show');
+         }
+    </script>
+</body>
+</html>
