@@ -195,12 +195,42 @@
             text-transform: uppercase;
         }
 
-        .works-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
+        /* Image Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 2rem; /* Spacing between images */
         }
 
+        .image-grid a {
+            display: block; /* Make the link fill the grid cell */
+            position: relative;  /* Required for absolute positioning of the pseudo-element */
+            overflow: hidden; /* Clip the image */
+            transition: transform 0.3s ease;
+            border-radius: 8px; /* Added rounded corners */
+        }
+
+        .image-grid a:hover {
+            transform: scale(1.05);  /* Slight zoom on hover */
+        }
+
+        .image-grid a img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 2 / 1; /* 2:1 aspect ratio */
+            object-fit: cover; /* Ensure image fills the container */
+            display: block; /* Remove extra space below image */
+             border-radius: 8px; /* Added rounded corners */
+        }
+
+         /* Work List */
+        .work-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* Resources & Partnerships */
         .work-item {
             flex: 1 1 auto;
             position: relative;
@@ -281,6 +311,14 @@
             .hero-bio {
                 font-size: 1rem;
             }
+
+              .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .image-grid a:nth-child(odd) {
+                grid-column: 1 / span 2;
+            }
         }
     </style>
 </head>
@@ -304,7 +342,7 @@
         </video>
         <div class="hero-content">
             <h1 class="hero-title">Dan Pradana</h1>
-            <p class="hero-description">Visual AI Creator &amp; Digital Creative</p>
+            <p class="hero-description">Visual AI Creator & Digital Creative</p>
         </div>
     </section>
 
@@ -324,34 +362,31 @@
         <div class="works-container">
             <div class="works-section">
                 <h3 class="works-header">AI Video Works</h3>
-                <div class="works-list">
-                    <div class="work-item">
-                        <a href="https://x.com/mxvdxn/status/1874796628210778618" target="_blank">Asian Pop Culture Madness</a>
-                    </div>
-                    <div class="work-item">
-                        <a href="https://x.com/mxvdxn/status/1877406890940051634" target="_blank">† † †</a>
-                    </div>
-                    <div class="work-item">
-                        <a href="https://x.com/mxvdxn/status/1880558083526762862" target="_blank">Serpent's Throne</a>
-                    </div>
-                    <div class="work-item">
-                        <a href="https://x.com/mxvdxn/status/1871546004304257185" target="_blank">Slow Now</a>
-                    </div>
-                    <div class="work-item">
-                        <a href="https://x.com/mxvdxn/status/1869794321513476361" target="_blank">Sangra Island</a>
-                    </div>
-                    <div class="work-item">
-                        <a href="https://x.com/mxvdxn/status/1883144048095252693" target="_blank">A Beautiful Ruin</a>
-                    </div>
-                    <div class="work-item">
-                        <a href="https://x.com/mxvdxn/status/1884098548607909996" target="_blank">Year of The Snake</a>
-                    </div>
+                <div class="image-grid">
+                    <a href="https://x.com/mxvdxn/status/1874796628210778618" target="_blank">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20Asian%20Pop%20Culture%20Madness.jpg?raw=true" alt="Asian Pop Culture Madness">
+                    </a>
+                    <a href="https://x.com/mxvdxn/status/1871546004304257185" target="_blank">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20%20-%20Slow%20Now.jpg?raw=true" alt="Slow Now">
+                    </a>
+                    <a href="https://x.com/mxvdxn/status/1880558083526762862" target="_blank">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20Tahta%20Ular.jpg?raw=true" alt="Serpent's Throne">
+                    </a>
+                    <a href="https://x.com/mxvdxn/status/1885982868742250897" target="_blank">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20%20-%20Unbranded%20Beauty%20Product%20Spec%20Ad.png?raw=true" alt="Unbranded Beauty Product Spec Ad">
+                    </a>
+                    <a href="https://x.com/mxvdxn/status/1884098548607909996" target="_blank">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20Year%20of%20The%20Snake.jpg?raw=true" alt="Year of The Snake">
+                    </a>
+                    <a href="https://x.com/mxvdxn/status/1887075425521992001" target="_blank">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20%20-%20Untitled.jpg?raw=true" alt="Untitled">
+                    </a>
                 </div>
             </div>
 
             <div class="works-section">
                 <h3 class="works-header">Resources</h3>
-                <div class="works-list">
+                 <div class="work-list">
                     <div class="work-item">
                         <a href="https://mxvdxn.gumroad.com/l/mxvdxn_01_synthetic_reveries" target="_blank">Synthetic Reveries</a>
                     </div>
@@ -363,7 +398,7 @@
 
             <div class="works-section">
                 <h3 class="works-header">Creative Partnership</h3>
-                <div class="works-list">
+                 <div class="work-list">
                     <div class="work-item">
                         <span>Hailuo Minimax</span>
                     </div>
