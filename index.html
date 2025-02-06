@@ -208,6 +208,7 @@
             overflow: hidden; /* Clip the image */
             transition: transform 0.3s ease;
             border-radius: 8px; /* Added rounded corners */
+            cursor: pointer; /* Change cursor to indicate clickability */
         }
 
         .image-grid a:hover {
@@ -320,6 +321,69 @@
                 grid-column: 1 / span 2;
             }
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow: auto;
+        }
+
+        .modal-content {
+            position: relative;
+            margin: auto;
+            display: block;
+            max-width: 60%; /* Reduced max-width for smaller preview */
+            max-height: 60%; /* Reduced max-height for smaller preview */
+            transform: translateY(20%); /*Adjust positioning*/
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Updated Image Grid for 4 columns */
+        .works-section:nth-child(2) .image-grid {
+            grid-template-columns: repeat(4, 1fr); /* 4 columns for photo works*/
+        }
+
+        /* Mobile adjustments to the 4-column grid */
+        @media (max-width: 768px) {
+            .works-section:nth-child(2) .image-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+            }
+
+            .works-section:nth-child(2) .image-grid a:nth-child(odd) {
+                grid-column: auto;  /* Reset column span */
+            }
+        }
     </style>
 </head>
 <body>
@@ -384,6 +448,74 @@
                 </div>
             </div>
 
+             <!-- AI Photo Works Section -->
+            <div class="works-section">
+                <h3 class="works-header">AI Photo Works</h3>
+                <div class="image-grid">
+                    <!-- Images from AI_1.png to AI_20.png -->
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_1.png?raw=true')" >
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_1.png?raw=true" alt="AI Photo 1">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_2.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_2.png?raw=true" alt="AI Photo 2">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_3.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_3.png?raw=true" alt="AI Photo 3">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_4.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_4.png?raw=true" alt="AI Photo 4">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_5.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_5.png?raw=true" alt="AI Photo 5">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_6.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_6.png?raw=true" alt="AI Photo 6">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_7.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_7.png?raw=true" alt="AI Photo 7">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_8.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_8.png?raw=true" alt="AI Photo 8">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_9.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_9.png?raw=true" alt="AI Photo 9">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_10.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_10.png?raw=true" alt="AI Photo 10">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_11.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_11.png?raw=true" alt="AI Photo 11">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_12.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_12.png?raw=true" alt="AI Photo 12">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_13.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_13.png?raw=true" alt="AI Photo 13">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_14.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_14.png?raw=true" alt="AI Photo 14">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_15.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_15.png?raw=true" alt="AI Photo 15">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_16.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_16.png?raw=true" alt="AI Photo 16">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_17.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_17.png?raw=true" alt="AI Photo 17">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_18.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_18.png?raw=true" alt="AI Photo 18">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_19.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_19.png?raw=true" alt="AI Photo 19">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_20.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_20.png?raw=true" alt="AI Photo 20">
+                    </a>
+                </div>
+            </div>
+
             <div class="works-section">
                 <h3 class="works-header">Resources</h3>
                  <div class="work-list">
@@ -419,6 +551,14 @@
         </div>
     </footer>
 
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">×</span>
+        <div class="modal-content">
+            <img id="modalImg" src="" alt="Enlarged Image">
+        </div>
+    </div>
+
     <script>
         // Custom cursor
         const cursor = document.querySelector('.custom-cursor');
@@ -436,6 +576,27 @@
                 cursor.style.transform = 'scale(1)';
             });
         });
+
+        // Modal functionality
+        function openModal(imgUrl) {
+            const modal = document.getElementById("myModal");
+            const modalImg = document.getElementById("modalImg");
+            modal.style.display = "block";
+            modalImg.src = imgUrl;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
     </script>
 </body>
 </html>
