@@ -384,6 +384,30 @@
                 grid-column: auto;  /* Reset column span */
             }
         }
+
+       /* Style for stylistic text */
+       .stylistic-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 6rem;          /* Increased font size dramatically */
+            color: #fff;
+            text-align: center;
+            margin: 7rem 0;           /* Increased spacing */
+            font-style: italic;
+            font-weight: 500;
+            letter-spacing: -4px;     /* Adjust letter spacing */
+            line-height: 1.1;
+            text-transform: uppercase;  /* Optional: If you want the text to be all uppercase */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a subtle text shadow */
+        }
+
+        /* Responsive font size */
+        @media (max-width: 768px) {
+            .stylistic-text {
+                font-size: 3rem;   /* Smaller font size on mobile */
+                margin: 5rem 0;      /* Adjust spacing on mobile */
+                letter-spacing: -2px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -447,6 +471,9 @@
                     </a>
                 </div>
             </div>
+
+             <!-- Add stylistic text here -->
+            <p class="stylistic-text">Kvlture is my Canvas, Zeitgeist is my Compass, Creativity is my Symphony.</p>
 
              <!-- AI Photo Works Section -->
             <div class="works-section">
@@ -512,6 +539,9 @@
                     </a>
                     <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_20.png?raw=true')">
                         <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_20.png?raw=true" alt="AI Photo 20">
+                    </a>
+                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_21.png?raw=true')">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_21.png?raw=true" alt="AI Photo 21">
                     </a>
                 </div>
             </div>
