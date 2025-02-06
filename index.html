@@ -7,301 +7,400 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         /* Reset & Base Styles */
-        body, h1, p { 
-            margin: 0; 
-            padding: 0; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             font-family: 'Space Grotesk', sans-serif;
-            font-weight: normal;
-        }
-        body { 
-            line-height: 1.6; 
-            color: #1a1a1a; 
-            background-color: #fff;
-            letter-spacing: -0.01em;
-        }
-        a { 
-            text-decoration: none; 
-            color: inherit;
-            transition: opacity 0.2s ease;
-        }
-        a:hover {
-            opacity: 0.7;
-        }
-
-        /* Layout Structure */
-        .section { 
-            padding: 32px;
-            margin: 0 auto;
-        }
-        .section_nav, .section_videoplayer, .section_body, .section_footer { 
-            max-width: 1240px; 
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-        
-        /* Mobile Nav */
-        .section_mobile_nav { 
-            display: none; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 24px 32px;
-            max-width: 1240px; 
-            margin: 0 auto;
-            border-bottom: 1px solid rgba(0,0,0,0.08);
-        }
-        .section_mobile_nav img { width: 40px; }
-        .socials { display: flex; gap: 16px; }
-
-       /* Navigation & Logo */
-        .nav_logo_container{
-             display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-             padding: 0px 32px;
-            max-width: 1240px;
-            margin: 0 auto;
-
-        }
-        .section_nav { 
-           display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            flex: 2;
-            padding: 40px 0px;
-          
-        }
-        .nav_section {
-            display: flex; 
-            flex-direction: column; 
-            align-items: flex-end;
-        }
-        .nav_section img.logo { width: 64px; }
-        .text_nav_caption { 
-            font-size: 1rem;
-            margin: 0;
-            font-weight: 500;
-        }
-        .text_nav_paragraph {
-            margin: 0;
-            opacity: 0.6;
-            font-size: 0.9rem;
-        }
-         .logo_area {
-              display: flex;
-            justify-content: flex-start;
-             align-items:center;
-             margin: 0;
-             flex: 1;
-        }
-         .logo_area img {
-            width: 80px;
-            height: auto;
-             margin-right: 30px;
-            margin-bottom: -10px;
-        }
-
-        /* Video Player */
-        .section_videoplayer { 
-            position: relative;
-            margin: 48px auto;
-        }
-        .background-video { 
-            width: 100%;
-            height: 450px;
-            overflow: hidden;
-            display: flex;
-            align-items:center;
-            justify-content: center;
-            background-color: #000;
-            border-radius: 12px;
-        }
-         .background-video video { 
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .videoplayer_caption { 
-            text-align: left;
-            position: absolute;
-            top: 50%;
-            left: 10%;
-            transform: translateY(-50%);
-            width: 40%;
-            padding: 32px;
-        }
-        .text_videoplayer_caption { 
-            font-size: 3.5rem;
-            margin-bottom: 0.5em;
-            font-weight: 500;
+            background: #0a0a0a;
             color: #fff;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-        .text_videoplayer_paragraph {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.9);
-            line-height: 1.5;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Body Lists */
-        .section_body { 
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 48px;
-            padding: 48px 32px;
+        /* Cursor */
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.8);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s ease;
+            backdrop-filter: invert(1);
         }
-        .body_list { 
+
+        /* Navigation */
+        .nav {
+            position: fixed;
             width: 100%;
+            padding: 2rem;
+            z-index: 100;
+            mix-blend-mode: difference;
         }
-        .text_list_caption { 
-            font-size: 1.1rem;
-            margin-bottom: 1.5em;
-            font-weight: 500;
-            color: #000;
-            position: relative;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(0,0,0,0.08);
-        }
-        .list_item { 
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.04);
         }
-        .list_item:last-child { border-bottom: none; }
-        .text_listitem_title { 
-            font-weight: 400;
-            font-size: 0.95rem;
-            color: rgba(0,0,0,0.7);
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -1px;
         }
-        .label { 
-            background-color: rgba(0,0,0,0.05);
-            padding: 4px 8px;
-            border-radius: 4px;
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
         }
-        .text_label { font-size: 0.8rem; }
-        .text_listitem_date { font-size: 0.9rem; }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            padding: 0 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            text-align: left; /* Ensure left alignment */
+        }
+
+        .hero-title {
+            font-size: 6vw;
+            line-height: 1;
+            margin-bottom: 1rem;  /* Reduced margin */
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeUp 1s ease forwards;
+            font-weight: 600; /* Make font bold */
+            letter-spacing: -2px; /* Adjust letter spacing for a cleaner look */
+            text-transform: uppercase;
+        }
+
+        .hero-description {
+            font-size: 1.5rem;  /* Increased size */
+            max-width: none;       /*remove maximum width */
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards 0.3s;
+            font-weight: 400; /* Keep the normal description font */
+        }
+
+        /* Video Background */
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            filter: grayscale(100%) contrast(120%);
+        }
+
+        /* Bio Section */
+        .bio {
+            padding: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            color: #888;
+        }
+
+        .bio-location {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .bio-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        .bio-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .bio-focus {
+            font-size: 1.1rem;
+        }
+
+        /* Divider */
+        .section-divider {
+            width: 60px; /* Adjust width as needed */
+            height: 1px;
+            background-color: #444; /* Adjust color as needed */
+            margin: 4rem auto; /* Center the line */
+        }
+
+        /* Works Section */
+        .works {
+            padding: 6rem 0;
+            background: #0a0a0a; /* Match works background */
+        }
+
+        .works-container {
+            max-width: 1400px; /* Adjusted to match hero content */
+            margin: 0 auto;
+            padding: 0 4rem;  /*Adjusted to match hero content */
+        }
+
+        .works-section {
+            margin-bottom: 6rem;
+        }
+
+        .works-header {
+            font-size: 1rem;
+            color: #666;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .works-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .work-item {
+            flex: 1 1 auto;
+            position: relative;
+        }
+
+        .work-item a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            line-height: 1.4;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .work-item a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .work-item a:hover::after {
+            width: 100%;
+        }
+
+        .work-item span {
+            color: #666;
+            font-size: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .work-item.coming-soon {
+            opacity: 0.5;
+        }
 
         /* Footer */
-        .section_footer { 
-            padding: 48px 32px;
-            border-top: 1px solid rgba(0,0,0,0.08);
-            color: rgba(0,0,0,0.6);
+        .footer {
+            padding: 4rem 0;
+            text-align: center;
+            color: #888;
         }
-        .footer_caption {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-        .footer_caption a {
-            display: inline-block;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        .footer_caption p {
-            font-size: 0.9rem;
+
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Mobile Styles */
         @media (max-width: 768px) {
-            .section_mobile_nav { display: flex; }
-            .section_nav { display: none; }
-            .section_body { 
-                grid-template-columns: 1fr;
-                gap: 32px;
+            .hero-title {
+                font-size: 3rem;
             }
-            .background-video { height: 400px; }
-            .videoplayer_caption {
-                width: 80%;
-                left: 5%;
+
+            .nav-links {
+                display: none;
             }
-            .text_videoplayer_caption { font-size: 2.5rem; }
-            .text_videoplayer_paragraph { font-size: 1rem; }
-            .section { padding: 24px; }
+
+            .bio {
+                padding: 2rem;
+            }
+
+            .bio-title {
+                font-size: 2rem;
+            }
+
+            .work-item a,
+            .work-item span {
+                font-size: 1.2rem;
+            }
+
+            .hero-bio {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <section class="section_mobile_nav">
-        <img src="https://cdn.prod.website-files.com/649b0d75305cdd13b1d9f7f8/654c0c7862e41f90908f568d_NN_Logo.svg" alt="Logo" style="width: 50px;"/>
-        <div class="socials">
-            <a href="#" target="_blank"><img src="https://cdn.prod.website-files.com/649b0d75305cdd13b1d9f7f8/64a1ee1c2dad273f7268de00_linkedin.svg" alt="LinkedIn" style="width: 20px; margin:0 5px;"/></a>
-            <a href="#" target="_blank"><img src="https://cdn.prod.website-files.com/649b0d75305cdd13b1d9f7f8/654c192684e8bfe917237e3d_X.svg" alt="X"  style="width: 20px; margin:0 5px;"/></a>
-        </div>
-    </section>
-    <div class="nav_logo_container">
-            <div class="logo_area">
-                <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/mxvdxn_logo.png?raw=true" alt="mxvdxn Logo"/>
-            </div>
-             <section class="section_nav">
-               <div class="nav_section">
-                 <h1 class="text_nav_caption"><b>About Me</b></h1>
-                 <p class="text_nav_paragraph"><a href="https://mxvdxn.github.io/about.html" style="color:#777;"  target="_blank">[Read More]</a></p>
-                </div>
-                <div  class="nav_section">
-                    <h1 class="text_nav_caption"><b>Let's Connect</b></h1>
-                    <p class="text_nav_paragraph"><a href="mailto:danifpradana@gmail.com" style="color:#777;"  target="_blank">[Contact me]</a></p>
-                </div>
-                 <div  class="nav_section">
-                    <h1 class="text_nav_caption"><b>AI & creativity logs</b></h1>
-                    <p class="text_nav_paragraph"><a href="https://x.com/mxvdxn" style="color:#777;" target="_blank">[Follow on X]</a></p>
-                </div>
-            </section>
-    </div>
+    <div class="custom-cursor"></div>
 
-
-    <section class="section_videoplayer">
-        <div class="background-video">
-            <video autoplay loop muted playsinline>
-               <source src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/Videos/mxvdxn_demo_vid.mp4" type="video/mp4">
-            </video>
-            <div class="videoplayer_caption">
-                <h1 class="text_videoplayer_caption">Dan Pradana</h1>
-                <p class="text_videoplayer_paragraph">A decade in ads, now leveraging AI to explore new frontiers of ideas. Finding new creative possibilities through technology.</p>
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">MXVDXN</div>
+            <div class="nav-links">
+                <a href="#works" class="nav-link">Works</a>
+                <a href="mailto:danifpradana@gmail.com" class="nav-link">Contact</a>
+                <a href="https://x.com/mxvdxn" class="nav-link">X</a>
             </div>
         </div>
+    </nav>
+
+    <section class="hero">
+        <video class="background-video" autoplay loop muted playsinline>
+            <source src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/Videos/mxvdxn_demo_vid.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1 class="hero-title">Dan Pradana</h1>
+            <p class="hero-description">Visual AI Creator &amp; Digital Creative</p>
+        </div>
     </section>
 
-    <section class="section_body">
-         <div class="body_list">
-            <h1 class="text_list_caption">MXVDXN.labs</h1>
-             <div class="list_item">
-                <p class="text_listitem_title">Creative Direction | Gen AI Applied Research | Jakarta, ID</p>
-              </div>
-            <div class="list_item">
-              <p class="text_listitem_title">Researching, testing tools, and exploring new frontiers of ideas.</p>
+    <section class="bio">
+        <p class="bio-location">JAKARTA, INDONESIA</p>
+        <h2 class="bio-title">Hi, I'm Dan.</h2>
+        <p class="bio-description">
+            A decade in advertising, shaping narratives for brands like Mastercard, Danone, P&G, and HSBC. Crafted campaigns across TV, digital, and print with top agencies like BBDO and Flock Creative Network.<br><br>
+            Now diving into Generative AI—exploring how technology reshapes creativity. From AI-assisted content production to experimental AI filmmaking, I push the boundaries of storytelling.
+        </p>
+        <p class="bio-focus">Focus areas: Storytelling, AI, Creativity, Branding, Digital Media, Fashion, Asian Pop Culture.</p>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="works" class="works">
+        <div class="works-container">
+            <div class="works-section">
+                <h3 class="works-header">AI Video Works</h3>
+                <div class="works-list">
+                    <div class="work-item">
+                        <a href="https://x.com/mxvdxn/status/1874796628210778618" target="_blank">Asian Pop Culture Madness</a>
+                    </div>
+                    <div class="work-item">
+                        <a href="https://x.com/mxvdxn/status/1877406890940051634" target="_blank">† † †</a>
+                    </div>
+                    <div class="work-item">
+                        <a href="https://x.com/mxvdxn/status/1880558083526762862" target="_blank">Serpent's Throne</a>
+                    </div>
+                    <div class="work-item">
+                        <a href="https://x.com/mxvdxn/status/1871546004304257185" target="_blank">Slow Now</a>
+                    </div>
+                    <div class="work-item">
+                        <a href="https://x.com/mxvdxn/status/1869794321513476361" target="_blank">Sangra Island</a>
+                    </div>
+                    <div class="work-item">
+                        <a href="https://x.com/mxvdxn/status/1883144048095252693" target="_blank">A Beautiful Ruin</a>
+                    </div>
+                    <div class="work-item">
+                        <a href="https://x.com/mxvdxn/status/1884098548607909996" target="_blank">Year of The Snake</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="works-section">
+                <h3 class="works-header">Resources</h3>
+                <div class="works-list">
+                    <div class="work-item">
+                        <a href="https://mxvdxn.gumroad.com/l/mxvdxn_01_synthetic_reveries" target="_blank">Synthetic Reveries</a>
+                    </div>
+                    <div class="work-item coming-soon">
+                        <span>Corporate Eros: AI Gravure Photography (Coming Soon)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="works-section">
+                <h3 class="works-header">Creative Partnership</h3>
+                <div class="works-list">
+                    <div class="work-item">
+                        <span>Hailuo Minimax</span>
+                    </div>
+                    <div class="work-item">
+                        <span>KLING AI</span>
+                    </div>
+                    <div class="work-item">
+                        <span>Luma AI</span>
+                    </div>
+                </div>
             </div>
         </div>
- <div class="body_list">
-             <h1 class="text_list_caption">Selected AI Video Works</h1>
-            <div class="list_item"><p class="text_listitem_title"><a href="https://x.com/mxvdxn/status/1874796628210778618" style="color:#777;" target="_blank">Asian Pop Culture Madness</a></p></div>
-            <div class="list_item"><p class="text_listitem_title"><a href="https://x.com/mxvdxn/status/1877406890940051634" style="color:#777;" target="_blank">† † †</a></p></div>
-           <div class="list_item"><p class="text_listitem_title"><a href="https://x.com/mxvdxn/status/1880558083526762862" style="color:#777;" target="_blank">Serpent's Throne</a></p></div>
-           <div class="list_item"><p class="text_listitem_title"><a href="https://x.com/mxvdxn/status/1871546004304257185" style="color:#777;" target="_blank">Slow Now</a></p></div>
-          <div class="list_item"><p class="text_listitem_title"><a href="https://x.com/mxvdxn/status/1869794321513476361" style="color:#777;" target="_blank">Sangra Island</a></p></div>
-           <div class="list_item"><p class="text_listitem_title"><a href="https://x.com/mxvdxn/status/1883144048095252693" style="color:#777;" target="_blank">A Beautiful Ruin</a></p></div>
-            <div class="list_item"><p class="text_listitem_title"><a href="https://x.com/mxvdxn/status/1884098548607909996" style="color:#777;" target="_blank">Year of The Snake</a></p></div>
-        </div>
-         <div class="body_list">
-            <h1 class="text_list_caption">Gumroad</h1>
-            <div class="list_item"><p class="text_listitem_title"><a href="https://mxvdxn.gumroad.com/l/mxvdxn_01_synthetic_reveries" style="color:#777;" target="_blank">Synthetic Reveries</a></p></div>
-             <div class="list_item"><p class="text_listitem_title">Corporate Eros: AI Gravure Photography (Coming Soon)</p></div>
-        </div>
-           <div class="body_list">
-             <h1 class="text_list_caption">Creative Partnership</h1>
-            <div class="list_item"><p class="text_listitem_title">Hailuo Minimax</p></div>
-               <div class="list_item"><p class="text_listitem_title">KLING AI</p></div> 
-             <div class="list_item"><p class="text_listitem_title">Luma AI</p></div>
-        </div>
     </section>
 
-    <section class="section_footer">
-        <div class="footer_caption">
-          
-            <p style="text-align: right;">© 2025 Dan Pradana. All rights reserved.</p>
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Dan Pradana. All rights reserved.</p>
         </div>
-    </section>
+    </footer>
+
+    <script>
+        // Custom cursor
+        const cursor = document.querySelector('.custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Hover effect
+        document.querySelectorAll('a, .work-item').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(1.5)';
+            });
+            element.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+            });
+        });
+    </script>
 </body>
 </html>
