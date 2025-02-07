@@ -256,9 +256,10 @@
             letter-spacing: -1px;
             margin-bottom: 2rem; /* Adjusted margin */
             text-transform: uppercase;
+            text-align: center; /* Centered the text */
         }
 
-        /* Image Grid */
+       /*  Image Grid */
         .image-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* 3 columns */
@@ -287,7 +288,55 @@
             border-radius: 12px; /*Updated size*/
         }
 
-         /* Work List */
+        /* Partnership Section Styling */
+        .partnership-section {
+            margin-bottom: 7rem;
+        }
+
+        .partnership-header {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 2.4rem;
+            color: #fff;
+            letter-spacing: -1px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+             text-align: center; /* Center the header */
+        }
+
+        /* Partnership Names */
+        .partnership-names {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center names horizontally */
+            align-items: center;     /* Center names vertically */
+            gap: 2rem;             /* Adjust gap as needed */
+            font-size: 1.8rem;      /* Make names larger */
+            font-weight: 500;       /* Slightly bolder font */
+        }
+
+        .partnership-name {
+            width: calc(33.33% - 2rem); /* Adjust width for number of names */
+            text-align: center;           /* Center text */
+            padding: 1rem;                /* Add padding */
+            background-color: #111;      /* Add background */
+            border-radius: 8px;            /* Round corners */
+            transition: transform 0.3s ease; /* Add hover effect */
+        }
+
+        .partnership-name:hover {
+            transform: scale(1.1);     /* Enlarge on hover */
+            color: #ddd;               /* Slightly brighter text on hover */
+        }
+
+        /* Style the links */
+        .partnership-name a {
+            color: #fff;               /* White text color */
+            text-decoration: none;    /* Remove underlines */
+            display: block;              /* Make the entire box clickable */
+        }
+
+        /* Work List */
         .work-list {
             display: flex;
             flex-direction: column;
@@ -393,6 +442,17 @@
 
             .works-header {
                 font-size: 1.6rem; /* Adjusted smaller font size on mobile */
+            }
+
+             /* Adjust partnership names on mobile */
+            .partnership-names {
+                flex-direction: column; /* Stack names vertically */
+            }
+
+            .partnership-name {
+                width: 80%;           /* Make names take up most of width */
+                margin: 0 auto;         /* Center names */
+                font-size: 1.4rem;     /* Smaller font size */
             }
         }
 
@@ -638,29 +698,18 @@
                  </div>
             </div>
 
-            <div class="works-section">
-                <h3 class="works-header">Resources</h3>
-                 <div class="work-list">
-                    <div class="work-item">
-                        <a href="https://mxvdxn.gumroad.com/l/mxvdxn_01_synthetic_reveries" target="_blank">Synthetic Reveries</a>
+            <!-- Creative Partnership Section -->
+            <div class="works-section partnership-section">
+                <h3 class="partnership-header">Strategic Creative Partners</h3>
+                <div class="partnership-names">
+                    <div class="partnership-name">
+                        <a href="https://hailuoai.video/" target="_blank">Hailuo Minimax</a>
                     </div>
-                    <div class="work-item coming-soon">
-                        <span>Corporate Eros: AI Gravure Photography (Coming Soon)</span>
+                    <div class="partnership-name">
+                        <a href="https://www.klingai.com/" target="_blank">KLING AI</a>
                     </div>
-                </div>
-            </div>
-
-            <div class="works-section">
-                <h3 class="works-header">Creative Partnership</h3>
-                 <div class="work-list">
-                    <div class="work-item">
-                        <span>Hailuo Minimax</span>
-                    </div>
-                    <div class="work-item">
-                        <span>KLING AI</span>
-                    </div>
-                    <div class="work-item">
-                        <span>Luma AI</span>
+                    <div class="partnership-name">
+                        <a href="https://lumalabs.ai/dream-machine" target="_blank">Luma AI</a>
                     </div>
                 </div>
             </div>
