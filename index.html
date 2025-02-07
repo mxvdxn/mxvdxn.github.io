@@ -168,6 +168,56 @@
             font-size: 1.2rem;
         }
 
+        /* Services Section - USP Styling */
+        .services {
+            padding: 5rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .services-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .service-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .service-item {
+            width: calc(33.33% - 3rem); /* Adjust width as needed for the number of services */
+            text-align: left;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background-color: #111; /* Slightly darker background */
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 2rem; /*Adjust Icon Size*/
+            margin-right: 1rem;
+            color: #dcdcdc; /* Adjust icon color */
+            vertical-align: middle; /* Align icon with text */
+        }
+
+        .service-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #999;
+        }
+
         /* Divider */
         .section-divider {
             width: 80px; /* Increased size */
@@ -502,10 +552,43 @@
         <p class="bio-description">
             Now diving into <strong>Generative AI</strong>—exploring how <strong>technology reshapes creativity</strong>. Focused on <strong>AI-driven content production in filmmaking</strong> and <strong>new creative possibilities in visual storytelling</strong>.
         </p>
+    </section>
 
-        <p class="bio-description">
-            <strong>Current AI focus areas:</strong> <strong>Music Video Production, AI Editorial Photography, AI Stock Photos for Marketing, New Media & Art Projects, and Video Visualization Jockey (VJ).</strong>
-        </p>
+    <!-- Services Section - USP -->
+    <section class="services">
+        <h2 class="services-title">My Creative Applications of AI</h2>
+        <div class="service-list">
+            <div class="service-item">
+                 <span class="service-icon"> ❏ </span>
+                <h3 class="service-header">AI Cinematic Concept Development</h3>
+                <p class="service-description">AI-driven visuals for film and advertising—exploring aesthetics, moodboarding, and previsualization.</p>
+            </div>
+            <div class="service-item">
+                <span class="service-icon"> ▰ </span>
+                <h3 class="service-header">Music Video Production</h3>
+                <p class="service-description">Transforming musical visions into captivating AI-powered video experiences.</p>
+            </div>
+            <div class="service-item">
+                <span class="service-icon"> ▢ </span>
+                <h3 class="service-header">AI Editorial Photography</h3>
+                <p class="service-description">Crafting unique editorial visuals with the power of artificial intelligence.</p>
+            </div>
+            <div class="service-item">
+                <span class="service-icon"> ☰ </span>
+                <h3 class="service-header">AI Stock Photos for Marketing</h3>
+                <p class="service-description">Providing innovative AI-generated stock imagery for marketing campaigns.</p>
+            </div>
+           <div class="service-item">
+                <span class="service-icon"> ♪ </span>
+                <h3 class="service-header">Video Visualization Jockey (VJ)</h3>
+                <p class="service-description">Creating mesmerizing real-time visual experiences for live music performances.</p>
+            </div>
+            <div class="service-item">
+                <span class="service-icon"> ✧ </span>
+                <h3 class="service-header">New Media & Art Projects</h3>
+                <p class="service-description">Exploring the boundless possibilities of AI in new media and artistic expression.</p>
+            </div>
+        </div>
     </section>
 
     <div class="section-divider"></div>
