@@ -356,9 +356,9 @@
             position: relative;
             margin: auto;
             display: block;
-            max-width: 70%;  /*Smaller Size*/
-            max-height: 70%; /*Smaller Size*/
-            transform: translateY(15%);
+            max-width: 90%;  /*Increased Size*/
+            max-height: 90%; /*Increased Size*/
+            transform: translateY(5%); /*Adjust Vertical Positioning*/
         }
 
         .modal-content img {
@@ -430,18 +430,36 @@
         .ai-photo-works-container {
             display: flex;
             flex-direction: column;
-            gap: 20px; /* Adjust as needed for spacing between images */
-            align-items: center; /* Optional: Center the images horizontally */
+            gap: 20px;
+            align-items: center;
+            width: 100%; /* Added width */
         }
 
         .ai-photo-works-container a {
-            display: block; /* Make the links block-level */
+            display: block;
         }
 
         .ai-photo-works-container img {
-            max-width: 100%; /* Make images responsive */
-            height: auto;
-            border-radius: 10px; /* Keep rounded corners */
+            max-width: 1695px; /* Changed this value to 1695px */
+            height: auto !important; /*Added !important*/
+            border-radius: 10px;
+            display: block; /*Ensures it respects width/max-width*/
+            margin: 0 auto; /*Centers the image*/
+        }
+
+        .works-container {
+           overflow: visible !important; /* Allow content to overflow */
+           max-width: none !important; /* Remove max-width restriction */
+           width: auto !important; /*Ensure it can expand*/
+        }
+
+        .works {
+          overflow: visible !important;
+        }
+
+        /*Added this to make the width 100%*/
+        #works {
+           width: 100%;
         }
     </style>
 </head>
@@ -513,7 +531,7 @@
                 <h3 class="works-header">AI Photo Works</h3>
                 <div class="ai-photo-works-container">
                     <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/test1.png?raw=true')" >
-                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/test1.png?raw=true" alt="AI Photo 1">
+                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/test1.png?raw=true" alt="AI Photo 1" >
                     </a>
                     <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/test2.png?raw=true')">
                         <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/test2.png?raw=true" alt="AI Photo 2">
