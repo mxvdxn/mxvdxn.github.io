@@ -33,10 +33,11 @@
             width: 100%;
             padding: 1.5rem 2rem; /* Reduced vertical padding */
             z-index: 100;
+            /* background: rgba(0,0,0,0.7);  Removed the black overlay */
         }
 
         .nav-content {
-            max-width: 1200px;
+            max-width: 1600px; /* Adjusted for 1920x1080 */
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -45,22 +46,22 @@
 
         .logo {
             font-family: 'Fjalla One', sans-serif;
-            font-size: 2rem;
+            font-size: 2.2rem; /* Adjusted Size */
             letter-spacing: -1px;
             text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem; /* Increased gap */
         }
 
         .nav-link {
             color: #dcdcdc;
             text-decoration: none;
             position: relative;
-            padding: 0.3rem 0;
-            font-size: 1.1rem;
+            padding: 0.4rem 0; /*Adjusted padding */
+            font-size: 1.2rem; /* Adjusted Size */
         }
 
         .nav-link::after {
@@ -90,7 +91,7 @@
 
         .hero-content {
             padding: 0 4rem;
-            max-width: 1200px;  /*Adjusted width*/
+            max-width: 1600px;  /*Adjusted width for 1920 */
             margin: 0 auto;
             width: 100%;
             text-align: center;  /*Center elements*/
@@ -101,7 +102,7 @@
 
         .hero-title {
             font-family: 'Fjalla One', sans-serif;
-            font-size: 7vw;
+            font-size: 6.5vw; /* Slightly smaller to fit better */
             line-height: 1;
             margin-bottom: 0.5rem; /* Further reduced margin */
             opacity: 0;
@@ -112,8 +113,8 @@
         }
 
         .hero-description {
-            font-size: 1.3rem;   /*Increased size */
-            max-width: none;
+            font-size: 1.4rem;   /*Increased size */
+            max-width: 800px; /*Added max-width for better readability*/
             opacity: 0;
             transform: translateY(30px);
             animation: fadeUp 1s ease forwards 0.3s;
@@ -135,15 +136,15 @@
 
         /* Bio Section - Spacing and Font */
         .bio {
-            padding: 4rem;
-            max-width: 1200px;  /*Adjusted width*/
+            padding: 5rem; /* Increased padding */
+            max-width: 1600px;  /*Adjusted width for 1920 */
             margin: 0 auto;
             color: #999; /*Dark Gray*/
         }
 
         .bio-location {
-            font-size: 0.9rem;  /*Smaller Size*/
-            margin-bottom: 1rem;
+            font-size: 1rem;  /*Smaller Size*/
+            margin-bottom: 1.2rem; /* Adjusted margin */
             letter-spacing: 0.1em;
             text-transform: uppercase;
         }
@@ -151,59 +152,59 @@
         .bio-title {
             font-family: 'Poppins', sans-serif; /* Changed to Poppins */
             font-weight: 600; /*Added font-weight*/
-            font-size: 3.2rem;  /*Bigger Size*/
-            margin-bottom: 2rem;
+            font-size: 3.5rem;  /*Bigger Size*/
+            margin-bottom: 2.5rem; /*Adjusted margin */
             color: #fff;
             text-transform: uppercase; /*Uppercase*/
         }
 
         .bio-description {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
+            font-size: 1.2rem; /*Increased size */
+            line-height: 1.7; /* Adjusted Line Height */
+            margin-bottom: 2.5rem; /*Adjusted margin */
         }
 
         .bio-focus {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
 
         /* Divider */
         .section-divider {
-            width: 60px;
+            width: 80px; /* Increased size */
             height: 1px;
             background-color: #333;
-            margin: 4rem auto;
+            margin: 5rem auto; /* Adjusted Margin */
         }
 
         /* Works Section - Padding and background */
         .works {
-            padding: 5rem 0;  /*Adjusted padding*/
+            padding: 6rem 0;  /*Adjusted padding*/
             background: #000; /*Match works background*/
         }
 
         .works-container {
-            max-width: 1200px; /* Adjusted to match hero content */
+            max-width: 1600px; /* Adjusted to match hero content */
             margin: 0 auto;
             padding: 0 4rem;  /*Adjusted to match hero content */
         }
 
          /* Works Section - Padding and background */
         .works {
-            padding: 4rem 0; /* Adjusted padding */
+            padding: 5rem 0; /* Adjusted padding */
             background: #000; /* Match works background */
         }
 
         .works-section {
-            margin-bottom: 6rem;
+            margin-bottom: 7rem; /* Adjusted margin */
         }
 
         .works-header {
             font-family: 'Poppins', sans-serif; /* Changed to Poppins */
             font-weight: 600; /*Added font-weight*/
-            font-size: 2rem;
+            font-size: 2.4rem; /*Increased size */
             color: #fff;
             letter-spacing: -1px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem; /* Adjusted margin */
             text-transform: uppercase;
         }
 
@@ -211,7 +212,7 @@
         .image-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* 3 columns */
-            gap: 1.5rem;   /*Adjusted Spacing*/
+            gap: 2rem;   /*Adjusted Spacing*/
         }
 
         .image-grid a {
@@ -219,7 +220,7 @@
             position: relative;
             overflow: hidden;
             transition: transform 0.3s ease;
-            border-radius: 10px; /*Updated size*/
+            border-radius: 12px; /*Updated size*/
             cursor: pointer;
         }
 
@@ -233,14 +234,14 @@
             aspect-ratio: 2 / 1;
             object-fit: cover;
             display: block;
-            border-radius: 10px; /*Updated size*/
+            border-radius: 12px; /*Updated size*/
         }
 
          /* Work List */
         .work-list {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.2rem; /*Adjusted gap */
         }
 
         /* Resources & Partnerships */
@@ -252,7 +253,7 @@
         .work-item a {
             color: #fff;
             text-decoration: none;
-            font-size: 1.5rem;
+            font-size: 1.6rem; /*Increased Size*/
             line-height: 1.4;
             position: relative;
             transition: color 0.3s ease;
@@ -275,7 +276,7 @@
 
         .work-item span {
             color: #666;
-            font-size: 1.5rem;
+            font-size: 1.6rem; /*Increased Size*/
             line-height: 1.4;
         }
 
@@ -285,10 +286,10 @@
 
         /* Footer - Subtler */
         .footer {
-            padding: 3rem 0;
+            padding: 4rem 0; /* Adjusted padding */
             text-align: center;
             color: #666; /*Dark Gray*/
-            font-size: 0.85rem; /*Smaller size*/
+            font-size: 0.9rem; /*Smaller size*/
         }
 
         /* Animations */
@@ -411,10 +412,10 @@
        /* Style for stylistic text */
        .stylistic-text {
             font-family: 'Inter', sans-serif;
-            font-size: 4.5rem;          /* Increased font size dramatically */
+            font-size: 5rem;          /* Increased font size dramatically */
             color: #fff;
             text-align: center;
-            margin: 6rem 0;           /* Increased spacing */
+            margin: 7rem 0;           /* Increased spacing */
             font-style: italic;
             font-weight: 400;
             letter-spacing: -4px;     /* Adjust letter spacing */
@@ -436,7 +437,7 @@
         .ai-photo-works-container {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 25px; /* Adjusted gap */
             align-items: center;
             width: 100%; /* Added width */
         }
@@ -448,7 +449,7 @@
         .ai-photo-works-container img {
             max-width: 1695px; /* Changed this value to 1695px */
             height: auto !important; /*Added !important*/
-            border-radius: 10px;
+            border-radius: 12px; /* Adjusted border radius */
             display: block; /*Ensures it respects width/max-width*/
             margin: 0 auto; /*Centers the image*/
         }
