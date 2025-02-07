@@ -27,18 +27,6 @@
             overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
-        /* Cursor - Reduced cursor contrast */
-       .custom-cursor {
-            width: 24px;
-            height: 24px;
-            border: 1px solid rgba(220, 220, 220, 0.6); /* Reduced Cursor Contrast */
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.2s ease;
-        }
-
         /* Navigation - Inspired by Billy Boman */
         .nav {
             position: fixed;
@@ -440,15 +428,13 @@
     </style>
 </head>
 <body>
-    <div class="custom-cursor"></div>
-
     <nav class="nav">
         <div class="nav-content">
             <div class="logo">MXVDXN</div>
             <div class="nav-links">
                 <a href="#works" class="nav-link">Works</a>
                 <a href="mailto:danifpradana@gmail.com" class="nav-link">Contact</a>
-                <a href="https://x.com/mxvdxn" class="nav-link">X</a>
+                <a href="https://x.com/mxvdxn" class="nav-link" target="_blank">X</a>
             </div>
         </div>
     </nav>
@@ -612,30 +598,13 @@
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
+        <span class="close" onclick="closeModal()">×</span>
         <div class="modal-content">
             <img id="modalImg" src="" alt="Enlarged Image">
         </div>
     </div>
 
     <script>
-        // Custom cursor
-        const cursor = document.querySelector('.custom-cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        // Hover effect
-        document.querySelectorAll('a, .work-item').forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'scale(1.5)';
-            });
-            element.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'scale(1)';
-            });
-        });
-
         // Modal functionality
         function openModal(imgUrl) {
             const modal = document.getElementById("myModal");
