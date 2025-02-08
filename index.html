@@ -35,6 +35,7 @@
             color: #dcdcdc;
             line-height: 1.4;
             overflow-x: hidden;
+            font-size: 16px; /* Increased base font size */
         }
 
         /* Navigation */
@@ -55,7 +56,7 @@
 
         .logo {
             font-family: 'Fjalla One', sans-serif;
-            font-size: 2.2rem;
+            font-size: 2.5rem; /* Increased logo size */
             letter-spacing: -1px;
             text-transform: uppercase;
         }
@@ -70,7 +71,7 @@
             text-decoration: none;
             position: relative;
             padding: 0.4rem 0;
-            font-size: 1.2rem;
+            font-size: 1.3rem; /* Increased nav link size */
         }
 
         .nav-link::after {
@@ -111,21 +112,21 @@
 
         .hero-title {
             font-family: 'Fjalla One', sans-serif;
-            font-size: 6.5vw;
+            font-size: 7vw; /* Slightly increased hero title size */
             line-height: 1;
             margin-bottom: 0.5rem;
             opacity: 0;
-            transform: translateY(50px);
+            /* remove transform: translateY(50px); */
             animation: fadeUp 1s ease forwards;
             letter-spacing: -2px;
             text-transform: uppercase;
         }
 
         .hero-description {
-            font-size: 1.4rem;
+            font-size: 1.6rem; /* Increased hero description size */
             max-width: 800px;
             opacity: 0;
-            transform: translateY(30px);
+            /* remove transform: translateY(30px); */
             animation: fadeUp 1s ease forwards 0.3s;
             font-weight: 400;
             text-align: center;
@@ -152,7 +153,7 @@
         }
 
         .bio-location {
-            font-size: 1rem;
+            font-size: 1.2rem; /* Increased bio location size */
             margin-bottom: 1.2rem;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -161,20 +162,20 @@
         .bio-title {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 3.5rem;
+            font-size: 4rem; /* Increased bio title size */
             margin-bottom: 2.5rem;
             color: #fff;
             text-transform: uppercase;
         }
 
         .bio-description {
-            font-size: 1.2rem;
+            font-size: 1.4rem; /* Increased bio description size */
             line-height: 1.7;
             margin-bottom: 2.5rem;
         }
 
         .bio-focus {
-            font-size: 1.2rem;
+            font-size: 1.4rem; /* Increased bio focus size */
         }
 
         /* Services Section */
@@ -188,7 +189,7 @@
         .services-title {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 2.8rem;
+            font-size: 3rem; /* Increased services title size */
             margin-bottom: 3rem;
             color: #fff;
             text-transform: uppercase;
@@ -215,14 +216,14 @@
         }
 
         .service-icon {
-            font-size: 2rem;
+            font-size: 2.5rem; /* Increased service icon size */
             margin-right: 1rem;
             color: #dcdcdc;
             vertical-align: middle;
         }
 
         .service-description {
-            font-size: 1.1rem;
+            font-size: 1.3rem; /* Increased service description size */
             line-height: 1.6;
             color: #999;
         }
@@ -258,7 +259,7 @@
         .works-header {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 2.4rem;
+            font-size: 2.8rem; /* Increased works header size */
             color: #fff;
             letter-spacing: -1px;
             margin-bottom: 2rem;
@@ -303,7 +304,7 @@
         .partnership-header {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 2.4rem;
+            font-size: 2.8rem; /* Increased partnership header size */
             color: #fff;
             letter-spacing: -1px;
             margin-bottom: 2rem;
@@ -317,7 +318,7 @@
             justify-content: center;
             align-items: center;
             gap: 2rem;
-            font-size: 1.8rem;
+            font-size: 2rem; /* Increased partnership name size */
             font-weight: 500;
         }
 
@@ -344,7 +345,7 @@
         /* Stylistic Text */
         .stylistic-text {
             font-family: 'Inter', sans-serif;
-            font-size: 5rem;
+            font-size: 6rem; /* Increased stylistic text size */
             color: #fff;
             text-align: center;
             margin: 7rem 0;
@@ -382,7 +383,7 @@
             padding: 4rem 0;
             text-align: center;
             color: #666;
-            font-size: 0.9rem;
+            font-size: 1rem; /* Increased footer size */
         }
 
         /* Modal Styles */
@@ -443,7 +444,7 @@
             }
 
             .hero-description {
-                font-size: 1.2rem;
+                font-size: 1.4rem; /*Increased mobile font*/
             }
 
             .bio {
@@ -451,7 +452,7 @@
             }
 
             .bio-title {
-                font-size: 2.8rem;
+                font-size: 3rem; /*Increased mobile font*/
             }
 
             .services {
@@ -479,16 +480,16 @@
             .partnership-name {
                 width: 80%;           /* Make names take up most of width */
                 margin: 0.5rem auto;         /* Center names */
-                font-size: 1.4rem;     /* Smaller font size */
+                font-size: 1.6rem;     /* Smaller font size */
             }
 
             .stylistic-text {
-                font-size: 3rem;
+                font-size: 4rem;
                 margin: 5rem 0;
             }
 
             .works-header {
-                font-size: 2rem;
+                font-size: 2.4rem; /*Increased mobile font*/
             }
 
             .ai-photo-works-container img {
@@ -512,6 +513,17 @@
 
         #works {
            width: 100%;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -635,7 +647,7 @@
 
             <!-- Creative Partnership Section -->
             <div class="works-section partnership-section">
-                <h3 class="partnership-header">Creative Partners</h3>
+                <h3 class="partnership-header">Strategic Creative Partners</h3>
                 <div class="partnership-names">
                     <div class="partnership-name">
                         <a href="https://hailuoai.video/" target="_blank">Hailuo Minimax</a>
