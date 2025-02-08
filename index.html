@@ -31,23 +31,22 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #000; /* Match Billy Boman's background */
-            color: #dcdcdc; /* Match text color */
+            background: #000;
+            color: #dcdcdc;
             line-height: 1.4;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
         }
 
-        /* Navigation - Inspired by Billy Boman */
+        /* Navigation */
         .nav {
             position: fixed;
             width: 100%;
-            padding: 1.5rem 2rem; /* Reduced vertical padding */
+            padding: 1.5rem 2rem;
             z-index: 100;
-            /* background: rgba(0,0,0,0.7);  Removed the black overlay */
         }
 
         .nav-content {
-            max-width: 1600px; /* Adjusted for 1920x1080 */
+            max-width: 1600px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -56,22 +55,22 @@
 
         .logo {
             font-family: 'Fjalla One', sans-serif;
-            font-size: 2.2rem; /* Adjusted Size */
+            font-size: 2.2rem;
             letter-spacing: -1px;
             text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem; /* Increased gap */
+            gap: 2rem;
         }
 
         .nav-link {
             color: #dcdcdc;
             text-decoration: none;
             position: relative;
-            padding: 0.4rem 0; /*Adjusted padding */
-            font-size: 1.2rem; /* Adjusted Size */
+            padding: 0.4rem 0;
+            font-size: 1.2rem;
         }
 
         .nav-link::after {
@@ -89,32 +88,32 @@
             width: 100%;
         }
 
-        /* Hero Section - Adjusted for font and spacing */
+        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
-            justify-content: center;  /* Vertically center content */
+            justify-content: center;
         }
 
         .hero-content {
             padding: 0 4rem;
-            max-width: 1600px;  /*Adjusted width for 1920 */
+            max-width: 1600px;
             margin: 0 auto;
             width: 100%;
-            text-align: center;  /*Center elements*/
+            text-align: center;
             display: flex;
             flex-direction: column;
-            align-items: center;   /*Ensure content is centered*/
+            align-items: center;
         }
 
         .hero-title {
             font-family: 'Fjalla One', sans-serif;
-            font-size: 6.5vw; /* Slightly smaller to fit better */
+            font-size: 6.5vw;
             line-height: 1;
-            margin-bottom: 0.5rem; /* Further reduced margin */
+            margin-bottom: 0.5rem;
             opacity: 0;
             transform: translateY(50px);
             animation: fadeUp 1s ease forwards;
@@ -123,8 +122,8 @@
         }
 
         .hero-description {
-            font-size: 1.4rem;   /*Increased size */
-            max-width: 800px; /*Added max-width for better readability*/
+            font-size: 1.4rem;
+            max-width: 800px;
             opacity: 0;
             transform: translateY(30px);
             animation: fadeUp 1s ease forwards 0.3s;
@@ -132,7 +131,7 @@
             text-align: center;
         }
 
-        /* Video Background - Adjusted Opacity */
+        /* Video Background */
         .background-video {
             position: absolute;
             top: 0;
@@ -140,45 +139,45 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.25; /* Increased opacity for brighter effect */
-            filter: grayscale(100%) contrast(120%) brightness(1.155);  /* Increased Brightness by a further 10% (1.05 * 1.10) */
+            opacity: 0.25;
+            filter: grayscale(100%) contrast(120%) brightness(1.155);
         }
 
-        /* Bio Section - Spacing and Font */
+        /* Bio Section */
         .bio {
-            padding: 5rem; /* Increased padding */
-            max-width: 1600px;  /*Adjusted width for 1920 */
+            padding: 5rem;
+            max-width: 1600px;
             margin: 0 auto;
-            color: #999; /*Dark Gray*/
+            color: #999;
         }
 
         .bio-location {
-            font-size: 1rem;  /*Smaller Size*/
-            margin-bottom: 1.2rem; /* Adjusted margin */
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
             letter-spacing: 0.1em;
             text-transform: uppercase;
         }
 
         .bio-title {
-            font-family: 'Poppins', sans-serif; /* Changed to Poppins */
-            font-weight: 600; /*Added font-weight*/
-            font-size: 3.5rem;  /*Bigger Size*/
-            margin-bottom: 2.5rem; /*Adjusted margin */
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 3.5rem;
+            margin-bottom: 2.5rem;
             color: #fff;
-            text-transform: uppercase; /*Uppercase*/
+            text-transform: uppercase;
         }
 
         .bio-description {
-            font-size: 1.2rem; /*Increased size */
-            line-height: 1.7; /* Adjusted Line Height */
-            margin-bottom: 2.5rem; /*Adjusted margin */
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
         }
 
         .bio-focus {
             font-size: 1.2rem;
         }
 
-        /* Services Section - USP Styling */
+        /* Services Section */
         .services {
             padding: 5rem;
             max-width: 1600px;
@@ -203,11 +202,11 @@
         }
 
         .service-item {
-            width: calc(33.33% - 3rem); /* Adjust width as needed for the number of services */
+            width: calc(33.33% - 3rem);
             text-align: left;
             padding: 1.5rem;
             border-radius: 8px;
-            background-color: #111; /* Slightly darker background */
+            background-color: #111;
             transition: transform 0.3s ease;
         }
 
@@ -216,10 +215,10 @@
         }
 
         .service-icon {
-            font-size: 2rem; /*Adjust Icon Size*/
+            font-size: 2rem;
             margin-right: 1rem;
-            color: #dcdcdc; /* Adjust icon color */
-            vertical-align: middle; /* Align icon with text */
+            color: #dcdcdc;
+            vertical-align: middle;
         }
 
         .service-description {
@@ -230,50 +229,48 @@
 
         /* Divider */
         .section-divider {
-            width: 80px; /* Increased size */
+            width: 80px;
             height: 1px;
             background-color: #333;
-            margin: 5rem auto; /* Adjusted Margin */
+            margin: 5rem auto;
         }
 
-        /* Works Section - Padding and background */
+        /* Works Section */
         .works {
-            padding: 6rem 0;  /*Adjusted padding*/
-            background: #000; /*Match works background*/
+            padding: 5rem 0;
+            background: #000;
+            overflow: visible !important;
         }
 
         .works-container {
-            max-width: 1600px; /* Adjusted to match hero content */
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 0 4rem;  /*Adjusted to match hero content */
-        }
-
-         /* Works Section - Padding and background */
-        .works {
-            padding: 5rem 0; /* Adjusted padding */
-            background: #000; /* Match works background */
+            padding: 0 4rem;
+            overflow: visible !important;
+            max-width: none !important;
+            width: auto !important;
         }
 
         .works-section {
-            margin-bottom: 7rem; /* Adjusted margin */
+            margin-bottom: 7rem;
         }
 
         .works-header {
-            font-family: 'Poppins', sans-serif; /* Changed to Poppins */
-            font-weight: 600; /*Added font-weight*/
-            font-size: 2.4rem; /*Increased size */
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 2.4rem;
             color: #fff;
             letter-spacing: -1px;
-            margin-bottom: 2rem; /* Adjusted margin */
+            margin-bottom: 2rem;
             text-transform: uppercase;
-            text-align: center; /* Centered the text */
+            text-align: center;
         }
 
-       /*  Image Grid */
+        /* Image Grid */
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 columns */
-            gap: 2rem;   /*Adjusted Spacing*/
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
         }
 
         .image-grid a {
@@ -281,12 +278,12 @@
             position: relative;
             overflow: hidden;
             transition: transform 0.3s ease;
-            border-radius: 12px; /*Updated size*/
+            border-radius: 12px;
             cursor: pointer;
         }
 
         .image-grid a:hover {
-            transform: scale(1.04); /* Adjusted slight zoom on hover */
+            transform: scale(1.04);
         }
 
         .image-grid a img {
@@ -295,10 +292,10 @@
             aspect-ratio: 2 / 1;
             object-fit: cover;
             display: block;
-            border-radius: 12px; /*Updated size*/
+            border-radius: 12px;
         }
 
-        /* Partnership Section Styling */
+        /* Partnership Section */
         .partnership-section {
             margin-bottom: 7rem;
         }
@@ -311,162 +308,84 @@
             letter-spacing: -1px;
             margin-bottom: 2rem;
             text-transform: uppercase;
-             text-align: center; /* Center the header */
+            text-align: center;
         }
 
-        /* Partnership Names */
         .partnership-names {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center; /* Center names horizontally */
-            align-items: center;     /* Center names vertically */
-            gap: 2rem;             /* Adjust gap as needed */
-            font-size: 1.8rem;      /* Make names larger */
-            font-weight: 500;       /* Slightly bolder font */
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            font-size: 1.8rem;
+            font-weight: 500;
         }
 
         .partnership-name {
-            width: calc(33.33% - 2rem); /* Adjust width for number of names */
-            text-align: center;           /* Center text */
-            padding: 1rem;                /* Add padding */
-            background-color: #111;      /* Add background */
-            border-radius: 8px;            /* Round corners */
-            transition: transform 0.3s ease; /* Add hover effect */
+            width: calc(33.33% - 2rem);
+            text-align: center;
+            padding: 1rem;
+            background-color: #111;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
         }
 
         .partnership-name:hover {
-            transform: scale(1.1);     /* Enlarge on hover */
-            color: #ddd;               /* Slightly brighter text on hover */
+            transform: scale(1.1);
+            color: #ddd;
         }
 
-        /* Style the links */
         .partnership-name a {
-            color: #fff;               /* White text color */
-            text-decoration: none;    /* Remove underlines */
-            display: block;              /* Make the entire box clickable */
-        }
-
-        /* Work List */
-        .work-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem; /*Adjusted gap */
-        }
-
-        /* Resources & Partnerships */
-        .work-item {
-            flex: 1 1 auto;
-            position: relative;
-        }
-
-        .work-item a {
             color: #fff;
             text-decoration: none;
-            font-size: 1.6rem; /*Increased Size*/
-            line-height: 1.4;
-            position: relative;
-            transition: color 0.3s ease;
+            display: block;
         }
 
-        .work-item a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: #fff;
-            transition: width 0.3s ease;
+        /* Stylistic Text */
+        .stylistic-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 5rem;
+            color: #fff;
+            text-align: center;
+            margin: 7rem 0;
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: -4px;
+            line-height: 1.1;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .work-item a:hover::after {
+        /* AI Photo Works */
+        .ai-photo-works-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
             width: 100%;
         }
 
-        .work-item span {
-            color: #666;
-            font-size: 1.6rem; /*Increased Size*/
-            line-height: 1.4;
+        .ai-photo-works-container a {
+            display: block;
         }
 
-        .work-item.coming-soon {
-            opacity: 0.5;
+        .ai-photo-works-container img {
+            max-width: 1695px;
+            height: auto !important;
+            border-radius: 12px;
+            display: block;
+            margin: 0 auto;
         }
 
-        /* Footer - Subtler */
+        /* Footer */
         .footer {
-            padding: 4rem 0; /* Adjusted padding */
+            padding: 4rem 0;
             text-align: center;
-            color: #666; /*Dark Gray*/
-            font-size: 0.9rem; /*Smaller size*/
+            color: #666;
+            font-size: 0.9rem;
         }
 
-        /* Animations */
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Mobile Styles - More compact */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 4rem; /*Bigger font*/
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .bio {
-                padding: 2rem;
-            }
-
-            .bio-title {
-                font-size: 2.4rem;  /*Bigger font*/
-            }
-
-            .work-item a,
-            .work-item span {
-                font-size: 1.2rem;
-            }
-
-            .hero-bio {
-                font-size: 1rem;
-            }
-
-            .image-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .image-grid a:nth-child(odd) {
-                grid-column: 1 / span 2;
-            }
-
-            .stylistic-text {
-                font-size: 2.5rem;   /* Smaller font size on mobile */
-                margin: 5rem 0;      /* Adjust spacing on mobile */
-                letter-spacing: -2px;
-            }
-
-            .works-header {
-                font-size: 1.6rem; /* Adjusted smaller font size on mobile */
-            }
-
-             /* Adjust partnership names on mobile */
-            .partnership-names {
-                flex-direction: column; /* Stack names vertically */
-            }
-
-            .partnership-name {
-                width: 80%;           /* Make names take up most of width */
-                margin: 0 auto;         /* Center names */
-                font-size: 1.4rem;     /* Smaller font size */
-            }
-        }
-
-        /* Modal Styles - Adjusted */
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -474,7 +393,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.95); /* Darker background */
+            background-color: rgba(0, 0, 0, 0.95);
             z-index: 1000;
             overflow: auto;
         }
@@ -483,9 +402,9 @@
             position: relative;
             margin: auto;
             display: block;
-            max-width: 90%;  /*Increased Size*/
-            max-height: 90%; /*Increased Size*/
-            transform: translateY(5%); /*Adjust Vertical Positioning*/
+            max-width: 90%;
+            max-height: 90%;
+            transform: translateY(5%);
         }
 
         .modal-content img {
@@ -498,7 +417,7 @@
             position: absolute;
             top: 15px;
             right: 35px;
-            color: #fff;  /*White color*/
+            color: #fff;
             font-size: 40px;
             font-weight: bold;
             transition: 0.3s;
@@ -513,9 +432,71 @@
             cursor: pointer;
         }
 
-        /* Updated Image Grid for 4 columns */
-        .works-section:nth-child(2) .image-grid {
-            grid-template-columns: repeat(4, 1fr); /* 4 columns */
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hide nav links on mobile */
+            }
+
+            .hero-title {
+                font-size: 8rem;
+            }
+
+            .hero-description {
+                font-size: 1.2rem;
+            }
+
+            .bio {
+                padding: 3rem;
+            }
+
+            .bio-title {
+                font-size: 2.8rem;
+            }
+
+            .services {
+                padding: 3rem;
+            }
+
+            .service-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-item {
+                width: 100%;
+                text-align: center;
+            }
+
+            .image-grid {
+                grid-template-columns: repeat(1, 1fr); /* Single column on mobile */
+            }
+
+            .partnership-names {
+                flex-direction: column; /* Stack names vertically */
+            }
+
+            .partnership-name {
+                width: 80%;           /* Make names take up most of width */
+                margin: 0.5rem auto;         /* Center names */
+                font-size: 1.4rem;     /* Smaller font size */
+            }
+
+            .stylistic-text {
+                font-size: 3rem;
+                margin: 5rem 0;
+            }
+
+            .works-header {
+                font-size: 2rem;
+            }
+
+            .ai-photo-works-container img {
+                max-width: 100%; /* Make images fit the screen */
+            }
+             .hero-title {
+                font-size: 4.5rem; /*Bigger font*/
+            }
         }
 
         /* Mobile adjustments to the 4-column grid */
@@ -529,62 +510,6 @@
             }
         }
 
-       /* Style for stylistic text */
-       .stylistic-text {
-            font-family: 'Inter', sans-serif;
-            font-size: 5rem;          /* Increased font size dramatically */
-            color: #fff;
-            text-align: center;
-            margin: 7rem 0;           /* Increased spacing */
-            font-style: italic;
-            font-weight: 400;
-            letter-spacing: -4px;     /* Adjust letter spacing */
-            line-height: 1.1;
-            text-transform: uppercase;  /* Optional: If you want the text to be all uppercase */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a subtle text shadow */
-        }
-
-        /* Responsive font size */
-        @media (max-width: 768px) {
-            .stylistic-text {
-                font-size: 2.5rem;   /* Smaller font size on mobile */
-                margin: 5rem 0;      /* Adjust spacing on mobile */
-                letter-spacing: -2px;
-            }
-        }
-
-        /* Styles for AI Photo Works Section - No Grid */
-        .ai-photo-works-container {
-            display: flex;
-            flex-direction: column;
-            gap: 25px; /* Adjusted gap */
-            align-items: center;
-            width: 100%; /* Added width */
-        }
-
-        .ai-photo-works-container a {
-            display: block;
-        }
-
-        .ai-photo-works-container img {
-            max-width: 1695px; /* Changed this value to 1695px */
-            height: auto !important; /*Added !important*/
-            border-radius: 12px; /* Adjusted border radius */
-            display: block; /*Ensures it respects width/max-width*/
-            margin: 0 auto; /*Centers the image*/
-        }
-
-        .works-container {
-           overflow: visible !important; /* Allow content to overflow */
-           max-width: none !important; /* Remove max-width restriction */
-           width: auto !important; /*Ensure it can expand*/
-        }
-
-        .works {
-          overflow: visible !important;
-        }
-
-        /*Added this to make the width 100%*/
         #works {
            width: 100%;
         }
