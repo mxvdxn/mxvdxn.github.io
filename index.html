@@ -147,99 +147,51 @@
         /* Bio Section */
         .bio {
             padding: 5rem;
-            max-width: 1600px;
             margin: 0 auto;
-            color: #999;
-        }
-
-        .bio-location {
-            font-size: 1.2rem; /* Increased bio location size */
-            margin-bottom: 1.2rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        .bio-title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 4rem; /* Increased bio title size */
-            margin-bottom: 2.5rem;
-            color: #fff;
-            text-transform: uppercase;
-        }
-
-        .bio-description {
-            font-size: 1.4rem; /* Increased bio description size */
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
-        }
-
-        .bio-focus {
-            font-size: 1.4rem; /* Increased bio focus size */
-        }
-
-        /* Services Section */
-        .services {
-            padding: 5rem;
-            max-width: 1600px;
-            margin: 0 auto;
+            color: #000; /* Black text */
             text-align: center;
-        }
-
-        .services-title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 3rem; /* Increased services title size */
-            margin-bottom: 3rem;
-            color: #fff;
-            text-transform: uppercase;
-        }
-
-        .service-list {
+            font-size: 1.6rem; /* Increased font size */
+            line-height: 1.7;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            align-items: center;
             gap: 3rem;
+            background: #fff; /* Fully white background */
+            position: relative;
+            z-index: 10;
+            margin-top: 0; /* Remove the gap between hero and bio sections */
+            width: 100%; /* Make it full width */
         }
 
-        .service-item {
-            width: calc(33.33% - 3rem);
-            text-align: left;
-            padding: 1.5rem;
+        .bio-photo {
+            width: 250px; /* Increased photo size */
+            height: 250px; /* Increased photo size */
+            object-fit: cover;
             border-radius: 8px;
-            background-color: #111;
-            transition: transform 0.3s ease;
         }
 
-        .service-item:hover {
-            transform: translateY(-5px);
+        .bio-text {
+            text-align: left;
         }
 
-        .service-icon {
-            font-size: 2.5rem; /* Increased service icon size */
-            margin-right: 1rem;
-            color: #dcdcdc;
-            vertical-align: middle;
+        .bio-text p {
+            margin-bottom: 1.5rem;
         }
 
-        .service-description {
-            font-size: 1.3rem; /* Increased service description size */
-            line-height: 1.6;
-            color: #999;
+        .bio-text strong {
+            color: #000; /* Black text for highlights */
+            font-weight: 600;
         }
 
-        /* Divider */
-        .section-divider {
-            width: 80px;
-            height: 1px;
-            background-color: #333;
-            margin: 5rem auto;
+        .bio-partnership {
+            font-size: 1.4rem; /* Increased font size */
+            color: #666; /* Dark gray for partnership text */
+            margin-top: 1.5rem;
         }
 
         /* Works Section */
         .works {
             padding: 5rem 0;
-            background: #000;
+            background: #000; /* Black background */
             overflow: visible !important;
         }
 
@@ -250,10 +202,6 @@
             overflow: visible !important;
             max-width: none !important;
             width: auto !important;
-        }
-
-        .works-section {
-            margin-bottom: 7rem;
         }
 
         .works-header {
@@ -296,141 +244,14 @@
             border-radius: 12px;
         }
 
-        /* Partnership Section */
-        .partnership-section {
-            margin-bottom: 7rem;
-        }
-
-        .partnership-header {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 2.8rem; /* Increased partnership header size */
-            color: #fff;
-            letter-spacing: -1px;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        .partnership-names {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            font-size: 2rem; /* Increased partnership name size */
-            font-weight: 500;
-        }
-
-        .partnership-name {
-            width: calc(33.33% - 2rem);
-            text-align: center;
-            padding: 1rem;
-            background-color: #111;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .partnership-name:hover {
-            transform: scale(1.1);
-            color: #ddd;
-        }
-
-        .partnership-name a {
-            color: #fff;
-            text-decoration: none;
-            display: block;
-        }
-
-        /* Stylistic Text */
-        .stylistic-text {
-            font-family: 'Inter', sans-serif;
-            font-size: 6rem; /* Increased stylistic text size */
-            color: #fff;
-            text-align: center;
-            margin: 7rem 0;
-            font-style: italic;
-            font-weight: 400;
-            letter-spacing: -4px;
-            line-height: 1.1;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        /* AI Photo Works */
-        .ai-photo-works-container {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            align-items: center;
-            width: 100%;
-        }
-
-        .ai-photo-works-container a {
-            display: block;
-        }
-
-        .ai-photo-works-container img {
-            max-width: 1695px;
-            height: auto !important;
-            border-radius: 12px;
-            display: block;
-            margin: 0 auto;
-        }
-
         /* Footer */
         .footer {
-            padding: 4rem 0;
+            padding: 2rem 0;
             text-align: center;
             color: #666;
-            font-size: 1rem; /* Increased footer size */
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            z-index: 1000;
-            overflow: auto;
-        }
-
-        .modal-content {
-            position: relative;
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 90%;
-            transform: translateY(5%);
-        }
-
-        .modal-content img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
+            font-size: 1rem;
+            background: #111;
+            margin-top: 5rem;
         }
 
         /* Mobile Styles */
@@ -449,23 +270,19 @@
 
             .bio {
                 padding: 3rem;
-            }
-
-            .bio-title {
-                font-size: 3rem; /*Increased mobile font*/
-            }
-
-            .services {
-                padding: 3rem;
-            }
-
-            .service-list {
+                font-size: 1.4rem; /* Adjusted for mobile */
                 flex-direction: column;
-                align-items: center;
+                text-align: center;
+                margin-top: 0; /* Adjusted for mobile */
+                width: 100%;  /* Make it full width */
             }
 
-            .service-item {
-                width: 100%;
+            .bio-photo {
+                width: 200px; /* Adjusted for mobile */
+                height: 200px; /* Adjusted for mobile */
+            }
+
+            .bio-text {
                 text-align: center;
             }
 
@@ -473,46 +290,9 @@
                 grid-template-columns: repeat(1, 1fr); /* Single column on mobile */
             }
 
-            .partnership-names {
-                flex-direction: column; /* Stack names vertically */
-            }
-
-            .partnership-name {
-                width: 80%;           /* Make names take up most of width */
-                margin: 0.5rem auto;         /* Center names */
-                font-size: 1.6rem;     /* Smaller font size */
-            }
-
-            .stylistic-text {
-                font-size: 4rem;
-                margin: 5rem 0;
-            }
-
             .works-header {
                 font-size: 2.4rem; /*Increased mobile font*/
             }
-
-            .ai-photo-works-container img {
-                max-width: 100%; /* Make images fit the screen */
-            }
-             .hero-title {
-                font-size: 4.5rem; /*Bigger font*/
-            }
-        }
-
-        /* Mobile adjustments to the 4-column grid */
-        @media (max-width: 768px) {
-            .works-section:nth-child(2) .image-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
-            }
-
-            .works-section:nth-child(2) .image-grid a:nth-child(odd) {
-                grid-column: auto;  /* Reset column span */
-            }
-        }
-
-        #works {
-           width: 100%;
         }
 
         @keyframes fadeUp {
@@ -532,7 +312,7 @@
         <div class="nav-content">
             <div class="logo">MXVDXN</div>
             <div class="nav-links">
-                <a href="#works" class="nav-link">Works</a>
+                <a href="#selected-works" class="nav-link">Works</a> <!-- Updated link to point to Selected AI Video Works -->
                 <a href="mailto:danifpradana@gmail.com" class="nav-link">Contact</a>
                 <a href="https://x.com/mxvdxn" class="nav-link" target="_blank">X</a>
             </div>
@@ -549,151 +329,57 @@
         </div>
     </section>
 
+    <!-- Bio Section -->
     <section class="bio">
-        <p class="bio-location">JAKARTA, INDONESIA</p>
-        <h2 class="bio-title">Hi, I'm Dan.</h2>
-        <p class="bio-description">
-            A decade in <strong>advertising</strong>, shaping <strong>narratives</strong> for brands like <strong>Mastercard, Danone Nutricia, P&G, HSBC, General Electric, AirAsia, Indofood and many more</strong>. Crafted <strong>campaigns</strong> across <strong>TV, digital, and print</strong> with top agencies like <strong>BBDO and Flock Creative Network</strong>.
-        </p>
-
-        <p class="bio-description">
-            Now diving into <strong>Generative AI</strong>—exploring how <strong>technology reshapes creativity</strong>. Focused on <strong>AI-driven content production in filmmaking</strong> and <strong>new creative possibilities in visual storytelling</strong>.
-        </p>
-    </section>
-
-    <!-- Services Section - USP -->
-    <section class="services">
-        <h2 class="services-title">My Creative Applications of AI</h2>
-        <div class="service-list">
-            <div class="service-item">
-                 <span class="service-icon"> ❏ </span>
-                <h3 class="service-header">AI Cinematic Concept Development</h3>
-                <p class="service-description">AI-driven visuals for film and advertising—exploring aesthetics, moodboarding, and previsualization.</p>
-            </div>
-            <div class="service-item">
-                <span class="service-icon"> ▰ </span>
-                <h3 class="service-header">Music Video Production</h3>
-                <p class="service-description">Transforming musical visions into captivating AI-powered video experiences.</p>
-            </div>
-            <div class="service-item">
-                <span class="service-icon"> ▢ </span>
-                <h3 class="service-header">AI Editorial Photography</h3>
-                <p class="service-description">Crafting unique editorial visuals with the power of artificial intelligence.</p>
-            </div>
-            <div class="service-item">
-                <span class="service-icon"> ☰ </span>
-                <h3 class="service-header">AI Stock Photos for Marketing</h3>
-                <p class="service-description">Providing innovative AI-generated stock imagery for marketing campaigns.</p>
-            </div>
-           <div class="service-item">
-                <span class="service-icon"> ♪ </span>
-                <h3 class="service-header">Video Visualization Jockey (VJ)</h3>
-                <p class="service-description">Creating mesmerizing real-time visual experiences for live music performances.</p>
-            </div>
-            <div class="service-item">
-                <span class="service-icon"> ✧ </span>
-                <h3 class="service-header">New Media & Art Projects</h3>
-                <p class="service-description">Exploring the boundless possibilities of AI in new media and artistic expression.</p>
-            </div>
+        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/mxvdxn.JPG?raw=true" alt="Dan Pradana" class="bio-photo">
+        <div class="bio-text">
+            <p>Based in Jakarta, Indonesia, Dan Pradana is a multidisciplinary creative with a decade in advertising, crafting campaigns across <strong>TV, digital, and print</strong> in Southeast Asia. Now diving into <strong>Generative AI</strong>, he is constantly experimenting with cutting-edge tools to explore the possibilities of <strong>AI-driven filmmaking, music videos, editorial photography, and new media art</strong>, redefining the future of creative storytelling.</p>
+            <p class="bio-partnership">Dan Pradana is in a <strong>Creative Partnership</strong> with Hailuo Minimax, Kling AI, Luma Labs, and Freepik.</p>
         </div>
     </section>
 
-    <div class="section-divider"></div>
-
-    <section id="works" class="works">
+    <!-- Selected AI Video Works Section -->
+    <section id="selected-works" class="works"> <!-- Added ID for the Works link -->
         <div class="works-container">
-            <div class="works-section">
-                <h3 class="works-header">Selected AI Video Works</h3>
-                <div class="image-grid">
-                    <a href="https://x.com/mxvdxn/status/1874796628210778618" target="_blank">
-                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20Asian%20Pop%20Culture%20Madness-new.jpg?raw=true" alt="Asian Pop Culture Madness">
-                    </a>
-                    <a href="https://x.com/mxvdxn/status/1871546004304257185" target="_blank">
-                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20%20-%20Slow%20Now.jpg?raw=true" alt="Slow Now">
-                    </a>
-                   <a href="https://x.com/mxvdxn/status/1884098548607909996" target="_blank">
-                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20Year%20of%20The%20Snake.jpg?raw=true" alt="Year of The Snake">
-                    </a>
-                    <a href="https://x.com/mxvdxn/status/1889714464276226498" target="_blank">
-                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20Mirror%20of%20Light.jpg?raw=true" alt="Mirror of Light">
-                    </a>
-                    <a href="https://x.com/mxvdxn/status/1890350597087588508" target="_blank">
-                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20%20-%20Untitled%20-%20Sang%20Hyang%20Api.jpg?raw=true" alt="Untitled - Sang Hyang Api">
-                    </a>
-                     <a href="https://x.com/mxvdxn/status/1891061960760070234" target="_blank">
-                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Work%20-%20Jiwa-Tato-Tari-Cover.jpg?raw=true" alt="Jiwa Tato Tari Cover">
-                    </a>
-                    <a href="https://x.com/mxvdxn/status/1892152147711504515" target="_blank">
-                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20KILLER%20HEELS,%20GOLDEN%20GUNS%20-%20-%20-Cover.jpg?raw=true" alt="KILLER HEELS, GOLDEN GUNS Cover">
-                    </a>
-                    <a href="https://x.com/mxvdxn/status/1893834681193566621" target="_blank">
-                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20Unbranded%20Cinematic%20Car%20Spec%20Ad-Cover.jpg?raw=true" alt="Unbranded Cinematic Car Spec Ad Cover">
-                    </a>
-                </div>
-            </div>
-
-             <!-- Add stylistic text here -->
-            <p class="stylistic-text">Kvlture is Canvas, Zeitgeist is Compass, Creativity is Symphony.</p>
-
-             <!-- AI Photo Works Section -->
-            <div class="works-section">
-                <h3 class="works-header">Selected AI Photo Works</h3>
-                <div class="ai-photo-works-container">
-                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_Group_1.png?raw=true')" >
-                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_Group_1.png?raw=true" alt="AI Photo 1" >
-                    </a>
-                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_Group_2.png?raw=true')">
-                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_Group_2.png?raw=true" alt="AI Photo 2">
-                    </a>
-                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_Group_3.png?raw=true')">
-                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_Group_3.png?raw=true" alt="AI Photo 3">
-                    </a>
-                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_Group_4.png?raw=true')">
-                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_Group_4.png?raw=true" alt="AI Photo 4">
-                    </a>
-                    <a onclick="openModal('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_Group_5.png?raw=true')">
-                        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/AI%20PHOTO%20WORKS-A/AI_Group_5.png?raw=true" alt="AI Photo 5">
-                    </a>
-                 </div>
-            </div>
-
-            <!-- Creative Partnership Section -->
-            <div class="works-section partnership-section">
-                <h3 class="partnership-header">Creative Partnerships</h3>
-                <div class="partnership-names">
-                    <div class="partnership-name">
-                        <a href="https://hailuoai.video/" target="_blank">Hailuo Minimax</a>
-                    </div>
-                    <div class="partnership-name">
-                        <a href="https://www.klingai.com/" target="_blank">KLING AI</a>
-                    </div>
-                    <div class="partnership-name">
-                        <a href="https://lumalabs.ai/dream-machine" target="_blank">Luma AI</a>
-                    </div>
-                     <div class="partnership-name">
-                        <a href="https://www.vidu.com/" target="_blank">Vidu AI</a>
-                    </div>
-                    <div class="partnership-name">
-                        <a href="https://www.freepik.com/" target="_blank">Freepik</a>
-                    </div>
-                </div>
+            <h3 class="works-header">Selected AI Video Works</h3>
+            <div class="image-grid">
+                <a href="https://x.com/mxvdxn/status/1895960147023052928" target="_blank">
+                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20%20-%20HIGH%20SCHOOL%20GIRLS%20vs.%20KAIJU-Cover.jpg?raw=true" alt="HIGH SCHOOL GIRLS vs. KAIJU">
+                </a>
+                <a href="https://x.com/mxvdxn/status/1893834681193566621" target="_blank">
+                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20Unbranded%20Cinematic%20Car%20Spec%20Ad-Cover.jpg?raw=true" alt="S P E E D / / B E Y O N D">
+                </a>
+                <a href="https://x.com/mxvdxn/status/1892152147711504515" target="_blank">
+                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20KILLER%20HEELS,%20GOLDEN%20GUNS%20-%20-%20-Cover.jpg?raw=true" alt="KILLER HEELS, GOLDEN GUNS">
+                </a>
+                <a href="https://x.com/mxvdxn/status/1891061960760070234" target="_blank">
+                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Work%20-%20Jiwa-Tato-Tari-Cover.jpg?raw=true" alt="JIWA, TATO, TARI">
+                </a>
+                <a href="https://x.com/mxvdxn/status/1890350597087588508" target="_blank">
+                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20%20-%20Untitled%20-%20Sang%20Hyang%20Api.jpg?raw=true" alt="SANG HYANG API">
+                </a>
+                <a href="https://x.com/mxvdxn/status/1889714464276226498" target="_blank">
+                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20Mirror%20of%20Light.jpg?raw=true" alt="MIRROR OF LIGHT">
+                </a>
+                <a href="https://x.com/mxvdxn/status/1884098548607909996" target="_blank">
+                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20Year%20of%20The%20Snake.jpg?raw=true" alt="YEAR OF THE SNAKE">
+                </a>
+                <a href="https://x.com/mxvdxn/status/1871546004304257185" target="_blank">
+                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20%20-%20Slow%20Now.jpg?raw=true" alt="SLOW NOW">
+                </a>
+                <a href="https://x.com/mxvdxn/status/1874796628210778618" target="_blank">
+                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20Asian%20Pop%20Culture%20Madness-new.jpg?raw=true" alt="ASIAN POP CULTURE MADNESS">
+                </a>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>© 2025 Dan Pradana. All rights reserved.</p>
         </div>
     </footer>
-
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <span class="close" onclick="closeModal()">×</span>
-        <div class="modal-content">
-            <img id="modalImg" src="" alt="Enlarged Image">
-        </div>
-    </div>
 
     <script>
         // Modal functionality
