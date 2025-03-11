@@ -1,408 +1,463 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dan Pradana - AI-Driven Art & Creative Direction • Gen AI Research</title>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5T74HXSRNW"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dan Pradana - AI-Driven Art & Creative Direction • Gen AI Research</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5T74HXSRNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5T74HXSRNW');
+  </script>
+  <!-- End Google Analytics -->
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #dcdcdc;
+      line-height: 1.4;
+      overflow-x: hidden;
+      font-size: 16px;
+    }
 
-      gtag('config', 'G-5T74HXSRNW');
-    </script>
-    <!-- End Google Analytics -->
-    <!-- Fonts - Using those from Billy Boman's site where appropriate -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        /* Reset & Base Styles - Adjusted to be more like Billy Boman's */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+    /* Navigation */
+    .nav {
+      position: fixed;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      z-index: 100;
+    }
+    .nav-content {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Fjalla One', sans-serif;
+      font-size: 2.5rem;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-link {
+      color: #dcdcdc;
+      text-decoration: none;
+      position: relative;
+      padding: 0.4rem 0;
+      font-size: 1.3rem;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #dcdcdc;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #000;
-            color: #dcdcdc;
-            line-height: 1.4;
-            overflow-x: hidden;
-            font-size: 16px; /* Increased base font size */
-        }
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      justify-content: center;
+    }
+    .hero-content {
+      padding: 0 4rem;
+      max-width: 1600px;
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-title {
+      font-family: 'Fjalla One', sans-serif;
+      font-size: 7vw;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+    }
+    .hero-description {
+      font-size: 1.6rem;
+      max-width: 800px;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.3s;
+      font-weight: 400;
+      text-align: center;
+    }
 
-        /* Navigation */
-        .nav {
-            position: fixed;
-            width: 100%;
-            padding: 1.5rem 2rem;
-            z-index: 100;
-        }
+    /* Video Background */
+    .background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.25;
+      filter: grayscale(100%) contrast(120%) brightness(1.155);
+    }
 
-        .nav-content {
-            max-width: 1600px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    /* Bio Section */
+    .bio {
+      padding: 5rem;
+      margin: 0 auto;
+      color: #000;
+      text-align: center;
+      font-size: 1.6rem;
+      line-height: 1.7;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      background: #fff;
+      position: relative;
+      z-index: 10;
+      margin-top: 0;
+      width: 100%;
+    }
+    .bio-photo {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .bio-text {
+      text-align: left;
+    }
+    .bio-text p {
+      margin-bottom: 1.5rem;
+    }
+    .bio-text strong {
+      color: #000;
+      font-weight: 600;
+    }
+    .bio-partnership {
+      font-size: 1.4rem;
+      color: #666;
+      margin-top: 1.5rem;
+    }
 
-        .logo {
-            font-family: 'Fjalla One', sans-serif;
-            font-size: 2.5rem; /* Increased logo size */
-            letter-spacing: -1px;
-            text-transform: uppercase;
-        }
+    /* Works Section */
+    .works {
+      padding: 5rem 0;
+      background: #000;
+      overflow: visible !important;
+    }
+    .works-container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 4rem;
+      overflow: visible !important;
+      max-width: none !important;
+      width: auto !important;
+    }
+    .works-header {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 2.8rem;
+      color: #fff;
+      letter-spacing: -1px;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      text-align: center;
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
+    /* Video Grid */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .video-entry {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    /* Force all GIFs to the same aspect ratio, cropping if needed */
+    .video-entry img {
+      width: 100%;
+      aspect-ratio: 16 / 9; /* or 2 / 1, depending on your preference */
+      object-fit: cover;
+      display: block;
+    }
+    .video-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 0.5rem;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+    }
+    .video-entry:hover .video-title {
+      opacity: 1;
+    }
 
-        .nav-link {
-            color: #dcdcdc;
-            text-decoration: none;
-            position: relative;
-            padding: 0.4rem 0;
-            font-size: 1.3rem; /* Increased nav link size */
-        }
+    /* Footer */
+    .footer {
+      padding: 2rem 0;
+      text-align: center;
+      color: #666;
+      font-size: 1rem;
+      background: #111;
+      margin-top: 5rem;
+    }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: #dcdcdc;
-            transition: width 0.3s ease;
-        }
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .hero-title {
+        font-size: 8rem;
+      }
+      .hero-description {
+        font-size: 1.4rem;
+      }
+      .bio {
+        padding: 3rem;
+        font-size: 1.4rem;
+        flex-direction: column;
+        text-align: center;
+        margin-top: 0;
+        width: 100%;
+      }
+      .bio-photo {
+        width: 200px;
+        height: 200px;
+      }
+      .bio-text {
+        text-align: center;
+      }
+      .video-grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      .works-header {
+        font-size: 2.4rem;
+      }
+    }
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            justify-content: center;
-        }
-
-        .hero-content {
-            padding: 0 4rem;
-            max-width: 1600px;
-            margin: 0 auto;
-            width: 100%;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .hero-title {
-            font-family: 'Fjalla One', sans-serif;
-            font-size: 7vw; /* Slightly increased hero title size */
-            line-height: 1;
-            margin-bottom: 0.5rem;
-            opacity: 0;
-            /* remove transform: translateY(50px); */
-            animation: fadeUp 1s ease forwards;
-            letter-spacing: -2px;
-            text-transform: uppercase;
-        }
-
-        .hero-description {
-            font-size: 1.6rem; /* Increased hero description size */
-            max-width: 800px;
-            opacity: 0;
-            /* remove transform: translateY(30px); */
-            animation: fadeUp 1s ease forwards 0.3s;
-            font-weight: 400;
-            text-align: center;
-        }
-
-        /* Video Background */
-        .background-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.25;
-            filter: grayscale(100%) contrast(120%) brightness(1.155);
-        }
-
-        /* Bio Section */
-        .bio {
-            padding: 5rem;
-            margin: 0 auto;
-            color: #000; /* Black text */
-            text-align: center;
-            font-size: 1.6rem; /* Increased font size */
-            line-height: 1.7;
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            background: #fff; /* Fully white background */
-            position: relative;
-            z-index: 10;
-            margin-top: 0; /* Remove the gap between hero and bio sections */
-            width: 100%; /* Make it full width */
-        }
-
-        .bio-photo {
-            width: 250px; /* Increased photo size */
-            height: 250px; /* Increased photo size */
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .bio-text {
-            text-align: left;
-        }
-
-        .bio-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .bio-text strong {
-            color: #000; /* Black text for highlights */
-            font-weight: 600;
-        }
-
-        .bio-partnership {
-            font-size: 1.4rem; /* Increased font size */
-            color: #666; /* Dark gray for partnership text */
-            margin-top: 1.5rem;
-        }
-
-        /* Works Section */
-        .works {
-            padding: 5rem 0;
-            background: #000; /* Black background */
-            overflow: visible !important;
-        }
-
-        .works-container {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 0 4rem;
-            overflow: visible !important;
-            max-width: none !important;
-            width: auto !important;
-        }
-
-        .works-header {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 2.8rem; /* Increased works header size */
-            color: #fff;
-            letter-spacing: -1px;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        /* Image Grid */
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .image-grid a {
-            display: block;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            border-radius: 12px;
-            cursor: pointer;
-        }
-
-        .image-grid a:hover {
-            transform: scale(1.04);
-        }
-
-        .image-grid a img {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 2 / 1;
-            object-fit: cover;
-            display: block;
-            border-radius: 12px;
-        }
-
-        /* Footer */
-        .footer {
-            padding: 2rem 0;
-            text-align: center;
-            color: #666;
-            font-size: 1rem;
-            background: #111;
-            margin-top: 5rem;
-        }
-
-        /* Mobile Styles */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none; /* Hide nav links on mobile */
-            }
-
-            .hero-title {
-                font-size: 8rem;
-            }
-
-            .hero-description {
-                font-size: 1.4rem; /*Increased mobile font*/
-            }
-
-            .bio {
-                padding: 3rem;
-                font-size: 1.4rem; /* Adjusted for mobile */
-                flex-direction: column;
-                text-align: center;
-                margin-top: 0; /* Adjusted for mobile */
-                width: 100%;  /* Make it full width */
-            }
-
-            .bio-photo {
-                width: 200px; /* Adjusted for mobile */
-                height: 200px; /* Adjusted for mobile */
-            }
-
-            .bio-text {
-                text-align: center;
-            }
-
-            .image-grid {
-                grid-template-columns: repeat(1, 1fr); /* Single column on mobile */
-            }
-
-            .works-header {
-                font-size: 2.4rem; /*Increased mobile font*/
-            }
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav-content">
-            <div class="logo">MXVDXN</div>
-            <div class="nav-links">
-                <a href="#selected-works" class="nav-link">Works</a> <!-- Updated link to point to Selected AI Video Works -->
-                <a href="mailto:danifpradana@gmail.com" class="nav-link">Contact</a>
-                <a href="https://x.com/mxvdxn" class="nav-link" target="_blank">X</a>
-                <a href="https://mxvdxn.gumroad.com/" class="nav-link" target="_blank">Gumroad</a>
-            </div>
+  <nav class="nav">
+    <div class="nav-content">
+      <div class="logo">MXVDXN</div>
+      <div class="nav-links">
+        <a href="#selected-works" class="nav-link">Works</a>
+        <a href="mailto:danifpradana@gmail.com" class="nav-link">Contact</a>
+        <a href="https://x.com/mxvdxn" class="nav-link" target="_blank">X</a>
+        <a href="https://mxvdxn.gumroad.com/" class="nav-link" target="_blank">Gumroad</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <video class="background-video" autoplay loop muted playsinline>
+      <source
+        src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/Videos/mxvdxn_demo_vid.mp4"
+        type="video/mp4"
+      />
+    </video>
+    <div class="hero-content">
+      <h1 class="hero-title">Dan Pradana</h1>
+      <p class="hero-description">AI-Driven Art & Creative Direction • Gen AI Research</p>
+    </div>
+  </section>
+
+  <!-- Bio Section -->
+  <section class="bio">
+    <img
+      src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/mxvdxn.JPG?raw=true"
+      alt="Dan Pradana"
+      class="bio-photo"
+    />
+    <div class="bio-text">
+      <p>
+        Based in Jakarta, Indonesia, Dan Pradana is a multidisciplinary creative with a decade in
+        advertising, crafting campaigns across <strong>TV, digital, and print</strong> in Southeast
+        Asia. Now diving into <strong>Generative AI</strong>, he is constantly experimenting with
+        cutting-edge tools to explore the possibilities of
+        <strong>AI-driven filmmaking, music videos, editorial photography, and new media art</strong
+        >, redefining the future of creative storytelling.
+      </p>
+      <p class="bio-partnership">
+        Dan Pradana is in a <strong>Creative Partnership</strong> with Hailuo Minimax, Kling AI, Luma
+        Labs, and Freepik.
+      </p>
+    </div>
+  </section>
+
+  <!-- Selected AI Video Works Section -->
+  <section id="selected-works" class="works">
+    <div class="works-container">
+      <h3 class="works-header">Selected AI Video Works</h3>
+      <div class="video-grid">
+        <div class="video-entry">
+          <a href="https://x.com/mxvdxn/status/1895960147023052928" target="_blank">
+            <img
+              src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/GIF%20Folder/High%20School%20Girls%20vs%20Kaiju.gif?raw=true"
+              alt="HIGH SCHOOL GIRLS vs. KAIJU"
+            />
+            <div class="video-title">HIGH SCHOOL GIRLS vs. KAIJU</div>
+          </a>
         </div>
-    </nav>
-
-    <section class="hero">
-        <video class="background-video" autoplay loop muted playsinline>
-            <source src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/Videos/mxvdxn_demo_vid.mp4" type="video/mp4">
-        </video>
-        <div class="hero-content">
-            <h1 class="hero-title">Dan Pradana</h1>
-            <p class="hero-description">AI-Driven Art & Creative Direction • Gen AI Research</p>
+        <div class="video-entry">
+          <a href="https://x.com/mxvdxn/status/1893834681193566621" target="_blank">
+            <img
+              src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/GIF%20Folder/Unbranded%20Car%20Spec%20Ad.gif?raw=true"
+              alt="S P E E D / / B E Y O N D"
+            />
+            <div class="video-title">S P E E D / / B E Y O N D</div>
+          </a>
         </div>
-    </section>
-
-    <!-- Bio Section -->
-    <section class="bio">
-        <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/mxvdxn.JPG?raw=true" alt="Dan Pradana" class="bio-photo">
-        <div class="bio-text">
-            <p>Based in Jakarta, Indonesia, Dan Pradana is a multidisciplinary creative with a decade in advertising, crafting campaigns across <strong>TV, digital, and print</strong> in Southeast Asia. Now diving into <strong>Generative AI</strong>, he is constantly experimenting with cutting-edge tools to explore the possibilities of <strong>AI-driven filmmaking, music videos, editorial photography, and new media art</strong>, redefining the future of creative storytelling.</p>
-            <p class="bio-partnership">Dan Pradana is in a <strong>Creative Partnership</strong> with Hailuo Minimax, Kling AI, Luma Labs, and Freepik.</p>
+        <div class="video-entry">
+          <a href="https://x.com/mxvdxn/status/1892152147711504515" target="_blank">
+            <img
+              src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/GIF%20Folder/Killer%20Heels%20Golden%20Guns.gif?raw=true"
+              alt="KILLER HEELS, GOLDEN GUNS"
+            />
+            <div class="video-title">KILLER HEELS, GOLDEN GUNS</div>
+          </a>
         </div>
-    </section>
-
-    <!-- Selected AI Video Works Section -->
-    <section id="selected-works" class="works"> <!-- Added ID for the Works link -->
-        <div class="works-container">
-            <h3 class="works-header">Selected AI Video Works</h3>
-            <div class="image-grid">
-                <a href="https://x.com/mxvdxn/status/1895960147023052928" target="_blank">
-                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20%20-%20HIGH%20SCHOOL%20GIRLS%20vs.%20KAIJU-Cover.jpg?raw=true" alt="HIGH SCHOOL GIRLS vs. KAIJU">
-                </a>
-                <a href="https://x.com/mxvdxn/status/1893834681193566621" target="_blank">
-                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20Unbranded%20Cinematic%20Car%20Spec%20Ad-Cover.jpg?raw=true" alt="S P E E D / / B E Y O N D">
-                </a>
-                <a href="https://x.com/mxvdxn/status/1892152147711504515" target="_blank">
-                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20KILLER%20HEELS,%20GOLDEN%20GUNS%20-%20-%20-Cover.jpg?raw=true" alt="KILLER HEELS, GOLDEN GUNS">
-                </a>
-                <a href="https://x.com/mxvdxn/status/1891061960760070234" target="_blank">
-                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Work%20-%20Jiwa-Tato-Tari-Cover.jpg?raw=true" alt="JIWA, TATO, TARI">
-                </a>
-                <a href="https://x.com/mxvdxn/status/1890350597087588508" target="_blank">
-                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20%20-%20Untitled%20-%20Sang%20Hyang%20Api.jpg?raw=true" alt="SANG HYANG API">
-                </a>
-                <a href="https://x.com/mxvdxn/status/1889714464276226498" target="_blank">
-                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20Mirror%20of%20Light.jpg?raw=true" alt="MIRROR OF LIGHT">
-                </a>
-                <a href="https://x.com/mxvdxn/status/1884098548607909996" target="_blank">
-                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20Year%20of%20The%20Snake.jpg?raw=true" alt="YEAR OF THE SNAKE">
-                </a>
-                <a href="https://x.com/mxvdxn/status/1871546004304257185" target="_blank">
-                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20%20-%20Slow%20Now.jpg?raw=true" alt="SLOW NOW">
-                </a>
-                <a href="https://x.com/mxvdxn/status/1874796628210778618" target="_blank">
-                    <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/images/AI%20Video%20Works%20-%20Asian%20Pop%20Culture%20Madness-new.jpg?raw=true" alt="ASIAN POP CULTURE MADNESS">
-                </a>
-            </div>
+        <div class="video-entry">
+          <a href="https://x.com/mxvdxn/status/1891061960760070234" target="_blank">
+            <img
+              src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/GIF%20Folder/Jiwa,%20Tato,%20Tari.gif?raw=true"
+              alt="JIWA, TATO, TARI"
+            />
+            <div class="video-title">JIWA, TATO, TARI</div>
+          </a>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>© 2025 Dan Pradana. All rights reserved.</p>
+        <div class="video-entry">
+          <a href="https://x.com/mxvdxn/status/1890350597087588508" target="_blank">
+            <img
+              src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/GIF%20Folder/Sang%20Hyang%20Api.gif?raw=true"
+              alt="SANG HYANG API"
+            />
+            <div class="video-title">SANG HYANG API</div>
+          </a>
         </div>
-    </footer>
+        <div class="video-entry">
+          <a href="https://x.com/mxvdxn/status/1889714464276226498" target="_blank">
+            <img
+              src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/GIF%20Folder/Mirror%20of%20Light.gif?raw=true"
+              alt="MIRROR OF LIGHT"
+            />
+            <div class="video-title">MIRROR OF LIGHT</div>
+          </a>
+        </div>
+        <div class="video-entry">
+          <a href="https://x.com/mxvdxn/status/1884098548607909996" target="_blank">
+            <img
+              src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/GIF%20Folder/Year%20of%20the%20snake.gif?raw=true"
+              alt="YEAR OF THE SNAKE"
+            />
+            <div class="video-title">YEAR OF THE SNAKE</div>
+          </a>
+        </div>
+        <div class="video-entry">
+          <a href="https://x.com/mxvdxn/status/1871546004304257185" target="_blank">
+            <img
+              src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/GIF%20Folder/Slow%20Now.gif?raw=true"
+              alt="SLOW NOW"
+            />
+            <div class="video-title">SLOW NOW</div>
+          </a>
+        </div>
+        <div class="video-entry">
+          <a href="https://x.com/mxvdxn/status/1874796628210778618" target="_blank">
+            <img
+              src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/GIF%20Folder/Asian%20Pop%20Culture%20Madness.gif?raw=true"
+              alt="ASIAN POP CULTURE MADNESS"
+            />
+            <div class="video-title">ASIAN POP CULTURE MADNESS</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Modal functionality
-        function openModal(imgUrl) {
-            const modal = document.getElementById("myModal");
-            const modalImg = document.getElementById("modalImg");
-            modal.style.display = "block";
-            modalImg.src = imgUrl;
-        }
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Dan Pradana. All rights reserved.</p>
+    </div>
+  </footer>
 
-        function closeModal() {
-            const modal = document.getElementById("myModal");
-            modal.style.display = "none";
-        }
-
-        // Close the modal if the user clicks outside of it
-        window.onclick = function(event) {
-            const modal = document.getElementById("myModal");
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-    </script>
+  <script>
+    // Modal functionality
+    function openModal(imgUrl) {
+      const modal = document.getElementById("myModal");
+      const modalImg = document.getElementById("modalImg");
+      modal.style.display = "block";
+      modalImg.src = imgUrl;
+    }
+    function closeModal() {
+      const modal = document.getElementById("myModal");
+      modal.style.display = "none";
+    }
+    // Close the modal if the user clicks outside of it
+    window.onclick = function(event) {
+      const modal = document.getElementById("myModal");
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+  </script>
 </body>
 </html>
