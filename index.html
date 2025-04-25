@@ -253,13 +253,14 @@
         display: none;
       }
       .hero-title {
-        font-size: 8rem;
+        font-size: 8rem; /* This might be too large, consider vw units or smaller rem */
+        font-size: 15vw; /* Example using viewport width */
       }
       .hero-description {
         font-size: 1.4rem;
       }
       .bio {
-        padding: 3rem;
+        padding: 3rem 1.5rem; /* Add horizontal padding */
         font-size: 1.4rem;
         flex-direction: column;
         text-align: center;
@@ -278,6 +279,9 @@
       }
       .works-header {
         font-size: 2.4rem;
+      }
+      .works-container {
+         padding: 0 1.5rem; /* Add horizontal padding */
       }
     }
 
@@ -347,6 +351,64 @@
     <div class="works-container">
       <h3 class="works-header">AI Video Works</h3>
       <div class="video-grid">
+        <!-- START: New Works Added -->
+         <div class="video-entry">
+          <a href="https://x.com/mxvdxn/status/1915429495642972375" target="_blank">
+            <img
+              src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/GIF%20Folder/Converse-JKT.gif?raw=true"
+              alt="Converse - Your Move: JKT (Spec Ad)"
+            />
+            <div class="video-title">Converse - Your Move: JKT (Spec Ad)</div>
+          </a>
+        </div>
+         <div class="video-entry">
+          <a href="https://x.com/mxvdxn/status/1912530444484243701" target="_blank">
+            <img
+              src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/GIF%20Folder/Blade%20Dancer.gif?raw=true"
+              alt="Blade Dancers"
+            />
+            <div class="video-title">Blade Dancers</div>
+          </a>
+        </div>
+         <div class="video-entry">
+          <a href="https://x.com/mxvdxn/status/1912152031919329361" target="_blank">
+            <img
+              src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/GIF%20Folder/404%20Girls%20Not%20Found.gif?raw=true"
+              alt="404 Girls Not Found"
+            />
+            <div class="video-title">404 Girls Not Found</div>
+          </a>
+        </div>
+         <div class="video-entry">
+          <a href="https://x.com/mxvdxn/status/1908574704174326065" target="_blank">
+            <img
+              src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/GIF%20Folder/Genesis-X.gif?raw=true"
+              alt="Genesis-X"
+            />
+            <div class="video-title">Genesis-X</div>
+          </a>
+        </div>
+         <div class="video-entry">
+          <a href="https://x.com/mxvdxn/status/1906759342537458016" target="_blank"> <!-- Corrected URL -->
+            <img
+              src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/GIF%20Folder/Kau%20Dekat%20Tapi%20Jauh.gif?raw=true"
+              alt="Kau Dekat, Tapi Jauh (OmniHuman-1)"
+            />
+            <div class="video-title">Kau Dekat, Tapi Jauh (OmniHuman-1)</div>
+          </a>
+        </div>
+         <div class="video-entry">
+          <a href="https://x.com/mxvdxn/status/1903734141566533881" target="_blank">
+            <img
+              src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/GIF%20Folder/Echoes%20of%20A%20Dream.gif?raw=true"
+              alt="Echoes of A Dream"
+            />
+            <div class="video-title">Echoes of A Dream</div>
+          </a>
+        </div>
+        <!-- END: New Works Added -->
+
+        <!-- Existing Works -->
         <div class="video-entry">
           <a href="https://x.com/mxvdxn/status/1895960147023052928" target="_blank">
             <img
@@ -440,21 +502,29 @@
   </footer>
 
   <script>
-    // Modal functionality
+    // Note: Modal functionality defined here isn't used by the current HTML structure
+    // as there are no elements calling openModal(). Keep or remove as needed.
     function openModal(imgUrl) {
-      const modal = document.getElementById("myModal");
-      const modalImg = document.getElementById("modalImg");
-      modal.style.display = "block";
-      modalImg.src = imgUrl;
+      const modal = document.getElementById("myModal"); // Assumes a modal element with id="myModal" exists
+      const modalImg = document.getElementById("modalImg"); // Assumes an img element with id="modalImg" inside the modal exists
+      if(modal && modalImg) { // Check if modal elements exist before using them
+         modal.style.display = "block";
+         modalImg.src = imgUrl;
+      } else {
+         console.error("Modal elements not found. Cannot open modal.");
+      }
     }
     function closeModal() {
       const modal = document.getElementById("myModal");
-      modal.style.display = "none";
+      if(modal) {
+        modal.style.display = "none";
+      }
     }
     // Close the modal if the user clicks outside of it
     window.onclick = function(event) {
       const modal = document.getElementById("myModal");
-      if (event.target == modal) {
+       // Check if modal exists and if the click target is the modal itself
+      if (modal && event.target == modal) {
         closeModal();
       }
     }
