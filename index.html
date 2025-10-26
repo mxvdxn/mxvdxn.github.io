@@ -10,7 +10,7 @@
       --fg: #000;
       --muted: #333;
       --accent: #000;
-      --max: 80vw;
+      --max: 60vw;
     }
     html, body { height: 100%; margin: 0; padding: 0; }
     body {
@@ -20,35 +20,36 @@
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
     }
-    .wrap { max-width: var(--max); padding: 2vw 3vw; box-sizing: border-box; }
-    header { margin-bottom: 1vw; }
-    .kicker { text-transform: uppercase; letter-spacing: .12em; font-size: clamp(10px, 0.9vw, 14px); color: var(--muted); }
+    .wrap { max-width: var(--max); padding: 1vw 1.8vw; box-sizing: border-box; }
+    header { margin-bottom: 0.5vw; }
+    .kicker { text-transform: uppercase; letter-spacing: .1em; font-size: 0.7vw; color: var(--muted); }
     h1 {
-      margin: .4vw 0; font-weight: 800; line-height: 1.05;
-      font-size: clamp(26px, 3.5vw, 48px);
+      margin: .2vw 0; font-weight: 800; line-height: 1.05;
+      font-size: 1.9vw;
     }
-    h1 .slash { letter-spacing: .18em; }
-    .tagline { font-size: clamp(9px, 0.9vw, 13px); color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
-    main { font-size: clamp(11px, 1vw, 15px); }
-    p { margin: 0.6vw 0; }
+    h1 .slash { letter-spacing: .15em; }
+    .tagline { font-size: 0.7vw; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; }
+    main { font-size: 0.85vw; }
+    p { margin: 0.5vw 0; }
+    strong { font-weight: 700; }
     a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; }
     a:hover { opacity: .7; }
-    .rule { border: 0; border-top: 1px solid #111; margin: 1.2vw 0; }
-    .note { font-size: clamp(9px, 0.8vw, 13px); color: var(--muted); }
-    footer { margin-top: 1.5vw; font-size: clamp(8px, 0.8vw, 11px); color: var(--muted); }
+    .rule { border: 0; border-top: 1px solid #111; margin: 0.8vw 0; }
+    .note { font-size: 0.7vw; color: var(--muted); }
+    footer { margin-top: 1vw; font-size: 0.6vw; color: var(--muted); }
     .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; letter-spacing: .02em; }
     .bg { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.25; z-index: -1; pointer-events: none; }
 
     @media (max-width: 1280px) {
-      .wrap { max-width: 90vw; padding: 20px; }
-      h1 { font-size: clamp(22px, 4vw, 42px); }
-      main { font-size: clamp(11px, 1.2vw, 14px); }
+      .wrap { max-width: 75vw; padding: 20px; }
+      h1 { font-size: 2.4vw; }
+      main { font-size: 1vw; }
     }
 
     @media (max-width: 768px) {
       body { overflow-y: auto; padding: 20px 0; }
-      .wrap { padding: 20px; max-width: 95vw; }
-      h1 { font-size: 6vw; }
+      .wrap { padding: 20px; max-width: 90vw; }
+      h1 { font-size: 5vw; }
     }
   </style>
 </head>
@@ -57,33 +58,36 @@
   <div class="wrap">
     <header>
       <div class="kicker mono">MXVDXN</div>
-      <h1>DAN PRADANA <span class="slash">//</span> MXVDXN</h1>
-      <div class="tagline mono">10+ years in Ad Copywriting <span class="slash">//</span> Current client: whatever my lizard brain wants <span class="slash">//</span> Gen AI from the lingering heat of Southeast Asia</div>
+      <h1><strong>DAN PRADANA</strong> <span class="slash">//</span> <strong>MXVDXN</strong></h1>
+      <div class="tagline mono"><strong>10+ years in Ad Copywriting</strong> <span class="slash">//</span> Current client: whatever my lizard brain wants <span class="slash">//</span> <strong>Gen AI from the lingering heat of Southeast Asia</strong></div>
     </header>
 
     <main>
-      <p><strong>Dan Pradana</strong> is a Jakarta-born copywriter who has worked across the APAC region. Generative AI is his favorite chaos assistant, fast, imperfect, and fun to argue with. He keeps Southeast Asian aesthetics at the core, because they deserve center stage, not side notes.</p>
+      <p><strong>Dan Pradana</strong> is a Jakarta-born copywriter who has worked across the APAC region. <strong>Generative AI</strong> is his favorite chaos assistant, fast, imperfect, and fun to argue with. He keeps <strong>Southeast Asian aesthetics</strong> at the core, because they deserve center stage, not side notes.</p>
 
-      <p><strong>MXVDXN</strong> is Dan’s small independent AI lab, built to explore Southeast Asian subcultures through generative tools. Its focus sits somewhere between aesthetic research, remix culture, and creating new visual and narrative vibes that feel regionally grounded yet globally curious.</p>
+      <p><strong>MXVDXN</strong> is Dan’s small independent AI lab, built to explore <strong>Southeast Asian subcultures</strong> through generative tools. Its focus sits somewhere between <strong>aesthetic research</strong>, remix culture, and creating new visual and narrative vibes that feel regionally grounded yet globally curious.</p>
 
-      <h2 class="kicker">Who is Dan Pradana?</h2>
-      <p>After more than ten years in advertising, he’s still obsessed with the rhythm of words and how they look on a screen. These days, he points that obsession toward the humid imagination of Asian subcultures, where lo-fi visuals, copywriting instinct, and internet weirdness collide. Think zine spirit meets post-agency peace of mind. Somewhere between iced kopi, karaoke nights, and fried rice at 2 a.m., ideas tend to show up.</p>
+      <p>After more than ten years in advertising, he’s still obsessed with the rhythm of words and how they look on a screen. These days, he points that obsession toward the humid imagination of Asian subcultures, where <strong>lo-fi visuals</strong>, <strong>copywriting instinct</strong>, and <strong>internet weirdness</strong> collide. Think zine spirit meets post-agency peace of mind. Somewhere between iced kopi, karaoke nights, and fried rice at 2 a.m., ideas tend to show up.</p>
 
-      <p>His daily routine looks like a Southeast Asian lunch table: a bit messy, always loud, somehow works out in the end. Daily AI logs and tool experiments live on <a href="https://x.com/mxvdxn" target="_blank" rel="noopener">X</a>. Visual dumps go to <a href="https://www.instagram.com/mxvdxn" target="_blank" rel="noopener">Instagram</a>. Thai–Indo high school chaos sits on <a href="https://www.tiktok.com/@mxvdxn.ai" target="_blank" rel="noopener">TikTok</a>. Longer edits and archives simmer quietly on <a href="https://www.youtube.com/@mxvdxn" target="_blank" rel="noopener">YouTube</a>. A <span class="mono">Grok Imagine</span> lab for Elon’s video model is still marinating.</p>
+      <p>His daily routine looks like a <strong>Southeast Asian lunch table</strong>: a bit messy, always loud, somehow works out in the end. Daily AI logs and tool experiments live on <a href="https://x.com/mxvdxn" target="_blank" rel="noopener"><strong>X</strong></a>. Visual dumps go to <a href="https://www.instagram.com/mxvdxn" target="_blank" rel="noopener"><strong>Instagram</strong></a>. Thai–Indo high school chaos sits on <a href="https://www.tiktok.com/@mxvdxn.ai" target="_blank" rel="noopener"><strong>TikTok</strong></a>. A selected video portfolio archive lives on <a href="https://www.youtube.com/@mxvdxn" target="_blank" rel="noopener"><strong>YouTube</strong></a>. A dedicated landing page showcases his work on <strong>Grok Imagine</strong>, Elon Musk’s AI video model that he once mocked but now proudly calls a favorite.</p>
 
-      <p>Playlist: <a href="https://open.spotify.com/playlist/42Aar4fu30bwP0sRdrlEfg?si=CHlGG-p4QrGB3FRxeARlSg" target="_blank" rel="noopener">Sabaicore / Rice-core Hip-Hop</a>, a rotation of artists from SEA, China, South Korea, and Japan, basically countries that eat rice and drop bars. Films he’s cataloging live on <a href="https://letterboxd.com/mxvdxn/" target="_blank" rel="noopener">Letterboxd</a>, still curating. No Hollywood stuff inside, promise.</p>
+      <p><strong>Playlist</strong>: <a href="https://open.spotify.com/playlist/42Aar4fu30bwP0sRdrlEfg?si=CHlGG-p4QrGB3FRxeARlSg" target="_blank" rel="noopener"><strong>Sabaicore / Rice-core Hip-Hop</strong></a>, a rotation of artists from SEA, China, South Korea, and Japan, basically countries that eat rice and drop bars. If you want to understand what fuels his world and vibe, check out his film list on <a href="https://letterboxd.com/mxvdxn/" target="_blank" rel="noopener"><strong>Letterboxd</strong></a> — a window into the movies that shape his brand, still curating. No Hollywood stuff inside, promise.</p>
 
-      <h2 class="kicker">Work status</h2>
-      <p>Not open for full-time roles. Selective with side jobs and collaborations. If your brief speaks SEA fluently and gets the vibe, try him. But if your reference deck starts with Hollywood, maybe skip it.</p>
+      <hr class="rule" />
 
-      <p>Email <a href="mailto:danifpradana@gmail.com">danifpradana@gmail.com</a></p>
+      <h2 class="kicker">Availability</h2>
+      <p><strong>Not open</strong> for full-time roles. <strong>Selective</strong> with side jobs and collaborations, but <strong>always open</strong> for the right energy and ideas. If your brief speaks SEA fluently and gets the vibe, try him. If it screams Hollywood, maybe skip it.</p>
+
+      <p>Currently active in <strong>Creative Program Partnerships (CPP)</strong>: Hailuo, Kling AI, Freepik, and Higgsfield.</p>
+
+      <p>Email <a href="mailto:danifpradana@gmail.com"><strong>danifpradana@gmail.com</strong></a></p>
 
       <p class="note">P.S. This is the formal bio rewritten by someone who refuses to sound formal.</p>
     </main>
 
     <footer>
       <hr class="rule" />
-      <div>© 2025 Dan Pradana / MXVDXN. All rights reserved. Text only, black on white, because silence sometimes hits louder.</div>
+      <div>© 2025 <strong>Dan Pradana / MXVDXN</strong>. All rights reserved. Text only, black on white, because silence sometimes hits louder.</div>
     </footer>
   </div>
 </body>
