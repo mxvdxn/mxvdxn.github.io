@@ -1,94 +1,142 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DAN PRADANA // MXVDXN</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>M X V D X N</title>
   <style>
-    :root {
-      --bg: #fff;
-      --fg: #000;
-      --muted: #333;
-      --accent: #000;
-      --max: 60vw;
-    }
-    html, body { height: 100%; margin: 0; padding: 0; }
-    body {
-      background: var(--bg); color: var(--fg);
-      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.5; letter-spacing: 0.01em;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-    }
-    .wrap { max-width: var(--max); padding: 1vw 1.8vw; box-sizing: border-box; }
-    header { margin-bottom: 0.5vw; }
-    .kicker { text-transform: uppercase; letter-spacing: .1em; font-size: 0.7vw; color: var(--muted); }
-    h1 {
-      margin: .2vw 0; font-weight: 800; line-height: 1.05;
-      font-size: 1.9vw;
-    }
-    h1 .slash { letter-spacing: .15em; }
-    .tagline { font-size: 0.7vw; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; }
-    main { font-size: 0.85vw; }
-    p { margin: 0.5vw 0; }
-    strong { font-weight: 700; }
-    a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; }
-    a:hover { opacity: .7; }
-    .rule { border: 0; border-top: 1px solid #111; margin: 0.8vw 0; }
-    .note { font-size: 0.7vw; color: var(--muted); }
-    footer { margin-top: 1vw; font-size: 0.6vw; color: var(--muted); }
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; letter-spacing: .02em; }
-    .bg { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.25; z-index: -1; pointer-events: none; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif; color:white; background:#000; overflow-x:hidden; line-height:1.6; }
 
-    @media (max-width: 1280px) {
-      .wrap { max-width: 75vw; padding: 20px; }
-      h1 { font-size: 2.4vw; }
-      main { font-size: 1vw; }
-    }
+    #video-bg {position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:-1;}
 
-    @media (max-width: 768px) {
-      body { overflow-y: auto; padding: 20px 0; }
-      .wrap { padding: 20px; max-width: 90vw; }
-      h1 { font-size: 5vw; }
+    .hero {position:relative;height:100dvh;display:flex;flex-direction:column;justify-content:space-between;padding:6vh 6vw;}
+    .hero-text h1 {font-size:clamp(52px,11vw,140px);font-weight:900;line-height:0.9;margin-bottom:0;}
+    .hero-text .tagline {
+      font-size:clamp(70px,15vw,190px);   /* exactly the size you approved */
+      font-weight:900;
+      line-height:0.88;
+      letter-spacing:-0.03em;
+      margin-top:-8px;
     }
+    .scroll-hint {font-size:13px;opacity:0.7;letter-spacing:2px;}
+
+    .social-menu {
+      position:fixed;bottom:24px;right:6vw;z-index:100;display:flex;gap:20px;font-size:12px;letter-spacing:1px;
+    }
+    .social-menu a {color:rgba(255,255,255,0.7);text-decoration:none;transition:opacity .3s;}
+    .social-menu a:hover {opacity:1;}
+
+    .portfolio {padding-top:8vh;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;width:100vw;}
+    @media (max-width:1100px) { .portfolio { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:700px)  { .portfolio { grid-template-columns:1fr; } }
+
+    .project {
+      position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#000;cursor:pointer;transition:transform .4s ease, opacity .4s ease;
+    }
+    .project:hover {transform:scale(1.02);opacity:0.95;}
+    .project a {position:absolute;inset:0;z-index:3;}
+    .project video {position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+    .project::before {content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,transparent 60%);z-index:1;}
+    .project-info {position:absolute;bottom:0;left:0;z-index:2;padding:0 4vw 4vh 4vw;}
+    .client {font-size:11px;opacity:0.9;margin-bottom:2px;letter-spacing:1px;}
+    .title {font-size:clamp(15px,2.6vw,26px);font-weight:900;line-height:1.1;}
+
+    .bio-mxvdxn {background:#c41e3a;color:#fff;padding:140px 8vw;}
+    .bio-dan {background:#fff;color:#000;padding:140px 8vw;}
+    .bio-avail {background:#111;color:#fff;padding:140px 8vw 180px;}
+    .bio-inner {max-width:1100px;margin:0 auto;font-size:clamp(17px,2.8vw,20px);line-height:1.78;}
+    .bio-inner h1 {font-size:clamp(64px,10vw,100px);font-weight:900;letter-spacing:-2px;margin-bottom:48px;}
+    .bio-inner p {margin-bottom:28px;}
+    .bio-inner strong {font-weight:900;}
+    .contact {margin-top:80px;font-size:clamp(16px,2.5vw,18px);line-height:1.9;}
+    .contact strong {display:block;font-size:clamp(18px,3vw,22px);margin:40px 0 12px;text-transform:uppercase;}
+    .contact a {color:inherit;text-decoration:none;font-weight:900;transition:opacity .3s;}
+    .contact a:hover {opacity:0.7;}
+
+    footer {padding:100px 5vw;text-align:center;font-size:12px;background:#111;color:#888;}
   </style>
 </head>
 <body>
-  <video class="bg" autoplay muted loop playsinline preload="auto" src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/grok-video-5e39a346-9f26-4f53-85b1-fac292efa893.mp4"></video>
-  <div class="wrap">
-    <header>
-      <div class="kicker mono">VIBE. KVLTURE. ZEITGEIST</div>
-      <h1><strong>DAN PRADANA</strong> <span class="slash">//</span> <strong>MXVDXN</strong></h1>
-      <div class="tagline mono"><strong>10+ years in Ad Copywriting</strong> <span class="slash">//</span> Current client: whatever my lizard brain wants <span class="slash">//</span> <strong>Gen AI from the lingering heat of Southeast Asia</strong></div>
-    </header>
 
-    <main>
-      <p><strong>Dan Pradana</strong> is a Jakarta-born copywriter who has worked across the APAC region. <strong>Generative AI</strong> is his favorite chaos assistant, fast, imperfect, and fun to argue with. He keeps <strong>Southeast Asian aesthetics</strong> at the core, because they deserve center stage, not side notes.</p>
+  <video id="video-bg" autoplay muted loop playsinline>
+    <source src="https://mxvdxn.github.io/video_files/grok-video-5e39a346-9f26-4f53-85b1-fac292efa893.mp4" type="video/mp4">
+  </video>
 
-      <p><strong>MXVDXN</strong> is Dan’s small independent AI lab, built to explore <strong>Southeast Asian subcultures</strong> through generative tools. Its focus sits somewhere between <strong>aesthetic research</strong>, remix culture, and creating new visual and narrative vibes that feel regionally grounded yet globally curious.</p>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>MXVDXN</h1>
+      <div class="tagline">
+        VIBE.<br>
+        KVLTURE.<br>
+        ZEITGEIST.
+      </div>
+    </div>
+    <div class="scroll-hint">SCROLL</div>
+  </section>
 
-      <p>After more than ten years in advertising, he’s still obsessed with the rhythm of words and how they look on a screen. These days, he points that obsession toward the humid imagination of Southeast Asian subcultures, where <strong>lo-fi visuals</strong>, <strong>copywriting instinct</strong>, and <strong>internet weirdness</strong> collide. Think zine spirit meets post-agency peace of mind. Somewhere between iced kopi, karaoke nights, and fried rice at 2 a.m., ideas tend to show up.</p>
-
-      <p>His daily routine looks like a <strong>Southeast Asian lunch table</strong>: a bit messy, always loud, somehow works out in the end. Daily AI logs and tool experiments live on <a href="https://x.com/mxvdxn" target="_blank" rel="noopener"><strong>X</strong></a>. Visual dumps go to <a href="https://www.instagram.com/mxvdxn" target="_blank" rel="noopener"><strong>Instagram</strong></a>. Thai–Indo high school chaos sits on <a href="https://www.tiktok.com/@mxvdxn.ai" target="_blank" rel="noopener"><strong>TikTok</strong></a>. A selected video portfolio archive lives on <a href="https://www.youtube.com/@mxvdxn" target="_blank" rel="noopener"><strong>YouTube</strong></a>. </p>
-
-      <p><strong>Playlist</strong>: <a href="https://open.spotify.com/playlist/42Aar4fu30bwP0sRdrlEfg?si=CHlGG-p4QrGB3FRxeARlSg" target="_blank" rel="noopener"><strong>Sabaicore / Rice-core Hip-Hop</strong></a>, a rotation of artists from SEA, China, South Korea, and Japan, basically countries that eat rice and drop bars. If you want to understand what fuels his world and vibe, check out his film list on <a href="https://letterboxd.com/mxvdxn/" target="_blank" rel="noopener"><strong>Letterboxd</strong></a> — a window into the movies that shape his brand, still curating. No Hollywood stuff inside, promise.</p>
-
-      <hr class="rule" />
-
-      <h2 class="kicker">Availability</h2>
-      <p><strong>Not open</strong> for full-time roles. <strong>Selective</strong> with side jobs and collaborations, but <strong>always open</strong> for the right energy and ideas. If your brief speaks SEA fluently and gets the vibe, try him. If it screams Hollywood, maybe skip it.</p>
-
-      <p>Currently active in <strong>Creative Program Partnerships (CPP)</strong>: Hailuo, Kling AI, Freepik, and Higgsfield.</p>
-
-      <p>Email <a href="mailto:danifpradana@gmail.com"><strong>danifpradana@gmail.com</strong></a></p>
-
-      <p class="note">P.S. This is the formal bio rewritten by someone who refuses to sound formal.</p>
-    </main>
-
-    <footer>
-      <hr class="rule" />
-      <div>© 2025 <strong>Dan Pradana / MXVDXN</strong>. All rights reserved.</div>
-    </footer>
+  <div class="social-menu">
+    <a href="https://x.com/mxvdxn" target="_blank" rel="noopener">X</a>
+    <a href="https://www.instagram.com/mxvdxn" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.tiktok.com/@mxvdxn.ai" target="_blank" rel="noopener">TikTok</a>
+    <a href="mailto:danifpradana@gmail.com" target="_blank">Contact</a>
   </div>
+
+  <!-- 15 clickable videos – unchanged -->
+  <div class="portfolio">
+    <div class="project"><a href="https://x.com/mxvdxn/status/1997241771722768727" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-2.mp4" type="video/mp4"></video><div class="project-info"><div class="client">01</div><div class="title">Under The Same Sky</div></div></div>
+    <div class="project"><a href="https://x.com/mxvdxn/status/1982251433874567267" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-1.mp4" type="video/mp4"></video><div class="project-info"><div class="client">02</div><div class="title">High School Girl vs. Kaiju</div></div></div>
+    <div class="project"><a href="https://x.com/mxvdxn/status/1996374733114552828" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-4.mp4" type="video/mp4"></video><div class="project-info"><div class="client">03</div><div class="title">High School Girl Parkour</div></div></div>
+    <div class="project"><a href="https://x.com/mxvdxn/status/1996724611225125272" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-3.mp4" type="video/mp4"></video><div class="project-info"><div class="client">04</div><div class="title">Self-Defense</div></div></div>
+    <div class="project"><a href="https://x.com/mxvdxn/status/1991490062077554806" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-5.mp4" type="video/mp4"></video><div class="project-info"><div class="client">05</div><div class="title">Her Bite (Never) Meant to Be Seen</div></div></div>
+    <div class="project"><a href="https://x.com/mxvdxn/status/1991148231225729132" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-6.mp4" type="video/mp4"></video><div class="project-info"><div class="client">06</div><div class="title">The Warmth You (Never) Asked For</div></div></div>
+    <div class="project"><a href="https://x.com/mxvdxn/status/1915429495642972375" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-7.mp4" type="video/mp4"></video><div class="project-info"><div class="client">07</div><div class="title">CONVERSE "Your Move" (Spec)</div></div></div>
+    <div class="project"><a href="https://x.com/mxvdxn/status/1987809536145752211" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-8.mp4" type="video/mp4"></video><div class="project-info"><div class="client">08</div><div class="title">(untitled)</div></div></div>
+    <div class="project"><a href="https://x.com/mxvdxn/status/1978619310722662863" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-9.mp4" type="video/mp4"></video><div class="project-info"><div class="client">09</div><div class="title">(untitled)</div></div></div>
+    <div class="project"><a href="https://x.com/mxvdxn/status/1996878197397639528" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-10.mp4" type="video/mp4"></video><div class="project-info"><div class="client">10</div><div class="title">Welcome to my City</div></div></div>
+    <div class="project"><a href="https://x.com/mxvdxn/status/1989651436464930853" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-11.mp4" type="video/mp4"></video><div class="project-info"><div class="client">11</div><div class="title">Sunset Bars & Bars</div></div></div>
+    <div class="project"><a href="https://x.com/mxvdxn/status/1990429661688668497" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-12.mp4" type="video/mp4"></video><div class="project-info"><div class="client">12</div><div class="title">The Warmth You (Finally) Let In</div></div></div>
+    <div class="project"><a href="https://x.com/mxvdxn/status/1980423793685545285" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-13.mp4" type="video/mp4"></video><div class="project-info"><div class="client">13</div><div class="title">After School Powers</div></div></div>
+    <div class="project"><a href="https://x.com/mxvdxn/status/1970502244824178921" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-14.mp4" type="video/mp4"></video><div class="project-info"><div class="client">14</div><div class="title">Cursed School</div></div></div>
+    <div class="project"><a href="https://x.com/mxvdxn/status/1966870077367890250" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-15.mp4" type="video/mp4"></video><div class="project-info"><div class="client">15</div><div class="title">Jihan & Fah</div></div></div>
+  </div>
+
+  <!-- BIO — your approved version -->
+  <section class="bio-mxvdxn">
+    <div class="bio-inner">
+      <h1>MXVDXN</h1>
+      <p>Think of it as <strong>Alt-Media</strong> or <strong>Digital Zine Culture</strong> rewired for the generative age.</p>
+      <p>The philosophy here is rooted in the spirit of independent publishing and street culture. It is about the rhythm of humid asphalt, the raw sexiness of the tropics, and a celebration of old-school visuals inspired by vintage erotica and exploitation cinema. The difference is that we use Generative AI to leverage these ideas, not to replace the soul.</p>
+      <p><strong>MXVDXN</strong> is a small independent lab built to explore the dense, chaotic beauty of <strong>Southeast Asian</strong> subcultures. This region is defined by its visual intensity. It is a collision of hyper-modernity and deep tradition, where 600 million people live in a state of organized chaos.</p>
+      <p>From the neon lights of <strong>Bangkok</strong> and the concrete sprawl of <strong>Jakarta</strong> to the frantic energy of <strong>Manila</strong>, the polished speed of <strong>Singapore</strong>, the heritage of <strong>Ho Chi Minh</strong>, and the urban rhythm of <strong>Kuala Lumpur</strong>, Southeast Asia offers a sensory overload that you simply cannot find anywhere else in the world.</p>
+      <p>The goal of the lab is to bridge that gap. We explore the frontiers of new aesthetic ideas that feel regionally grounded yet globally curious. We treat GenAI as a tool to document this <strong>"Humid Imagination,"</strong> ensuring that the specific grit, grain, and heat of Southeast Asia take center stage.</p>
+    </div>
+  </section>
+
+  <section class="bio-dan">
+    <div class="bio-inner">
+      <h1>DAN PRADANA</h1>
+      <p><strong>10+ Years in APAC Advertising // Jakarta-Born Copywriter</strong></p>
+      <p>Dan Pradana is the operator behind the lab. A Jakarta-born copywriter who has worked across the APAC region for over a decade, he knows the rules of the corporate world well enough to know exactly how to break them.</p>
+      <p>For Dan, Generative AI is a <strong>chaos assistant</strong>. It is fast, imperfect, and fun to argue with. After spending years polishing headlines for global clients, he now points that obsession toward the raw, unfiltered imagination of the region. He views the <strong>"Lizard Brain"</strong> as the ultimate creative director. His process sits somewhere between lo-fi visual research, copywriting instinct, and the weirdness of internet culture.</p>
+    </div>
+  </section>
+
+  <section class="bio-avail">
+    <div class="bio-inner">
+      <div class="contact">
+        <strong>AVAILABILITY</strong>
+        Not open for full-time roles.<br>
+        Selective with side jobs and collaborations.<br><br>
+        <strong>CPP</strong>
+        Hailuo, Kling AI, Freepik, and Higgsfield.<br><br>
+        <strong>CONTACT</strong>
+        <a href="mailto:danifpradana@gmail.com">danifpradana@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2025 MXVDXN. All rights reserved. Site content and original creative works are property of MXVDXN.</footer>
+
 </body>
 </html>
