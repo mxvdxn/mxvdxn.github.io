@@ -10,10 +10,11 @@
 
     #video-bg {position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:-1;}
 
+    /* HERO SECTION */
     .hero {position:relative;height:100dvh;display:flex;flex-direction:column;justify-content:space-between;padding:6vh 6vw;}
     .hero-text h1 {font-size:clamp(52px,11vw,140px);font-weight:900;line-height:0.9;margin-bottom:0;}
     .hero-text .tagline {
-      font-size:clamp(70px,15vw,190px);   /* exactly the size you approved */
+      font-size:clamp(70px,15vw,190px);
       font-weight:900;
       line-height:0.88;
       letter-spacing:-0.03em;
@@ -21,12 +22,14 @@
     }
     .scroll-hint {font-size:13px;opacity:0.7;letter-spacing:2px;}
 
+    /* SOCIAL MENU */
     .social-menu {
       position:fixed;bottom:24px;right:6vw;z-index:100;display:flex;gap:20px;font-size:12px;letter-spacing:1px;
     }
     .social-menu a {color:rgba(255,255,255,0.7);text-decoration:none;transition:opacity .3s;}
     .social-menu a:hover {opacity:1;}
 
+    /* PORTFOLIO GRID */
     .portfolio {padding-top:8vh;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;width:100vw;}
     @media (max-width:1100px) { .portfolio { grid-template-columns:repeat(2,1fr); } }
     @media (max-width:700px)  { .portfolio { grid-template-columns:1fr; } }
@@ -42,19 +45,246 @@
     .client {font-size:11px;opacity:0.9;margin-bottom:2px;letter-spacing:1px;}
     .title {font-size:clamp(15px,2.6vw,26px);font-weight:900;line-height:1.1;}
 
-    .bio-mxvdxn {background:#c41e3a;color:#fff;padding:140px 8vw;}
-    .bio-dan {background:#fff;color:#000;padding:140px 8vw;}
-    .bio-avail {background:#111;color:#fff;padding:140px 8vw 180px;}
-    .bio-inner {max-width:1100px;margin:0 auto;font-size:clamp(17px,2.8vw,20px);line-height:1.78;}
-    .bio-inner h1 {font-size:clamp(64px,10vw,100px);font-weight:900;letter-spacing:-2px;margin-bottom:48px;}
-    .bio-inner p {margin-bottom:28px;}
-    .bio-inner strong {font-weight:900;}
-    .contact {margin-top:80px;font-size:clamp(16px,2.5vw,18px);line-height:1.9;}
-    .contact strong {display:block;font-size:clamp(18px,3vw,22px);margin:40px 0 12px;text-transform:uppercase;}
-    .contact a {color:inherit;text-decoration:none;font-weight:900;transition:opacity .3s;}
-    .contact a:hover {opacity:0.7;}
+    /* --- MANIFESTO DESIGN (RED SECTION) --- */
+    .bio-mxvdxn {
+      background: #c41e3a; /* The Red */
+      color: #fff;
+      padding: 120px 6vw;
+      width: 100%;
+    }
+    
+    .manifesto-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
 
-    footer {padding:100px 5vw;text-align:center;font-size:12px;background:#111;color:#888;}
+    .man-header { border-bottom: 4px solid #fff; padding-bottom: 40px; }
+    .man-header h1 {
+      font-size: clamp(60px, 10vw, 120px);
+      font-weight: 900;
+      line-height: 0.8;
+      letter-spacing: -3px;
+      margin-bottom: 20px;
+    }
+    .man-subtitle {
+      font-family: 'Courier New', Courier, monospace; 
+      font-size: clamp(14px, 2vw, 18px);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.9;
+    }
+    .man-intro {
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-top: 30px;
+      max-width: 900px;
+    }
+
+    /* Common Grid Classes */
+    .man-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 30px;
+      border-top: 1px solid rgba(255,255,255,0.4);
+      padding-top: 30px;
+    }
+    .col-full { grid-column: span 12; }
+    .col-half { grid-column: span 6; }
+    .col-third { grid-column: span 4; }
+    
+    @media (max-width: 900px) {
+      .col-half, .col-third { grid-column: span 12; }
+      .man-grid { gap: 40px; }
+    }
+
+    .sec-label {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12px;
+      font-weight: bold;
+      border: 1px solid #fff;
+      display: inline-block;
+      padding: 4px 8px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .man-block h3 {
+      font-size: 24px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .man-block p { font-size: 16px; opacity: 0.95; margin-bottom: 15px; line-height: 1.6; }
+
+    .man-list { list-style: none; margin-top: 15px; }
+    .man-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 8px;
+    }
+    .man-list li::before { content: "+"; font-family: monospace; font-weight: bold; }
+
+    .interest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+    @media (max-width: 600px) { .interest-grid { grid-template-columns: 1fr; } }
+    
+    .interest-card { background: rgba(0,0,0,0.1); padding: 20px; border: 1px solid rgba(255,255,255,0.2); }
+    .interest-num { font-family: monospace; font-size: 32px; font-weight: 900; opacity: 0.3; margin-bottom: 10px; display: block; }
+    .card-footer { font-weight: bold; margin-top: 15px; font-size: 14px; opacity: 0.8; border-top: 1px dotted rgba(255,255,255,0.3); padding-top: 10px; }
+    
+    .statement-box { border: 4px solid #fff; padding: 40px; text-align: center; font-size: clamp(20px, 4vw, 32px); font-weight: 900; text-transform: uppercase; line-height: 1.1; }
+
+    /* --- DAN PRADANA SECTION (WHITE) --- */
+    .bio-dan {
+      background: #fff;
+      color: #000;
+      padding: 120px 6vw;
+    }
+    
+    .dan-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 50px; }
+    
+    .dan-header { border-bottom: 4px solid #000; padding-bottom: 30px; display:flex; flex-direction:column; }
+    .dan-name { font-size: clamp(50px, 8vw, 100px); font-weight: 900; line-height: 0.85; letter-spacing: -2px; margin-bottom: 10px; }
+    .dan-role { font-family: 'Courier New', monospace; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; background: #000; color: #fff; display: inline-block; padding: 4px 10px; align-self: flex-start; }
+
+    .dan-intro-text {
+      font-size: clamp(22px, 3.5vw, 36px);
+      font-weight: 900;
+      line-height: 1.1;
+      max-width: 1000px;
+    }
+
+    .dan-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      border-top: 1px solid #000;
+      padding-top: 40px;
+    }
+    @media (max-width: 800px) { .dan-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    .dan-col p { font-size: 16px; line-height: 1.7; margin-bottom: 24px; }
+    
+    .dan-tag {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      font-weight: bold;
+      color: #666;
+      margin-bottom: 12px;
+      display: block;
+      text-transform: uppercase;
+    }
+    
+    .dan-highlight {
+      border: 2px solid #000;
+      padding: 30px;
+    }
+    .dan-highlight strong { font-weight: 900; text-decoration: underline; }
+
+
+    /* --- AVAILABILITY SECTION (REDESIGNED) --- */
+    .bio-avail {
+      background: #000; /* Pitch black */
+      color: #fff;
+      padding: 120px 6vw;
+      border-top: 1px solid #222;
+    }
+
+    .avail-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1.2fr 1fr; /* Custom widths for better balance */
+      gap: 60px;
+    }
+
+    @media (max-width: 900px) {
+      .avail-container { grid-template-columns: 1fr; gap: 50px; }
+    }
+
+    .avail-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .avail-label {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      font-weight: bold;
+      color: #555;
+      margin-bottom: 24px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-bottom: 1px solid #333;
+      padding-bottom: 5px;
+      width: 100%;
+    }
+
+    .avail-text {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .avail-partners {
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1.4;
+      color: #fff;
+    }
+    
+    .partner-item {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .partner-item::after { content: "/"; margin-left: 10px; color: #444; }
+    .partner-item:last-child::after { content: ""; }
+
+    .email-link {
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: 900;
+      color: #fff;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s;
+    }
+    
+    .email-link::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -5px;
+      width: 100%;
+      height: 2px;
+      background: #c41e3a; /* The Red */
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease;
+    }
+    
+    .email-link:hover { color: #ccc; }
+    .email-link:hover::after { transform: scaleX(1); transform-origin: left; }
+
+    footer {
+      padding: 60px 6vw;
+      text-align: center;
+      font-size: 11px;
+      background: #000;
+      color: #444;
+      font-family: monospace;
+      border-top: 1px solid #111;
+    }
   </style>
 </head>
 <body>
@@ -82,7 +312,7 @@
     <a href="mailto:danifpradana@gmail.com" target="_blank">Contact</a>
   </div>
 
-  <!-- 15 clickable videos – unchanged -->
+  <!-- PORTFOLIO GRID -->
   <div class="portfolio">
     <div class="project"><a href="https://x.com/mxvdxn/status/1997241771722768727" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-2.mp4" type="video/mp4"></video><div class="project-info"><div class="client">01</div><div class="title">Under The Same Sky</div></div></div>
     <div class="project"><a href="https://x.com/mxvdxn/status/1982251433874567267" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-1.mp4" type="video/mp4"></video><div class="project-info"><div class="client">02</div><div class="title">High School Girl vs. Kaiju</div></div></div>
@@ -99,46 +329,204 @@
     <div class="project"><a href="https://x.com/mxvdxn/status/1980423793685545285" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-13.mp4" type="video/mp4"></video><div class="project-info"><div class="client">13</div><div class="title">After School Powers</div></div></div>
     <div class="project"><a href="https://x.com/mxvdxn/status/1970502244824178921" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-14.mp4" type="video/mp4"></video><div class="project-info"><div class="client">14</div><div class="title">Cursed School</div></div></div>
     <div class="project"><a href="https://x.com/mxvdxn/status/1966870077367890250" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-15.mp4" type="video/mp4"></video><div class="project-info"><div class="client">15</div><div class="title">Jihan & Fah</div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1893834681193566621" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-16.mp4" type="video/mp4"></video><div class="project-info"><div class="client">15</div><div class="title">S P E E D / / B E Y O N D </div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1943619454379942258" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-17.mp4" type="video/mp4"></video><div class="project-info"><div class="client">15</div><div class="title">GILDED CORPORATE HEIRESS </div></div></div>
+    <div class="project"><a href="https://x.com/mxvdxn/status/1893834681193566621" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-16.mp4" type="video/mp4"></video><div class="project-info"><div class="client">16</div><div class="title">S P E E D / / B E Y O N D </div></div></div>
+    <div class="project"><a href="https://x.com/mxvdxn/status/1943619454379942258" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-17.mp4" type="video/mp4"></video><div class="project-info"><div class="client">17</div><div class="title">GILDED CORPORATE HEIRESS </div></div></div>
   </div>
 
-  <!-- BIO — your approved version -->
+  <!-- MANIFESTO SECTION (RED) -->
   <section class="bio-mxvdxn">
-    <div class="bio-inner">
-      <h1>MXVDXN</h1>
-      <p>Think of it as <strong>Alt-Media</strong> or <strong>Digital Zine Culture</strong> rewired for the generative age.</p>
-      <p>The philosophy here is rooted in the spirit of independent publishing and street culture. It is about the rhythm of humid asphalt, the raw sexiness of the tropics, and a celebration of old-school visuals inspired by vintage erotica and exploitation cinema. The difference is that we use Generative AI to leverage these ideas, not to replace the soul.</p>
-      <p><strong>MXVDXN</strong> is a small independent lab built to explore the dense, chaotic beauty of <strong>Southeast Asian</strong> subcultures. This region is defined by its visual intensity. It is a collision of hyper-modernity and deep tradition, where 600 million people live in a state of organized chaos.</p>
-      <p>From the neon lights of <strong>Bangkok</strong> and the concrete sprawl of <strong>Jakarta</strong> to the frantic energy of <strong>Manila</strong>, the polished speed of <strong>Singapore</strong>, the heritage of <strong>Ho Chi Minh</strong>, and the urban rhythm of <strong>Kuala Lumpur</strong>, Southeast Asia offers a sensory overload that you simply cannot find anywhere else in the world.</p>
-      <p>The goal of the lab is to bridge that gap. We explore the frontiers of new aesthetic ideas that feel regionally grounded yet globally curious. We treat GenAI as a tool to document this <strong>"Humid Imagination,"</strong> ensuring that the specific grit, grain, and heat of Southeast Asia take center stage.</p>
-    </div>
-  </section>
+    <div class="manifesto-container">
+      <div class="man-header">
+        <h1>MXVDXN</h1>
+        <div class="man-subtitle">A field experiment.</div>
+        <p class="man-intro">
+          MXVDXN is an ongoing exploration of new mediums of culture, and how imagination mutates under heat, density, desire, and technology.
+          <br><br>
+          Not innovation for its own sake. More like tuning into the frequencies already leaking out of the street.
+        </p>
+      </div>
 
-  <section class="bio-dan">
-    <div class="bio-inner">
-      <h1>DAN PRADANA</h1>
-      <p><strong>10+ Years in APAC Advertising // Jakarta-Born Copywriter</strong></p>
-      <p>Dan Pradana is the operator behind the lab. A Jakarta-born copywriter who has worked across the APAC region for over a decade, he knows the rules of the corporate world well enough to know exactly how to break them.</p>
-      <p>For Dan, Generative AI is a <strong>chaos assistant</strong>. It is fast, imperfect, and fun to argue with. After spending years polishing headlines for global clients, he now points that obsession toward the raw, unfiltered imagination of the region. He views the <strong>"Lizard Brain"</strong> as the ultimate creative director. His process sits somewhere between lo-fi visual research, copywriting instinct, and the weirdness of internet culture.</p>
-    </div>
-  </section>
+      <div class="man-grid">
+        <div class="col-half">
+          <span class="sec-label">01 // CORE ORIENTATION</span>
+          <div class="man-block">
+            <p>MXVDXN operates from a visually driven curiosity centered on <strong>urban femininity in Southeast Asia</strong>, with Jakarta and Bangkok acting as primary signal sources.</p>
+            <p>These cities are treated less as places and more as systems:</p>
+            <ul class="man-list">
+              <li>Humidity as interface</li>
+              <li>Traffic as rhythm</li>
+              <li>Fashion as adaptive behavior</li>
+              <li>Architecture as emotional residue</li>
+            </ul>
+            <p style="margin-top:20px; font-weight:bold;">The work lives between advertising-level polish and accidental street documentation, where intention and improvisation blur.</p>
+          </div>
+        </div>
 
-  <section class="bio-avail">
-    <div class="bio-inner">
-      <div class="contact">
-        <strong>AVAILABILITY</strong>
-        Not open for full-time roles.<br>
-        Selective with side jobs and collaborations.<br><br>
-        <strong>CPP</strong>
-        Hailuo, Kling AI, Freepik, and Higgsfield.<br><br>
-        <strong>CONTACT</strong>
-        <a href="mailto:danifpradana@gmail.com">danifpradana@gmail.com</a>
+        <div class="col-half">
+          <span class="sec-label">02 // METHODOLOGY</span>
+          <div class="man-block">
+            <p>Generative systems are used as cognitive amplifiers, not authors.</p>
+            <p>AI functions here as a compression engine, a pattern mirror, and a way to surface latent aesthetics faster than linear workflows allow. The guiding rule is that <strong>the machine extends intuition</strong>, it does not replace it.</p>
+            <p>Creative direction is governed by the <strong>"Lizard Brain"</strong>:</p>
+            <ul class="man-list">
+              <li>Pre-verbal & Image-first</li>
+              <li>Driven by heat, repetition, attraction, and memory</li>
+              <li>Allergic to over-explanation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="man-grid">
+        <div class="col-full">
+          <span class="sec-label">03 // PRIMARY FIELDS OF INTEREST</span>
+          <div class="interest-grid">
+            <div class="interest-card">
+              <span class="interest-num">01</span>
+              <h3>Urban Femininity</h3>
+              <p>An extended observation of how femininity appears, performs, resists, and reconfigures itself in dense Southeast Asian cities.</p>
+              <ul class="man-list">
+                <li>Editorial and near-editorial imagery</li>
+                <li>Candid street encounters</li>
+                <li>Fashion understood as posture, stance, and survival strategy</li>
+                <li>The female body as a cultural surface</li>
+              </ul>
+              <div class="card-footer">This is not representation. It is pattern recognition.</div>
+            </div>
+            <div class="interest-card">
+              <span class="interest-num">02</span>
+              <h3>Sensuality as Visual Language</h3>
+              <p>Eroticism is approached as infrastructure, not provocation.</p>
+              <ul class="man-list">
+                <li>Sensuality as atmosphere rather than narrative</li>
+                <li>How desire circulates through images without asking permission</li>
+                <li>Inherited visual codes from vintage erotica & exploitation media</li>
+                <li>How tropical environments intensify intimacy, exposure, and gaze</li>
+              </ul>
+              <div class="card-footer">The interest is not shock. It is precision.</div>
+            </div>
+            <div class="interest-card">
+              <span class="interest-num">03</span>
+              <h3>SE-Asian Urban Visual Culture</h3>
+              <p>Jakarta and Bangkok form the core axis, but the field extends outward. Recurring signals include:</p>
+              <ul class="man-list">
+                <li>School uniforms & “high-school-core” aesthetics as visual leftovers</li>
+                <li>Retro advertising and pre-digital commercial logic</li>
+                <li>Nightlife subcultures & informal economies</li>
+                <li>Domestic spaces, alleyways, rented rooms</li>
+              </ul>
+              <div class="card-footer">This is not nostalgia. It is a living archive that refuses to stabilize.</div>
+            </div>
+            <div class="interest-card">
+              <span class="interest-num">04</span>
+              <h3>Alternative & Archive Media</h3>
+              <p>MXVDXN treats screenshots, platform UI, zines, and low-resolution artifacts as valid cultural documents.</p>
+              <ul class="man-list">
+                <li>Experimental layouts & digital ephemera</li>
+                <li>Platform-native formats & DIY publishing logic</li>
+                <li>Capturing what disappears before it becomes respectable</li>
+              </ul>
+              <div class="card-footer">The archive is intentionally incomplete.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="man-grid">
+        <div class="col-full">
+          <span class="sec-label">04 // POSITION</span>
+          <div class="statement-box">
+            MXVDXN is not interested in futurism as spectacle.<br>
+            It documents the present tense—humid, erotic, unstable, unresolved.
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-top:30px;">
+            <div class="man-block">
+              <h3>The Lab Prioritizes:</h3>
+              <ul class="man-list">
+                <li>Texture over Clarity</li>
+                <li>Atmosphere over Narrative</li>
+                <li>Regions over Platforms</li>
+                <li>Instinct over Strategy</li>
+              </ul>
+            </div>
+            <div class="man-block">
+              <h3>The Thesis:</h3>
+              <p style="font-size:18px; font-weight:700;">Southeast Asia already contains futures that have not been named yet.</p>
+              <p>MXVDXN exists to notice them before they are cleaned, licensed, or optimized.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer>© 2025 MXVDXN. All rights reserved. Site content and original creative works are property of MXVDXN.</footer>
+  <!-- DAN PRADANA SECTION (WHITE) -->
+  <section class="bio-dan">
+    <div class="dan-container">
+      <div class="dan-header">
+        <span class="dan-name">DAN PRADANA</span>
+        <span class="dan-role">VISUAL RESEARCHER / COPYWRITER</span>
+      </div>
+      <div class="dan-intro-text">
+        Jakarta-born visual and aesthetic researcher with over a decade of experience inside the APAC advertising industry.
+      </div>
+      <div class="dan-grid">
+        <div class="dan-col">
+          <span class="dan-tag">[ ORIGIN & SHIFT ]</span>
+          <p>Originally trained as a copywriter, Dan now studies images as living behavior. His work observes how visual aesthetics emerge, repeat, and mutate across Southeast Asian cities.</p>
+          <p>He pays attention to how femininity, sensuality, fashion, and everyday styling move through streets, screens, rented rooms, and informal spaces shaped by heat, density, and constant digital exposure.</p>
+          <div class="dan-highlight">
+            <p style="margin:0; font-size:14px; text-transform:uppercase; letter-spacing:1px;">
+              His research blends copywriting intuition, visual archiving, and internet-native experimentation to track how taste forms, drifts, and survives inside contemporary Southeast Asian visual culture.
+            </p>
+          </div>
+        </div>
+        <div class="dan-col">
+          <span class="dan-tag">[ VISUAL SYSTEMS ]</span>
+          <p>Visuals are not treated as decoration or messaging. They are approached as systems of instinct and memory. His research draws from Southeast Asian street culture, tropical urban mythologies, and the visual excess of daily life. Lo-fi textures, alt-media signals, and casual eroticism are read as functional languages rather than spectacle.</p>
+          <span class="dan-tag" style="margin-top:40px;">[ CHAOS ASSISTANT ]</span>
+          <p><strong>Generative AI operates as a chaos assistant in his process.</strong> It is fast, imperfect, and useful for accelerating intuition. Direction remains anchored in observation, repetition, and what he refers to as the <strong>Lizard Brain</strong>—meaning pre-rational, image-first, and culturally embedded ways of seeing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVAILABILITY / FOOTER (REDESIGNED) -->
+  <section class="bio-avail">
+    <div class="avail-container">
+      
+      <!-- COL 1: AVAILABILITY -->
+      <div class="avail-col">
+        <span class="avail-label">AVAILABILITY</span>
+        <p class="avail-text">
+          Not open for full-time roles.<br>
+          Selective with side jobs & collaborations.
+        </p>
+      </div>
+
+      <!-- COL 2: PARTNERSHIPS -->
+      <div class="avail-col">
+        <span class="avail-label">CREATIVE PARTNERSHIPS</span>
+        <div class="avail-partners">
+          <span class="partner-item">Hailuo</span>
+          <span class="partner-item">Kling AI</span>
+          <span class="partner-item">Freepik</span>
+          <span class="partner-item">Higgsfield</span>
+        </div>
+      </div>
+
+      <!-- COL 3: CONTACT -->
+      <div class="avail-col">
+        <span class="avail-label">CONTACT</span>
+        <a href="mailto:danifpradana@gmail.com" class="email-link">danifpradana@gmail.com</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2025 MXVDXN. All rights reserved. Site content and original creative works are property of MXVDXN.
+  </footer>
 
 </body>
 </html>
