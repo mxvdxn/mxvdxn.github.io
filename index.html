@@ -144,7 +144,7 @@
     
     .statement-box { border: 4px solid #fff; padding: 40px; text-align: center; font-size: clamp(20px, 4vw, 32px); font-weight: 900; text-transform: uppercase; line-height: 1.1; }
 
-    /* --- DAN PRADANA SECTION (WHITE) --- */
+    /* --- DAN SECTION (WHITE) --- */
     .bio-dan {
       background: #fff;
       color: #000;
@@ -192,7 +192,7 @@
     .dan-highlight strong { font-weight: 900; text-decoration: underline; }
 
 
-    /* --- AVAILABILITY SECTION (REDESIGNED) --- */
+    /* --- AVAILABILITY SECTION (REDESIGNED - 2 COLUMNS) --- */
     .bio-avail {
       background: #000; /* Pitch black */
       color: #fff;
@@ -204,7 +204,7 @@
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.2fr 1.2fr 1fr; /* Custom widths for better balance */
+      grid-template-columns: 1fr 1fr; /* 2 Columns now instead of 3 */
       gap: 60px;
     }
 
@@ -251,30 +251,6 @@
     }
     .partner-item::after { content: "/"; margin-left: 10px; color: #444; }
     .partner-item:last-child::after { content: ""; }
-
-    .email-link {
-      font-size: clamp(20px, 2.5vw, 26px);
-      font-weight: 900;
-      color: #fff;
-      text-decoration: none;
-      position: relative;
-      transition: color 0.3s;
-    }
-    
-    .email-link::after {
-      content: "";
-      position: absolute;
-      left: 0; bottom: -5px;
-      width: 100%;
-      height: 2px;
-      background: #c41e3a; /* The Red */
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.4s ease;
-    }
-    
-    .email-link:hover { color: #ccc; }
-    .email-link:hover::after { transform: scaleX(1); transform-origin: left; }
 
     footer {
       padding: 60px 6vw;
@@ -461,11 +437,11 @@
     </div>
   </section>
 
-  <!-- DAN PRADANA SECTION (WHITE) -->
+  <!-- DAN SECTION (WHITE) -->
   <section class="bio-dan">
     <div class="dan-container">
       <div class="dan-header">
-        <span class="dan-name">DAN PRADANA</span>
+        <span class="dan-name">DAN</span> <!-- UPDATED NAME -->
         <span class="dan-role">VISUAL RESEARCHER / COPYWRITER</span>
       </div>
       <div class="dan-intro-text">
@@ -474,7 +450,8 @@
       <div class="dan-grid">
         <div class="dan-col">
           <span class="dan-tag">[ ORIGIN & SHIFT ]</span>
-          <p>Originally trained as a copywriter, Dan now studies images as living behavior. His work observes how visual aesthetics emerge, repeat, and mutate across Southeast Asian cities.</p>
+          <!-- UPDATED NAME IN TEXT -->
+          <p>Originally trained as a copywriter, DAN now studies images as living behavior. His work observes how visual aesthetics emerge, repeat, and mutate across Southeast Asian cities.</p>
           <p>He pays attention to how femininity, sensuality, fashion, and everyday styling move through streets, screens, rented rooms, and informal spaces shaped by heat, density, and constant digital exposure.</p>
           <div class="dan-highlight">
             <p style="margin:0; font-size:14px; text-transform:uppercase; letter-spacing:1px;">
@@ -492,7 +469,7 @@
     </div>
   </section>
 
-  <!-- AVAILABILITY / FOOTER (REDESIGNED) -->
+  <!-- AVAILABILITY / FOOTER (CONTACT COLUMN REMOVED) -->
   <section class="bio-avail">
     <div class="avail-container">
       
@@ -515,12 +492,8 @@
           <span class="partner-item">Higgsfield</span>
         </div>
       </div>
-
-      <!-- COL 3: CONTACT -->
-      <div class="avail-col">
-        <span class="avail-label">CONTACT</span>
-        <a href="mailto:danifpradana@gmail.com" class="email-link">danifpradana@gmail.com</a>
-      </div>
+      
+      <!-- CONTACT COLUMN DELETED AS REQUESTED -->
 
     </div>
   </section>
