@@ -22,34 +22,72 @@
     }
     .scroll-hint {font-size:13px;opacity:0.7;letter-spacing:2px; font-family: 'Courier New', monospace;}
 
-    /* SOCIAL MENU */
-    .social-menu {
-      position:fixed;bottom:24px;right:6vw;z-index:100;display:flex;gap:20px;font-size:12px;letter-spacing:1px;
-    }
-    .social-menu a {color:rgba(255,255,255,0.7);text-decoration:none;transition:opacity .3s;}
-    .social-menu a:hover {opacity:1;}
-
-    /* PORTFOLIO GRID */
-    .portfolio {
-      padding-top:8vh;
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:0;
-      width:100vw;
+    /* --- DIRECTORY SECTION (MAIN NAVIGATION) --- */
+    .directory-section {
+      padding: 10vh 6vw;
+      background: #000;
+      width: 100vw;
+      border-top: 1px solid rgba(255,255,255,0.2);
     }
     
-    @media (max-width:700px)  { .portfolio { grid-template-columns:1fr; } }
-
-    .project {
-      position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#000;cursor:pointer;transition:transform .4s ease, opacity .4s ease;
+    .dir-header {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      margin-bottom: 40px;
+      opacity: 0.5;
+      letter-spacing: 2px;
     }
-    .project:hover {transform:scale(1.02);opacity:0.95;}
-    .project a {position:absolute;inset:0;z-index:3;}
-    .project video {position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
-    .project::before {content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,transparent 60%);z-index:1;}
-    .project-info {position:absolute;bottom:0;left:0;z-index:2;padding:0 4vw 4vh 4vw;}
-    .client {font-size:11px;opacity:0.9;margin-bottom:2px;letter-spacing:1px; font-family: 'Courier New', monospace;}
-    .title {font-size:clamp(15px,2.6vw,26px);font-weight:900;line-height:1.1;}
+
+    .dir-link {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: #fff;
+      border-top: 1px solid #333;
+      padding: 40px 0;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .dir-link:last-child { border-bottom: 1px solid #333; }
+
+    .dir-meta {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .dir-title {
+      font-size: clamp(32px, 5vw, 64px);
+      font-weight: 900;
+      line-height: 1;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dir-arrow {
+      font-size: 24px;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.3s ease;
+      color: #c41e3a; /* Red Accent */
+    }
+
+    /* Hover Effects */
+    .dir-link:hover {
+      background: #111;
+      padding-left: 20px;
+      border-color: #fff;
+    }
+    .dir-link:hover .dir-title { color: #fff; }
+    .dir-link:hover .dir-arrow { opacity: 1; transform: translateX(0); }
+    .dir-link:hover .dir-meta { color: #c41e3a; }
+
 
     /* --- MANIFESTO DESIGN (RED SECTION) --- */
     .bio-mxvdxn {
@@ -283,36 +321,40 @@
         ZEITGEIST.
       </div>
     </div>
-    <div class="scroll-hint">[ DOWNLOADING ]</div>
+    <div class="scroll-hint">[ ACCESSING DATABASE ]</div>
   </section>
 
-  <div class="social-menu">
-    <a href="https://x.com/mxvdxn" target="_blank" rel="noopener">X</a>
-    <a href="https://www.instagram.com/mxvdxn" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.tiktok.com/@mxvdxn.ai" target="_blank" rel="noopener">TikTok</a>
-    <a href="mailto:danifpradana@gmail.com" target="_blank">Contact</a>
-  </div>
+  <!-- DIRECTORY SECTION (REPLACES PORTFOLIO) -->
+  <div class="directory-section">
+    <div class="dir-header">SELECT DESTINATION //</div>
 
-  <!-- PORTFOLIO GRID -->
-  <div class="portfolio">
-    <div class="project"><a href="https://x.com/mxvdxn/status/1997241771722768727" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-2.mp4" type="video/mp4"></video><div class="project-info"><div class="client">01</div><div class="title">Under The Same Sky</div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1982251433874567267" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-1.mp4" type="video/mp4"></video><div class="project-info"><div class="client">02</div><div class="title">High School Girl vs. Kaiju</div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1996374733114552828" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-4.mp4" type="video/mp4"></video><div class="project-info"><div class="client">03</div><div class="title">High School Girl Parkour</div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1996724611225125272" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-3.mp4" type="video/mp4"></video><div class="project-info"><div class="client">04</div><div class="title">Self-Defense</div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1991490062077554806" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-5.mp4" type="video/mp4"></video><div class="project-info"><div class="client">05</div><div class="title">Her Bite (Never) Meant to Be Seen</div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1991148231225729132" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-6.mp4" type="video/mp4"></video><div class="project-info"><div class="client">06</div><div class="title">The Warmth You (Never) Asked For</div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1915429495642972375" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-7.mp4" type="video/mp4"></video><div class="project-info"><div class="client">07</div><div class="title">CONVERSE "Your Move" (Spec)</div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1987809536145752211" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-8.mp4" type="video/mp4"></video><div class="project-info"><div class="client">08</div><div class="title">Supermarket Chaos</div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1978619310722662863" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-9.mp4" type="video/mp4"></video><div class="project-info"><div class="client">09</div><div class="title">Laundry</div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1996878197397639528" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-10.mp4" type="video/mp4"></video><div class="project-info"><div class="client">10</div><div class="title">Welcome to my City</div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1989651436464930853" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-11.mp4" type="video/mp4"></video><div class="project-info"><div class="client">11</div><div class="title">Sunset Bars & Beats</div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1990429661688668497" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-12.mp4" type="video/mp4"></video><div class="project-info"><div class="client">12</div><div class="title">The Warmth You (Finally) Let In</div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1980423793685545285" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-13.mp4" type="video/mp4"></video><div class="project-info"><div class="client">13</div><div class="title">After School Powers</div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1970502244824178921" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-14.mp4" type="video/mp4"></video><div class="project-info"><div class="client">14</div><div class="title">Cursed School</div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1966870077367890250" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-15.mp4" type="video/mp4"></video><div class="project-info"><div class="client">15</div><div class="title">Jihan & Fah</div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1893834681193566621" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-16.mp4" type="video/mp4"></video><div class="project-info"><div class="client">16</div><div class="title">S P E E D / / B E Y O N D </div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1943619454379942258" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-17.mp4" type="video/mp4"></video><div class="project-info"><div class="client">17</div><div class="title">GILDED CORPORATE HEIRESS </div></div></div>
-    <div class="project"><a href="https://x.com/mxvdxn/status/1999652428669481246" target="_blank" rel="noopener"></a><video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/mxvdxn-vid-18.mp4" type="video/mp4"></video><div class="project-info"><div class="client">17</div><div class="title">Paintball Battle Royale </div></div></div>
+    <!-- Instagram Link -->
+    <a href="https://www.instagram.com/mxvdxn" target="_blank" rel="noopener" class="dir-link">
+      <span class="dir-meta">[ SOURCE_A : INSTAGRAM ]</span>
+      <div class="dir-title">
+        VISUAL ARCHIVES
+        <span class="dir-arrow">↗</span>
+      </div>
+    </a>
+
+    <!-- X / Twitter Link -->
+    <a href="https://x.com/mxvdxn" target="_blank" rel="noopener" class="dir-link">
+      <span class="dir-meta">[ SOURCE_B : TWITTER ]</span>
+      <div class="dir-title">
+        SYSTEM LOGS
+        <span class="dir-arrow">↗</span>
+      </div>
+    </a>
+
+    <!-- Email Link (Updated from Motion Lab/TikTok) -->
+    <a href="mailto:danifpradana@gmail.com" class="dir-link">
+      <span class="dir-meta">[ SOURCE_C : EMAIL ]</span>
+      <div class="dir-title">
+        DIRECT LINE
+        <span class="dir-arrow">↗</span>
+      </div>
+    </a>
+
   </div>
 
   <!-- MANIFESTO SECTION (RED) -->
