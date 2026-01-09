@@ -5,515 +5,221 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>M X V D X N</title>
   <style>
+    /* --- RESET & VARS --- */
+    :root {
+      --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --font-mono: 'Courier New', Courier, monospace;
+      --white: #ffffff;
+      --dim: rgba(255, 255, 255, 0.5);
+    }
+
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif; color:white; background:#000; overflow-x:hidden; line-height:1.6; }
 
-    #video-bg {position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:-1;}
-
-    /* HERO SECTION */
-    .hero {position:relative;height:100dvh;display:flex;flex-direction:column;justify-content:space-between;padding:6vh 6vw;}
-    .hero-text h1 {font-size:clamp(52px,11vw,140px);font-weight:900;line-height:0.9;margin-bottom:0;}
-    .hero-text .tagline {
-      font-size:clamp(70px,15vw,190px);
-      font-weight:900;
-      line-height:0.88;
-      letter-spacing:-0.03em;
-      margin-top:-8px;
-    }
-    .scroll-hint {font-size:13px;opacity:0.7;letter-spacing:2px; font-family: 'Courier New', monospace;}
-
-    /* --- DIRECTORY SECTION (MAIN NAVIGATION) --- */
-    .directory-section {
-      padding: 10vh 6vw;
+    body {
       background: #000;
-      width: 100vw;
-      border-top: 1px solid rgba(255,255,255,0.2);
-    }
-    
-    .dir-header {
-      font-family: 'Courier New', monospace;
-      font-size: 12px;
-      margin-bottom: 40px;
-      opacity: 0.5;
-      letter-spacing: 2px;
-    }
-
-    .dir-link {
+      color: var(--white);
+      font-family: var(--font-main);
+      width: 100%;
+      min-height: 100dvh; 
+      overflow-x: hidden;
+      overflow-y: auto; 
       display: flex;
       flex-direction: column;
-      text-decoration: none;
-      color: #fff;
-      border-top: 1px solid #333;
-      padding: 40px 0;
-      transition: all 0.3s ease;
-      position: relative;
     }
-    
-    .dir-link:last-child { border-bottom: 1px solid #333; }
 
-    .dir-meta {
-      font-family: 'Courier New', monospace;
-      font-size: 12px;
-      color: #666;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    #video-bg {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: -1; opacity: 0.5;
     }
-    
-    .dir-title {
-      font-size: clamp(32px, 5vw, 64px);
-      font-weight: 900;
-      line-height: 1;
+
+    /* --- MAIN LAYOUT (FLEXBOX) --- */
+    .screen {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; 
+      /* Reduced top padding to tighten the gap further */
+      padding: 30px 5vw; 
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    /* --- 1. TOP: BRAND --- */
+    .brand-bar {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      opacity: 0.7;
+      /* No large bottom padding here anymore */
+    }
+
+    /* --- 2. MIDDLE: NAVIGATION --- */
+    .nav-container {
+      display: flex;
+      flex-direction: column;
+      
+      /* KEY FIX: Changed from 'center' to 'flex-start' */
+      justify-content: flex-start; 
+      
+      /* This controls the specific distance between Header and Links */
+      margin-top: 40px; 
+      
+      gap: 3vh; 
+      flex-grow: 1; /* Allows it to take space but keeps content at top */
+    }
+
+    .nav-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .nav-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--dim);
+      letter-spacing: 2px;
+      margin-bottom: 5px;
       text-transform: uppercase;
+    }
+
+    /* THE LINKS */
+    .nav-item {
+      text-decoration: none;
+      color: var(--white);
+      font-size: clamp(40px, 10vh, 110px); 
+      font-weight: 900; 
+      line-height: 0.85;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      transition: opacity 0.3s, transform 0.3s;
+      transform-origin: left;
+    }
+
+    /* Interaction */
+    .nav-container:hover .nav-item { opacity: 0.3; }
+    .nav-container .nav-group:hover .nav-item { 
+      opacity: 1; 
+      transform: translateX(15px); 
+    }
+    .nav-container .nav-group:hover .nav-meta { color: #fff; }
+
+    /* --- 3. BOTTOM: INFO --- */
+    .info-bar {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-    }
-
-    .dir-arrow {
-      font-size: 24px;
-      opacity: 0;
-      transform: translateX(-20px);
-      transition: all 0.3s ease;
-      color: #c41e3a; /* Red Accent */
-    }
-
-    /* Hover Effects */
-    .dir-link:hover {
-      background: #111;
-      padding-left: 20px;
-      border-color: #fff;
-    }
-    .dir-link:hover .dir-title { color: #fff; }
-    .dir-link:hover .dir-arrow { opacity: 1; transform: translateX(0); }
-    .dir-link:hover .dir-meta { color: #c41e3a; }
-
-
-    /* --- MANIFESTO DESIGN (RED SECTION) --- */
-    .bio-mxvdxn {
-      background: #c41e3a; /* The Red */
-      color: #fff;
-      padding: 120px 6vw;
-      width: 100%;
-    }
-    
-    .manifesto-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-    }
-
-    .man-header { border-bottom: 4px solid #fff; padding-bottom: 40px; }
-    .man-header h1 {
-      font-size: clamp(60px, 10vw, 120px);
-      font-weight: 900;
-      line-height: 0.8;
-      letter-spacing: -3px;
-      margin-bottom: 20px;
-    }
-    .man-subtitle {
-      font-family: 'Courier New', Courier, monospace; 
-      font-size: clamp(14px, 2vw, 18px);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      opacity: 0.9;
-    }
-    .man-intro {
-      font-size: clamp(20px, 3vw, 28px);
-      font-weight: 700;
-      line-height: 1.3;
-      margin-top: 30px;
-      max-width: 900px;
-    }
-
-    /* Common Grid Classes */
-    .man-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
+      align-items: flex-end; 
+      border-top: 1px solid rgba(255,255,255,0.2);
+      padding-top: 20px;
+      flex-wrap: wrap;
       gap: 30px;
-      border-top: 1px solid rgba(255,255,255,0.4);
-      padding-top: 30px;
-    }
-    .col-full { grid-column: span 12; }
-    .col-half { grid-column: span 6; }
-    .col-third { grid-column: span 4; }
-    
-    @media (max-width: 900px) {
-      .col-half, .col-third { grid-column: span 12; }
-      .man-grid { gap: 40px; }
+      /* Ensures footer stays at bottom even if nav is pulled up */
+      margin-top: auto; 
     }
 
-    .sec-label {
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 12px;
-      font-weight: bold;
-      border: 1px solid #fff;
-      display: inline-block;
-      padding: 4px 8px;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-    }
-
-    .man-block h3 {
-      font-size: 24px;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .man-block p { font-size: 16px; opacity: 0.95; margin-bottom: 15px; line-height: 1.6; }
-
-    .man-list { list-style: none; margin-top: 15px; }
-    .man-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 8px;
-      font-size: 15px;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      padding-bottom: 8px;
-    }
-    .man-list li::before { content: ">>"; font-family: monospace; font-weight: bold; }
-
-    .interest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
-    @media (max-width: 600px) { .interest-grid { grid-template-columns: 1fr; } }
-    
-    .interest-card { background: rgba(0,0,0,0.1); padding: 20px; border: 1px solid rgba(255,255,255,0.2); }
-    .interest-num { font-family: monospace; font-size: 32px; font-weight: 900; opacity: 0.3; margin-bottom: 10px; display: block; }
-    .card-footer { font-weight: bold; margin-top: 15px; font-size: 14px; opacity: 0.8; border-top: 1px dotted rgba(255,255,255,0.3); padding-top: 10px; font-family: 'Courier New', monospace; }
-    
-    .statement-box { border: 4px solid #fff; padding: 40px; text-align: center; font-size: clamp(20px, 4vw, 32px); font-weight: 900; text-transform: uppercase; line-height: 1.1; }
-
-    /* --- DAN SECTION (WHITE) --- */
-    .bio-dan {
-      background: #fff;
-      color: #000;
-      padding: 120px 6vw;
-    }
-    
-    .dan-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 50px; }
-    
-    .dan-header { border-bottom: 4px solid #000; padding-bottom: 30px; display:flex; flex-direction:column; }
-    .dan-name { font-size: clamp(50px, 8vw, 100px); font-weight: 900; line-height: 0.85; letter-spacing: -2px; margin-bottom: 10px; }
-    .dan-role { font-family: 'Courier New', monospace; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; background: #000; color: #fff; display: inline-block; padding: 4px 10px; align-self: flex-start; }
-
-    .dan-intro-text {
-      font-size: clamp(22px, 3.5vw, 36px);
-      font-weight: 900;
-      line-height: 1.1;
-      max-width: 1000px;
-    }
-
-    .dan-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      border-top: 1px solid #000;
-      padding-top: 40px;
-    }
-    @media (max-width: 800px) { .dan-grid { grid-template-columns: 1fr; gap: 40px; } }
-
-    .dan-col p { font-size: 16px; line-height: 1.7; margin-bottom: 24px; }
-    
-    .dan-tag {
-      font-family: 'Courier New', monospace;
-      font-size: 11px;
-      font-weight: bold;
-      color: #666;
-      margin-bottom: 12px;
-      display: block;
-      text-transform: uppercase;
-    }
-    
-    .dan-highlight {
-      border: 2px solid #000;
-      padding: 30px;
-    }
-    .dan-highlight strong { font-weight: 900; text-decoration: underline; }
-
-    /* --- AVAILABILITY SECTION --- */
-    .bio-avail {
-      background: #000;
-      color: #fff;
-      padding: 120px 6vw;
-      border-top: 1px solid #222;
-    }
-
-    .avail-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-    }
-
-    @media (max-width: 900px) {
-      .avail-container { grid-template-columns: 1fr; gap: 50px; }
-    }
-
-    .avail-col {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .avail-label {
-      font-family: 'Courier New', monospace;
-      font-size: 12px;
-      font-weight: bold;
-      color: #555;
-      margin-bottom: 24px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      border-bottom: 1px solid #333;
-      padding-bottom: 5px;
-      width: 100%;
-    }
-
-    .avail-text {
-      font-size: 18px;
-      font-weight: 600;
+    .text-block {
+      font-family: var(--font-mono);
+      font-size: 10px;
       line-height: 1.6;
-      color: #ccc;
+      color: var(--dim);
+      text-transform: uppercase;
+      max-width: 450px;
     }
 
-    .avail-partners {
-      font-size: 24px;
-      font-weight: 900;
-      line-height: 1.4;
-      color: #fff;
-    }
-    
-    .partner-item {
-      display: inline-block;
-      margin-right: 10px;
-    }
-    .partner-item::after { content: "/"; margin-left: 10px; color: #444; }
-    .partner-item:last-child::after { content: ""; }
+    .text-block strong { color: var(--white); font-weight: 700; }
+    .spacer { margin-bottom: 12px; display: block; }
+    .highlight { border-bottom: 1px solid var(--white); color: var(--white); }
 
-    footer {
-      padding: 60px 6vw;
-      text-align: center;
-      font-size: 11px;
-      background: #000;
-      color: #444;
-      font-family: monospace;
-      border-top: 1px solid #111;
+    /* --- RESPONSIVE MOBILE ADJUSTMENTS --- */
+    @media (max-width: 900px) {
+      .screen { padding: 20px; }
+      
+      .nav-container { 
+        margin-top: 30px; /* Tighter gap on mobile */
+        gap: 30px; 
+      }
+      
+      .nav-item { font-size: 13vw; line-height: 0.9; }
+
+      .info-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        border-top: none;
+        margin-top: 40px;
+      }
+      
+      .text-block { text-align: left !important; max-width: 100%; }
     }
+
   </style>
 </head>
 <body>
 
+  <!-- UPDATED VIDEO SOURCE -->
   <video id="video-bg" autoplay muted loop playsinline>
-    <source src="https://mxvdxn.github.io/video_files/grok-video-5e39a346-9f26-4f53-85b1-fac292efa893.mp4" type="video/mp4">
+    <source src="https://mxvdxn.github.io/video_files/grok-video-be7d0d77-1ed6-4106-af08-caeef29bd5bc.mp4" type="video/mp4">
   </video>
 
-  <section class="hero">
-    <div class="hero-text">
-      <h1>MXVDXN</h1>
-      <div class="tagline">
-        VIBE.<br>
-        KVLTURE.<br>
-        ZEITGEIST.
-      </div>
+  <div class="screen">
+    
+    <!-- TOP -->
+    <div class="brand-bar">
+      MXVDXN // V.2025
     </div>
-    <div class="scroll-hint">[ ACCESSING DATABASE ]</div>
-  </section>
 
-  <!-- DIRECTORY SECTION (REPLACES PORTFOLIO) -->
-  <div class="directory-section">
-    <div class="dir-header">SELECT DESTINATION //</div>
-
-    <!-- Instagram Link -->
-    <a href="https://www.instagram.com/mxvdxn" target="_blank" rel="noopener" class="dir-link">
-      <span class="dir-meta">[ SOURCE_A : INSTAGRAM ]</span>
-      <div class="dir-title">
-        VISUAL ARCHIVES
-        <span class="dir-arrow">↗</span>
+    <!-- MIDDLE (LINKS) - Now pulled up closer to top -->
+    <nav class="nav-container">
+      
+      <div class="nav-group">
+        <span class="nav-meta">01 // ARCHIVE</span>
+        <a href="https://www.instagram.com/mxvdxn" target="_blank" class="nav-item">
+          VISUAL<br>ARCHIVES
+        </a>
       </div>
-    </a>
 
-    <!-- X / Twitter Link -->
-    <a href="https://x.com/mxvdxn" target="_blank" rel="noopener" class="dir-link">
-      <span class="dir-meta">[ SOURCE_B : TWITTER ]</span>
-      <div class="dir-title">
-        SYSTEM LOGS
-        <span class="dir-arrow">↗</span>
+      <div class="nav-group">
+        <span class="nav-meta">02 // LOGS</span>
+        <a href="https://x.com/mxvdxn" target="_blank" class="nav-item">
+          SYSTEM<br>LOGS
+        </a>
       </div>
-    </a>
 
-    <!-- Email Link (Updated from Motion Lab/TikTok) -->
-    <a href="mailto:danifpradana@gmail.com" class="dir-link">
-      <span class="dir-meta">[ SOURCE_C : EMAIL ]</span>
-      <div class="dir-title">
-        DIRECT LINE
-        <span class="dir-arrow">↗</span>
+      <div class="nav-group">
+        <span class="nav-meta">03 // CONTACT</span>
+        <a href="mailto:danifpradana@gmail.com" class="nav-item">
+          DIRECT<br>LINE
+        </a>
       </div>
-    </a>
+
+    </nav>
+
+    <!-- BOTTOM (INFO) -->
+    <div class="info-bar">
+      
+      <!-- LEFT TEXT -->
+      <div class="text-block">
+        <strong>CULTURE AS SIGNAL.</strong> WE OPERATE ON THE ASSUMPTION THAT ORIGINALITY IS DEAD. WE ARE ALL PROCESSING UNITS FOR HISTORY, MEMORY, AND NOISE.
+        <span class="spacer"></span>
+        PROTOCOL: <span class="highlight">COPY</span> / <span class="highlight">TRANSFORM</span> / <span class="highlight">COMBINE</span>.
+        <span class="spacer"></span>
+        MXVDXN IS AN ACCELERATOR FOR THIS FEEDBACK LOOP.
+      </div>
+
+      <!-- RIGHT TEXT -->
+      <div class="text-block" style="text-align: right;">
+        <strong>OPERATOR: DAN</strong>
+        <span class="spacer"></span>
+        VISUAL SAMPLER / COPYWRITER.<br>
+        10+ YEARS IN APAC ADVERTISING.
+        <span class="spacer"></span>
+        USING THE MACHINE TO ACCELERATE INTUITION.<br>
+        RELYING ON THE <span class="highlight">LIZARD BRAIN</span>.
+      </div>
+
+    </div>
 
   </div>
-
-  <!-- MANIFESTO SECTION (RED) -->
-  <section class="bio-mxvdxn">
-    <div class="manifesto-container">
-      <div class="man-header">
-        <h1>MXVDXN</h1>
-        <div class="man-subtitle">CULTURE AS SIGNAL.</div>
-        <p class="man-intro">
-          We operate on the assumption that originality is just a nice story we tell ourselves. In reality, we are all just processing units for history, memory, and noise. <br><br>
-          MXVDXN is an accelerator for this feedback loop.
-        </p>
-      </div>
-
-      <!-- ROW 1: CORE PHILOSOPHY -->
-      <div class="man-grid">
-        <div class="col-half">
-          <span class="sec-label">01 // THE SYNTHETIC ARCHIVE</span>
-          <div class="man-block">
-            <p>At its core, the work is about treating Southeast Asian culture not as a museum exhibit, but as raw data. We apply a logic of <strong>sampling</strong> to the visual noise of the tropics.</p>
-            <ul class="man-list">
-              <li><strong>INGESTION:</strong> The city is the dataset. We scrape the humidity, the neon, and the traffic.</li>
-              <li><strong>LATENT SPACE:</strong> We don't direct the AI. We jam with it. We feed it signals and watch it hallucinate a new reality.</li>
-              <li><strong>THE DROP:</strong> The result isn't a copy. It's a mutation. A new vibe built from the debris of the old.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-half">
-          <span class="sec-label">02 // NOISE VS. SIGNAL</span>
-          <div class="man-block">
-            <p>If a human artist studies 10,000 photos to learn a style, it's called inspiration. If a machine does it, it's called a statistical model. The mechanism is different, but the urge is the same.</p>
-            <p>We are interested in the glitch that happens in between. The moment where the local aesthetic gets crushed, compressed, and re-exported as something familiar but alien.</p>
-            <p style="margin-top:20px; font-weight:bold;">We don't steal culture. We remix the frequency.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- ROW 2: APPLICATION & OUTPUT -->
-      <div class="man-grid">
-        <div class="col-full">
-          <span class="sec-label">03 // THE OUTPUT</span>
-          <div class="interest-grid">
-            <div class="interest-card">
-              <span class="interest-num">01</span>
-              <h3>Sampling Reality</h3>
-              <p>We sample the DNA of Jakarta and Bangkok. The specific grain of the asphalt, the way light hits a 7-Eleven at 3AM.</p>
-              <div class="card-footer">Visual crate-digging.</div>
-            </div>
-            <div class="interest-card">
-              <span class="interest-num">02</span>
-              <h3>Context Flipping</h3>
-              <p>Taking hyper-local references—school uniforms, street food stalls, damp walls—and forcing them into new, synthetic contexts.</p>
-              <div class="card-footer">Repurposing the code.</div>
-            </div>
-            <div class="interest-card">
-              <span class="interest-num">03</span>
-              <h3>The Mashup</h3>
-              <p>The magic is in the collision. High-gloss advertising aesthetics smashed against the gritty, lo-fi reality of the street.</p>
-              <div class="card-footer">Organized chaos.</div>
-            </div>
-            <div class="interest-card">
-              <span class="interest-num">04</span>
-              <h3>IRL Application</h3>
-              <p>This is a testing ground. A venue to see what sticks before we deploy it into actual commercial projects.</p>
-              <div class="card-footer">Beta testing culture.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="man-grid">
-        <div class="col-full">
-          <span class="sec-label">04 // POSITION</span>
-          <div class="statement-box">
-            We aren't trying to predict the future.<br>
-            We are just remixing the present until it breaks.
-          </div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-top:30px;">
-            <div class="man-block">
-              <h3>The Mission:</h3>
-              <ul class="man-list">
-                <li>Capture the signal</li>
-                <li>Amplify the noise</li>
-                <li>Distort the memory</li>
-                <li>Export the vibe</li>
-              </ul>
-            </div>
-            <div class="man-block">
-              <h3>The Thesis:</h3>
-              <p style="font-size:18px; font-weight:700;">Originality is dead. Long live the remix.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DAN SECTION (WHITE) -->
-  <section class="bio-dan">
-    <div class="dan-container">
-      <div class="dan-header">
-        <span class="dan-name">DAN</span>
-        <span class="dan-role">VISUAL SAMPLER / COPYWRITER</span>
-      </div>
-      <div class="dan-intro-text">
-        Jakarta-born Copywriter with 10+ years in the APAC advertising industry. Now treating the creative process less like a job and more like a sampling station.
-      </div>
-      <div class="dan-grid">
-        <div class="dan-col">
-          <span class="dan-tag">[ THE SELECTOR ]</span>
-          <p>I’ve spent over a decade writing headlines for global brands across APAC. But I treat that experience less like a corporate career and more like crate-digging.</p>
-          <p>With <strong>10+ years in the game</strong>, I view creative direction through the lens of a hip-hop producer. Advertising has always been about sampling culture—finding an insight, chopping it up, and flipping it. I’m just applying that same logic to Generative AI.</p>
-          <div class="dan-highlight">
-            <p style="margin:0; font-size:14px; text-transform:uppercase; letter-spacing:1px;">
-              Copywriting is just prompting with a different interface.
-            </p>
-          </div>
-        </div>
-        <div class="dan-col">
-          <span class="dan-tag">[ THE TOOLKIT ]</span>
-          <p>I use the machine to accelerate intuition. It allows me to bypass the "logic" phase and go straight to the visual output. It’s messy, it’s imperfect, and it hallucinates constantly.</p>
-          <span class="dan-tag" style="margin-top:40px;">[ LIZARD BRAIN ]</span>
-          <p><strong>This is where the "Lizard Brain" comes in.</strong> The machine generates the noise, but the gut instinct decides what is signal. It's pre-rational. It's about feeling the texture of the image before you understand the meaning.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AVAILABILITY / FOOTER -->
-  <section class="bio-avail">
-    <div class="avail-container">
-      
-      <!-- COL 1: AVAILABILITY -->
-      <div class="avail-col">
-        <span class="avail-label">AVAILABILITY</span>
-        <p class="avail-text">
-          Not open for full-time roles.<br>
-          Selective with side jobs & collaborations.
-        </p>
-      </div>
-
-      <!-- COL 2: PARTNERSHIPS -->
-      <div class="avail-col">
-        <span class="avail-label">CREATIVE PARTNERSHIPS</span>
-        <div class="avail-partners">
-          <span class="partner-item">Hailuo</span>
-          <span class="partner-item">Kling AI</span>
-          <span class="partner-item">Freepik</span>
-          <span class="partner-item">Higgsfield</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <footer>
-    © 2025 MXVDXN. All rights reserved. Site content and original creative works are property of MXVDXN.
-  </footer>
 
 </body>
 </html>
