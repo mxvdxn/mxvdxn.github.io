@@ -57,16 +57,55 @@
     /* --- 2. MIDDLE: NAVIGATION --- */
     .nav-container {
       display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 40px;
+      gap: 4vw;
+      flex-grow: 1;
+    }
+
+    .nav-col {
+      display: flex;
       flex-direction: column;
-      
-      /* KEY FIX: Changed from 'center' to 'flex-start' */
-      justify-content: flex-start; 
-      
-      /* This controls the specific distance between Header and Links */
-      margin-top: 40px; 
-      
-      gap: 3vh; 
-      flex-grow: 1; /* Allows it to take space but keeps content at top */
+      justify-content: flex-start;
+      gap: 3vh;
+    }
+
+    /* Right column — AI Films */
+    .nav-col-films {
+      align-items: flex-end;
+      text-align: right;
+      padding-left: 4vw;
+    }
+
+    .nav-col-films .nav-group {
+      align-items: flex-end;
+    }
+
+    .nav-col-films .nav-item {
+      transform-origin: right;
+      text-align: right;
+    }
+
+    .nav-col-films:hover .nav-item { opacity: 0.3; }
+    .nav-col-films .nav-group:hover .nav-item {
+      opacity: 1;
+      transform: translateX(-15px);
+    }
+    .nav-col-films .nav-group:hover .nav-meta { color: #fff; }
+
+    /* Section label for the films column */
+    .col-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      width: 100%;
+      text-align: right;
     }
 
     .nav-group {
@@ -88,7 +127,7 @@
     .nav-item {
       text-decoration: none;
       color: var(--white);
-      font-size: clamp(32px, 7vh, 80px); 
+      font-size: clamp(28px, 6vh, 72px);
       font-weight: 900; 
       line-height: 0.85;
       letter-spacing: -0.03em;
@@ -97,13 +136,13 @@
       transform-origin: left;
     }
 
-    /* Interaction */
-    .nav-container:hover .nav-item { opacity: 0.3; }
-    .nav-container .nav-group:hover .nav-item { 
+    /* Interaction — left col */
+    .nav-col:not(.nav-col-films):hover .nav-item { opacity: 0.3; }
+    .nav-col:not(.nav-col-films) .nav-group:hover .nav-item { 
       opacity: 1; 
       transform: translateX(15px); 
     }
-    .nav-container .nav-group:hover .nav-meta { color: #fff; }
+    .nav-col:not(.nav-col-films) .nav-group:hover .nav-meta { color: #fff; }
 
     /* --- 3. BOTTOM: INFO --- */
     .info-bar {
@@ -136,9 +175,25 @@
       .screen { padding: 20px; }
       
       .nav-container { 
-        margin-top: 30px; /* Tighter gap on mobile */
+        flex-direction: column;
+        margin-top: 30px;
         gap: 30px; 
       }
+
+      .nav-col-films {
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.15);
+        padding-left: 0;
+        padding-top: 30px;
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .nav-col-films .nav-group { align-items: flex-start; }
+      .nav-col-films .nav-item { transform-origin: left; text-align: left; }
+      .nav-col-films:hover .nav-item { opacity: 0.3; }
+      .nav-col-films .nav-group:hover .nav-item { transform: translateX(15px); }
+      .col-label { text-align: left; }
       
       .nav-item { font-size: 11vw; line-height: 0.9; }
 
@@ -168,35 +223,54 @@
       MXVDXN // V.2026
     </div>
 
-    <!-- MIDDLE (LINKS) - Now pulled up closer to top -->
+    <!-- MIDDLE (LINKS) -->
     <nav class="nav-container">
-      
-      <div class="nav-group">
-        <span class="nav-meta">01 // ARCHIVE</span>
-        <a href="https://www.instagram.com/mxvdxn" target="_blank" class="nav-item">
-          VISUAL<br>ARCHIVES
-        </a>
+
+      <!-- LEFT COL: General -->
+      <div class="nav-col">
+
+        <div class="nav-group">
+          <span class="nav-meta">01 // ARCHIVE</span>
+          <a href="https://www.instagram.com/mxvdxn" target="_blank" class="nav-item">
+            VISUAL<br>ARCHIVES
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <span class="nav-meta">02 // LOGS</span>
+          <a href="https://x.com/mxvdxn" target="_blank" class="nav-item">
+            DAILY<br>LOGS
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <span class="nav-meta">03 // CONTACT</span>
+          <a href="/cdn-cgi/l/email-protection#492d2827202f393b282d282728092e24282025672a2624" class="nav-item">
+            DIRECT<br>LINE
+          </a>
+        </div>
+
       </div>
 
-      <div class="nav-group">
-        <span class="nav-meta">02 // LOGS</span>
-        <a href="https://x.com/mxvdxn" target="_blank" class="nav-item">
-          DAILY<br>LOGS
-        </a>
-      </div>
+      <!-- RIGHT COL: AI Short Films -->
+      <div class="nav-col nav-col-films">
 
-      <div class="nav-group">
-        <span class="nav-meta">03 // AI-GENERATED SHORT FILM</span>
-        <a href="https://mxvdxn.github.io/twfte/" target="_blank" class="nav-item">
-          THE WORLD<br>FORGOT TO END
-        </a>
-      </div>
+        <div class="col-label">AI SHORT FILMS</div>
 
-      <div class="nav-group">
-        <span class="nav-meta">04 // CONTACT</span>
-        <a href="/cdn-cgi/l/email-protection#492d2827202f393b282d282728092e24282025672a2624" class="nav-item">
-          DIRECT<br>LINE
-        </a>
+        <div class="nav-group">
+          <span class="nav-meta">01 // AI-GENERATED SHORT FILM</span>
+          <a href="https://mxvdxn.github.io/twfte/" target="_blank" class="nav-item">
+            THE WORLD<br>FORGOT TO END
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <span class="nav-meta">02 // AI-GENERATED SHORT FILM</span>
+          <a href="https://mxvdxn.github.io/codename-widuri" target="_blank" class="nav-item">
+            CODENAME:<br>WIDURI
+          </a>
+        </div>
+
       </div>
 
     </nav>
