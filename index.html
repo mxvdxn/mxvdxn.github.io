@@ -38,7 +38,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between; 
-      /* Reduced top padding to tighten the gap further */
       padding: 30px 5vw; 
       width: 100%;
       max-width: 1600px;
@@ -51,7 +50,6 @@
       font-size: 11px;
       letter-spacing: 2px;
       opacity: 0.7;
-      /* No large bottom padding here anymore */
     }
 
     /* --- 2. MIDDLE: NAVIGATION --- */
@@ -153,7 +151,6 @@
       padding-top: 20px;
       flex-wrap: wrap;
       gap: 30px;
-      /* Ensures footer stays at bottom even if nav is pulled up */
       margin-top: auto; 
     }
 
@@ -206,29 +203,24 @@
       
       .text-block { text-align: left !important; max-width: 100%; }
     }
-
   </style>
 </head>
 <body>
 
-  <!-- UPDATED VIDEO SOURCE -->
   <video id="video-bg" autoplay muted loop playsinline>
     <source src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/2025-12-19-04.mp4" type="video/mp4">
   </video>
 
   <div class="screen">
     
-    <!-- TOP -->
     <div class="brand-bar">
       MXVDXN // V.2026
     </div>
 
-    <!-- MIDDLE (LINKS) -->
     <nav class="nav-container">
 
       <!-- LEFT COL: General -->
       <div class="nav-col">
-
         <div class="nav-group">
           <span class="nav-meta">01 // ARCHIVE</span>
           <a href="https://www.instagram.com/mxvdxn" target="_blank" class="nav-item">
@@ -245,16 +237,14 @@
 
         <div class="nav-group">
           <span class="nav-meta">03 // CONTACT</span>
-          <a href="/cdn-cgi/l/email-protection#492d2827202f393b282d282728092e24282025672a2624" class="nav-item">
+          <a href="mailto:dan@mxvdxn.com" class="nav-item">
             DIRECT<br>LINE
           </a>
         </div>
-
       </div>
 
       <!-- RIGHT COL: AI Short Films -->
       <div class="nav-col nav-col-films">
-
         <div class="col-label">AI SHORT FILMS</div>
 
         <div class="nav-group">
@@ -271,22 +261,23 @@
           </a>
         </div>
 
+        <div class="nav-group">
+          <span class="nav-meta">03 // AI-GENERATED SHORT FILM</span>
+          <a href="https://mxvdxn.github.io/sari-ploy" target="_blank" class="nav-item">
+            SARI &<br>PLOY
+          </a>
+        </div>
       </div>
 
     </nav>
 
-    <!-- BOTTOM (INFO) -->
     <div class="info-bar">
-      
-      <!-- LEFT TEXT -->
       <div class="text-block">
         <strong>CREATIVE PARTNERSHIPS</strong>
         <span class="spacer"></span>
         <span class="highlight">KLING AI</span> / <span class="highlight">HAILUO MINIMAX</span> / <span class="highlight">GROK IMAGINE</span> / <span class="highlight">FREEPIK</span> / <span class="highlight">YAPPER</span>
-
       </div>
 
-      <!-- RIGHT TEXT -->
       <div class="text-block" style="text-align: right;">
         <strong>DAN PRADANA</strong>
         <span class="spacer"></span>
@@ -294,4 +285,9 @@
         10+ YEARS IN APAC ADVERTISING.
         USING THE MACHINE TO ACCELERATE INTUITION.
         RELYING ON THE LIZARD BRAIN.
-      <
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
