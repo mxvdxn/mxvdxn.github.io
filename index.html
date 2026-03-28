@@ -4,26 +4,103 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M X V D X N</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=IBM+Plex+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 
+:root {
+  --white:#ffffff;
+  --dim:rgba(255,255,255,0.5);
+  --dim2:rgba(255,255,255,0.3);
+  --dim3:rgba(255,255,255,0.12);
+  --dim4:rgba(255,255,255,0.06);
+  --black:#000000;
+  --mono:'Courier New', Courier, monospace;
+  --sans:'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 body {
-  background:#000;
-  color:#fff;
-  font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background:var(--black);
+  color:var(--white);
+  font-family:var(--sans);
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
 }
 
-::selection { background:#ff2200; color:#fff; }
+::selection { background:var(--white); color:var(--black); }
 
 /* ============================================================
-   HERO / INDEX SECTION
+   SHARED TYPOGRAPHY
    ============================================================ */
+.label {
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--dim2);
+}
+
+.heading-xl {
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:clamp(32px, 7vw, 80px);
+  line-height:0.88;
+  letter-spacing:-0.03em;
+  text-transform:uppercase;
+  color:var(--white);
+}
+
+.heading-lg {
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:clamp(24px, 4vw, 48px);
+  line-height:0.92;
+  letter-spacing:-0.02em;
+  text-transform:uppercase;
+  color:var(--white);
+}
+
+.heading-md {
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:clamp(18px, 2.5vw, 32px);
+  line-height:1;
+  letter-spacing:-0.01em;
+  text-transform:uppercase;
+  color:var(--white);
+}
+
+.body-text {
+  font-family:var(--mono);
+  font-size:13px;
+  line-height:2;
+  color:var(--dim);
+}
+
+.body-text strong { color:var(--white); font-weight:700; }
+
+.rule { border:none; border-top:1px solid var(--dim3); }
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),
+             transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal.vis { opacity:1; transform:none; }
+
+/* ============================================================
+   HERO / INDEX
+   ============================================================ */
+#video-bg {
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  object-fit:cover; z-index:-2; opacity:0.4;
+  transition:opacity 0.6s ease;
+}
+
 .hero-index {
   position:relative;
   min-height:100vh;
@@ -36,21 +113,15 @@ body {
   width:100%;
 }
 
-#video-bg {
-  position:fixed; top:0; left:0; width:100%; height:100%;
-  object-fit:cover; z-index:-2; opacity:0.4;
-}
-
 .brand-bar {
-  font-family:'Courier New', Courier, monospace;
+  font-family:var(--mono);
   font-size:11px;
   letter-spacing:2px;
   opacity:0.7;
 }
 
-.hero-nav-container {
+.hero-nav {
   display:flex;
-  flex-direction:row;
   justify-content:space-between;
   align-items:flex-start;
   margin-top:40px;
@@ -58,55 +129,34 @@ body {
   flex-grow:1;
 }
 
-.hero-nav-col {
+.hero-col {
   display:flex;
   flex-direction:column;
-  justify-content:flex-start;
   gap:3vh;
 }
 
-.hero-nav-col-right {
+.hero-col-right {
   align-items:flex-end;
   text-align:right;
   padding-left:4vw;
 }
-.hero-nav-col-right .hero-nav-group { align-items:flex-end; }
-.hero-nav-col-right .hero-nav-link { transform-origin:right; text-align:right; }
-.hero-nav-col-right:hover .hero-nav-link { opacity:0.3; }
-.hero-nav-col-right .hero-nav-group:hover .hero-nav-link { opacity:1; transform:translateX(-15px); }
-.hero-nav-col-right .hero-nav-group:hover .hero-nav-meta { color:#fff; }
 
-.col-label {
-  font-family:'Courier New', Courier, monospace;
-  font-size:9px;
-  letter-spacing:3px;
-  color:rgba(255,255,255,0.35);
-  text-transform:uppercase;
-  margin-bottom:16px;
-  padding-bottom:10px;
-  width:100%;
-  text-align:right;
-}
+.hero-group { display:flex; flex-direction:column; align-items:flex-start; }
+.hero-col-right .hero-group { align-items:flex-end; }
 
-.hero-nav-group {
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-}
-
-.hero-nav-meta {
-  font-family:'Courier New', Courier, monospace;
+.hero-meta {
+  font-family:var(--mono);
   font-size:10px;
-  color:rgba(255,255,255,0.5);
+  color:var(--dim);
   letter-spacing:2px;
   margin-bottom:5px;
   text-transform:uppercase;
   transition:color 0.3s;
 }
 
-.hero-nav-link {
+.hero-link {
   text-decoration:none;
-  color:#fff;
+  color:var(--white);
   font-size:clamp(28px, 6vh, 72px);
   font-weight:900;
   line-height:0.85;
@@ -114,837 +164,688 @@ body {
   text-transform:uppercase;
   transition:opacity 0.3s, transform 0.3s;
   transform-origin:left;
-  cursor:pointer;
   display:block;
 }
 
-.hero-nav-col:not(.hero-nav-col-right):hover .hero-nav-link { opacity:0.3; }
-.hero-nav-col:not(.hero-nav-col-right) .hero-nav-group:hover .hero-nav-link { opacity:1; transform:translateX(15px); }
-.hero-nav-col:not(.hero-nav-col-right) .hero-nav-group:hover .hero-nav-meta { color:#fff; }
+.hero-col-right .hero-link { transform-origin:right; }
 
-.hero-info-bar {
+.col-label {
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:3px;
+  color:var(--dim2);
+  text-transform:uppercase;
+  margin-bottom:16px;
+  padding-bottom:10px;
+  width:100%;
+  text-align:right;
+}
+
+/* Hover interactions */
+.hero-col:not(.hero-col-right):hover .hero-link { opacity:0.3; }
+.hero-col:not(.hero-col-right) .hero-group:hover .hero-link { opacity:1; transform:translateX(15px); }
+.hero-col:not(.hero-col-right) .hero-group:hover .hero-meta { color:#fff; }
+
+.hero-col-right:hover .hero-link { opacity:0.3; }
+.hero-col-right .hero-group:hover .hero-link { opacity:1; transform:translateX(-15px); }
+.hero-col-right .hero-group:hover .hero-meta { color:#fff; }
+
+.hero-info {
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
-  border-top:1px solid rgba(255,255,255,0.2);
+  border-top:1px solid var(--dim3);
   padding-top:20px;
   flex-wrap:wrap;
   gap:30px;
   margin-top:auto;
 }
 
-.hero-text-block {
-  font-family:'Courier New', Courier, monospace;
+.hero-text {
+  font-family:var(--mono);
   font-size:12px;
   line-height:1.6;
-  color:rgba(255,255,255,0.5);
+  color:var(--dim);
   text-transform:uppercase;
   max-width:450px;
 }
-.hero-text-block strong { color:#fff; font-weight:700; }
+.hero-text strong { color:var(--white); font-weight:700; }
 .spacer { margin-bottom:12px; display:block; }
-.highlight { border-bottom:1px solid #fff; color:#fff; }
+.hl { border-bottom:1px solid var(--white); color:var(--white); }
 
 /* ============================================================
-   SECTION DIVIDERS
+   PROJECT SECTION SHELL
    ============================================================ */
-.section-divider {
+.project {
   position:relative;
-  height:120px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
+  border-top:1px solid var(--dim3);
 }
 
-.section-divider::before {
-  content:'';
-  position:absolute;
-  left:5vw; right:5vw;
-  height:1px;
-  background:linear-gradient(90deg, transparent, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0.15) 80%, transparent);
-}
-
-.divider-label {
-  font-family:'Space Mono', monospace;
-  font-size:9px;
-  letter-spacing:6px;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.2);
-  background:#000;
-  padding:0 24px;
+/* PROJECT HERO — full-width cinematic video */
+.proj-hero {
   position:relative;
-  z-index:1;
-}
-
-/* ============================================================
-   SCROLL REVEAL
-   ============================================================ */
-.reveal {
-  opacity:0;
-  transform:translateY(35px);
-  transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),
-             transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
-}
-.reveal.vis { opacity:1; transform:none; }
-
-/* ============================================================
-   PROJECT 01: SARI & PLOY
-   ============================================================ */
-.sp {
-  --sp-bg:#050505;
-  --sp-fg:#f4f2ed;
-  --sp-mid:#8a8780;
-  --sp-accent:#d4301a;
-  --sp-card:#0c0c0c;
-  --sp-border:#1a1a1a;
-  background:var(--sp-bg);
-  color:var(--sp-fg);
-  font-family:'Instrument Sans', sans-serif;
-}
-
-.sp-hero {
-  position:relative;
-  height:80vh;
+  height:85vh;
   min-height:500px;
   overflow:hidden;
 }
-.sp-hero video {
+
+.proj-hero video {
   position:absolute; inset:0;
   width:100%; height:100%;
   object-fit:cover;
 }
-.sp-hero-overlay {
+
+.proj-hero-overlay {
   position:absolute; inset:0;
   background:
-    linear-gradient(180deg, rgba(5,5,5,0.3) 0%, transparent 30%),
-    linear-gradient(180deg, transparent 50%, rgba(5,5,5,0.95) 100%);
+    linear-gradient(180deg, rgba(0,0,0,0.25) 0%, transparent 35%),
+    linear-gradient(180deg, transparent 45%, rgba(0,0,0,0.92) 100%);
   z-index:1;
 }
-.sp-hero-content {
+
+.proj-hero-content {
   position:absolute; bottom:0; left:0; right:0;
   z-index:2;
-  padding:0 clamp(1.5rem,4vw,4rem) clamp(3rem,6vw,5rem);
+  padding:0 5vw 60px;
 }
-.sp-hero-title {
-  font-family:'Syne', sans-serif;
+
+.proj-hero-num {
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:clamp(14px, 2vw, 22px);
+  letter-spacing:6px;
+  color:var(--white);
+  text-transform:uppercase;
+  margin-bottom:20px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.proj-hero-num::after {
+  content:'';
+  height:1px;
+  width:60px;
+  background:rgba(255,255,255,0.3);
+}
+
+.proj-hero-title {
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:clamp(48px, 12vw, 160px);
+  line-height:0.85;
+  letter-spacing:-0.04em;
+  text-transform:uppercase;
+  color:var(--white);
+  margin-bottom:16px;
+}
+
+.proj-hero-sub {
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:3px;
+  color:var(--dim);
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.proj-hero-sub .dot {
+  width:4px; height:4px;
+  border-radius:50%;
+  background:var(--dim);
+  flex-shrink:0;
+}
+
+/* PROJECT CONTENT AREA */
+.proj-content {
+  padding:0 5vw;
+  max-width:1600px;
+  margin:0 auto;
+}
+
+/* EDITORIAL BLOCK — two-column layout */
+.editorial {
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:0;
+  border-bottom:1px solid var(--dim3);
+}
+
+.editorial-label {
+  padding:60px 40px 60px 0;
+  border-right:1px solid var(--dim3);
+}
+
+.editorial-body {
+  padding:60px 0 60px 40px;
+}
+
+.editorial-body .body-text { max-width:640px; }
+.editorial-body .body-text p { margin-bottom:24px; }
+.editorial-body .body-text p:last-child { margin-bottom:0; }
+
+/* PULL QUOTE */
+.pull-quote {
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:clamp(18px, 2.5vw, 28px);
+  line-height:1.35;
+  color:var(--white);
+  border-left:2px solid var(--dim2);
+  padding-left:28px;
+  margin:40px 0;
+  max-width:560px;
+  text-transform:none;
+  letter-spacing:-0.01em;
+}
+
+/* STATS GRID */
+.stats-grid {
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:0;
+  border-bottom:1px solid var(--dim3);
+}
+
+.stat-cell {
+  padding:32px 24px;
+  border-right:1px solid var(--dim3);
+}
+.stat-cell:last-child { border-right:none; }
+
+.stat-label {
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:3px;
+  color:var(--dim2);
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.stat-value {
+  font-family:var(--sans);
   font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:-0.03em;
-  line-height:0.88;
-  font-size:clamp(5rem,15vw,16rem);
-  color:var(--sp-fg);
-  margin-bottom:0.5rem;
-}
-.sp-hero-title .amp { color:var(--sp-accent); font-style:normal; }
-.sp-hero-meta {
-  display:flex; align-items:center; gap:2rem; flex-wrap:wrap;
-}
-.sp-hero-meta span {
-  font-family:'Space Mono', monospace;
-  font-size:0.6rem; letter-spacing:0.15em;
-  text-transform:uppercase; color:var(--sp-mid);
-}
-.sp-hero-meta .dot {
-  width:4px; height:4px; border-radius:50%;
-  background:var(--sp-accent); flex-shrink:0;
+  font-size:18px;
+  color:var(--white);
+  letter-spacing:-0.01em;
 }
 
-.sp section {
-  padding:clamp(5rem,10vw,10rem) clamp(1.5rem,4vw,4rem);
-  position:relative;
-}
-
-.sp .section-label {
-  font-family:'Space Mono', monospace;
-  font-size:0.6rem; letter-spacing:0.3em;
-  text-transform:uppercase;
-  color:var(--sp-accent);
-  margin-bottom:2rem;
-  display:inline-flex; align-items:center; gap:1rem;
-}
-
-.sp .section-title {
-  font-family:'Syne', sans-serif;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:-0.03em;
-  line-height:0.88;
-  font-size:clamp(2.5rem,6vw,5.5rem);
-  color:var(--sp-fg);
-  margin-bottom:clamp(2rem,4vw,4rem);
-  max-width:900px;
-}
-
-.sp .section-body { max-width:680px; position:relative; z-index:2; }
-.sp .section-body p {
-  font-size:1rem; line-height:1.9;
-  color:var(--sp-mid); margin-bottom:1.8rem; font-weight:400;
-}
-.sp .section-body strong { color:var(--sp-fg); font-weight:600; }
-
-.sp .about-grid {
+/* DUAL COLUMN — two agents side by side, etc */
+.dual-col {
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:clamp(3rem,6vw,8rem);
-  align-items:start;
-}
-.sp .about-grid .section-body { max-width:none; }
-
-/* GSI BG */
-.sp .gsi-section { position:relative; }
-.sp .gsi-section::after {
-  content:''; position:absolute;
-  top:50%; left:50%; transform:translate(-50%,-50%);
-  width:65%; height:85%;
-  background:url('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/image_files/gsi_.png?raw=true') no-repeat center center;
-  background-size:contain; opacity:0.25;
-  pointer-events:none; z-index:0;
+  gap:0;
+  border-bottom:1px solid var(--dim3);
 }
 
-/* AGENTS */
-.sp .agents-section { background:var(--sp-bg); position:relative; }
-.sp .agents-section::after {
-  content:''; position:absolute; top:0; left:0; width:100%; height:100%;
-  background:url('https://github.com/mxvdxn/mxvdxn.github.io/blob/main/image_files/sari_ploy_files.png?raw=true') no-repeat center center;
-  background-size:cover; opacity:0.22;
-  pointer-events:none; z-index:0;
+.dual-cell {
+  padding:60px 40px;
+  border-right:1px solid var(--dim3);
 }
-.sp .agents-grid {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:0; margin-top:3rem; position:relative; z-index:2;
-}
-.sp .agent { padding:clamp(2rem,4vw,4rem); }
-.sp .agent-code {
-  font-family:'Space Mono', monospace;
-  font-size:0.5rem; letter-spacing:0.25em;
-  text-transform:uppercase; color:var(--sp-mid);
-  margin-bottom:1.5rem;
-  display:flex; align-items:center; gap:0.6rem;
-}
-.sp .agent-code .pulse {
-  width:6px; height:6px;
-  background:var(--sp-accent); border-radius:50%;
-  animation:pulse 2s ease infinite;
-}
-@keyframes pulse {
-  0%,100%{opacity:1;transform:scale(1)}
-  50%{opacity:0.4;transform:scale(0.7)}
-}
-.sp .agent-name {
-  font-family:'Syne', sans-serif;
-  font-weight:800;
-  font-size:clamp(3rem,7vw,6rem);
-  text-transform:uppercase; letter-spacing:-0.02em;
-  line-height:0.85; margin-bottom:0.6rem;
-}
-.sp .agent:first-child .agent-name { color:var(--sp-accent); }
-.sp .agent-origin {
-  font-family:'Space Mono', monospace;
-  font-size:0.55rem; letter-spacing:0.2em;
-  text-transform:uppercase; color:var(--sp-mid);
-  padding-bottom:1.5rem; margin-bottom:1.5rem;
-}
-.sp .agent p { font-size:0.9rem; line-height:1.9; color:var(--sp-mid); }
+.dual-cell:last-child { border-right:none; }
 
-/* EPISODES */
-.sp .episodes-section { background:var(--sp-bg); }
-.sp .ep-counter {
-  font-family:'Space Mono', monospace;
-  font-size:0.6rem; letter-spacing:0.15em;
-  color:var(--sp-mid); margin-bottom:3rem;
+.dual-cell-name {
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:clamp(36px, 5vw, 64px);
+  text-transform:uppercase;
+  letter-spacing:-0.03em;
+  line-height:0.88;
+  margin-bottom:8px;
 }
-.sp .ep-grid {
-  display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem;
+
+.dual-cell-sub {
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:3px;
+  color:var(--dim2);
+  text-transform:uppercase;
+  margin-bottom:24px;
+  padding-bottom:24px;
+  border-bottom:1px solid var(--dim3);
 }
-.sp .ep-card {
-  background:var(--sp-card); border:1px solid var(--sp-border);
+
+/* EPISODES GRID */
+.ep-section {
+  padding:60px 0;
+  border-bottom:1px solid var(--dim3);
+}
+
+.ep-section-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:40px;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--dim3);
+}
+
+.ep-count {
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:2px;
+  color:var(--dim2);
+  text-transform:uppercase;
+}
+
+.ep-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+  gap:20px;
+}
+
+.ep-card {
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--dim3);
   overflow:hidden;
-  transition:border-color 0.3s, transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  transition:border-color 0.3s, transform 0.35s ease;
 }
-.sp .ep-card:hover {
-  border-color:rgba(212,48,26,0.4); transform:translateY(-4px);
+.ep-card:hover {
+  border-color:var(--dim2);
+  transform:translateY(-3px);
 }
-.sp .ep-thumb {
-  position:relative; width:100%; padding-bottom:56.25%;
-  background:#000; overflow:hidden;
+
+.ep-thumb {
+  position:relative;
+  width:100%;
+  padding-bottom:56.25%;
+  background:var(--black);
+  overflow:hidden;
 }
-.sp .ep-thumb iframe {
+.ep-thumb iframe {
   position:absolute; inset:0;
   width:100%; height:100%; border:none;
 }
-.sp .ep-info {
-  padding:1rem 1.2rem;
-  display:flex; justify-content:space-between; align-items:center;
-}
-.sp .ep-number {
-  font-family:'Syne', sans-serif;
-  font-weight:700; font-size:0.85rem;
-  letter-spacing:0.04em; text-transform:uppercase;
-  color:var(--sp-fg);
-}
-.sp .ep-tag {
-  font-family:'Space Mono', monospace;
-  font-size:0.45rem; letter-spacing:0.1em;
-  text-transform:uppercase; color:var(--sp-accent);
-  border:1px solid var(--sp-accent);
-  padding:0.15rem 0.5rem; line-height:1.4;
+
+.ep-info {
+  padding:14px 16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-/* SP INTEL */
-.sp .intel-section { background:var(--sp-bg); }
-
-/* ============================================================
-   PROJECT 02: CODENAME WIDURI
-   ============================================================ */
-.cw {
-  --cw-red:#c0392b;
-  --cw-gold:#b8960c;
-  --cw-cream:#f0e6d3;
-  --cw-dark:#0d0b09;
-  --cw-dark2:#161210;
-  --cw-mid:#2a2320;
-  --cw-text:#d4c9b8;
-  --cw-muted:#7a6e62;
-  background:var(--cw-dark);
-  color:var(--cw-text);
-  font-family:'Space Mono', monospace;
-  font-size:14px;
-  line-height:1.8;
-  position:relative;
+.ep-num {
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:0.5px;
+  text-transform:uppercase;
 }
 
-/* Grain */
-.cw::before {
-  content:''; position:absolute; inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events:none; z-index:10; opacity:0.4;
+.ep-tag {
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--dim2);
+  border:1px solid var(--dim3);
+  padding:3px 8px;
 }
 
-.cw-hero {
-  min-height:80vh;
-  display:flex; flex-direction:column;
-  justify-content:center; align-items:flex-start;
-  padding:80px 8vw;
-  position:relative;
-  border-bottom:1px solid var(--cw-mid);
+/* WIDE EPISODE CARD (for single films like TWFTE & Widuri) */
+.ep-wide {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+  border-bottom:1px solid var(--dim3);
+}
+
+.ep-wide-video {
+  aspect-ratio:16/9;
   overflow:hidden;
+  border-right:1px solid var(--dim3);
 }
-.cw-hero::after {
-  content:''; position:absolute; top:0; right:0;
-  width:45%; height:100%;
-  background:linear-gradient(to left, rgba(192,57,43,0.04), transparent);
-  pointer-events:none;
-}
-.cw-hero > * { position:relative; z-index:1; }
-
-.cw-hero-video-bg {
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  object-fit:cover; opacity:0.25; z-index:0;
-}
-
-.cw-hero-tag {
-  font-family:'Space Mono', monospace;
-  font-size:11px; letter-spacing:0.3em;
-  color:var(--cw-red); text-transform:uppercase;
-  margin-bottom:32px;
-}
-.cw-hero-title {
-  font-family:'Playfair Display', serif;
-  font-size:clamp(52px,9vw,120px);
-  font-weight:900; line-height:0.9;
-  color:var(--cw-cream); letter-spacing:-0.02em;
-  margin-bottom:8px;
-}
-.cw-hero-title span { color:var(--cw-red); font-style:italic; }
-
-.cw-hero-subtitle {
-  font-family:'Space Mono', monospace;
-  font-size:11px; letter-spacing:0.4em;
-  color:var(--cw-muted); text-transform:uppercase;
-  margin-bottom:64px;
-}
-.cw-hero-desc {
-  max-width:520px; font-size:14px; line-height:2;
-  color:var(--cw-text);
-  border-left:2px solid var(--cw-red);
-  padding-left:24px;
-}
-.cw-hero-written {
-  font-size:10px; letter-spacing:0.3em;
-  color:var(--cw-muted); text-transform:uppercase;
-  margin-top:40px;
-}
-.cw-hero-number {
-  position:absolute; right:8vw; bottom:40px;
-  font-family:'Playfair Display', serif;
-  font-size:120px; font-weight:900;
-  color:rgba(192,57,43,0.06);
-  line-height:1; pointer-events:none; user-select:none;
-}
-
-.cw section {
-  padding:100px 8vw;
-  border-bottom:1px solid #1a1614;
-  position:relative; z-index:1;
-}
-
-.cw .cw-section-label {
-  font-size:10px; letter-spacing:0.4em;
-  color:var(--cw-red); text-transform:uppercase;
-  margin-bottom:48px;
-  display:flex; align-items:center; gap:16px;
-}
-.cw .cw-section-label::after {
-  content:''; flex:1; height:1px;
-  background:var(--cw-mid); max-width:80px;
-}
-
-/* BIO */
-.cw .bio-grid {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:80px; align-items:start;
-}
-.cw .bio-name {
-  font-family:'Playfair Display', serif;
-  font-size:48px; font-weight:900;
-  color:var(--cw-cream); line-height:1; margin-bottom:8px;
-}
-.cw .bio-codename {
-  font-size:10px; letter-spacing:0.4em;
-  color:var(--cw-gold); text-transform:uppercase;
-  margin-bottom:32px;
-}
-.cw .bio-text {
-  color:var(--cw-text); line-height:2; margin-bottom:24px;
-}
-.cw .bio-stats {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:24px; margin-top:48px;
-}
-.cw .stat { border-top:1px solid var(--cw-mid); padding-top:16px; }
-.cw .stat-label {
-  font-size:9px; letter-spacing:0.3em;
-  color:var(--cw-muted); text-transform:uppercase; margin-bottom:4px;
-}
-.cw .stat-value {
-  font-family:'Playfair Display', serif;
-  font-size:18px; color:var(--cw-cream);
-}
-
-/* WORLD */
-.cw .world-text { max-width:680px; line-height:2.2; color:var(--cw-text); font-size:15px; }
-.cw .world-text p { margin-bottom:24px; }
-.cw .pull-quote {
-  font-family:'Playfair Display', serif;
-  font-size:clamp(20px,3vw,32px);
-  font-style:italic; color:var(--cw-cream);
-  line-height:1.4;
-  border-left:3px solid var(--cw-red);
-  padding-left:32px;
-  margin:48px 0; max-width:600px;
-}
-
-/* EPISODES */
-.cw .episodes-grid {
-  display:grid; grid-template-columns:1fr 1fr; gap:40px;
-}
-.cw .episode-card {
-  background:var(--cw-dark2);
-  border:1px solid var(--cw-mid); overflow:hidden;
-}
-.cw .episode-video { width:100%; aspect-ratio:16/9; }
-.cw .episode-video iframe { width:100%; height:100%; display:block; border:none; }
-.cw .episode-info { padding:24px; }
-.cw .episode-num {
-  font-size:9px; letter-spacing:0.4em;
-  color:var(--cw-red); text-transform:uppercase; margin-bottom:8px;
-}
-.cw .episode-title {
-  font-family:'Playfair Display', serif;
-  font-size:22px; color:var(--cw-cream); margin-bottom:12px;
-}
-.cw .episode-synopsis {
-  font-size:13px; line-height:1.9; color:var(--cw-muted);
-}
-
-/* ABOUT */
-.cw .about-grid {
-  display:grid; grid-template-columns:1fr 1fr; gap:80px;
-}
-.cw .about-title {
-  font-family:'Playfair Display', serif;
-  font-size:36px; color:var(--cw-cream);
-  line-height:1.2; margin-bottom:32px;
-}
-.cw .about-text { line-height:2.1; color:var(--cw-text); margin-bottom:20px; }
-
-/* ============================================================
-   PROJECT 03: TWFTE
-   ============================================================ */
-.tw {
-  --tw-black:#0a0a0a;
-  --tw-white:#f0f0f0;
-  --tw-red:#ff2200;
-  --tw-border:rgba(240,240,240,0.12);
-  background:var(--tw-black);
-  color:var(--tw-white);
-  font-family:'IBM Plex Mono', monospace;
-  position:relative;
-}
-
-.tw-hero-wrap {
-  position:relative;
-  min-height:80vh;
-  overflow:hidden;
-}
-.tw-hero-video {
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  object-fit:cover; opacity:0.6;
-}
-.tw-hero-video-overlay {
-  position:absolute; inset:0;
-  background:rgba(10,10,10,0.55);
-}
-.tw-hero-content {
-  position:relative; z-index:1;
-  padding:80px 32px 60px;
-  display:flex; flex-direction:column;
-  justify-content:flex-end;
-  min-height:80vh;
-}
-
-.tw-hero-index {
-  font-size:9px; letter-spacing:5px;
-  color:rgba(240,240,240,0.25);
-  margin-bottom:24px; text-transform:uppercase;
-}
-.tw-hero-title {
-  font-family:'Oswald', sans-serif;
-  font-weight:700;
-  font-size:clamp(60px,14vw,180px);
-  line-height:0.88; letter-spacing:-2px;
-  text-transform:uppercase; color:var(--tw-white);
-}
-.tw-hero-title .word-red { color:var(--tw-red); display:block; }
-.tw-hero-title .word-outline {
-  color:transparent;
-  -webkit-text-stroke:2px var(--tw-white);
-  display:block;
-}
-.tw-hero-title .word-white { display:block; }
-
-.tw-hero-meta {
-  margin-top:40px;
-  display:flex; align-items:center; gap:32px;
-}
-.tw-hero-tagline {
-  font-family:'Oswald', sans-serif;
-  font-size:clamp(13px,2vw,17px);
-  font-weight:700; letter-spacing:3px;
-  color:rgba(240,240,240,0.5); text-transform:uppercase;
-}
-.tw-hero-line { flex:1; height:1px; background:var(--tw-border); max-width:200px; }
-
-/* TICKER */
-.tw .ticker {
-  border-top:1px solid var(--tw-border);
-  border-bottom:1px solid var(--tw-border);
-  overflow:hidden; white-space:nowrap;
-  padding:12px 0;
-  background:rgba(255,34,0,0.04);
-}
-.tw .ticker-inner {
-  display:inline-block;
-  animation:ticker 20s linear infinite;
-  font-family:'Oswald', sans-serif;
-  font-size:11px; letter-spacing:6px;
-  color:var(--tw-red); text-transform:uppercase;
-}
-.tw .ticker-inner span { margin:0 48px; color:rgba(240,240,240,0.15); }
-
-@keyframes ticker {
-  from { transform:translateX(0); }
-  to { transform:translateX(-50%); }
-}
-
-/* FILM EMBED */
-.tw .embed-wrap {
-  border-bottom:1px solid var(--tw-border);
-  padding:48px 0; background:#000;
-  display:flex; justify-content:center;
-}
-.tw .embed-inner {
-  position:relative; width:100%; max-width:1100px;
-  aspect-ratio:16/9; overflow:hidden;
-}
-.tw .embed-inner iframe {
-  position:absolute; top:0; left:0;
+.ep-wide-video iframe {
   width:100%; height:100%; border:none; display:block;
 }
 
-/* INFO PANEL */
-.tw .info-panel {
-  display:grid; grid-template-columns:repeat(4,1fr);
+.ep-wide-info {
+  padding:40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
-.tw .info-block {
-  padding:32px;
-  border-right:1px solid var(--tw-border);
-}
-.tw .info-block:last-child { border-right:none; }
-.tw .info-block-label {
-  font-size:8px; letter-spacing:5px;
-  color:rgba(240,240,240,0.25);
-  text-transform:uppercase; margin-bottom:12px;
-}
-.tw .info-block-value {
-  font-family:'Oswald', sans-serif;
-  font-size:22px; font-weight:700;
-  letter-spacing:2px; color:var(--tw-white);
-  text-transform:uppercase; line-height:1.1;
-}
-.tw .info-block-value.small {
-  font-size:13px; font-weight:400;
-  font-family:'IBM Plex Mono', monospace;
-  letter-spacing:0; line-height:1.8;
-  color:rgba(240,240,240,0.55);
-}
-.tw .info-block-value .red { color:var(--tw-red); }
 
-/* SYNOPSIS */
-.tw .synopsis-section {
-  display:grid; grid-template-columns:120px 1fr;
-  border-bottom:1px solid var(--tw-border);
+.ep-wide-num {
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:4px;
+  color:var(--dim2);
+  text-transform:uppercase;
+  margin-bottom:16px;
 }
-.tw .synopsis-label-col {
-  border-right:1px solid var(--tw-border);
-  padding:48px 32px;
-  display:flex; align-items:flex-start;
+
+.ep-wide-title {
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:clamp(20px, 2.5vw, 32px);
+  text-transform:uppercase;
+  letter-spacing:-0.02em;
+  line-height:1;
+  margin-bottom:16px;
 }
-.tw .synopsis-label-col span {
-  font-family:'Oswald', sans-serif;
-  font-size:9px; font-weight:700;
-  letter-spacing:6px;
-  color:rgba(240,240,240,0.2);
+
+.ep-wide-synopsis {
+  font-family:var(--mono);
+  font-size:12px;
+  line-height:2;
+  color:var(--dim);
+}
+
+/* CREDITS ROW */
+.credits-section {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border-bottom:1px solid var(--dim3);
+}
+
+.credits-col {
+  padding:48px 40px;
+  border-right:1px solid var(--dim3);
+}
+.credits-col:last-child { border-right:none; }
+
+.credits-col-title {
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:5px;
+  color:var(--dim2);
+  text-transform:uppercase;
+  margin-bottom:28px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--dim3);
+}
+
+.credit-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  padding:14px 0;
+  border-bottom:1px solid var(--dim4);
+}
+.credit-row:last-child { border-bottom:none; }
+
+.credit-role {
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:2px;
+  color:var(--dim2);
+  text-transform:uppercase;
+}
+
+.credit-name {
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:14px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+/* INFO PANEL (TWFTE style) */
+.info-panel {
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  border-bottom:1px solid var(--dim3);
+}
+
+.info-block {
+  padding:32px 24px;
+  border-right:1px solid var(--dim3);
+}
+.info-block:last-child { border-right:none; }
+
+.info-block-label {
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:4px;
+  color:var(--dim2);
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+
+.info-block-value {
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:20px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  line-height:1.15;
+}
+
+.info-block-desc {
+  font-family:var(--mono);
+  font-size:12px;
+  line-height:1.9;
+  color:var(--dim);
+  margin-top:12px;
+}
+
+/* SYNOPSIS BLOCK */
+.synopsis-block {
+  display:grid;
+  grid-template-columns:100px 1fr;
+  border-bottom:1px solid var(--dim3);
+}
+
+.synopsis-side {
+  border-right:1px solid var(--dim3);
+  padding:48px 24px;
+  display:flex;
+  align-items:flex-start;
+}
+.synopsis-side span {
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:5px;
+  color:var(--dim2);
   text-transform:uppercase;
   writing-mode:vertical-rl;
   transform:rotate(180deg);
 }
-.tw .synopsis-content { padding:48px; }
-.tw .synopsis-content p {
-  font-size:13px; line-height:2.1;
-  color:rgba(240,240,240,0.55);
-  margin-bottom:20px; max-width:640px;
-}
-.tw .synopsis-content p:last-child { margin-bottom:0; }
 
-/* CLASSIFICATION GRID */
-.tw .class-section {
-  display:grid; grid-template-columns:repeat(3,1fr);
-  border-bottom:1px solid var(--tw-border);
+.synopsis-main {
+  padding:48px 40px;
 }
-.tw .class-cell {
-  padding:40px 32px;
-  border-right:1px solid var(--tw-border);
-  position:relative; overflow:hidden;
+.synopsis-main p {
+  font-family:var(--mono);
+  font-size:13px;
+  line-height:2.1;
+  color:var(--dim);
+  margin-bottom:20px;
+  max-width:640px;
 }
-.tw .class-cell:last-child { border-right:none; }
-.tw .class-cell::before {
-  content:''; position:absolute;
-  top:0; left:0; right:0; height:2px;
-  background:var(--tw-red);
-  transform:scaleX(0); transform-origin:left;
-  transition:transform 0.4s ease;
-}
-.tw .class-cell:hover::before { transform:scaleX(1); }
-.tw .class-num {
-  font-family:'Oswald', sans-serif;
-  font-size:64px; font-weight:700;
-  color:rgba(240,240,240,0.04);
-  line-height:1; margin-bottom:16px;
-}
-.tw .class-label {
-  font-size:8px; letter-spacing:5px;
-  color:rgba(240,240,240,0.25);
-  text-transform:uppercase; margin-bottom:8px;
-}
-.tw .class-value {
-  font-family:'Oswald', sans-serif;
-  font-size:20px; font-weight:700;
-  letter-spacing:2px; color:var(--tw-white);
-  text-transform:uppercase;
-}
-.tw .class-sub {
-  font-size:10px; letter-spacing:2px;
-  color:var(--tw-red); margin-top:6px;
-  text-transform:uppercase;
-}
+.synopsis-main p:last-child { margin-bottom:0; }
 
-/* CREDITS + TOOLS */
-.tw .bottom-grid {
-  display:grid; grid-template-columns:1fr 1fr;
-  border-bottom:1px solid var(--tw-border);
+/* STATEMENT BLOCK */
+.statement-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:48px;
+  padding:60px 0;
+  border-bottom:1px solid var(--dim3);
 }
-.tw .bottom-col {
-  padding:48px 32px;
-  border-right:1px solid var(--tw-border);
-}
-.tw .bottom-col:last-child { border-right:none; }
-.tw .bottom-col-header {
-  font-family:'Oswald', sans-serif;
-  font-size:9px; font-weight:700;
-  letter-spacing:7px;
-  color:rgba(240,240,240,0.2);
-  text-transform:uppercase;
-  margin-bottom:32px; padding-bottom:16px;
-  border-bottom:1px solid var(--tw-border);
-}
-.tw .credit-row {
-  display:flex; justify-content:space-between;
-  align-items:baseline; padding:16px 0;
-  border-bottom:1px solid rgba(240,240,240,0.04);
-}
-.tw .credit-row:last-child { border-bottom:none; }
-.tw .credit-row-role {
-  font-size:9px; letter-spacing:3px;
-  color:rgba(240,240,240,0.25); text-transform:uppercase;
-}
-.tw .credit-row-name {
-  font-family:'Oswald', sans-serif;
-  font-size:16px; font-weight:700;
-  letter-spacing:2px; color:var(--tw-white);
-  text-transform:uppercase;
+.statement-grid p {
+  font-family:var(--mono);
+  font-size:13px;
+  line-height:2;
+  color:var(--dim);
 }
 
 /* ============================================================
    GLOBAL FOOTER
    ============================================================ */
 .global-footer {
-  background:#000;
-  padding:48px 5vw;
-  display:flex; justify-content:space-between;
-  align-items:center; flex-wrap:wrap; gap:24px;
-  border-top:1px solid rgba(255,255,255,0.1);
+  padding:40px 5vw;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:20px;
 }
-.global-footer-brand {
-  font-family:'Courier New', Courier, monospace;
-  font-size:11px; letter-spacing:3px;
-  color:rgba(255,255,255,0.4); text-transform:uppercase;
+
+.global-footer span {
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:3px;
+  color:var(--dim2);
+  text-transform:uppercase;
 }
-.global-footer-right {
-  font-family:'Courier New', Courier, monospace;
-  font-size:10px; letter-spacing:2px;
-  color:rgba(255,255,255,0.25); text-transform:uppercase;
+
+/* ABOUT ME SECTION */
+.about-me {
+  border-top:1px solid var(--dim3);
+  padding:100px 5vw;
+  max-width:1600px;
+  margin:0 auto;
 }
+
+.about-me-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+}
+
+.about-me-cell {
+  padding:0 40px;
+  border-right:1px solid var(--dim3);
+}
+.about-me-cell:first-child { padding-left:0; }
+.about-me-cell:last-child { border-right:none; padding-right:0; }
+
+.about-me-name {
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:clamp(40px, 6vw, 72px);
+  line-height:0.88;
+  letter-spacing:-0.03em;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+
+.about-me-sub {
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:3px;
+  color:var(--dim2);
+  text-transform:uppercase;
+  margin-bottom:32px;
+  padding-bottom:32px;
+  border-bottom:1px solid var(--dim3);
+}
+
+.about-me-cell .body-text p { margin-bottom:20px; }
+.about-me-cell .body-text p:last-child { margin-bottom:0; }
 
 /* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width:1024px) {
-  .sp .about-grid { grid-template-columns:1fr; }
-  .sp .ep-grid { grid-template-columns:repeat(2,1fr); }
-  .cw .about-grid { grid-template-columns:1fr; }
+  .stats-grid { grid-template-columns:repeat(2, 1fr); }
+  .info-panel { grid-template-columns:repeat(2, 1fr); }
+  .info-block { border-bottom:1px solid var(--dim3); }
+  .ep-wide { grid-template-columns:1fr; }
+  .ep-wide-video { border-right:none; border-bottom:1px solid var(--dim3); }
 }
 
 @media (max-width:900px) {
-  .hero-nav-container {
-    flex-direction:column; margin-top:30px; gap:30px;
-  }
-  .hero-nav-col-right {
-    border-left:none;
-    border-top:1px solid rgba(255,255,255,0.15);
+  .hero-nav { flex-direction:column; margin-top:30px; gap:30px; }
+  .hero-col-right {
+    border-top:1px solid var(--dim3);
     padding-left:0; padding-top:30px;
     align-items:flex-start; text-align:left;
   }
-  .hero-nav-col-right .hero-nav-group { align-items:flex-start; }
-  .hero-nav-col-right .hero-nav-link { transform-origin:left; text-align:left; }
-  .hero-nav-col-right:hover .hero-nav-link { opacity:0.3; }
-  .hero-nav-col-right .hero-nav-group:hover .hero-nav-link { transform:translateX(15px); }
+  .hero-col-right .hero-group { align-items:flex-start; }
+  .hero-col-right .hero-link { transform-origin:left; text-align:left; }
+  .hero-col-right:hover .hero-link { opacity:0.3; }
+  .hero-col-right .hero-group:hover .hero-link { transform:translateX(15px); }
   .col-label { text-align:left; }
-  .hero-nav-link { font-size:11vw; line-height:0.9; }
-  .hero-info-bar {
-    flex-direction:column; align-items:flex-start;
-    border-top:none; margin-top:40px;
-  }
-  .hero-text-block { text-align:left !important; max-width:100%; }
+  .hero-link { font-size:11vw; line-height:0.9; }
+  .hero-info { flex-direction:column; align-items:flex-start; border-top:none; margin-top:40px; }
+  .hero-text { text-align:left !important; max-width:100%; }
 }
 
 @media (max-width:768px) {
-  .sp .agents-grid { grid-template-columns:1fr; }
-  .sp .ep-grid { grid-template-columns:1fr; }
-  .cw .bio-grid, .cw .episodes-grid, .cw .about-grid { grid-template-columns:1fr; gap:40px; }
-  .cw-hero-number { display:none; }
-  .tw .info-panel { grid-template-columns:1fr 1fr; }
-  .tw .info-block { border-right:none; border-bottom:1px solid var(--tw-border); }
-  .tw .synopsis-section { grid-template-columns:1fr; }
-  .tw .synopsis-label-col { display:none; }
-  .tw .class-section { grid-template-columns:1fr; }
-  .tw .class-cell { border-right:none; border-bottom:1px solid var(--tw-border); }
-  .tw .bottom-grid { grid-template-columns:1fr; }
-  .tw .bottom-col { border-right:none; border-bottom:1px solid var(--tw-border); }
-  .tw-hero-title { font-size:clamp(56px,16vw,120px); }
+  .editorial { grid-template-columns:1fr; }
+  .editorial-label { padding:40px 0 0; border-right:none; border-bottom:none; }
+  .editorial-body { padding:24px 0 40px; }
+  .dual-col { grid-template-columns:1fr; }
+  .dual-cell { border-right:none; border-bottom:1px solid var(--dim3); }
+  .dual-cell:last-child { border-bottom:none; }
+  .credits-section { grid-template-columns:1fr; }
+  .credits-col { border-right:none; border-bottom:1px solid var(--dim3); }
+  .credits-col:last-child { border-bottom:none; }
+  .ep-grid { grid-template-columns:1fr; }
+  .stats-grid { grid-template-columns:1fr; }
+  .stat-cell { border-right:none; border-bottom:1px solid var(--dim3); }
+  .info-panel { grid-template-columns:1fr; }
+  .info-block { border-right:none; }
+  .synopsis-block { grid-template-columns:1fr; }
+  .synopsis-side { display:none; }
+  .statement-grid { grid-template-columns:1fr; gap:24px; }
+  .proj-hero { height:70vh; min-height:400px; }
+  .proj-hero-title { font-size:clamp(40px, 14vw, 100px); }
+  .about-me-grid { grid-template-columns:1fr; }
+  .about-me-cell { padding:0; border-right:none; border-bottom:1px solid var(--dim3); padding-bottom:40px; margin-bottom:40px; }
+  .about-me-cell:last-child { border-bottom:none; padding-bottom:0; margin-bottom:0; }
 }
 </style>
 </head>
 <body>
 
-<!-- ============================================================
-     FIXED VIDEO BG
-     ============================================================ -->
+<!-- FIXED VIDEO BG -->
 <video id="video-bg" autoplay muted loop playsinline>
   <source src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/2025-12-19-04.mp4" type="video/mp4">
 </video>
 
 <!-- ============================================================
-     SECTION 0: INDEX / HERO
+     INDEX / HERO
      ============================================================ -->
 <div class="hero-index" id="top">
   <div class="brand-bar">MXVDXN // V.2026</div>
 
-  <nav class="hero-nav-container">
-    <!-- LEFT COL -->
-    <div class="hero-nav-col">
-      <div class="hero-nav-group">
-        <span class="hero-nav-meta">01 // ARCHIVE</span>
-        <a href="https://www.instagram.com/mxvdxn" target="_blank" class="hero-nav-link">VISUAL<br>ARCHIVES</a>
+  <nav class="hero-nav">
+    <div class="hero-col">
+      <div class="hero-group">
+        <span class="hero-meta">01 // ARCHIVE</span>
+        <a href="https://www.instagram.com/mxvdxn" target="_blank" class="hero-link">VISUAL<br>ARCHIVES</a>
       </div>
-      <div class="hero-nav-group">
-        <span class="hero-nav-meta">02 // LOGS</span>
-        <a href="https://x.com/mxvdxn" target="_blank" class="hero-nav-link">DAILY<br>LOGS</a>
+      <div class="hero-group">
+        <span class="hero-meta">02 // LOGS</span>
+        <a href="https://x.com/mxvdxn" target="_blank" class="hero-link">DAILY<br>LOGS</a>
       </div>
-      <div class="hero-nav-group">
-        <span class="hero-nav-meta">03 // CONTACT</span>
-        <a href="mailto:danifpradana@gmail.com" class="hero-nav-link">DIRECT<br>LINE</a>
+      <div class="hero-group">
+        <span class="hero-meta">03 // CONTACT</span>
+        <a href="mailto:danifpradana@gmail.com" class="hero-link">DIRECT<br>LINE</a>
       </div>
     </div>
 
-    <!-- RIGHT COL: AI Short Films (scroll links) -->
-    <div class="hero-nav-col hero-nav-col-right">
+    <div class="hero-col hero-col-right">
       <div class="col-label">AI SHORT FILMS</div>
-      <div class="hero-nav-group">
-        <span class="hero-nav-meta">01 // AI-GENERATED SHORT FILM</span>
-        <a href="#sari-ploy" class="hero-nav-link">SARI &<br>PLOY</a>
+      <div class="hero-group">
+        <span class="hero-meta">01 // AI-GENERATED SHORT FILM</span>
+        <a href="#sari-ploy" class="hero-link">SARI &<br>PLOY</a>
       </div>
-      <div class="hero-nav-group">
-        <span class="hero-nav-meta">02 // AI-GENERATED SHORT FILM</span>
-        <a href="#codename-widuri" class="hero-nav-link">CODENAME:<br>WIDURI</a>
+      <div class="hero-group">
+        <span class="hero-meta">02 // AI-GENERATED SHORT FILM</span>
+        <a href="#codename-widuri" class="hero-link">CODENAME:<br>WIDURI</a>
       </div>
-      <div class="hero-nav-group">
-        <span class="hero-nav-meta">03 // AI-GENERATED SHORT FILM</span>
-        <a href="#twfte" class="hero-nav-link">THE WORLD<br>FORGOT TO END</a>
+      <div class="hero-group">
+        <span class="hero-meta">03 // AI-GENERATED SHORT FILM</span>
+        <a href="#twfte" class="hero-link">THE WORLD<br>FORGOT TO END</a>
       </div>
     </div>
   </nav>
 
-  <div class="hero-info-bar">
-    <div class="hero-text-block">
+  <div class="hero-info">
+    <div class="hero-text">
       <strong>CREATIVE PARTNERSHIPS</strong>
       <span class="spacer"></span>
-      <span class="highlight">KLING AI</span> / <span class="highlight">HAILUO MINIMAX</span> / <span class="highlight">GROK IMAGINE</span> / <span class="highlight">FREEPIK</span> / <span class="highlight">YAPPER</span>
+      <span class="hl">KLING AI</span> / <span class="hl">HAILUO MINIMAX</span> / <span class="hl">GROK IMAGINE</span> / <span class="hl">FREEPIK</span> / <span class="hl">YAPPER</span>
     </div>
-    <div class="hero-text-block" style="text-align:right;">
+    <div class="hero-text" style="text-align:right;">
       <strong>DAN PRADANA</strong>
       <span class="spacer"></span>
       GEN AI / COPYWRITER.<br>
@@ -955,26 +856,45 @@ body {
   </div>
 </div>
 
+
 <!-- ============================================================
-     DIVIDER: SARI & PLOY
+     ABOUT: DAN PRADANA & MXVDXN
      ============================================================ -->
-<div class="section-divider">
-  <span class="divider-label">Project 01</span>
+<div class="about-me reveal" id="about">
+  <div class="about-me-grid">
+    <div class="about-me-cell">
+      <div class="about-me-name">Dan<br>Pradana</div>
+      <div class="about-me-sub">Copywriter // Jakarta, Indonesia</div>
+      <div class="body-text">
+        <p>Indonesian copywriter based in Southeast Asia with <strong>10+ years across the advertising industry</strong>. Has written countless ads spanning FMCG, healthcare, financial services, fintech, consumer goods, health tech, beverage, alcohol, and automotive.</p>
+      </div>
+    </div>
+    <div class="about-me-cell">
+      <div class="about-me-name">MXVDXN</div>
+      <div class="about-me-sub">Independent Gen-AI Lab</div>
+      <div class="body-text">
+        <p>An independent Gen-AI lab exploring the potential of technology in relation to the creative industry — <strong>building original IP with a strong presence and visual aesthetic rooted in Southeast Asia</strong>.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- ============================================================
-     SECTION 1: SARI & PLOY
-     ============================================================ -->
-<div class="sp" id="sari-ploy">
 
-  <div class="sp-hero">
+<!-- ============================================================
+     PROJECT 01: SARI & PLOY
+     ============================================================ -->
+<div class="project" id="sari-ploy">
+
+  <!-- HERO -->
+  <div class="proj-hero">
     <video autoplay muted loop playsinline>
       <source src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/sari_ploy_home.mp4" type="video/mp4">
     </video>
-    <div class="sp-hero-overlay"></div>
-    <div class="sp-hero-content">
-      <h2 class="display sp-hero-title reveal">SARI <em class="amp">&</em> PLOY</h2>
-      <div class="sp-hero-meta reveal">
+    <div class="proj-hero-overlay"></div>
+    <div class="proj-hero-content">
+      <div class="proj-hero-num reveal">Project 01</div>
+      <h2 class="proj-hero-title reveal">SARI &<br>PLOY</h2>
+      <div class="proj-hero-sub reveal">
         <span>AI-Generated Action Series</span>
         <span class="dot"></span>
         <span>Southeast Asia</span>
@@ -984,326 +904,329 @@ body {
     </div>
   </div>
 
-  <!-- ABOUT -->
-  <section>
-    <div class="about-grid">
-      <div>
-        <div class="section-label reveal">About the Project</div>
-        <h3 class="section-title reveal">Building an AI<br>Action Series<br>from Scratch</h3>
-      </div>
-      <div class="section-body reveal">
-        <p>This is <strong>Sari & Ploy</strong>, a short-form action series made entirely with AI video generation tools.</p>
-        <p>Two high school girls — one Indonesian, one Thai — secretly work as agents for a covert bilateral program called the <strong>Garuda-Siam Initiative</strong>. They fight crime across Southeast Asia using martial arts. Sari fights with Pencak Silat. Ploy fights with Muay Thai. In return for their service, the government takes care of everything — housing, education, career, financial security for their families.</p>
-        <p>The story is inspired by anime and manga. The idea of teenagers with extraordinary abilities living double lives is nothing new — Jujutsu Kaisen, Naruto, Spy x Family — but this project sets it in Southeast Asia, with characters that feel local and grounded.</p>
-      </div>
-    </div>
-  </section>
+  <div class="proj-content">
 
-  <!-- GSI -->
-  <section class="gsi-section">
-    <div class="about-grid">
-      <div>
-        <div class="section-label reveal">Classified</div>
-        <h3 class="section-title reveal">The Garuda-Siam<br>Initiative</h3>
+    <!-- ABOUT -->
+    <div class="editorial reveal">
+      <div class="editorial-label">
+        <span class="label">About the Project</span>
       </div>
-      <div class="section-body reveal">
-        <p>A classified joint program between the Indonesian and Thai governments. Formed in response to rising threats of organized crime operating across Southeast Asian borders. GSI operates completely off the books — no public records, no official acknowledgment.</p>
-        <p>GSI's mandate: recruit, train, and deploy unconventional assets to assist law enforcement operations in the region. They find individuals with abilities far beyond the ordinary. They give them a future. In return, those individuals give their talent.</p>
-        <p>To maintain cover, both agents are enrolled in a high school in Jakarta. Sari attends as a regular Indonesian student. Ploy is registered as an exchange student from Thailand. Their absences are managed by a GSI handler embedded as a teacher at the school.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- AGENTS -->
-  <section class="agents-section">
-    <div style="padding:0 clamp(1.5rem,4vw,4rem); position:relative; z-index:2;">
-      <div class="section-label reveal">Personnel Files</div>
-      <h3 class="section-title reveal">Active Agents</h3>
-    </div>
-    <div style="padding:0 clamp(1.5rem,4vw,4rem);">
-      <div class="agents-grid reveal">
-        <div class="agent">
-          <div class="agent-code"><span class="pulse"></span>FILE #GSI-001 // ACTIVE</div>
-          <div class="agent-name">SARI</div>
-          <div class="agent-origin">Jakarta, Indonesia — Pencak Silat</div>
-          <p>Grew up on the streets of Jakarta. Quiet, serious, disciplined. She learned to fight before she learned to read. Loves snacks from Indomaret. Will answer her mom's phone call mid-mission without hesitation.</p>
-        </div>
-        <div class="agent">
-          <div class="agent-code"><span class="pulse"></span>FILE #GSI-002 // ACTIVE</div>
-          <div class="agent-name">PLOY</div>
-          <div class="agent-origin">Bangkok, Thailand — Muay Thai</div>
-          <p>Grew up in the back streets of Bangkok. Same story, different country. Playful, relaxed, always eating something — but when the switch flips, she is ruthless. She and Sari share the same wound: fathers taken by criminals.</p>
+      <div class="editorial-body">
+        <h3 class="heading-lg" style="margin-bottom:32px;">Building an AI<br>Action Series<br>from Scratch</h3>
+        <div class="body-text">
+          <p>This is <strong>Sari & Ploy</strong>, a short-form action series made entirely with AI video generation tools.</p>
+          <p>Two high school girls — one Indonesian, one Thai — secretly work as agents for a covert bilateral program called the <strong>Garuda-Siam Initiative</strong>. They fight crime across Southeast Asia using martial arts. Sari fights with Pencak Silat. Ploy fights with Muay Thai. In return for their service, the government takes care of everything — housing, education, career, financial security for their families.</p>
+          <p>The story is inspired by anime and manga. The idea of teenagers with extraordinary abilities living double lives is nothing new — Jujutsu Kaisen, Naruto, Spy x Family — but this project sets it in Southeast Asia, with characters that feel local and grounded.</p>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- EPISODES -->
-  <section class="episodes-section">
-    <div class="section-label reveal">Mission Logs</div>
-    <h3 class="section-title reveal">Episodes</h3>
-    <div class="ep-counter reveal">10 Episodes Released</div>
-
-    <div class="ep-grid reveal">
-      <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/P4-UiJkGM68" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-number">EP 01</span><span class="ep-tag">Declassified</span></div></div>
-      <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/kE5oPuCTjc0" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-number">EP 02</span><span class="ep-tag">Declassified</span></div></div>
-      <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/RUZbWd5RZUY" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-number">EP 03</span><span class="ep-tag">Declassified</span></div></div>
-      <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/9aS94-p_KvM" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-number">EP 04</span><span class="ep-tag">Declassified</span></div></div>
-      <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/L68FaS4sfzA" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-number">EP 05</span><span class="ep-tag">Declassified</span></div></div>
-      <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/tfWwp1pLkCI" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-number">EP 06</span><span class="ep-tag">Declassified</span></div></div>
-      <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/9EryvGtlX4o" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-number">EP 07</span><span class="ep-tag">Declassified</span></div></div>
-      <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/shhb-JT9Qow" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-number">EP 08</span><span class="ep-tag">Declassified</span></div></div>
-      <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/pn_un0_lF4w" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-number">EP 09</span><span class="ep-tag">Declassified</span></div></div>
-      <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/7UCZi9VhlPY" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-number">EP 10</span><span class="ep-tag">Declassified</span></div></div>
-    </div>
-  </section>
-
-  <!-- INTEL -->
-  <section class="intel-section">
-    <div class="about-grid">
-      <div>
-        <div class="section-label reveal">Intel</div>
-        <h3 class="section-title reveal">How It's<br>Made</h3>
+    <!-- GSI -->
+    <div class="editorial reveal">
+      <div class="editorial-label">
+        <span class="label">Classified</span>
       </div>
-      <div class="section-body reveal">
-        <p>Every shot is generated individually. Detailed prompts are written for every single shot, specifying camera angles, lighting, action, and sound design. Everything is stitched together in post-production using <strong>Google's Nano Banana</strong> for consistent character references.</p>
-        <p>Visual consistency is maintained using <strong>omni-reference</strong>, and two main video models are used: <strong>Seedance 2.0</strong> for cinematic output and <strong>Kling 3.0</strong> for a candid aesthetic.</p>
+      <div class="editorial-body">
+        <h3 class="heading-lg" style="margin-bottom:32px;">The Garuda-Siam<br>Initiative</h3>
+        <div class="body-text">
+          <p>A classified joint program between the Indonesian and Thai governments. Formed in response to rising threats of organized crime operating across Southeast Asian borders. GSI operates completely off the books — no public records, no official acknowledgment.</p>
+          <p>GSI's mandate: recruit, train, and deploy unconventional assets to assist law enforcement operations in the region. They find individuals with abilities far beyond the ordinary. They give them a future. In return, those individuals give their talent.</p>
+          <p>To maintain cover, both agents are enrolled in a high school in Jakarta. Sari attends as a regular Indonesian student. Ploy is registered as an exchange student from Thailand. Their absences are managed by a GSI handler embedded as a teacher at the school.</p>
+        </div>
       </div>
     </div>
-  </section>
 
+    <!-- AGENTS -->
+    <div class="dual-col reveal">
+      <div class="dual-cell">
+        <span class="label" style="display:block; margin-bottom:20px;">File #GSI-001 // Active</span>
+        <div class="dual-cell-name">SARI</div>
+        <div class="dual-cell-sub">Jakarta, Indonesia — Pencak Silat</div>
+        <p class="body-text">Grew up on the streets of Jakarta. Quiet, serious, disciplined. She learned to fight before she learned to read. Loves snacks from Indomaret. Will answer her mom's phone call mid-mission without hesitation.</p>
+      </div>
+      <div class="dual-cell">
+        <span class="label" style="display:block; margin-bottom:20px;">File #GSI-002 // Active</span>
+        <div class="dual-cell-name">PLOY</div>
+        <div class="dual-cell-sub">Bangkok, Thailand — Muay Thai</div>
+        <p class="body-text">Grew up in the back streets of Bangkok. Same story, different country. Playful, relaxed, always eating something — but when the switch flips, she is ruthless. She and Sari share the same wound: fathers taken by criminals.</p>
+      </div>
+    </div>
+
+    <!-- EPISODES -->
+    <div class="ep-section reveal">
+      <div class="ep-section-header">
+        <h3 class="heading-md">Episodes</h3>
+        <span class="ep-count">10 Episodes Released</span>
+      </div>
+      <div class="ep-grid">
+        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/P4-UiJkGM68" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 01</span><span class="ep-tag">Released</span></div></div>
+        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/kE5oPuCTjc0" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 02</span><span class="ep-tag">Released</span></div></div>
+        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/RUZbWd5RZUY" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 03</span><span class="ep-tag">Released</span></div></div>
+        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/9aS94-p_KvM" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 04</span><span class="ep-tag">Released</span></div></div>
+        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/L68FaS4sfzA" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 05</span><span class="ep-tag">Released</span></div></div>
+        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/tfWwp1pLkCI" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 06</span><span class="ep-tag">Released</span></div></div>
+        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/9EryvGtlX4o" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 07</span><span class="ep-tag">Released</span></div></div>
+        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/shhb-JT9Qow" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 08</span><span class="ep-tag">Released</span></div></div>
+        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/pn_un0_lF4w" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 09</span><span class="ep-tag">Released</span></div></div>
+        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/7UCZi9VhlPY" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 10</span><span class="ep-tag">Released</span></div></div>
+      </div>
+    </div>
+
+    <!-- HOW IT'S MADE -->
+    <div class="editorial reveal">
+      <div class="editorial-label">
+        <span class="label">Intel</span>
+      </div>
+      <div class="editorial-body">
+        <h3 class="heading-lg" style="margin-bottom:32px;">How It's Made</h3>
+        <div class="body-text">
+          <p>Every shot is generated individually. Detailed prompts are written for every single shot, specifying camera angles, lighting, action, and sound design. Everything is stitched together in post-production using <strong>Google's Nano Banana</strong> for consistent character references.</p>
+          <p>Visual consistency is maintained using <strong>omni-reference</strong>, and two main video models are used: <strong>Seedance 2.0</strong> for cinematic output and <strong>Kling 3.0</strong> for a candid aesthetic.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<!-- ============================================================
-     DIVIDER: CODENAME WIDURI
-     ============================================================ -->
-<div class="section-divider">
-  <span class="divider-label">Project 02</span>
-</div>
 
 <!-- ============================================================
-     SECTION 2: CODENAME: WIDURI
+     PROJECT 02: CODENAME: WIDURI
      ============================================================ -->
-<div class="cw" id="codename-widuri">
+<div class="project" id="codename-widuri">
 
-  <div class="cw-hero">
-    <video class="cw-hero-video-bg" autoplay muted loop playsinline>
+  <!-- HERO -->
+  <div class="proj-hero">
+    <video autoplay muted loop playsinline>
       <source src="https://raw.githubusercontent.com/mxvdxn/mxvdxn.github.io/main/video_files/0319.mp4" type="video/mp4">
     </video>
-    <div class="cw-hero-tag reveal">An AI Filmmaking Experiment</div>
-    <h2 class="cw-hero-title reveal">CODENAME:<br><span>WIDURI</span></h2>
-    <div class="cw-hero-subtitle reveal">Ratu Sunyi // Southeast Asia // 2026</div>
-    <p class="cw-hero-desc reveal">An assassin with no name. A red kebaya that everyone remembers.</p>
-    <div class="cw-hero-written reveal">Written by Dan Pradana</div>
-    <div class="cw-hero-number">W</div>
+    <div class="proj-hero-overlay"></div>
+    <div class="proj-hero-content">
+      <div class="proj-hero-num reveal">Project 02</div>
+      <h2 class="proj-hero-title reveal">CODENAME:<br>WIDURI</h2>
+      <div class="proj-hero-sub reveal">
+        <span>AI Filmmaking Experiment</span>
+        <span class="dot"></span>
+        <span>Ratu Sunyi</span>
+        <span class="dot"></span>
+        <span>Southeast Asia</span>
+        <span class="dot"></span>
+        <span>2 Episodes</span>
+      </div>
+    </div>
   </div>
 
-  <!-- CHARACTER BIO -->
-  <section>
-    <div class="cw-section-label">Character</div>
-    <div class="bio-grid reveal">
-      <div>
-        <div class="bio-name">Widuri</div>
-        <div class="bio-codename">Tier 1 Operative / Ratu Sunyi</div>
-        <p class="bio-text">Her real name no longer exists. It was erased when she entered Ratu Sunyi — no record, no identity, no past. She was given the codename Widuri, a Javanese word for a lone star that guides sailors home. The handlers named her that because when they found her, she was the only fixed point in a room full of chaos. She had not moved in three days.</p>
-        <p class="bio-text">She was 12 when her father, a low-level court official, was murdered by a drug syndicate he refused to work with. A Ratu Sunyi handler found her still sitting beside his body. She had not eaten. She said nothing. She was already waiting.</p>
-        <p class="bio-text">Cold. Cynical. She has a gaze that mocks her opponents before they understand what is happening. Precise in execution. Privately ritualistic. She meditates before every contract, burns incense, watches TV static. She says it helps her listen to what the room wants. She is not cruel. She is surgical. There is a difference.</p>
+  <div class="proj-content">
+
+    <!-- LOGLINE -->
+    <div class="editorial reveal">
+      <div class="editorial-label">
+        <span class="label">Logline</span>
       </div>
-      <div>
-        <div class="bio-stats">
-          <div class="stat"><div class="stat-label">Age</div><div class="stat-value">28</div></div>
-          <div class="stat"><div class="stat-label">Status</div><div class="stat-value">Active</div></div>
-          <div class="stat"><div class="stat-label">Origin</div><div class="stat-value">Surakarta, Java</div></div>
-          <div class="stat"><div class="stat-label">Confirmed Eliminations</div><div class="stat-value">40+</div></div>
-          <div class="stat"><div class="stat-label">Specialty</div><div class="stat-value">Silat / Poison / Firearms</div></div>
-          <div class="stat"><div class="stat-label">Signature</div><div class="stat-value">Always wears red</div></div>
-          <div class="stat"><div class="stat-label">Training Duration</div><div class="stat-value">6 Years</div></div>
-          <div class="stat"><div class="stat-label">First Contract</div><div class="stat-value">Age 19</div></div>
+      <div class="editorial-body">
+        <div class="pull-quote" style="margin:0;">An assassin with no name. A red kebaya that everyone remembers.</div>
+        <p class="body-text" style="margin-top:24px;">Written by Dan Pradana</p>
+      </div>
+    </div>
+
+    <!-- CHARACTER -->
+    <div class="editorial reveal">
+      <div class="editorial-label">
+        <span class="label">Character</span>
+      </div>
+      <div class="editorial-body">
+        <h3 class="heading-lg" style="margin-bottom:8px;">Widuri</h3>
+        <p class="label" style="margin-bottom:32px;">Tier 1 Operative / Ratu Sunyi</p>
+        <div class="body-text">
+          <p>Her real name no longer exists. It was erased when she entered Ratu Sunyi — no record, no identity, no past. She was given the codename Widuri, a Javanese word for a lone star that guides sailors home. The handlers named her that because when they found her, she was the only fixed point in a room full of chaos. She had not moved in three days.</p>
+          <p>She was 12 when her father, a low-level court official, was murdered by a drug syndicate he refused to work with. A Ratu Sunyi handler found her still sitting beside his body. She had not eaten. She said nothing. She was already waiting.</p>
+          <p>Cold. Cynical. She has a gaze that mocks her opponents before they understand what is happening. Precise in execution. Privately ritualistic. She meditates before every contract, burns incense, watches TV static. She says it helps her listen to what the room wants. She is not cruel. She is surgical. There is a difference.</p>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- WORLD -->
-  <section>
-    <div class="cw-section-label">World</div>
-    <div class="reveal">
-      <div class="pull-quote">"A woman in kebaya is invisible to suspicion in Indonesian society. That is the weapon."</div>
-      <div class="world-text">
-        <p>Ratu Sunyi — The Silent Queens — is an all-female assassin syndicate operating out of Southeast Asia. They recruit broken women and train them in pencak silat, bladed weapons, firearms, and poison. Their cover is the oldest cover in the world: domesticity. A woman at a wedding, at a funeral, at an arisan. Nobody looks twice.</p>
-        <p>The syndicate operates in the shadows of everyday life across Southeast Asia. Targets are exclusively drug lords, corrupt officials, and traffickers who buy their way out of justice. Ratu Sunyi is led by a founder known only as Ibu — never seen, only heard.</p>
-        <p>The city is always there in the background. Skylines. Wet pavement. A warung at 2AM. Fluorescent tubes in old buildings that never stop buzzing. This is not a clean world. It is a humid, neon-lit, deeply human world — and somewhere inside it, women in kebaya are doing things nobody will ever be able to explain.</p>
-      </div>
+    <!-- STATS -->
+    <div class="stats-grid reveal">
+      <div class="stat-cell"><div class="stat-label">Age</div><div class="stat-value">28</div></div>
+      <div class="stat-cell"><div class="stat-label">Origin</div><div class="stat-value">Surakarta, Java</div></div>
+      <div class="stat-cell"><div class="stat-label">Specialty</div><div class="stat-value">Silat / Poison / Firearms</div></div>
+      <div class="stat-cell"><div class="stat-label">Signature</div><div class="stat-value">Always wears red</div></div>
+      <div class="stat-cell"><div class="stat-label">Status</div><div class="stat-value">Active</div></div>
+      <div class="stat-cell"><div class="stat-label">Confirmed Eliminations</div><div class="stat-value">40+</div></div>
+      <div class="stat-cell"><div class="stat-label">Training Duration</div><div class="stat-value">6 Years</div></div>
+      <div class="stat-cell"><div class="stat-label">First Contract</div><div class="stat-value">Age 19</div></div>
     </div>
-  </section>
 
-  <!-- EPISODES -->
-  <section>
-    <div class="cw-section-label">Episodes</div>
-    <div class="episodes-grid reveal">
-      <div class="episode-card">
-        <div class="episode-video"><iframe src="https://www.youtube.com/embed/Kf6OW7T0urE" allowfullscreen loading="lazy"></iframe></div>
-        <div class="episode-info">
-          <div class="episode-num">Episode 01 / Pilot</div>
-          <div class="episode-title">Malam Ini</div>
-          <p class="episode-synopsis">Widuri is a Tier 1 operative of Ratu Sunyi: an all-female assassin syndicate operating out of Southeast Asia. Tonight she has one contract: retrieve a mysterious sealed envelope from a low-life scammer in Jametkarta. Killing him wasn't on the brief, but hey, let her decide on that.</p>
-        </div>
+    <!-- WORLD -->
+    <div class="editorial reveal">
+      <div class="editorial-label">
+        <span class="label">World</span>
       </div>
-      <div class="episode-card">
-        <div class="episode-video"><iframe src="https://www.youtube.com/embed/7KaVXAg4sVY" allowfullscreen loading="lazy"></iframe></div>
-        <div class="episode-info">
-          <div class="episode-num">Episode 02</div>
-          <div class="episode-title">The Swamp</div>
-          <p class="episode-synopsis">A corrupt official goes missing in Jametkarta. Nobody saw anything. Nobody heard anything. Just a woman in a red kebaya, sitting on a wooden boat, with an old song playing from her phone. A song that her late father used to hum when she was a kid. Someone is also with her, but not for long.</p>
+      <div class="editorial-body">
+        <div class="pull-quote">"A woman in kebaya is invisible to suspicion in Indonesian society. That is the weapon."</div>
+        <div class="body-text">
+          <p>Ratu Sunyi — The Silent Queens — is an all-female assassin syndicate operating out of Southeast Asia. They recruit broken women and train them in pencak silat, bladed weapons, firearms, and poison. Their cover is the oldest cover in the world: domesticity. A woman at a wedding, at a funeral, at an arisan. Nobody looks twice.</p>
+          <p>The syndicate operates in the shadows of everyday life across Southeast Asia. Targets are exclusively drug lords, corrupt officials, and traffickers who buy their way out of justice. Ratu Sunyi is led by a founder known only as Ibu — never seen, only heard.</p>
+          <p>The city is always there in the background. Skylines. Wet pavement. A warung at 2AM. Fluorescent tubes in old buildings that never stop buzzing. This is not a clean world. It is a humid, neon-lit, deeply human world — and somewhere inside it, women in kebaya are doing things nobody will ever be able to explain.</p>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ABOUT -->
-  <section>
-    <div class="cw-section-label">About the Project</div>
-    <div class="about-grid reveal">
-      <div>
-        <div class="about-title">This started as a question: how far can AI go when you treat it like a camera?</div>
-        <p class="about-text">Codename: Widuri is a micro-series shot entirely with generative AI. Every scene starts as a text-to-video prompt, written by hand, specific enough to function as a real shot list.</p>
-        <p class="about-text">This project exists because omni-reference technology has been getting genuinely interesting. The ability to lock a character visually across scenes, same face, same costume, same presence, is what makes something like this possible. It is still far from perfect. Consistency in performance, location, props, and the smaller details remain a real challenge. But it is improving, and that is worth exploring seriously.</p>
-        <p class="about-text">The character sheets used as omni-reference were generated with Google Nano Banana 2, chosen because their dataset carries stronger racial nuance for Southeast Asian faces. Text-to-video omni-reference is running on Kling 3.0.</p>
+    <!-- EPISODES -->
+    <div class="ep-wide reveal">
+      <div class="ep-wide-video">
+        <iframe src="https://www.youtube.com/embed/Kf6OW7T0urE" allowfullscreen loading="lazy"></iframe>
       </div>
-      <div></div>
+      <div class="ep-wide-info">
+        <div class="ep-wide-num">Episode 01 / Pilot</div>
+        <div class="ep-wide-title">Malam Ini</div>
+        <p class="ep-wide-synopsis">Widuri is a Tier 1 operative of Ratu Sunyi: an all-female assassin syndicate operating out of Southeast Asia. Tonight she has one contract: retrieve a mysterious sealed envelope from a low-life scammer in Jametkarta. Killing him wasn't on the brief, but hey, let her decide on that.</p>
+      </div>
     </div>
-  </section>
 
+    <div class="ep-wide reveal">
+      <div class="ep-wide-video">
+        <iframe src="https://www.youtube.com/embed/7KaVXAg4sVY" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="ep-wide-info">
+        <div class="ep-wide-num">Episode 02</div>
+        <div class="ep-wide-title">The Swamp</div>
+        <p class="ep-wide-synopsis">A corrupt official goes missing in Jametkarta. Nobody saw anything. Nobody heard anything. Just a woman in a red kebaya, sitting on a wooden boat, with an old song playing from her phone. A song that her late father used to hum when she was a kid. Someone is also with her, but not for long.</p>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="editorial reveal">
+      <div class="editorial-label">
+        <span class="label">About the Project</span>
+      </div>
+      <div class="editorial-body">
+        <h3 class="heading-lg" style="margin-bottom:32px;">How far can AI go when you treat it like a camera?</h3>
+        <div class="body-text">
+          <p>Codename: Widuri is a micro-series shot entirely with generative AI. Every scene starts as a text-to-video prompt, written by hand, specific enough to function as a real shot list.</p>
+          <p>This project exists because omni-reference technology has been getting genuinely interesting. The ability to lock a character visually across scenes, same face, same costume, same presence, is what makes something like this possible. It is still far from perfect. Consistency in performance, location, props, and the smaller details remain a real challenge. But it is improving, and that is worth exploring seriously.</p>
+          <p>The character sheets used as omni-reference were generated with <strong>Google Nano Banana 2</strong>, chosen because their dataset carries stronger racial nuance for Southeast Asian faces. Text-to-video omni-reference is running on <strong>Kling 3.0</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<!-- ============================================================
-     DIVIDER: TWFTE
-     ============================================================ -->
-<div class="section-divider">
-  <span class="divider-label">Project 03</span>
-</div>
 
 <!-- ============================================================
-     SECTION 3: THE WORLD FORGOT TO END
+     PROJECT 03: THE WORLD FORGOT TO END
      ============================================================ -->
-<div class="tw" id="twfte">
+<div class="project" id="twfte">
 
-  <div class="tw-hero-wrap">
-    <video class="tw-hero-video" autoplay muted loop playsinline>
+  <!-- HERO -->
+  <div class="proj-hero">
+    <video autoplay muted loop playsinline>
       <source src="https://mxvdxn.github.io/video_files/0315.mp4" type="video/mp4">
     </video>
-    <div class="tw-hero-video-overlay"></div>
-    <div class="tw-hero-content">
-      <div class="tw-hero-index reveal">// 001 — PILOT</div>
-      <h2 class="tw-hero-title reveal">
-        <span class="word-white">THE</span>
-        <span class="word-outline">WORLD</span>
-        <span class="word-white">FORGOT</span>
-        <span class="word-red">TO END</span>
-      </h2>
-      <div class="tw-hero-meta reveal">
-        <div class="tw-hero-tagline">A world that cannot die. Cannot be reborn.</div>
-        <div class="tw-hero-line"></div>
+    <div class="proj-hero-overlay"></div>
+    <div class="proj-hero-content">
+      <div class="proj-hero-num reveal">Project 03</div>
+      <h2 class="proj-hero-title reveal">THE WORLD<br>FORGOT<br>TO END</h2>
+      <div class="proj-hero-sub reveal">
+        <span>Generative AI Film</span>
+        <span class="dot"></span>
+        <span>Pilot</span>
+        <span class="dot"></span>
+        <span>2026</span>
       </div>
     </div>
   </div>
 
-  <div class="ticker">
-    <div class="ticker-inner">
-      THE WORLD FORGOT TO END <span>✦</span> KREVA MAH <span>✦</span> THE SARAAN <span>✦</span> RAVEEN TIER 09 <span>✦</span> PILOT 2026 <span>✦</span> THE VAARA BLOOMS <span>✦</span> SOME PRAYERS WERE NEVER MEANT TO FINISH <span>✦</span> THE WORLD FORGOT TO END <span>✦</span> KREVA MAH <span>✦</span> THE SARAAN <span>✦</span> RAVEEN TIER 09 <span>✦</span> PILOT 2026 <span>✦</span> THE VAARA BLOOMS <span>✦</span> SOME PRAYERS WERE NEVER MEANT TO FINISH <span>✦</span>
-    </div>
-  </div>
+  <div class="proj-content">
 
-  <section class="film-section" style="padding:0; border-bottom:1px solid var(--tw-border);">
-    <div class="embed-wrap">
-      <div class="embed-inner">
-        <iframe src="https://www.youtube.com/embed/ilm-JKq3OYk" title="THE WORLD FORGOT TO END" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+    <!-- FILM EMBED -->
+    <div style="padding:48px 0; background:#000; display:flex; justify-content:center; border-bottom:1px solid var(--dim3);">
+      <div style="position:relative; width:100%; max-width:1100px; aspect-ratio:16/9; overflow:hidden;">
+        <iframe src="https://www.youtube.com/embed/ilm-JKq3OYk" title="THE WORLD FORGOT TO END" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"></iframe>
       </div>
     </div>
+
+    <!-- INFO PANEL -->
     <div class="info-panel reveal">
       <div class="info-block">
         <div class="info-block-label">Classification</div>
-        <div class="info-block-value">KREVA MAH<br><span class="red">Class 03</span></div>
-        <div class="info-block-value small" style="margin-top:12px;">A construct of unknown origin. Massive. Armored. It does not stop moving until something stops it permanently.</div>
+        <div class="info-block-value">KREVA MAH</div>
+        <div class="info-block-desc">A construct of unknown origin. Massive. Armored. It does not stop moving until something stops it permanently.</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">Operative</div>
-        <div class="info-block-value">RAVEEN<br><span class="red">Tier 09</span></div>
-        <div class="info-block-value small" style="margin-top:12px;">She was found already moving. No memory of before. One weapon. One purpose. Nobody knows what she is.</div>
+        <div class="info-block-value">RAVEEN</div>
+        <div class="info-block-desc">She was found already moving. No memory of before. One weapon. One purpose. Nobody knows what she is.</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">World</div>
         <div class="info-block-value">THE SARAAN</div>
-        <div class="info-block-value small" style="margin-top:12px;">A fractured place. Neither dead nor alive. It has been waiting for something to finish what was started.</div>
+        <div class="info-block-desc">A fractured place. Neither dead nor alive. It has been waiting for something to finish what was started.</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">Event</div>
-        <div class="info-block-value small">A cosmic dissolution that went wrong. The world was supposed to end. It didn't.</div>
+        <div class="info-block-desc">A cosmic dissolution that went wrong. The world was supposed to end. It didn't.</div>
       </div>
     </div>
-  </section>
 
-  <div class="synopsis-section">
-    <div class="synopsis-label-col"><span>Synopsis</span></div>
-    <div class="synopsis-content reveal">
-      <p>A lone woman moves through a dead world. Temple spires and collapsed buildings drift under a pale grey sky. She carries one weapon. She asks no questions. Something finds her.</p>
-      <p>The world she walks through has no name she knows of. It does not age. It does not heal. The ruins of a civilization long fractured hang suspended in the air around her — caught between collapse and something that never came after.</p>
-      <p>She has no memory of before. She has a mission. That is enough. For now.</p>
+    <!-- SYNOPSIS -->
+    <div class="synopsis-block reveal">
+      <div class="synopsis-side"><span>Synopsis</span></div>
+      <div class="synopsis-main">
+        <p>A lone woman moves through a dead world. Temple spires and collapsed buildings drift under a pale grey sky. She carries one weapon. She asks no questions. Something finds her.</p>
+        <p>The world she walks through has no name she knows of. It does not age. It does not heal. The ruins of a civilization long fractured hang suspended in the air around her — caught between collapse and something that never came after.</p>
+        <p>She has no memory of before. She has a mission. That is enough. For now.</p>
+      </div>
     </div>
+
+    <!-- STATEMENT -->
+    <div class="editorial reveal">
+      <div class="editorial-label">
+        <span class="label">Statement</span>
+      </div>
+      <div class="editorial-body">
+        <div class="statement-grid" style="padding:0; border-bottom:none;">
+          <p>Generative AI video has made remarkable progress in a short amount of time. What once required entire production pipelines can now be explored by a single person with the right tools. The limitations are still real — consistency, physics, fine control — but the gap between idea and execution has never been smaller.</p>
+          <p>This project is an attempt to push that boundary — specifically around action sequences and micro storytelling. With Omni-Reference now available across most leading video models, character consistency across shots has become genuinely achievable. This pilot tests exactly that: how far the technology holds when the story demands movement, tension, and continuity.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CREDITS -->
+    <div class="credits-section reveal">
+      <div class="credits-col">
+        <div class="credits-col-title">Credits</div>
+        <div class="credit-row">
+          <div class="credit-role">Directed by</div>
+          <div class="credit-name">Dan Pradana</div>
+        </div>
+      </div>
+      <div class="credits-col">
+        <div class="credits-col-title">Tools</div>
+        <div class="credit-row">
+          <div class="credit-role">Video Animated with</div>
+          <div class="credit-name">Kling 3.0 Omni</div>
+        </div>
+        <div class="credit-row">
+          <div class="credit-role">Character Sheet</div>
+          <div class="credit-name">Google Nano Banana 2</div>
+        </div>
+      </div>
+    </div>
+
   </div>
-
-  <div class="class-section">
-    <div class="class-cell reveal">
-      <div class="class-num">01</div>
-      <div class="class-label">Format</div>
-      <div class="class-value">Generative<br>AI Film</div>
-      <div class="class-sub">Pilot Episode</div>
-    </div>
-    <div class="class-cell reveal" style="grid-column:span 2; border-right:none;">
-      <div class="class-num">02</div>
-      <div class="class-label" style="margin-bottom:20px;">Statement</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px;">
-        <p style="font-size:13px; line-height:2; color:rgba(240,240,240,0.55);">
-          Generative AI video has made remarkable progress in a short amount of time. What once required entire production pipelines can now be explored by a single person with the right tools. The limitations are still real — consistency, physics, fine control — but the gap between idea and execution has never been smaller.
-        </p>
-        <p style="font-size:13px; line-height:2; color:rgba(240,240,240,0.55);">
-          This project is an attempt to push that boundary — specifically around action sequences and micro storytelling. With Omni-Reference now available across most leading video models, character consistency across shots has become genuinely achievable. This pilot tests exactly that: how far the technology holds when the story demands movement, tension, and continuity.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="bottom-grid">
-    <div class="bottom-col reveal">
-      <div class="bottom-col-header">Credits</div>
-      <div class="credit-row">
-        <div class="credit-row-role">Directed by</div>
-        <div class="credit-row-name">Dan Pradana</div>
-      </div>
-    </div>
-    <div class="bottom-col reveal">
-      <div class="bottom-col-header">Tools</div>
-      <div class="credit-row">
-        <div class="credit-row-role">Video Animated with</div>
-        <div class="credit-row-name">Kling 3.0 Omni</div>
-      </div>
-      <div class="credit-row">
-        <div class="credit-row-role">Character Sheet</div>
-        <div class="credit-row-name">Google Nano Banana 2</div>
-      </div>
-    </div>
-  </div>
-
 </div>
 
 
 <!-- ============================================================
-     GLOBAL FOOTER
+     FOOTER
      ============================================================ -->
 <div class="global-footer">
-  <div class="global-footer-brand">MXVDXN // DAN PRADANA // © 2026</div>
-  <div class="global-footer-right">ALL RIGHTS RESERVED</div>
+  <span>MXVDXN // DAN PRADANA // &copy; 2026</span>
+  <span>ALL RIGHTS RESERVED</span>
 </div>
+
 
 <!-- ============================================================
      SCRIPTS
@@ -1312,21 +1235,19 @@ body {
 // Scroll reveal
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add('vis', 'visible');
+    if (e.isIntersecting) e.target.classList.add('vis');
   });
-}, { threshold: 0.08 });
+}, { threshold: 0.06 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// Hide fixed video bg once past hero
+// Fade out fixed bg video after hero
 const videoBg = document.getElementById('video-bg');
 const heroIdx = document.querySelector('.hero-index');
-
-function checkVideoBg() {
-  const heroBottom = heroIdx.getBoundingClientRect().bottom;
-  videoBg.style.opacity = heroBottom > 0 ? '0.4' : '0';
-  videoBg.style.transition = 'opacity 0.6s ease';
+function checkBg() {
+  const b = heroIdx.getBoundingClientRect().bottom;
+  videoBg.style.opacity = b > 0 ? '0.4' : '0';
 }
-window.addEventListener('scroll', checkVideoBg, { passive: true });
+window.addEventListener('scroll', checkBg, { passive:true });
 </script>
 
 </body>
