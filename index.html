@@ -893,7 +893,7 @@ img, video, iframe { max-width:100%; }
       </div>
       <div class="hero-group">
         <span class="hero-meta">03 // CONTACT</span>
-        <a href="/cdn-cgi/l/email-protection#1e7a7f7077786e6c7f7a7f707f5e79737f7772307d7173" class="hero-link">DIRECT<br>LINE</a>
+        <a href="mailto:danifpradana@gmail.com" class="hero-link">DIRECT<br>LINE</a>
       </div>
     </div>
 
@@ -1046,7 +1046,7 @@ img, video, iframe { max-width:100%; }
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/7UCZi9VhlPY" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 10</span><span class="ep-tag">Released</span></div></div>
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/nIDBpm58WaE" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 11</span><span class="ep-tag">Released</span></div></div>
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/xcdmN3A0-gk" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 12</span><span class="ep-tag">Released</span></div></div>
-        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/M8KL6_Edixs" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 13</span><span class="ep-tag">Released</span></div></div>
+        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/uRjFisv_54U" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 13</span><span class="ep-tag">Released</span></div></div>
       </div>
     </div>
 
@@ -1364,7 +1364,7 @@ img, video, iframe { max-width:100%; }
 <!-- ============================================================
      SCRIPTS
      ============================================================ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Scroll reveal
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -1377,4 +1377,11 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 const videoBg = document.getElementById('video-bg');
 const heroIdx = document.querySelector('.hero-index');
 function checkBg() {
-  const b = heroIdx.getBoundingClient
+  const b = heroIdx.getBoundingClientRect().bottom;
+  videoBg.style.opacity = b > 0 ? '0.4' : '0';
+}
+window.addEventListener('scroll', checkBg, { passive:true });
+</script>
+
+</body>
+</html>
