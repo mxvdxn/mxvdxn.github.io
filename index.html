@@ -16,8 +16,8 @@ html { scroll-behavior:smooth; }
 
 :root {
   --white:#ffffff;
-  --dim:rgba(255,255,255,0.85); /* Brighter for readability */
-  --dim2:rgba(255,255,255,0.4);
+  --dim:rgba(255,255,255,0.85); 
+  --dim2:rgba(255,255,255,0.5);
   --dim3:rgba(255,255,255,0.12);
   --dim4:rgba(255,255,255,0.06);
   --black:#000000;
@@ -38,7 +38,7 @@ img, video, iframe { max-width:100%; }
 ::selection { background:var(--white); color:var(--black); }
 
 /* ============================================================
-   SHARED TYPOGRAPHY
+   TYPOGRAPHY
    ============================================================ */
 .label {
   font-family:var(--mono);
@@ -79,15 +79,13 @@ img, video, iframe { max-width:100%; }
 }
 
 .body-text {
-  font-family:var(--sans); /* SANS SERIF AS REQUESTED */
-  font-size:20px; /* LARGE READABLE FONT */
+  font-family:var(--sans); /* SANS SERIF */
+  font-size:20px; /* LARGE READABLE */
   line-height:1.7;
   color:var(--dim);
 }
 
 .body-text strong { color:var(--white); font-weight:700; }
-
-.rule { border:none; border-top:1px solid var(--dim3); }
 
 /* ============================================================
    SCROLL REVEAL
@@ -160,7 +158,6 @@ img, video, iframe { max-width:100%; }
   letter-spacing:2px;
   margin-bottom:5px;
   text-transform:uppercase;
-  transition:color 0.3s;
 }
 
 .hero-link {
@@ -177,27 +174,6 @@ img, video, iframe { max-width:100%; }
 }
 
 .hero-col-right .hero-link { transform-origin:right; }
-
-.col-label {
-  font-family:var(--mono);
-  font-size:11px;
-  letter-spacing:3px;
-  color:var(--dim2);
-  text-transform:uppercase;
-  margin-bottom:16px;
-  padding-bottom:10px;
-  width:100%;
-  text-align:right;
-}
-
-/* Hover interactions */
-.hero-col:not(.hero-col-right):hover .hero-link { opacity:0.3; }
-.hero-col:not(.hero-col-right) .hero-group:hover .hero-link { opacity:1; transform:translateX(15px); }
-.hero-col:not(.hero-col-right) .hero-group:hover .hero-meta { color:#fff; }
-
-.hero-col-right:hover .hero-link { opacity:0.3; }
-.hero-col-right .hero-group:hover .hero-link { opacity:1; transform:translateX(-15px); }
-.hero-col-right .hero-group:hover .hero-meta { color:#fff; }
 
 .hero-info {
   display:flex;
@@ -311,7 +287,7 @@ img, video, iframe { max-width:100%; }
 .editorial-label { padding:60px 40px 60px 0; border-right:1px solid var(--dim3); }
 .editorial-body { padding:60px 0 60px 40px; }
 .editorial-body .body-text { max-width:720px; }
-.editorial-body .body-text p { margin-bottom:28px; }
+.editorial-body .body-text p { margin-bottom:32px; }
 
 .pull-quote {
   font-family:var(--sans);
@@ -394,7 +370,7 @@ img, video, iframe { max-width:100%; }
 
 /* FOOTER */
 .global-footer { padding:40px 5vw; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
-.global-footer span { font-family:var(--mono); font-size:12px; letter-spacing:3px; color:var(--dim2); text-transform:uppercase; }
+.global-footer span { font-family:var(--mono); font-size:11px; letter-spacing:3px; color:var(--dim2); text-transform:uppercase; }
 
 /* RESPONSIVE */
 @media (max-width:1024px) {
@@ -411,7 +387,7 @@ img, video, iframe { max-width:100%; }
 </head>
 <body>
 
-<!-- REPLACED BG VIDEO -->
+<!-- UPDATED HERO LOOP -->
 <video id="video-bg" autoplay muted loop playsinline>
   <source src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/MXVDXN_LOOOP.mp4" type="video/mp4">
 </video>
@@ -419,7 +395,6 @@ img, video, iframe { max-width:100%; }
 <!-- HERO -->
 <div class="hero-index" id="top">
   <div class="brand-bar">MXVDXN // V.2026</div>
-
   <nav class="hero-nav">
     <div class="hero-col">
       <div class="hero-group"><span class="hero-meta">01 // ARCHIVE</span><a href="https://www.instagram.com/mxvdxn" target="_blank" class="hero-link">VISUAL<br>ARCHIVES</a></div>
@@ -433,7 +408,6 @@ img, video, iframe { max-width:100%; }
       <div class="hero-group"><span class="hero-meta">03 // GENERATIVE FILM</span><a href="#twfte" class="hero-link">THE WORLD<br>FORGOT TO END</a></div>
     </div>
   </nav>
-
   <div class="hero-info">
     <div class="hero-text"><strong>CREATIVE PARTNERSHIPS</strong><span class="spacer"></span>KLING AI / HAILUO MINIMAX / GROK IMAGINE / FREEPIK / YAPPER</div>
     <div class="hero-text" style="text-align:right;"><strong>DAN PRADANA</strong><span class="spacer"></span>GEN AI / COPYWRITER.<br>10+ YEARS IN APAC ADVERTISING.</div>
@@ -451,7 +425,7 @@ img, video, iframe { max-width:100%; }
     <div class="about-me-cell">
       <div class="about-me-name">MXVDXN</div>
       <div class="about-me-sub">Independent Gen-AI Lab</div>
-      <div class="body-text"><p>An independent Gen-AI lab exploring the potential of technology in relation to the creative industry — building original IP with a strong presence rooted in Southeast Asia.</p></div>
+      <div class="body-text"><p>An independent Gen-AI lab exploring the potential of technology in relation to the creative industry — building original IP rooted in Southeast Asia.</p></div>
     </div>
   </div>
 </div>
@@ -467,21 +441,17 @@ img, video, iframe { max-width:100%; }
       <div class="proj-hero-sub reveal"><span>AI-Generated Action Series</span><span class="dot"></span><span>Southeast Asia</span><span class="dot"></span><span>14 Episodes</span></div>
     </div>
   </div>
-
   <div class="proj-content">
     <div class="editorial reveal">
       <div class="editorial-label"><span class="label">About</span></div>
       <div class="editorial-body">
         <h3 class="heading-lg" style="margin-bottom:32px;">Building an AI Action Series from Scratch</h3>
         <div class="body-text">
-          <p>This is <strong>Sari & Ploy</strong>, a short-form action series made entirely with AI video generation tools.</p>
-          <p>Two high school girls — one Indonesian, one Thai — secretly work as agents for a covert bilateral program called the <strong>Garuda-Siam Initiative</strong>. They fight crime across Southeast Asia using martial arts. Sari fights with Pencak Silat. Ploy fights with Muay Thai. In return for their service, the government takes care of everything — housing, education, career, financial security for their families.</p>
-          <p>The story is inspired by anime and manga. The idea of teenagers with extraordinary abilities living double lives is nothing new — but this project sets it in Southeast Asia, with characters that feel local and grounded.</p>
+          <p>Two high school girls secretly work as agents for a covert bilateral program called the <strong>Garuda-Siam Initiative</strong>. They fight crime across Southeast Asia using martial arts. Sari fights with Pencak Silat. Ploy fights with Muay Thai. In return for their service, the government takes care of everything — housing, education, career, financial security for their families.</p>
+          <p>The story is inspired by anime and manga. The idea of teenagers with extraordinary abilities living double lives is nothing new, but this project sets it in Southeast Asia, with characters that feel local and grounded.</p>
         </div>
       </div>
     </div>
-
-    <!-- RESTORED: THE GARUDA-SIAM INITIATIVE -->
     <div class="editorial reveal">
       <div class="editorial-label"><span class="label">Classified</span></div>
       <div class="editorial-body">
@@ -493,7 +463,6 @@ img, video, iframe { max-width:100%; }
         </div>
       </div>
     </div>
-
     <div class="ep-section reveal">
       <div class="ep-section-header"><h3 class="heading-md">Episodes</h3><span class="ep-count">14 Episodes Released</span></div>
       <div class="ep-grid">
@@ -509,7 +478,7 @@ img, video, iframe { max-width:100%; }
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/7UCZi9VhlPY" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 10</span><span class="ep-tag">Released</span></div></div>
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/nIDBpm58WaE" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 11</span><span class="ep-tag">Released</span></div></div>
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/xcdmN3A0-gk" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 12</span><span class="ep-tag">Released</span></div></div>
-        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/uRjFisv_54U" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 13</span><span class="ep-tag">Released</span></div></div>
+        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/M8KL6_Edixs" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 13</span><span class="ep-tag">Released</span></div></div>
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/zYQul-TBFJQ" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 14</span><span class="ep-tag">Released</span></div></div>
       </div>
     </div>
@@ -527,9 +496,7 @@ img, video, iframe { max-width:100%; }
       <div class="proj-hero-sub reveal"><span>AI Filmmaking Experiment</span><span class="dot"></span><span>Ratu Sunyi</span><span class="dot"></span><span>4 Episodes</span></div>
     </div>
   </div>
-
   <div class="proj-content">
-    <!-- RESTORED: CHARACTER STORY -->
     <div class="editorial reveal">
       <div class="editorial-label"><span class="label">Character</span></div>
       <div class="editorial-body">
@@ -542,8 +509,6 @@ img, video, iframe { max-width:100%; }
         </div>
       </div>
     </div>
-
-    <!-- RESTORED: WORLD DESCRIPTION -->
     <div class="editorial reveal">
       <div class="editorial-label"><span class="label">World</span></div>
       <div class="editorial-body">
@@ -555,7 +520,6 @@ img, video, iframe { max-width:100%; }
         </div>
       </div>
     </div>
-
     <div class="ep-wide reveal">
       <div class="ep-wide-video"><iframe src="https://www.youtube.com/embed/Kf6OW7T0urE" allowfullscreen loading="lazy"></iframe></div>
       <div class="ep-wide-info"><div class="ep-wide-num">Episode 01</div><div class="ep-wide-title">Malam Ini</div><p class="ep-wide-synopsis">Widuri retrieves a mysterious envelope from a scammer. Killing him wasn't on the brief, but she decides his fate.</p></div>
@@ -586,31 +550,12 @@ img, video, iframe { max-width:100%; }
     </div>
   </div>
   <div class="proj-content">
-    <!-- RESTORED: TWFTE INFO PANEL -->
     <div class="info-panel reveal">
-      <div class="info-block">
-        <div class="info-block-label">Classification</div>
-        <div class="info-block-value">KREVA MAH</div>
-        <div class="info-block-desc">A construct of unknown origin. Massive. Armored. It does not stop moving until something stops it permanently.</div>
-      </div>
-      <div class="info-block">
-        <div class="info-block-label">Operative</div>
-        <div class="info-block-value">RAVEEN</div>
-        <div class="info-block-desc">She was found already moving. No memory of before. One weapon. One purpose. Nobody knows what she is.</div>
-      </div>
-      <div class="info-block">
-        <div class="info-block-label">World</div>
-        <div class="info-block-value">THE SARAAN</div>
-        <div class="info-block-desc">A fractured place. Neither dead nor alive. It has been waiting for something to finish what was started.</div>
-      </div>
-      <div class="info-block">
-        <div class="info-block-label">Event</div>
-        <div class="info-block-value">Cosmic Dissolution</div>
-        <div class="info-block-desc">A cosmic dissolution that went wrong. The world was supposed to end. It didn't.</div>
-      </div>
+      <div class="info-block"><div class="info-block-label">Classification</div><div class="info-block-value">KREVA MAH</div><div class="info-block-desc">A construct of unknown origin. Massive. Armored. It does not stop moving until something stops it permanently.</div></div>
+      <div class="info-block"><div class="info-block-label">Operative</div><div class="info-block-value">RAVEEN</div><div class="info-block-desc">She was found already moving. No memory of before. One weapon. One purpose. Nobody knows what she is.</div></div>
+      <div class="info-block"><div class="info-block-label">World</div><div class="info-block-value">THE SARAAN</div><div class="info-block-desc">A fractured place. Neither dead nor alive. It has been waiting for something to finish what was started.</div></div>
+      <div class="info-block"><div class="info-block-label">Event</div><div class="info-block-value">Dissolution</div><div class="info-block-desc">A cosmic dissolution that went wrong. The world was supposed to end. It didn't.</div></div>
     </div>
-
-    <!-- RESTORED: TWFTE SYNOPSIS -->
     <div class="synopsis-block reveal">
       <div class="synopsis-side"><span>Synopsis</span></div>
       <div class="synopsis-main">
@@ -619,7 +564,6 @@ img, video, iframe { max-width:100%; }
         <p>She has no memory of before. She has a mission. That is enough. For now.</p>
       </div>
     </div>
-
     <div class="ep-wide reveal">
       <div class="ep-wide-video"><iframe src="https://www.youtube.com/embed/ilm-JKq3OYk" allowfullscreen loading="lazy"></iframe></div>
       <div class="ep-wide-info"><div class="ep-wide-num">Episode 01</div><div class="ep-wide-title">#01</div></div>
@@ -631,22 +575,17 @@ img, video, iframe { max-width:100%; }
   </div>
 </div>
 
-<!-- TOOLKIT -->
+<!-- NOTES ONLY (TOOLKIT REMOVED) -->
 <div class="project" id="toolkit">
   <div class="proj-content">
     <div class="editorial reveal" style="border-top:none;">
-      <div class="editorial-label"><span class="label">The Toolkit</span></div>
-      <div class="editorial-body">
-        <h3 class="heading-lg" style="margin-bottom:32px;">How Everything<br>Gets Made</h3>
-        <div class="body-text"><p>Every project is built with generative AI. Every shot is prompted individually then stitched together in post. Nano Banana is the core of everything for cultural nuance.</p></div>
-      </div>
-    </div>
-
-    <div class="editorial reveal">
       <div class="editorial-label"><span class="label">Notes</span></div>
       <div class="editorial-body">
         <div class="body-text">
-          <p><strong>Nano Banana is the core foundation.</strong> Kling and Seedance handle the bulk of video generation. Sound design often comes straight from the video model output. All prompts and logs are managed in Obsidian.</p>
+          <p><strong>Nano Banana is the core of everything.</strong> Every character sheet, location sheet, and visual reference is generated there — the dataset carries the strongest racial and cultural nuance for Southeast Asian faces and environments.</p>
+          <p><strong>Kling 3.0</strong> and <strong>Seedance 2.0</strong> handle the bulk of video generation, relying heavily on <strong>Omni-Reference</strong> for character consistency across shots. <strong>Veo 3.1</strong> fills in when a shot needs to feel vernacular to the region.</p>
+          <p>Sound design often comes straight from the video model output. Sometimes that raw, unpolished audio is better than anything added in post. Music from <strong>Suno</strong> when a scene needs it.</p>
+          <p>All prompts, experiment logs, documentation, and resources are managed in <strong>Obsidian</strong>.</p>
         </div>
       </div>
     </div>
