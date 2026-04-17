@@ -38,7 +38,7 @@ img, video, iframe { max-width:100%; }
 ::selection { background:var(--white); color:var(--black); }
 
 /* ============================================================
-   SHARED TYPOGRAPHY
+   TYPOGRAPHY
    ============================================================ */
 .label {
   font-family:var(--mono);
@@ -80,8 +80,8 @@ img, video, iframe { max-width:100%; }
 
 .body-text {
   font-family:var(--sans); 
-  font-size:20px; /* LARGE READABLE SIZE */
-  line-height:1.8;
+  font-size:20px; /* LARGE READABLE */
+  line-height:1.7;
   color:var(--dim);
 }
 
@@ -313,7 +313,7 @@ img, video, iframe { max-width:100%; }
   border-left:2px solid var(--dim2);
   padding-left:28px;
   margin:40px 0;
-  max-width:640px;
+  max-width:680px;
 }
 
 /* EPISODES GRID */
@@ -339,9 +339,9 @@ img, video, iframe { max-width:100%; }
   background:rgba(255,255,255,0.03);
   border:1px solid var(--dim3);
   overflow:hidden;
-  transition:border-color 0.3s, transform 0.35s ease;
+  transition:transform 0.35s ease;
 }
-.ep-card:hover { border-color:var(--dim2); transform:translateY(-3px); }
+.ep-card:hover { transform:translateY(-3px); }
 
 .ep-thumb { position:relative; width:100%; padding-bottom:56.25%; background:var(--black); overflow:hidden; }
 .ep-thumb iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
@@ -358,21 +358,6 @@ img, video, iframe { max-width:100%; }
 .ep-wide-num { font-family:var(--mono); font-size:11px; letter-spacing:4px; color:var(--dim2); text-transform:uppercase; margin-bottom:16px; }
 .ep-wide-title { font-family:var(--sans); font-weight:900; font-size:clamp(20px, 2.5vw, 32px); text-transform:uppercase; line-height:1; margin-bottom:16px; }
 .ep-wide-synopsis { font-family:var(--sans); font-size:18px; line-height:1.7; color:var(--dim); }
-
-/* INFO PANEL (TWFTE) */
-.info-panel { display:grid; grid-template-columns:repeat(4, 1fr); border-bottom:1px solid var(--dim3); }
-.info-block { padding:32px 24px; border-right:1px solid var(--dim3); }
-.info-block:last-child { border-right:none; }
-.info-block-label { font-family:var(--mono); font-size:10px; letter-spacing:4px; color:var(--dim2); text-transform:uppercase; margin-bottom:12px; }
-.info-block-value { font-family:var(--sans); font-weight:800; font-size:22px; text-transform:uppercase; letter-spacing:1px; line-height:1.15; }
-.info-block-desc { font-family:var(--sans); font-size:16px; line-height:1.6; color:var(--dim); margin-top:12px; }
-
-/* SYNOPSIS BLOCK (TWFTE) */
-.synopsis-block { display:grid; grid-template-columns:100px 1fr; border-bottom:1px solid var(--dim3); }
-.synopsis-side { border-right:1px solid var(--dim3); padding:48px 24px; display:flex; align-items:flex-start; }
-.synopsis-side span { font-family:var(--mono); font-size:11px; letter-spacing:5px; color:var(--dim2); text-transform:uppercase; writing-mode:vertical-rl; transform:rotate(180deg); }
-.synopsis-main { padding:48px 40px; }
-.synopsis-main p { font-family:var(--sans); font-size:20px; line-height:1.8; color:var(--dim); margin-bottom:24px; max-width:720px; }
 
 /* ABOUT ME SECTION */
 .about-me { border-top:1px solid var(--dim3); padding:100px 5vw; max-width:1600px; margin:0 auto; }
@@ -394,15 +379,11 @@ img, video, iframe { max-width:100%; }
   .editorial-body { padding:20px 0 48px 0; }
   .ep-wide { grid-template-columns:1fr; }
   .ep-wide-video { border-right:none; border-bottom:1px solid var(--dim3); }
-  .info-panel { grid-template-columns:repeat(2, 1fr); }
-  .synopsis-block { grid-template-columns:1fr; }
-  .synopsis-side { display:none; }
 }
 </style>
 </head>
 <body>
 
-<!-- UPDATED BG LOOP -->
 <video id="video-bg" autoplay muted loop playsinline>
   <source src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/MXVDXN_LOOOP.mp4" type="video/mp4">
 </video>
@@ -421,12 +402,11 @@ img, video, iframe { max-width:100%; }
       <div class="col-label">AI SHORT FILMS</div>
       <div class="hero-group"><span class="hero-meta">01 // AI ACTION SERIES</span><a href="#sari-ploy" class="hero-link">SARI &<br>PLOY</a></div>
       <div class="hero-group"><span class="hero-meta">02 // AI EXPERIMENT</span><a href="#codename-widuri" class="hero-link">CODENAME:<br>WIDURI</a></div>
-      <div class="hero-group"><span class="hero-meta">03 // GENERATIVE FILM</span><a href="#twfte" class="hero-link">THE WORLD<br>FORGOT TO END</a></div>
     </div>
   </nav>
 
   <div class="hero-info">
-    <div class="hero-text"><strong>CREATIVE PARTNERSHIPS</strong><span class="spacer"></span>KLING AI / HAILUO MINIMAX / GROK IMAGINE / FREEPIK / YAPPER</div>
+    <div class="hero-text"><strong>CREATIVE PARTNERSHIPS</strong><span class="spacer"></span>KLING AI / HAILUO MINIMAX / GROK IMAGINE / FREEPIK / Dreamina</div>
     <div class="hero-text" style="text-align:right;"><strong>DAN PRADANA</strong><span class="spacer"></span>GEN AI / COPYWRITER.<br>10+ YEARS IN APAC ADVERTISING.</div>
   </div>
 </div>
@@ -455,7 +435,7 @@ img, video, iframe { max-width:100%; }
     <div class="proj-hero-content">
       <div class="proj-hero-num reveal">Project 01</div>
       <h2 class="proj-hero-title reveal">SARI &<br>PLOY</h2>
-      <div class="proj-hero-sub reveal"><span>AI-Generated Action Series</span><span class="dot"></span><span>Southeast Asia</span><span class="dot"></span><span>15 Episodes</span></div>
+      <div class="proj-hero-sub reveal"><span>AI-Generated Action Series</span><span class="dot"></span><span>Southeast Asia</span><span class="dot"></span><span>16 Episodes</span></div>
     </div>
   </div>
 
@@ -466,7 +446,7 @@ img, video, iframe { max-width:100%; }
         <h3 class="heading-lg" style="margin-bottom:32px;">Building an AI Action Series from Scratch</h3>
         <div class="body-text">
           <p>This is <strong>Sari & Ploy</strong>, a short-form action series made entirely with AI video generation tools.</p>
-          <p>Two high school girls — one Indonesian, one Thai — secretly work as agents for a covert bilateral program called the <strong>Garuda-Siam Initiative</strong>. They fight crime across Southeast Asia using martial arts. Sari fights with Pencak Silat. Ploy fights with Muay Thai. In return for their service, the government takes care of everything — housing, education, career, financial security for their families.</p>
+          <p>Two high school girls secretly work as agents for a covert bilateral program called the <strong>Garuda-Siam Initiative</strong>. They fight crime across Southeast Asia using martial arts. Sari fights with Pencak Silat. Ploy fights with Muay Thai. In return for their service, the government takes care of everything — housing, education, career, financial security for their families.</p>
         </div>
       </div>
     </div>
@@ -484,7 +464,7 @@ img, video, iframe { max-width:100%; }
     </div>
 
     <div class="ep-section reveal">
-      <div class="ep-section-header"><h3 class="heading-md">Episodes</h3><span class="ep-count">15 Episodes Released</span></div>
+      <div class="ep-section-header"><h3 class="heading-md">Episodes</h3><span class="ep-count">16 Episodes Released</span></div>
       <div class="ep-grid">
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/P4-UiJkGM68" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 01</span><span class="ep-tag">Released</span></div></div>
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/kE5oPuCTjc0" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 02</span><span class="ep-tag">Released</span></div></div>
@@ -498,9 +478,10 @@ img, video, iframe { max-width:100%; }
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/7UCZi9VhlPY" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 10</span><span class="ep-tag">Released</span></div></div>
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/nIDBpm58WaE" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 11</span><span class="ep-tag">Released</span></div></div>
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/xcdmN3A0-gk" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 12</span><span class="ep-tag">Released</span></div></div>
-        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/M8KL6_Edixs" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 13</span><span class="ep-tag">Released</span></div></div>
+        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/EwktTdM2ybg" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 13</span><span class="ep-tag">Released</span></div></div>
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/zYQul-TBFJQ" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 14</span><span class="ep-tag">Released</span></div></div>
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/s7hxu3DG5C0" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 15</span><span class="ep-tag">Released</span></div></div>
+        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/CiBQOrbCOlg" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 16</span><span class="ep-tag">Released</span></div></div>
       </div>
     </div>
   </div>
@@ -535,7 +516,6 @@ img, video, iframe { max-width:100%; }
         <div class="pull-quote">"A woman in kebaya is invisible to suspicion in Indonesian society. That is the weapon."</div>
         <div class="body-text">
           <p>Ratu Sunyi — The Silent Queens — is an all-female assassin syndicate operating out of Southeast Asia. They recruit broken women and train them in pencak silat, bladed weapons, firearms, and poison. Their cover is the oldest cover in the world: domesticity. A woman at a wedding, at a funeral, at an arisan. Nobody looks twice.</p>
-          <p>The syndicate operates in the shadows of everyday life across Southeast Asia. Targets are exclusively drug lords, corrupt officials, and traffickers who buy their way out of justice. Ratu Sunyi is led by a founder known only as Ibu — never seen, only heard.</p>
           <p>The city is always there in the background. Skylines. Wet pavement. A warung at 2AM. Fluorescent tubes in old buildings that never stop buzzing. This is not a clean world. It is a humid, neon-lit, deeply human world — and somewhere inside it, women in kebaya are doing things nobody will ever be able to explain.</p>
         </div>
       </div>
@@ -543,7 +523,7 @@ img, video, iframe { max-width:100%; }
     <div class="ep-wide reveal">
       <div class="ep-wide-video"><iframe src="https://www.youtube.com/embed/Kf6OW7T0urE" allowfullscreen loading="lazy"></iframe></div>
       <div class="ep-wide-info">
-        <div class="ep-wide-num">Episode 01</div>
+        <div class="ep-wide-num">Episode 01 / Pilot</div>
         <div class="ep-wide-title">Malam Ini</div>
         <p class="ep-wide-synopsis">Widuri retrieves a mysterious envelope from a scammer. Killing him wasn't on the brief, but she decides his fate.</p>
       </div>
@@ -577,76 +557,7 @@ img, video, iframe { max-width:100%; }
       <div class="ep-wide-info">
         <div class="ep-wide-num">Episode 05</div>
         <div class="ep-wide-title">Room Service</div>
-        <p class="ep-wide-synopsis">Widuri has one contract tonight. A man in a luxury hotel room in Jakarta. The hotel has an inside man at the reception desk. The room has a Jakarta skyline view. And the target has no idea what is coming when he hears the door open.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PROJECT 03: TWFTE -->
-<div class="project" id="twfte">
-  <div class="proj-hero">
-    <video autoplay muted loop playsinline><source src="https://mxvdxn.github.io/video_files/0315.mp4" type="video/mp4"></video>
-    <div class="proj-hero-overlay"></div>
-    <div class="proj-hero-content">
-      <div class="proj-hero-num reveal">Project 03</div>
-      <h2 class="proj-hero-title reveal">THE WORLD<br>FORGOT<br>TO END</h2>
-    </div>
-  </div>
-  <div class="proj-content">
-    <div class="info-panel reveal">
-      <div class="info-block">
-        <div class="info-block-label">Classification</div>
-        <div class="info-block-value">KREVA MAH</div>
-        <div class="info-block-desc">A construct of unknown origin. Massive. Armored. It does not stop moving until something stops it permanently.</div>
-      </div>
-      <div class="info-block">
-        <div class="info-block-label">Operative</div>
-        <div class="info-block-value">RAVEEN</div>
-        <div class="info-block-desc">She was found already moving. No memory of before. One weapon. One purpose. Nobody knows what she is.</div>
-      </div>
-      <div class="info-block">
-        <div class="info-block-label">World</div>
-        <div class="info-block-value">THE SARAAN</div>
-        <div class="info-block-desc">A fractured place. Neither dead nor alive. It has been waiting for something to finish what was started.</div>
-      </div>
-      <div class="info-block">
-        <div class="info-block-label">Event</div>
-        <div class="info-block-value">Dissolution</div>
-        <div class="info-block-desc">A cosmic dissolution that went wrong. The world was supposed to end. It didn't.</div>
-      </div>
-    </div>
-    <div class="synopsis-block reveal">
-      <div class="synopsis-side"><span>Synopsis</span></div>
-      <div class="synopsis-main">
-        <p>A lone woman moves through a dead world. Temple spires and collapsed buildings drift under a pale grey sky. She carries one weapon. She asks no questions. Something finds her.</p>
-        <p>The world she walks through has no name she knows of. It does not age. It does not heal. The ruins of a civilization long fractured hang suspended in the air around her — caught between collapse and something that never came after.</p>
-        <p>She has no memory of before. She has a mission. That is enough. For now.</p>
-      </div>
-    </div>
-    <div class="ep-wide reveal">
-      <div class="ep-wide-video"><iframe src="https://www.youtube.com/embed/ilm-JKq3OYk" allowfullscreen loading="lazy"></iframe></div>
-      <div class="ep-wide-info"><div class="ep-wide-num">Episode 01</div><div class="ep-wide-title">#01</div></div>
-    </div>
-    <div class="ep-wide reveal">
-      <div class="ep-wide-video"><iframe src="https://www.youtube.com/embed/R22C2rviRvw" allowfullscreen loading="lazy"></iframe></div>
-      <div class="ep-wide-info"><div class="ep-wide-num">Episode 02</div><div class="ep-wide-title">#02</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- NOTES -->
-<div class="project" id="toolkit">
-  <div class="proj-content">
-    <div class="editorial reveal" style="border-top:none;">
-      <div class="editorial-label"><span class="label">Notes</span></div>
-      <div class="editorial-body">
-        <div class="body-text">
-          <p><strong>Nano Banana is the core of everything.</strong> Every character sheet, location sheet, and visual reference is generated there — the dataset carries the strongest racial and cultural nuance for Southeast Asian faces and environments.</p>
-          <p><strong>Kling 3.0</strong> and <strong>Seedance 2.0</strong> handle the bulk of video generation, relying heavily on <strong>Omni-Reference</strong> for character consistency across shots. <strong>Veo 3.1</strong> fills in when a shot needs to feel vernacular to the region.</p>
-          <p>Sound design often comes straight from the video model output. Sometimes that raw, unpolished audio is better than anything added in post. Music from <strong>Suno</strong> when a scene needs it.</p>
-          <p>All prompts, experiment logs, documentation, and resources are managed in <strong>Obsidian</strong>.</p>
-        </div>
+        <p class="ep-wide-synopsis">Widuri has one contract tonight. A man in a luxury hotel room in Jakarta. The target has no idea what is coming when he hears the door open.</p>
       </div>
     </div>
   </div>
