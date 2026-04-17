@@ -17,7 +17,7 @@ html { scroll-behavior:smooth; }
 :root {
   --white:#ffffff;
   --dim:rgba(255,255,255,0.85); 
-  --dim2:rgba(255,255,255,0.5);
+  --dim2:rgba(255,255,255,0.4);
   --dim3:rgba(255,255,255,0.12);
   --dim4:rgba(255,255,255,0.06);
   --black:#000000;
@@ -28,7 +28,7 @@ html { scroll-behavior:smooth; }
 body {
   background:var(--black);
   color:var(--white);
-  font-family:var(--sans); /* GLOBAL SANS SERIF */
+  font-family:var(--sans);
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
 }
@@ -80,7 +80,7 @@ img, video, iframe { max-width:100%; }
 
 .body-text {
   font-family:var(--sans); 
-  font-size:20px; /* LARGE READABLE */
+  font-size:20px; 
   line-height:1.7;
   color:var(--dim);
 }
@@ -160,9 +160,10 @@ img, video, iframe { max-width:100%; }
   letter-spacing:2px;
   margin-bottom:5px;
   text-transform:uppercase;
-  transition:color 0.3s;
+  transition:color 0.3s ease;
 }
 
+/* LINK HOVER EFFECT */
 .hero-link {
   text-decoration:none;
   color:var(--white);
@@ -171,12 +172,28 @@ img, video, iframe { max-width:100%; }
   line-height:0.85;
   letter-spacing:-0.03em;
   text-transform:uppercase;
-  transition:opacity 0.3s, transform 0.3s;
-  transform-origin:left;
-  display:block;
+  transition:opacity 0.4s ease, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  display:inline-block;
+  position: relative;
 }
 
-.hero-col-right .hero-link { transform-origin:right; }
+.hero-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--white);
+  transform-origin: bottom right;
+  transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.hero-group:hover .hero-link::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
 
 .col-label {
   font-family:var(--mono);
@@ -189,6 +206,12 @@ img, video, iframe { max-width:100%; }
   width:100%;
   text-align:right;
 }
+
+/* Hover group interactions */
+.hero-col:hover .hero-group:not(:hover) .hero-link { opacity:0.25; }
+.hero-col .hero-group:hover .hero-link { opacity:1; transform:translateX(15px); }
+.hero-col-right .hero-group:hover .hero-link { transform:translateX(-15px); }
+.hero-group:hover .hero-meta { color: var(--white); }
 
 .hero-info {
   display:flex;
@@ -301,7 +324,7 @@ img, video, iframe { max-width:100%; }
 
 .editorial-label { padding:60px 40px 60px 0; border-right:1px solid var(--dim3); }
 .editorial-body { padding:60px 0 60px 40px; }
-.editorial-body .body-text { max-width:800px; }
+.editorial-body .body-text { max-width:850px; }
 .editorial-body .body-text p { margin-bottom:32px; }
 
 /* EPISODES GRID */
@@ -327,9 +350,9 @@ img, video, iframe { max-width:100%; }
   background:rgba(255,255,255,0.03);
   border:1px solid var(--dim3);
   overflow:hidden;
-  transition:transform 0.35s ease;
+  transition:transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.ep-card:hover { transform:translateY(-3px); }
+.ep-card:hover { transform:translateY(-5px); border-color: var(--dim2); }
 
 .ep-thumb { position:relative; width:100%; padding-bottom:56.25%; background:var(--black); overflow:hidden; }
 .ep-thumb iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
@@ -337,15 +360,6 @@ img, video, iframe { max-width:100%; }
 .ep-info { padding:14px 16px; display:flex; justify-content:space-between; align-items:center; }
 .ep-num { font-family:var(--sans); font-weight:800; font-size:14px; text-transform:uppercase; }
 .ep-tag { font-family:var(--mono); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--dim2); border:1px solid var(--dim3); padding:3px 8px; }
-
-/* ABOUT ME SECTION */
-.about-me { border-top:1px solid var(--dim3); padding:100px 5vw; max-width:1600px; margin:0 auto; }
-.about-me-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; }
-.about-me-cell { padding:0 40px; border-right:1px solid var(--dim3); }
-.about-me-cell:first-child { padding-left:0; }
-.about-me-cell:last-child { border-right:none; padding-right:0; }
-.about-me-name { font-family:var(--sans); font-weight:900; font-size:clamp(40px, 6vw, 72px); line-height:0.88; text-transform:uppercase; margin-bottom:12px; }
-.about-me-sub { font-family:var(--mono); font-size:12px; letter-spacing:3px; color:var(--dim2); text-transform:uppercase; margin-bottom:32px; padding-bottom:32px; border-bottom:1px solid var(--dim3); }
 
 /* FOOTER */
 .global-footer { padding:40px 5vw; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
@@ -378,6 +392,7 @@ img, video, iframe { max-width:100%; }
       <div class="col-label">AI SHORT FILMS</div>
       <div class="hero-group"><span class="hero-meta">01 // AI ACTION SERIES</span><a href="#sari-ploy" class="hero-link">SARI &<br>PLOY</a></div>
       <div class="hero-group"><span class="hero-meta">02 // AI EXPERIMENT</span><a href="#codename-widuri" class="hero-link">CODENAME:<br>WIDURI</a></div>
+      <div class="hero-group"><span class="hero-meta">03 // AI ACTION SERIES</span><a href="#kala-kanuragan" class="hero-link">KALA<br>KANURAGAN</a></div>
     </div>
   </nav>
   <div class="hero-info">
@@ -410,7 +425,7 @@ img, video, iframe { max-width:100%; }
     <div class="proj-hero-content">
       <div class="proj-hero-num reveal">Project 01</div>
       <h2 class="proj-hero-title reveal">SARI &<br>PLOY</h2>
-      <div class="proj-hero-sub reveal"><span>AI-Generated Action Series</span><span class="dot"></span><span>Southeast Asia</span><span class="dot"></span><span>16 Episodes</span></div>
+      <div class="proj-hero-sub reveal"><span>AI-Generated Action Series</span><span class="dot"></span><span>Southeast Asia</span><span class="dot"></span><span>17 Episodes</span></div>
     </div>
   </div>
   <div class="proj-content">
@@ -419,13 +434,13 @@ img, video, iframe { max-width:100%; }
       <div class="editorial-body">
         <h3 class="heading-lg" style="margin-bottom:32px;">Silat Meets Muay Thai, and the Bill Goes to the Government</h3>
         <div class="body-text">
-          <p>Sari grew up on the streets of Jakarta and mastered Pencak Silat before she had a formal education. Ploy came up in the back alleys of Bangkok through underground Muay Thai gyms. They share the same wound: fathers killed by criminals, mothers kept in the dark. The Garuda-Siam Initiative, a classified joint agency between the Indonesian and Thai governments, found them separately and decided they were better together. Their mothers think it's a scholarship program.</p>
+          <p>Sari grew up on the streets of Jakarta and mastered Pencak Silat before she had a formal education. Ploy came up in the back alleys of Bangkok through underground Muay Thai gyms. They share the same wound: fathers taken by criminals, mothers kept in the dark. The Garuda-Siam Initiative, a classified joint agency between the Indonesian and Thai governments, found them separately and decided they were better together. Their mothers think it's a scholarship program.</p>
           <p>Between missions they're enrolled in a Jakarta high school, bickering over who finished the snacks, fielding calls from their moms mid-operation, and slowly bankrupting a very tired police chief's operational budget. The fights are brutal and grounded. Everything around them is not. That gap is the whole series.</p>
         </div>
       </div>
     </div>
     <div class="ep-section reveal">
-      <div class="ep-section-header"><h3 class="heading-md">Episodes</h3><span class="ep-count">16 Episodes Released</span></div>
+      <div class="ep-section-header"><h3 class="heading-md">Episodes</h3><span class="ep-count">17 Episodes Released</span></div>
       <div class="ep-grid">
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/P4-UiJkGM68" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 01</span><span class="ep-tag">Released</span></div></div>
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/kE5oPuCTjc0" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 02</span><span class="ep-tag">Released</span></div></div>
@@ -443,6 +458,7 @@ img, video, iframe { max-width:100%; }
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/zYQul-TBFJQ" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 14</span><span class="ep-tag">Released</span></div></div>
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/s7hxu3DG5C0" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 15</span><span class="ep-tag">Released</span></div></div>
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/CiBQOrbCOlg" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 16</span><span class="ep-tag">Released</span></div></div>
+        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/8FRuTtOcf78" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 17</span><span class="ep-tag">Released</span></div></div>
       </div>
     </div>
   </div>
@@ -478,6 +494,36 @@ img, video, iframe { max-width:100%; }
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/pflvTVPyC-g" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 03</span><span class="ep-tag">Released</span></div></div>
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/ODvkm5ygV_A" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 04</span><span class="ep-tag">Released</span></div></div>
         <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/EwktTdM2ybg" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 05</span><span class="ep-tag">Released</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 03: KALA KANURAGAN -->
+<div class="project" id="kala-kanuragan">
+  <div class="proj-hero">
+    <video autoplay muted loop playsinline><source src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/KALA%20KANURAGAN%20-%20SPOT%201.mp4" type="video/mp4"></video>
+    <div class="proj-hero-overlay"></div>
+    <div class="proj-hero-content">
+      <div class="proj-hero-num reveal">Project 03</div>
+      <h2 class="proj-hero-title reveal">KALA<br>KANURAGAN</h2>
+      <div class="proj-hero-sub reveal"><span>AI Action Series</span><span class="dot"></span><span>Southeast Asia</span><span class="dot"></span><span>1 Episode</span></div>
+    </div>
+  </div>
+  <div class="proj-content">
+    <div class="editorial reveal">
+      <div class="editorial-label"><span class="label">About</span></div>
+      <div class="editorial-body">
+        <h3 class="heading-lg" style="margin-bottom:32px;">Mayakarta is the Monster. Kira is the Protector.</h3>
+        <div class="body-text">
+          <p>In Kala Kanuragan, the stress of Mayakarta is not metaphor. The collective heat and gridlock of ten million people generates a spiritual pressure that, at breaking point, manifests as Kala, urban demons feeding on the city from within. Kira Ardhani is the only one fighting back on her own terms. Self-taught, freelance, treating exorcism like a gig economy job. Her Akik rings are frequency conductors. Her power runs on the city's own atmospheric pressure. Kala Kanuragan lives at the intersection of Javanese mysticism and streetwear hypebeast culture and refuses to explain the contradiction away. The sacred and the street were always the same thing. Kira just dressed accordingly.</p>
+        </div>
+      </div>
+    </div>
+    <div class="ep-section reveal">
+      <div class="ep-section-header"><h3 class="heading-md">Episodes</h3><span class="ep-count">1 Episode Released</span></div>
+      <div class="ep-grid">
+        <div class="ep-card"><div class="ep-thumb"><iframe src="https://www.youtube.com/embed/71nMp2tJ2ik" allowfullscreen loading="lazy"></iframe></div><div class="ep-info"><span class="ep-num">EP 01</span><span class="ep-tag">Released</span></div></div>
       </div>
     </div>
   </div>
