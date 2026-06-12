@@ -874,7 +874,7 @@ a { color:inherit; }
 <section class="section contact" id="contact">
   <div class="reveal">
     <span class="kicker">Contact</span><br>
-    <a class="contact-mail" id="mailLink" href="#">Inquiries &rarr;</a>
+    <a class="contact-mail" href="mailto:danifpradana@gmail.com">Inquiries &rarr;</a>
     <p class="lede muted contact-note">For commissions, creative partnerships, licensing or press. The link above opens an email directly. Based in Jakarta, working across time zones.</p>
   </div>
 </section>
@@ -886,16 +886,6 @@ a { color:inherit; }
 </footer>
 
 <script>
-// email link assembled at runtime so the address never sits in plain text on the page
-const mailLink = document.getElementById('mailLink');
-if (mailLink) {
-  const u = 'danifpradana', d = 'gmail', t = 'com';
-  mailLink.addEventListener('click', e => {
-    e.preventDefault();
-    window.location.href = 'mailto:' + u + '@' + d + '.' + t;
-  });
-}
-
 // scroll reveal
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
