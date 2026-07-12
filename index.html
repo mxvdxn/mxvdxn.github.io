@@ -23,11 +23,17 @@
 
     .home{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
     .home-video{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.08) brightness(.76)}
+    .hero-slider{position:absolute;inset:0;z-index:-2;width:100%;height:100%;overflow:hidden}
+    .hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.08) brightness(.76);opacity:0;transition:opacity .45s ease}
+    .hero-slide.active{opacity:1}
+    .hero-arrow{width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(9,9,9,.5);border:1px solid var(--paper);color:var(--paper);cursor:pointer;transition:background .2s,border-color .2s}
+    .hero-arrow:hover{background:var(--red);border-color:var(--red)}
+    .hero-arrow svg{width:18px;height:18px}
     .home::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(9,9,9,.7),transparent 62%),linear-gradient(180deg,rgba(9,9,9,.18),rgba(9,9,9,.12) 42%,rgba(9,9,9,.93))}
     .home-copy{width:100%;padding:130px var(--pad) clamp(40px,6vw,78px)}
     .kicker{font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.21em;text-transform:uppercase;color:var(--red)}
     .home .kicker::before{content:'';display:inline-block;width:22px;height:3px;margin:0 11px 3px 0;background:var(--red)}
-    .home-title{max-width:1200px;margin-top:16px;font-family:var(--display);font-size:clamp(74px,13vw,210px);line-height:.78;text-transform:uppercase}
+    .home-title{max-width:1200px;margin-top:16px;font-family:var(--display);font-size:clamp(52px,9vw,145px);line-height:.78;text-transform:uppercase}
     .home-title .dot{color:var(--red)}
     .home-text{max-width:760px;margin-top:24px;font-size:clamp(17px,1.7vw,24px);font-weight:600;line-height:1.48;color:#e4e1d9}
     .home-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.button{display:inline-flex;align-items:center;min-height:44px;padding:0 15px;border:1px solid var(--paper);font-family:var(--cond);font-size:15px;font-weight:800;letter-spacing:.1em;text-decoration:none;text-transform:uppercase}.button.primary{border-color:var(--red);background:var(--red)}.button:hover{border-color:var(--red)}
@@ -69,12 +75,16 @@
 
   <main>
     <section class="home" id="home">
-      <video class="home-video" autoplay muted loop playsinline preload="metadata"><source src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/MXVDXN_LOOOP.mp4" type="video/mp4"></video>
+      <div class="hero-slider" id="heroSlider">
+        <img class="hero-slide active" src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/image_files/sariploy_header.png?raw=true" alt="Sari & Ploy">
+        <img class="hero-slide" src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/image_files/badgold_header.png?raw=true" alt="Bad Gold">
+        <img class="hero-slide" src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/image_files/nosaints_header.png?raw=true" alt="No Saints">
+      </div>
       <div class="home-copy">
         <p class="kicker">Independent Gen-AI Culture Lab</p>
-        <h1 class="home-title">MXVDXN<span class="dot">.</span></h1>
+        <h1 class="home-title">MXVDXN</h1>
         <p class="home-text">Original Southeast Asian entertainment IP from the edge of AI, subculture, and alternative media. Serialized worlds, strange characters, and genre experiments developed outside the usual mainstream filter.</p>
-        <div class="home-actions"><a class="button" href="#originals">Browse Originals</a></div>
+        <div class="home-actions"><a class="button" href="#originals">Browse Originals</a><button class="hero-arrow" type="button" id="heroPrev" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button><button class="hero-arrow" type="button" id="heroNext" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button></div>
         <div class="home-meta"><span>Independent studio / Jakarta</span><span>Created by Dan Pradana</span></div>
       </div>
     </section>
@@ -171,6 +181,15 @@
     window.addEventListener('keydown', event => { if (event.key === 'Escape' && playerModal.classList.contains('open')) closePlayer(); });
     const topbar = document.getElementById('topbar');
     window.addEventListener('scroll', () => topbar.classList.toggle('solid', window.scrollY > 24), { passive:true });
+
+    const heroSlides = document.querySelectorAll('#heroSlider .hero-slide');
+    let heroIndex = 0;
+    function showHeroSlide(index) {
+      heroIndex = (index + heroSlides.length) % heroSlides.length;
+      heroSlides.forEach((slide, i) => slide.classList.toggle('active', i === heroIndex));
+    }
+    document.getElementById('heroPrev').addEventListener('click', () => showHeroSlide(heroIndex - 1));
+    document.getElementById('heroNext').addEventListener('click', () => showHeroSlide(heroIndex + 1));
   </script>
 </body>
 </html>
