@@ -72,7 +72,7 @@
     .notice p{font-size:13px;line-height:1.55;color:var(--dim)}
     .notice p b{color:var(--ink)}
 
-    /* ---------- SECTIONS (article body) ---------- */
+    /* ---------- SECTIONS ---------- */
     .sec{padding-top:clamp(30px,4vw,52px);scroll-margin-top:64px}
     .sec-h{display:flex;align-items:baseline;gap:11px;padding-bottom:9px;margin-bottom:16px;border-bottom:1px solid var(--line)}
     .sec-h .edit{margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
@@ -92,7 +92,6 @@
     .figcap{padding:8px 12px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);display:flex;justify-content:space-between;gap:8px}
     .sec .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,300px);gap:clamp(20px,3vw,40px);align-items:start}
 
-    /* character entries as wiki table-ish rows */
     .char-entry{display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(18px,2.6vw,32px);padding:22px 0;border-bottom:1px solid var(--line-soft)}
     .char-entry:first-of-type{padding-top:6px}
     .char-figure{border:1px solid var(--line);background:var(--surface)}
@@ -105,7 +104,6 @@
     .char-entry p.bio{font-size:14px;line-height:1.66;color:var(--ink)}
     .char-entry p.bio+p.bio{margin-top:10px}
 
-    /* supporting = compact wiki cards */
     .support-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,22px);margin-top:6px}
     .support{border:1px solid var(--line);background:var(--surface)}
     .support img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:top center}
@@ -132,7 +130,7 @@
     .ib-logo{padding:16px;border-bottom:1px solid var(--line);background:var(--surface-2)}
     .ib-logo img{width:100%;max-width:220px;margin:0 auto;display:block}
 
-    /* ---------- EPISODES: structure identical to opsi2 ---------- */
+    /* ---------- EPISODES ---------- */
     .ep-block+.ep-block{margin-top:clamp(26px,3.4vw,40px)}
     .ep-block-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;border:1px solid var(--line);background:var(--surface-2)}
     .ep-block-title{font-family:var(--display);font-size:clamp(17px,1.9vw,24px);letter-spacing:.05em;text-transform:uppercase}
@@ -158,7 +156,7 @@
     .tile-num{position:absolute;z-index:2;left:6px;bottom:3px;font-family:var(--display);font-size:clamp(15px,1.6vw,22px);color:var(--ink);text-shadow:0 1px 3px #000}
     .tile:hover .tile-num{color:var(--accent)}
 
-    /* ---------- IG ---------- */
+    /* ---------- INSTAGRAM ---------- */
     .ig-panel{display:grid;grid-template-columns:minmax(180px,.4fr) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:center;margin-top:clamp(34px,5vw,56px);border:1px solid var(--line);background:var(--surface);padding:clamp(14px,2vw,22px)}
     .ig-fig{border:1px solid var(--line)}
     .ig-fig img{width:100%;aspect-ratio:1/1;object-fit:cover}
@@ -214,7 +212,6 @@
   </div>
 
   <div class="wiki">
-    <!-- ============ LEFT RAIL: TOC ============ -->
     <aside class="rail" aria-label="Contents">
       <h4>Contents</h4>
       <ul class="toc">
@@ -232,9 +229,7 @@
       </div>
     </aside>
 
-    <!-- ============ MAIN ARTICLE ============ -->
     <main class="article">
-      <!-- OVERVIEW / HEADER -->
       <section class="sec" id="home" style="padding-top:0">
         <div class="art-head">
           <span class="art-kicker">MXVDXN Originals // Series Entry</span>
@@ -257,9 +252,8 @@
         </div>
       </section>
 
-      <!-- THE WORLD -->
       <section class="sec" id="world">
-        <div class="sec-h"><span class="hnum">2</span><h2>The World</h2><span class="cjk">世界 / DUNIA</span><span class="edit">[ edit ]</span></div>
+        <div class="sec-h"><span class="hnum">2</span><h2>The World</h2><span class="cjk">世界 / DUNIA</span></div>
         <div class="split">
           <div class="prose">
             <p>Somewhere near you, there might be an agent. The grandmother selling vegetables. The gardener trimming hedges outside a school. The vendor behind a food cart. Intelligence work does not always come with a suit and an earpiece, sometimes it looks exactly like everyday life.</p>
@@ -272,9 +266,8 @@
         </div>
       </section>
 
-      <!-- MAIN AGENTS -->
       <section class="sec" id="characters">
-        <div class="sec-h"><span class="hnum">3</span><h2>Main Agents</h2><span class="cjk">要員 / AGEN</span><span class="edit">[ edit ]</span></div>
+        <div class="sec-h"><span class="hnum">3</span><h2>Main Agents</h2><span class="cjk">要員 / AGEN</span></div>
         <div class="prose" style="margin-bottom:6px">
           <p>Sari, from Indonesia, and Ploy, from Thailand. Both lost their fathers to organized crime as children, a loss that left each of them with a deep, unshakable resolve to fight the world that took their fathers from them. Sari grew up on the streets, learning to fight before she learned to read, eventually forging a bond with one of the oldest and most guarded Pencak Silat lineages in the archipelago. Ploy trained in Muay Thai from the time she could walk, raised inside the discipline the way most kids are raised inside a language.</p>
           <p>They were recruited by the Garuda Siam Initiative for one simple reason: their physical abilities are far beyond ordinary human limits, combat skill that surpasses even most trained field agents. G.S.I. doesn't get talent like this twice.</p>
@@ -294,6 +287,7 @@
             <p class="bio">Behind the composure is someone who softens only for the people she trusts. Everyone else gets the quiet version of Sari, the one that's already three steps ahead.</p>
           </div>
         </div>
+
         <div class="char-entry">
           <figure class="char-figure">
             <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/image_files/IMG_SARIPLOY/ploy_web.png?raw=true" alt="Ploy portrait">
@@ -308,9 +302,8 @@
         </div>
       </section>
 
-      <!-- G.S.I. -->
       <section class="sec" id="gsi">
-        <div class="sec-h"><span class="hnum">4</span><h2>Garuda Siam Initiative</h2><span class="cjk">機関 / AGENSI</span><span class="edit">[ edit ]</span></div>
+        <div class="sec-h"><span class="hnum">4</span><h2>Garuda Siam Initiative</h2><span class="cjk">機関 / AGENSI</span></div>
         <div class="split">
           <div class="prose">
             <p>A covert bilateral agency built jointly by Indonesia and Thailand to fight organized crime across Southeast Asia, from trafficking networks to underground syndicates operating in the shadows of ordinary cities. G.S.I. exists because some threats move faster than any single nation's law enforcement can respond to alone.</p>
@@ -324,9 +317,8 @@
         </div>
       </section>
 
-      <!-- SUPPORTING -->
       <section class="sec" id="supporting">
-        <div class="sec-h"><span class="hnum">5</span><h2>Supporting Cast</h2><span class="cjk">支援 / PENDUKUNG</span><span class="edit">[ edit ]</span></div>
+        <div class="sec-h"><span class="hnum">5</span><h2>Supporting Cast</h2><span class="cjk">支援 / PENDUKUNG</span></div>
         <div class="support-grid">
           <article class="support">
             <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/image_files/IMG_SARIPLOY/pakboss_web.png?raw=true" alt="Pak Boss portrait">
@@ -336,6 +328,7 @@
               <p class="sbio">Nobody outside G.S.I. knows his real name or rank, just the Boss. Stern and unreadable, but the way he watches over Sari and Ploy hints at something softer underneath, a father figure to two girls who remind him of the daughter he once lost.</p>
             </div>
           </article>
+
           <article class="support">
             <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/image_files/IMG_SARIPLOY/rendi_web.png?raw=true" alt="Rendi portrait">
             <div class="sbody">
@@ -344,6 +337,7 @@
               <p class="sbio">Sari and Ploy's field contact inside G.S.I. Based out of Garut and long overdue for retirement, but one important call after another keeps pulling him back in. Equal parts mentor and tease, always behind a wall of monitors with a cigarette in hand, and something like a best friend and older brother to them both.</p>
             </div>
           </article>
+
           <article class="support">
             <img src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/image_files/IMG_SARIPLOY/ratih_web.png?raw=true" alt="Ratih portrait">
             <div class="sbody">
@@ -355,7 +349,6 @@
         </div>
       </section>
 
-      <!-- EPISODE GUIDE (mechanism preserved) -->
       <section class="sec" id="episodes">
         <div class="sec-h"><span class="hnum">6</span><h2>Episode Guide</h2><span class="cjk">話数 / EPISODE</span><span class="edit">Season 1</span></div>
         <div id="showSections"></div>
@@ -371,18 +364,16 @@
         </div>
       </section>
 
-      <!-- STUDIO -->
       <section class="sec" id="studio">
-        <div class="sec-h"><span class="hnum">7</span><h2>Studio</h2><span class="cjk">制作 / STUDIO</span><span class="edit">[ edit ]</span></div>
+        <div class="sec-h"><span class="hnum">7</span><h2>Studio</h2><span class="cjk">制作 / STUDIO</span></div>
         <h3 class="studio-name">MXVDXN</h3>
         <div class="prose" style="max-width:820px">
           <p>Sari &amp; Ploy: After School Agents is created by Dan Pradana under MXVDXN, an independent studio developing original Southeast Asian entertainment IP with AI. Every scene is written and directed as a shot list before it is generated, treating AI video the way a filmmaker treats a camera, a tool for telling a story, not a shortcut around telling one.</p>
         </div>
       </section>
 
-      <!-- LEGAL -->
       <section class="sec" id="legal">
-        <div class="sec-h"><span class="hnum">8</span><h2>Legal Notice</h2><span class="edit">[ ref ]</span></div>
+        <div class="sec-h"><span class="hnum">8</span><h2>Legal Notice</h2></div>
         <div class="legal-copy">
           <p>Sari &amp; Ploy: After School Agents, including all characters, character names, likenesses, storylines, dialogue, episode content, visual designs, logos, and related materials, is an original intellectual property created by Dan Pradana and owned by MXVDXN. All rights reserved, 2026.</p>
           <p>This work is protected under Law of the Republic of Indonesia No. 28 of 2014 on Copyright and applicable international copyright treaties, including the Berne Convention. No part of this work may be reproduced, distributed, publicly performed, adapted, translated, or used to create derivative works, in any form or by any means, without prior written permission from MXVDXN. This includes use of any material from this work for the training of artificial intelligence models or datasets.</p>
@@ -391,7 +382,6 @@
       </section>
     </main>
 
-    <!-- ============ RIGHT INFOBOX ============ -->
     <aside class="infobox" aria-label="Series infobox">
       <div class="ib">
         <div class="ib-title">Sari &amp; Ploy</div>
@@ -403,7 +393,7 @@
           <div class="ibrow"><dt>Type</dt><dd>AI Action Series</dd></div>
           <div class="ibrow"><dt>Setting</dt><dd>Jakarta × Bangkok</dd></div>
           <div class="ibrow"><dt>Status</dt><dd class="hot">Ongoing</dd></div>
-          <div class="ibrow"><dt>Episodes</dt><dd>9 + 25 archive</dd></div>
+          <div class="ibrow"><dt>Episodes</dt><dd>10 + 25 archive</dd></div>
           <div class="ibrow"><dt>Creator</dt><dd>Dan Pradana</dd></div>
           <div class="ibrow"><dt>Studio</dt><dd>MXVDXN</dd></div>
         </dl>
@@ -428,22 +418,104 @@
       <div class="player-frame" id="playerFrame" style="aspect-ratio:16/9;background:#000"></div>
     </div>
   </div>
-  <style>.player-modal.open{display:flex!important}.player-frame iframe{width:100%;height:100%;border:0}.player-close:hover{background:var(--accent)!important;color:var(--bg)!important}</style>
+  <style>
+    .player-modal.open{display:flex!important}
+    .player-frame iframe{width:100%;height:100%;border:0}
+    .player-close:hover{background:var(--accent)!important;color:var(--bg)!important}
+  </style>
 
   <script>
-    const shows = [{"id":"sari-ploy","title":"Sari & Ploy","type":"AI Action Series","setting":"Jakarta x Bangkok","status":"Ongoing","count":"9 Official + 25 Archive","video":"https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/sari_ploy_home.mp4","description":"Sari and Ploy are students by day and secret agents for the Garuda-Siam Initiative by necessity. Beneath the routines of school life, they are pulled into hidden operations across Southeast Asia, where every cover story and enemy pushes them closer to a world that is beginning to know their names.","cover_episode":"sMYi3mU9t5Y","episode_groups":[{"title":"After School Agents","count":"9 Episodes","episodes":["sMYi3mU9t5Y","5zMoSVs2i2w","AJ_lmcD8VuM","rYMmUlyWj7E","az-SnZYPNiI","Gxg1IcAWLwo","Y6N4cpUAjnc","b43GlvHepl8","e_KZiulGOiM"],"episode_titles":["The Exchange Student","The Scam Center","Too Many People Know","Mystic Arts","The Weight of a Name","The Flower of Death","The Confirmation","Something's Coming","The Price on Their Names"]},{"title":"Development Archive","count":"25 Episodes","layout":"compact","description":"Early Sari & Ploy prototypes made to test Seedance 2.0. After School Agents is the canon series.","episodes":["P4-UiJkGM68","kE5oPuCTjc0","RUZbWd5RZUY","9aS94-p_KvM","L68FaS4sfzA","tfWwp1pLkCI","9EryvGtlX4o","shhb-JT9Qow","pn_un0_lF4w","7UCZi9VhlPY","nIDBpm58WaE","xcdmN3A0-gk","EwktTdM2ybg","zYQul-TBFJQ","s7hxu3DG5C0","CiBQOrbCOlg","8FRuTtOcf78","8rrxwPAgbnM","5w9zjlbf9aw","1IbTkAavq3A","UYrVmL4Aa-c","z0-fKlpVrhI","J7V1J7namNw","B8th-Lh3ru4","jNenOXb_0O4"]}]}];
+    const shows = [{
+      "id":"sari-ploy",
+      "title":"Sari & Ploy",
+      "type":"AI Action Series",
+      "setting":"Jakarta x Bangkok",
+      "status":"Ongoing",
+      "count":"10 Official + 25 Archive",
+      "video":"https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/sari_ploy_home.mp4",
+      "description":"Sari and Ploy are students by day and secret agents for the Garuda-Siam Initiative by necessity. Beneath the routines of school life, they are pulled into hidden operations across Southeast Asia, where every cover story and enemy pushes them closer to a world that is beginning to know their names.",
+      "cover_episode":"sMYi3mU9t5Y",
+      "episode_groups":[
+        {
+          "title":"After School Agents",
+          "count":"10 Episodes",
+          "episodes":[
+            "sMYi3mU9t5Y",
+            "5zMoSVs2i2w",
+            "AJ_lmcD8VuM",
+            "rYMmUlyWj7E",
+            "az-SnZYPNiI",
+            "Gxg1IcAWLwo",
+            "Y6N4cpUAjnc",
+            "b43GlvHepl8",
+            "e_KZiulGOiM",
+            "_Kvy2Fzc8gU"
+          ],
+          "episode_titles":[
+            "The Exchange Student",
+            "The Scam Center",
+            "Too Many People Know",
+            "Mystic Arts",
+            "The Weight of a Name",
+            "The Flower of Death",
+            "The Confirmation",
+            "Something's Coming",
+            "The Price on Their Names",
+            "The Woman in the Fire"
+          ]
+        },
+        {
+          "title":"Development Archive",
+          "count":"25 Episodes",
+          "layout":"compact",
+          "description":"Early Sari & Ploy prototypes made to test Seedance 2.0. After School Agents is the canon series.",
+          "episodes":[
+            "P4-UiJkGM68",
+            "kE5oPuCTjc0",
+            "RUZbWd5RZUY",
+            "9aS94-p_KvM",
+            "L68FaS4sfzA",
+            "tfWwp1pLkCI",
+            "9EryvGtlX4o",
+            "shhb-JT9Qow",
+            "pn_un0_lF4w",
+            "7UCZi9VhlPY",
+            "nIDBpm58WaE",
+            "xcdmN3A0-gk",
+            "EwktTdM2ybg",
+            "zYQul-TBFJQ",
+            "s7hxu3DG5C0",
+            "CiBQOrbCOlg",
+            "8FRuTtOcf78",
+            "8rrxwPAgbnM",
+            "5w9zjlbf9aw",
+            "1IbTkAavq3A",
+            "UYrVmL4Aa-c",
+            "z0-fKlpVrhI",
+            "J7V1J7namNw",
+            "B8th-Lh3ru4",
+            "jNenOXb_0O4"
+          ]
+        }
+      ]
+    }];
+
     const showSections = document.getElementById('showSections');
     const playerModal = document.getElementById('playerModal');
     const playerFrame = document.getElementById('playerFrame');
     const playerClose = document.getElementById('playerClose');
 
-    function thumb(id) { return 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'; }
+    function thumb(id) {
+      return 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+    }
+
     function openPlayer(id, label) {
       playerFrame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0" title="' + label + '" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
       playerModal.classList.add('open');
       playerModal.setAttribute('aria-hidden', 'false');
       playerClose.focus();
     }
+
     function closePlayer() {
       playerFrame.innerHTML = '';
       playerModal.classList.remove('open');
@@ -452,39 +524,83 @@
 
     function chapterRow(show, id, index, title) {
       const episodeNumber = String(index + 1).padStart(2, '0');
-      const titleMarkup = title ? '<span class="ch-title">' + title + '</span>' : '<span class="ch-title"></span>';
+      const titleMarkup = title
+        ? '<span class="ch-title">' + title + '</span>'
+        : '<span class="ch-title"></span>';
+
       return '<button class="episode ch-row" type="button" data-video="' + id + '" data-label="' + show.title + ' Episode ' + episodeNumber + '" aria-label="Watch ' + show.title + ' episode ' + (index + 1) + '"><span class="ch-thumb"><img loading="lazy" src="' + thumb(id) + '" alt="' + show.title + ' episode ' + (index + 1) + '"></span><span class="ch-num">EP ' + episodeNumber + '</span>' + titleMarkup + '<span class="ch-watch">Watch</span></button>';
     }
 
     function archiveTile(show, id, index) {
       const episodeNumber = String(index + 1).padStart(2, '0');
+
       return '<button class="episode tile" type="button" data-video="' + id + '" data-label="' + show.title + ' Episode ' + episodeNumber + '" aria-label="Watch ' + show.title + ' episode ' + (index + 1) + '"><img loading="lazy" src="' + thumb(id) + '" alt="' + show.title + ' episode ' + (index + 1) + '"><span class="tile-num">' + episodeNumber + '</span></button>';
     }
 
     function episodeGroup(show, group) {
       const isCompact = group.layout === 'compact';
+
       const episodes = group.episodes.map((id, index) => {
-        const episodeTitle = group.episode_titles && group.episode_titles[index] ? group.episode_titles[index] : '';
-        return isCompact ? archiveTile(show, id, index) : chapterRow(show, id, index, episodeTitle);
+        const episodeTitle =
+          group.episode_titles && group.episode_titles[index]
+            ? group.episode_titles[index]
+            : '';
+
+        return isCompact
+          ? archiveTile(show, id, index)
+          : chapterRow(show, id, index, episodeTitle);
       }).join('');
-      const head = '<div class="ep-block-head"><h3 class="ep-block-title">' + group.title + '</h3><span class="ep-block-count">' + group.count + '</span></div>';
-      const note = group.description ? '<p class="ep-note">' + group.description + '</p>' : '';
-      const body = isCompact ? '<div class="tile-grid">' + episodes + '</div>' : '<div class="ch-list">' + episodes + '</div>';
+
+      const head =
+        '<div class="ep-block-head"><h3 class="ep-block-title">' +
+        group.title +
+        '</h3><span class="ep-block-count">' +
+        group.count +
+        '</span></div>';
+
+      const note = group.description
+        ? '<p class="ep-note">' + group.description + '</p>'
+        : '';
+
+      const body = isCompact
+        ? '<div class="tile-grid">' + episodes + '</div>'
+        : '<div class="ch-list">' + episodes + '</div>';
+
       return '<div class="ep-block">' + head + note + body + '</div>';
     }
 
     showSections.innerHTML = shows.map(show => {
-      const groups = show.episode_groups || [{ title: 'Episodes', count: show.count, episodes: show.episodes, episode_titles: show.episode_titles }];
+      const groups = show.episode_groups || [{
+        title: 'Episodes',
+        count: show.count,
+        episodes: show.episodes,
+        episode_titles: show.episode_titles
+      }];
+
       return groups.map(group => episodeGroup(show, group)).join('');
     }).join('');
 
     showSections.addEventListener('click', event => {
       const episode = event.target.closest('.episode');
-      if (episode) openPlayer(episode.dataset.video, episode.dataset.label);
+      if (episode) {
+        openPlayer(episode.dataset.video, episode.dataset.label);
+      }
     });
+
     playerClose.addEventListener('click', closePlayer);
-    playerModal.addEventListener('click', event => { if (event.target === playerModal) closePlayer(); });
-    window.addEventListener('keydown', event => { if (event.key === 'Escape' && playerModal.classList.contains('open')) closePlayer(); });
+
+    playerModal.addEventListener('click', event => {
+      if (event.target === playerModal) closePlayer();
+    });
+
+    window.addEventListener('keydown', event => {
+      if (
+        event.key === 'Escape' &&
+        playerModal.classList.contains('open')
+      ) {
+        closePlayer();
+      }
+    });
   </script>
 </body>
 </html>
