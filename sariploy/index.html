@@ -106,12 +106,15 @@
     .char-entry p.bio+p.bio{margin-top:10px}
 
     .support-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,22px);margin-top:6px}
+    .support-grid.two-column{grid-template-columns:repeat(2,minmax(0,1fr))}
     .support{border:1px solid var(--line);background:var(--surface)}
     .support img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:top center}
     .support .sbody{padding:12px 13px 15px;border-top:1px solid var(--line)}
     .support .role{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
     .support .sname{margin-top:4px;font-family:var(--display);font-size:clamp(22px,2vw,30px);line-height:.95;text-transform:uppercase}
     .support .sbio{margin-top:8px;font-size:12px;line-height:1.55;color:var(--dim)}
+    .threat-grid .support{border-color:rgba(255,69,58,.3)}
+    .threat-grid .role{color:var(--red)}
 
     /* ---------- INFOBOX ---------- */
     .ib{border:1px solid var(--line);background:var(--surface)}
@@ -189,7 +192,7 @@
       .infobox{position:static;border-left:0;border-top:1px solid var(--line);order:-1}
       .sec .split,.char-entry{grid-template-columns:1fr}
       .tile-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-      .support-grid{grid-template-columns:1fr}
+      .support-grid,.support-grid.two-column{grid-template-columns:1fr}
     }
     @media(max-width:560px){
       .topbar{height:48px}.nav{display:none}
@@ -234,8 +237,9 @@
         <li><a href="#characters"><b>3</b> Main Agents</a></li>
         <li><a href="#gsi"><b>4</b> G.S.I.</a></li>
         <li><a href="#supporting"><b>5</b> Supporting Cast</a></li>
-        <li><a href="#episodes"><b>6</b> Episode Guide</a></li>
-        <li><a href="#studio"><b>7</b> Studio</a></li>
+        <li><a href="#threats"><b>6</b> Threat Index</a></li>
+        <li><a href="#episodes"><b>7</b> Episode Guide</a></li>
+        <li><a href="#studio"><b>8</b> Studio</a></li>
       </ul>
       <div class="rail-note">
         <span class="mono-sm">// Status</span>
@@ -333,7 +337,7 @@
 
       <section class="sec" id="supporting">
         <div class="sec-h"><span class="hnum">5</span><h2>Supporting Cast</h2><span class="cjk">支援 / PENDUKUNG</span></div>
-        <div class="support-grid">
+        <div class="support-grid two-column">
           <article class="support">
             <img loading="lazy" decoding="async" src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/image_files/IMG_SARIPLOY/pakboss_web.png?raw=true" alt="Pak Boss portrait">
             <div class="sbody">
@@ -360,11 +364,43 @@
               <p class="sbio">One of G.S.I.'s senior ranks in Jakarta, reporting directly to the Boss. Calm, composed, and always in control. The one who shows up after a mission gets loud, making sure it disappears just as quietly, and just as efficiently.</p>
             </div>
           </article>
+
+          <article class="support">
+            <img loading="lazy" decoding="async" src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/image_files/IMG_SARIPLOY/mamet_web.jpg?raw=true" alt="Mamet portrait">
+            <div class="sbody">
+              <span class="role">Agent M-0</span>
+              <h3 class="sname">Mamet</h3>
+              <p class="sbio">G.S.I.&rsquo;s most accomplished covert intelligence operative. Mamet slips into places no human agent can reach, transmitting everything through the miniature camera on his collar. He communicates only through meows, which Sari and Ploy somehow understand. Ploy spoils him. Sari calls him a menace. Beneath their constant rivalry, he has already become part of the family.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="sec" id="threats">
+        <div class="sec-h"><span class="hnum">6</span><h2>Threat Index</h2><span class="cjk">脅威 / ANCAMAN</span></div>
+        <div class="support-grid two-column threat-grid">
+          <article class="support">
+            <img loading="lazy" decoding="async" src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/image_files/IMG_SARIPLOY/damar_web.png?raw=true" alt="Damar portrait">
+            <div class="sbody">
+              <span class="role">Known Alias</span>
+              <h3 class="sname">Damar</h3>
+              <p class="sbio">Damar may not be his real name. He moves between local criminal networks, collecting rumors and selling certainty to whoever benefits. Not a boss and not a fighter, his power lies entirely in what he knows. He has seen Sari and Ploy&rsquo;s faces, studied their methods, and watched their legend spread. Nobody knows who he reports to, or whether he reports to anyone at all.</p>
+            </div>
+          </article>
+
+          <article class="support">
+            <img loading="lazy" decoding="async" src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/image_files/IMG_SARIPLOY/agni_web.png?raw=true" alt="Nyi Agni Wulan portrait">
+            <div class="sbody">
+              <span class="role">Banaspati High Command</span>
+              <h3 class="sname">Nyi Agni Wulan</h3>
+              <p class="sbio">One of Banaspati&rsquo;s highest-ranking commanders, Agni disappeared without explanation and was presumed dead, defected, or worse. Now she has returned without offering an answer, carrying mechanical fire in both arms and a contract for Sari and Ploy&rsquo;s heads. She is not Banaspati&rsquo;s leader, but few within the organization possess enough authority, history, or violence to question her.</p>
+            </div>
+          </article>
         </div>
       </section>
 
       <section class="sec" id="episodes">
-        <div class="sec-h"><span class="hnum">6</span><h2>Episode Guide</h2><span class="cjk">話数 / EPISODE</span><span class="edit">Season 1</span></div>
+        <div class="sec-h"><span class="hnum">7</span><h2>Episode Guide</h2><span class="cjk">話数 / EPISODE</span><span class="edit">Season 1</span></div>
         <div id="showSections"></div>
 
         <div class="ig-panel">
@@ -379,7 +415,7 @@
       </section>
 
       <section class="sec" id="studio">
-        <div class="sec-h"><span class="hnum">7</span><h2>Studio</h2><span class="cjk">制作 / STUDIO</span></div>
+        <div class="sec-h"><span class="hnum">8</span><h2>Studio</h2><span class="cjk">制作 / STUDIO</span></div>
         <h3 class="studio-name">MXVDXN</h3>
         <div class="prose" style="max-width:820px">
           <p>Sari &amp; Ploy: After School Agents is created by Dan Pradana under MXVDXN, an independent studio developing original Southeast Asian entertainment IP with AI. Every scene is written and directed as a shot list before it is generated, treating AI video the way a filmmaker treats a camera, a tool for telling a story, not a shortcut around telling one.</p>
@@ -387,7 +423,7 @@
       </section>
 
       <section class="sec" id="legal">
-        <div class="sec-h"><span class="hnum">8</span><h2>Legal Notice</h2></div>
+        <div class="sec-h"><span class="hnum">9</span><h2>Legal Notice</h2></div>
         <div class="legal-copy">
           <p>Sari &amp; Ploy: After School Agents, including all characters, character names, likenesses, storylines, dialogue, episode content, visual designs, logos, and related materials, is an original intellectual property created by Dan Pradana and owned by MXVDXN. All rights reserved, 2026.</p>
           <p>This work is protected under Law of the Republic of Indonesia No. 28 of 2014 on Copyright and applicable international copyright treaties, including the Berne Convention. No part of this work may be reproduced, distributed, publicly performed, adapted, translated, or used to create derivative works, in any form or by any means, without prior written permission from MXVDXN. This includes use of any material from this work for the training of artificial intelligence models or datasets.</p>
