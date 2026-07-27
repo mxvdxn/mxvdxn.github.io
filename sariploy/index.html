@@ -27,14 +27,50 @@
     .mono-sm{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
     .accent{color:var(--accent)}
 
-    /* ---------- TOPBAR ---------- */
-    .topbar{position:sticky;top:0;z-index:100;height:52px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0 var(--pad);background:rgba(12,14,16,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-    .brand{display:flex;align-items:center;gap:9px}
-    .brand .dot{width:8px;height:8px;background:var(--accent);border-radius:50%;box-shadow:0 0 7px var(--accent)}
-    .wordmark{font-family:var(--display);font-size:15px;letter-spacing:.08em;text-decoration:none;text-transform:uppercase}
-    .nav{display:flex;gap:clamp(12px,2vw,24px)}
-    .nav a{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-decoration:none;text-transform:uppercase;color:var(--dim);transition:color .15s}
-    .nav a:hover{color:var(--accent)}
+    /* ---------- OPENING HERO ---------- */
+    .opening{
+      position:relative;
+      width:100%;
+      height:100vh;
+      height:100svh;
+      min-height:560px;
+      overflow:hidden;
+      isolation:isolate;
+      background:#050607;
+    }
+    .opening-video{
+      position:absolute;
+      inset:0;
+      z-index:-2;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      filter:saturate(.92) contrast(1.03) brightness(.82);
+    }
+    .opening::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      z-index:-1;
+      background:rgba(0,0,0,.08);
+      pointer-events:none;
+    }
+    .opening-scroll{
+      position:absolute;
+      top:50%;
+      left:50%;
+      z-index:1;
+      transform:translate(-50%,-50%);
+      color:rgba(255,255,255,.6);
+      font-family:var(--mono);
+      font-size:10px;
+      font-weight:400;
+      letter-spacing:.18em;
+      white-space:nowrap;
+      text-transform:uppercase;
+      text-shadow:0 1px 10px rgba(0,0,0,.5);
+    }
 
     /* ---------- BREADCRUMB ---------- */
     .breadcrumb{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:11px var(--pad);border-bottom:1px solid var(--line);font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
@@ -45,7 +81,7 @@
 
     /* ---------- LAYOUT ---------- */
     .wiki{display:grid;grid-template-columns:230px minmax(0,1fr) 320px;gap:0;max-width:1500px;margin:0 auto;align-items:start}
-    .rail{position:sticky;top:52px;align-self:start;padding:22px var(--pad);border-right:1px solid var(--line);min-height:calc(100vh - 52px)}
+    .rail{position:sticky;top:0;align-self:start;padding:22px var(--pad);border-right:1px solid var(--line);min-height:100vh}
     .rail h4{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:0 0 10px}
     .toc{list-style:none;border-left:1px solid var(--line)}
     .toc li a{display:flex;gap:9px;padding:7px 12px;font-size:13px;font-weight:500;text-decoration:none;color:var(--dim);border-left:2px solid transparent;margin-left:-1px;transition:color .14s,border-color .14s,background .14s}
@@ -57,7 +93,7 @@
     .rail-note .mono-sm{color:var(--accent);display:block;margin-bottom:5px}
 
     .article{min-width:0;padding:clamp(20px,3vw,40px) clamp(18px,3vw,44px)}
-    .infobox{position:sticky;top:52px;align-self:start;padding:22px var(--pad);border-left:1px solid var(--line)}
+    .infobox{position:sticky;top:0;align-self:start;padding:22px var(--pad);border-left:1px solid var(--line)}
 
     /* ---------- ARTICLE HEADER ---------- */
     .art-head{border-bottom:2px solid var(--line);padding-bottom:18px;margin-bottom:14px}
@@ -160,6 +196,19 @@
     .tile:hover img{transform:scale(1.08);filter:brightness(1)}
     .tile-num{position:absolute;z-index:2;left:6px;bottom:3px;font-family:var(--display);font-size:clamp(15px,1.6vw,22px);color:var(--ink);text-shadow:0 1px 3px #000}
     .tile:hover .tile-num{color:var(--accent)}
+    .special-card{display:grid;grid-template-columns:minmax(260px,.88fr) minmax(0,1fr);width:100%;overflow:hidden;background:var(--surface);border:1px solid var(--line);text-align:left;cursor:pointer;transition:border-color .14s,background .14s}
+    .special-card:hover{border-color:var(--accent);background:var(--surface-2)}
+    .special-media{position:relative;align-self:stretch;min-height:230px;overflow:hidden;background:#000}
+    .special-media img{width:100%;height:100%;object-fit:contain;transition:transform .22s,filter .22s}
+    .special-card:hover .special-media img{transform:scale(1.035);filter:brightness(1.06)}
+    .special-body{display:flex;flex-direction:column;justify-content:center;padding:clamp(20px,2.5vw,32px)}
+    .special-kicker{color:var(--accent)}
+    .special-title{margin-top:9px;font-family:var(--display);font-size:clamp(30px,3.3vw,50px);line-height:.9;letter-spacing:.02em;text-transform:uppercase}
+    .special-copy{max-width:620px;margin-top:14px;font-size:14px;line-height:1.55;color:var(--dim)}
+    .special-watch{display:inline-flex;align-items:center;align-self:flex-start;gap:9px;margin-top:18px;padding:10px 15px 9px;border:1px solid var(--accent);color:var(--accent);font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+    .special-watch::after{content:'';border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent var(--accent)}
+    .special-card:hover .special-watch{background:var(--accent);color:var(--bg)}
+    .special-card:hover .special-watch::after{border-left-color:var(--bg)}
 
     /* ---------- INSTAGRAM ---------- */
     .ig-panel{display:grid;grid-template-columns:minmax(180px,.4fr) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:center;margin-top:clamp(34px,5vw,56px);border:1px solid var(--line);background:var(--surface);padding:clamp(14px,2vw,22px)}
@@ -195,7 +244,6 @@
       .support-grid,.support-grid.two-column{grid-template-columns:1fr}
     }
     @media(max-width:560px){
-      .topbar{height:48px}.nav{display:none}
       .ch-row{grid-template-columns:96px minmax(0,1fr);grid-template-rows:auto auto;gap:3px 11px}
       .ch-row.no-number{grid-template-columns:96px minmax(0,1fr)}
       .ch-thumb{grid-row:1/3}.ch-watch{display:none}
@@ -212,15 +260,29 @@
       .ib dd{min-width:0;padding:0 9px 8px;overflow-wrap:anywhere}
       .ib-section{padding:8px 10px}
       .ib-cta{margin:10px}
+      .special-card{grid-template-columns:1fr}
+      .special-media{min-height:0;aspect-ratio:16/9}
+      .special-body{padding:20px 18px 22px}
+      .special-title{font-size:36px}
+    }
+    @media(max-width:560px){
+      .opening{min-height:520px}
+      .opening-video{object-position:68% center}
+      .opening-scroll{font-size:9px}
+    }
+    @media(max-height:560px) and (orientation:landscape){
+      .opening{min-height:100svh}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
   </style>
 </head>
 <body>
-  <header class="topbar" id="topbar">
-    <div class="brand"><span class="dot"></span><a class="wordmark" href="#home">MXVDXN Originals</a></div>
-    <nav class="nav" aria-label="Primary"><a href="#home">Home</a><a href="#episodes">Episodes</a><a href="#studio">Studio</a></nav>
-  </header>
+  <section class="opening" aria-label="Sari and Ploy opening reel">
+    <video class="opening-video" autoplay muted loop playsinline preload="auto">
+      <source src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/SARIPLOY_LOOP.mp4" type="video/mp4">
+    </video>
+    <p class="opening-scroll">Scroll to explore</p>
+  </section>
 
   <div class="breadcrumb">
     <a href="#home">MXVDXN Database</a><span class="sep">/</span>
@@ -263,7 +325,7 @@
         </div>
         <div class="notice">
           <span class="ico">[!]</span>
-          <p><b>Series in progress.</b> Sari &amp; Ploy: After School Agents is currently ongoing. Episode entries below are updated as new chapters release. The Development Archive collects early prototypes and is not part of the canon series.</p>
+          <p><b>Series in progress.</b> Sari &amp; Ploy: After School Agents is currently ongoing. Episode entries below are updated as new chapters release. Protocol/Zero collects the pre-canon experiments that became the foundation of the series.</p>
         </div>
         <div class="prose">
           <p class="first">By day, they're just two students trying to get through class. By duty, they're agents of the Garuda Siam Initiative, fighting organized crime across Southeast Asia one mission at a time. Every operation hides behind a cover story, and keeping that cover intact is a mission of its own.</p>
@@ -408,7 +470,7 @@
           <div class="ig-body">
             <span class="mono-sm">// Beyond the Episodes</span>
             <h3 class="ig-title">@sariploy.mxvdxn</h3>
-            <p>After School Agents and Slice of Life carry the canon story, but the world of Sari &amp; Ploy continues between episodes. Discover candid character moments, visual and aesthetic explorations, everyday fragments, and other snackable stories that add more texture to their personalities and world. Follow the Instagram for a more immersive Sari &amp; Ploy experience.</p>
+            <p>After School Agents carries the canon story, but the world of Sari &amp; Ploy continues between episodes. Discover candid character moments, visual and aesthetic explorations, everyday fragments, and other snackable stories that add more texture to their personalities and world. Follow the Instagram for a more immersive Sari &amp; Ploy experience.</p>
             <a class="ig-cta" href="https://www.instagram.com/sariploy.mxvdxn/" target="_blank" rel="noopener noreferrer">Explore More on Instagram</a>
           </div>
         </div>
@@ -443,7 +505,7 @@
           <div class="ibrow"><dt>Type</dt><dd>AI Action Series</dd></div>
           <div class="ibrow"><dt>Setting</dt><dd>Jakarta × Bangkok</dd></div>
           <div class="ibrow"><dt>Status</dt><dd class="hot">Ongoing</dd></div>
-          <div class="ibrow"><dt>Episodes</dt><dd>10 main + 1 slice + 25 archive</dd></div>
+          <div class="ibrow"><dt>Episodes</dt><dd>10 main + 1 special film</dd></div>
           <div class="ibrow"><dt>Creator</dt><dd>Dan Pradana</dd></div>
           <div class="ibrow"><dt>Studio</dt><dd>MXVDXN</dd></div>
         </dl>
@@ -481,26 +543,26 @@
       "type":"AI Action Series",
       "setting":"Jakarta x Bangkok",
       "status":"Ongoing",
-      "count":"11 Canon + 25 Archive",
+      "count":"10 Canon + 1 Special Film",
       "video":"https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/sari_ploy_home.mp4",
       "description":"Sari and Ploy are students by day and secret agents for the Garuda-Siam Initiative by necessity. Beneath the routines of school life, they are pulled into hidden operations across Southeast Asia, where every cover story and enemy pushes them closer to a world that is beginning to know their names.",
-      "cover_episode":"sMYi3mU9t5Y",
+      "cover_episode":"davYXgXl5d0",
       "episode_groups":[
         {
           "title":"After School Agents",
           "count":"10 Episodes",
           "description":"This is the main canon storyline of Sari & Ploy. Follow them as school life collides with covert operations for the Garuda-Siam Initiative, with every mission, enemy, and consequence continuing from one episode to the next.",
           "episodes":[
-            "sMYi3mU9t5Y",
-            "5zMoSVs2i2w",
-            "AJ_lmcD8VuM",
-            "rYMmUlyWj7E",
-            "az-SnZYPNiI",
-            "Gxg1IcAWLwo",
-            "Y6N4cpUAjnc",
-            "b43GlvHepl8",
-            "e_KZiulGOiM",
-            "_Kvy2Fzc8gU"
+            "davYXgXl5d0",
+            "nkeYjzqwX-E",
+            "8jEa_NkapAM",
+            "AVM-pYn6TFs",
+            "8ChdKh3Zy68",
+            "GuRqJ62O-oM",
+            "PctBCmyI1_E",
+            "hHC0oTzDsu0",
+            "_WdxXbnFtWY",
+            "sGquR2_Ez5Q"
           ],
           "episode_titles":[
             "The Exchange Student",
@@ -516,48 +578,15 @@
           ]
         },
         {
-          "title":"Slice of Life",
-          "count":"1 Story",
-          "hide_numbers":true,
-          "description":"Life between missions can be just as chaotic. Follow Sari and Ploy through school, friendship, boarding-house disasters, food, and everything that happens beyond the main storyline. Every story is canon and part of the same continuity.",
+          "title":"Sari & Ploy: Protocol/Zero",
+          "count":"Special Film",
+          "layout":"feature",
+          "description":"Created before Sari and Ploy had a canon or shared universe, these early experiments established their chemistry, energy, and visual language. Collected as Protocol/Zero, they became the foundation for After School Agents.",
           "episodes":[
-            "DuiyqMAvLWU"
+            "ScnrfvDuR6o"
           ],
           "episode_titles":[
-            "Agent Mamet"
-          ]
-        },
-        {
-          "title":"Development Archive",
-          "count":"25 Episodes",
-          "layout":"compact",
-          "description":"These are early Sari & Ploy prototypes created to test Seedance 2.0. They were produced before the project had a clear story structure, but the characters' defining traits remain canon in After School Agents.",
-          "episodes":[
-            "P4-UiJkGM68",
-            "kE5oPuCTjc0",
-            "RUZbWd5RZUY",
-            "9aS94-p_KvM",
-            "L68FaS4sfzA",
-            "tfWwp1pLkCI",
-            "9EryvGtlX4o",
-            "shhb-JT9Qow",
-            "pn_un0_lF4w",
-            "7UCZi9VhlPY",
-            "nIDBpm58WaE",
-            "xcdmN3A0-gk",
-            "EwktTdM2ybg",
-            "zYQul-TBFJQ",
-            "s7hxu3DG5C0",
-            "CiBQOrbCOlg",
-            "8FRuTtOcf78",
-            "8rrxwPAgbnM",
-            "5w9zjlbf9aw",
-            "1IbTkAavq3A",
-            "UYrVmL4Aa-c",
-            "z0-fKlpVrhI",
-            "J7V1J7namNw",
-            "B8th-Lh3ru4",
-            "jNenOXb_0O4"
+            "Protocol/Zero"
           ]
         }
       ]
@@ -619,8 +648,23 @@
       return '<button class="episode tile" type="button" data-video="' + id + '" data-label="' + show.title + ' Episode ' + episodeNumber + '" aria-label="Watch ' + show.title + ' episode ' + (index + 1) + '"><img loading="lazy" decoding="async" src="' + thumb(id) + '" alt="' + show.title + ' episode ' + (index + 1) + '"><span class="tile-num">' + episodeNumber + '</span></button>';
     }
 
+    function specialFeature(show, group) {
+      const id = group.episodes[0];
+      const title = group.episode_titles && group.episode_titles[0]
+        ? group.episode_titles[0]
+        : group.title;
+      const label = show.title + ': ' + title;
+
+      return '<button class="episode special-card" type="button" data-video="' + id + '" data-label="' + label + '" aria-label="Watch ' + label + '"><span class="special-media"><img loading="lazy" decoding="async" src="https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg" alt="' + label + '"></span><span class="special-body"><span class="special-kicker mono-sm">Special Film / Pre-Canon</span><span class="special-title">' + group.title + '</span><span class="special-copy">' + group.description + '</span><span class="special-watch">Watch Protocol/Zero</span></span></button>';
+    }
+
     function episodeGroup(show, group) {
       const isCompact = group.layout === 'compact';
+      const isFeature = group.layout === 'feature';
+
+      if (isFeature) {
+        return '<div class="ep-block">' + specialFeature(show, group) + '</div>';
+      }
 
       const episodes = group.episodes.map((id, index) => {
         const episodeTitle =
