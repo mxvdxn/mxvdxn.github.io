@@ -13,8 +13,8 @@
 
     :root{
       --ink:#f7f7f4;
-      --soft:rgba(247,247,244,.60);
-      --faint:rgba(247,247,244,.34);
+      --soft:rgba(247,247,244,.82);
+      --faint:rgba(247,247,244,.66);
       --display:'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif;
       --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
       --edge:clamp(20px,2.4vw,44px);
@@ -63,6 +63,7 @@
       pointer-events:none;
       background:
         linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 24%,rgba(0,0,0,0) 42%,rgba(0,0,0,.74) 94%),
+        linear-gradient(to left,rgba(0,0,0,.38) 0%,rgba(0,0,0,0) 42%),
         radial-gradient(125% 85% at 50% 42%,rgba(0,0,0,0) 38%,rgba(0,0,0,.5) 100%);
     }
 
@@ -77,15 +78,18 @@
     }
 
     .identity,.nav,.project,.status,.masthead{position:relative;z-index:3}
+    .identity,.nav,.project,.status{
+      text-shadow:0 1px 2px rgba(0,0,0,.92),0 3px 18px rgba(0,0,0,.62);
+    }
 
     /* ---------- micro type ---------- */
 
     .micro{
       font-family:var(--mono);
-      font-size:10px;
-      font-weight:400;
-      letter-spacing:.14em;
-      line-height:1.7;
+      font-size:clamp(11px,.68vw,12px);
+      font-weight:500;
+      letter-spacing:.1em;
+      line-height:1.6;
       text-transform:uppercase;
     }
 
@@ -108,9 +112,9 @@
 
     .identity{grid-area:1/1;max-width:300px}
     .identity-name{
-      font-size:12px;
+      font-size:clamp(13px,.82vw,15px);
       font-weight:600;
-      letter-spacing:.16em;
+      letter-spacing:.12em;
       line-height:1;
       text-transform:uppercase;
     }
@@ -118,12 +122,12 @@
     .identity-copy{
       margin-top:20px;
       padding-top:18px;
-      max-width:250px;
+      max-width:290px;
       border-top:1px solid rgba(247,247,244,.16);
       color:var(--soft);
-      font-size:11.5px;
+      font-size:13px;
       font-weight:500;
-      line-height:1.55;
+      line-height:1.6;
     }
 
     /* ---------- top right ---------- */
@@ -135,7 +139,12 @@
       align-items:baseline;
       justify-self:end;
     }
-    .nav a{font-weight:500;letter-spacing:.16em}
+    .nav a{
+      min-height:32px;
+      padding:7px 0;
+      font-weight:500;
+      letter-spacing:.1em;
+    }
 
     /* ---------- centre ---------- */
 
@@ -182,16 +191,18 @@
       margin-top:12px;
       font-size:clamp(27px,2.9vw,50px);
       font-weight:600;
-      letter-spacing:-.025em;
-      line-height:.93;
+      letter-spacing:0;
+      line-height:.96;
       text-transform:uppercase;
     }
     .project-meta{margin-top:14px;color:var(--faint)}
     .project-link{
       margin-top:22px;
-      font-size:11px;
+      min-height:34px;
+      padding:8px 0;
+      font-size:12px;
       font-weight:500;
-      letter-spacing:.16em;
+      letter-spacing:.1em;
     }
 
     /* ---------- masthead ---------- */
@@ -262,9 +273,37 @@
       .project-title{font-size:31px}
     }
 
+    @media(max-width:520px){
+      .page{
+        grid-template-rows:auto auto minmax(0,1fr) auto;
+      }
+      .identity{
+        grid-area:1/1;
+        max-width:100%;
+      }
+      .nav{
+        grid-area:2/1;
+        gap:22px;
+        justify-self:start;
+        margin-top:18px;
+      }
+      .project{
+        grid-area:3/1;
+        padding-bottom:5vh;
+      }
+      .masthead{grid-area:4/1}
+    }
+
     @media(max-height:560px){
       .identity-copy{display:none}
       .project-title{font-size:clamp(22px,2.4vw,34px)}
+    }
+
+    @media(max-height:500px) and (min-width:681px){
+      .identity-role{display:none}
+      .nav{gap:20px}
+      .project-meta{display:none}
+      .project-link{margin-top:12px}
     }
 
     @media(prefers-reduced-motion:reduce){
