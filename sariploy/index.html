@@ -210,13 +210,28 @@
     .special-card:hover .special-watch{background:var(--accent);color:var(--bg)}
     .special-card:hover .special-watch::after{border-left-color:var(--bg)}
 
+    /* ---------- EXPERIENCE ROUTE ---------- */
+    .experience-guide{margin-top:clamp(42px,6vw,72px);border:1px solid var(--line);background:var(--surface)}
+    .experience-head{display:grid;grid-template-columns:minmax(150px,.32fr) minmax(0,1fr);gap:24px;align-items:end;padding:clamp(18px,2.5vw,30px);border-bottom:1px solid var(--line)}
+    .experience-kicker{color:var(--accent)}
+    .experience-title{max-width:680px;font-family:var(--display);font-size:clamp(34px,4.5vw,64px);line-height:.88;letter-spacing:.02em;text-transform:uppercase}
+    .experience-route{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+    .experience-route::before{content:'';position:absolute;top:43px;right:clamp(24px,3vw,38px);left:clamp(24px,3vw,38px);height:1px;background:var(--line)}
+    .route-step{position:relative;padding:24px clamp(18px,2vw,28px) 28px;border-right:1px solid var(--line)}
+    .route-step:last-child{border-right:0}
+    .route-node{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;width:44px;height:38px;background:var(--surface);color:var(--accent);font-family:var(--display);font-size:27px;line-height:1}
+    .route-node::after{content:'';width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 9px rgba(95,242,208,.5)}
+    .route-title{margin-top:15px;font-family:var(--display);font-size:clamp(22px,2.1vw,30px);line-height:.96;letter-spacing:.03em;text-transform:uppercase}
+    .route-copy{margin-top:10px;font-size:13px;line-height:1.6;color:var(--dim)}
+
     /* ---------- INSTAGRAM ---------- */
     .ig-panel{display:grid;grid-template-columns:minmax(180px,.4fr) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:center;margin-top:clamp(34px,5vw,56px);border:1px solid var(--line);background:var(--surface);padding:clamp(14px,2vw,22px)}
     .ig-fig{border:1px solid var(--line)}
     .ig-fig img{width:100%;aspect-ratio:1/1;object-fit:cover}
     .ig-body .mono-sm{color:var(--accent)}
-    .ig-title{margin-top:6px;font-family:var(--display);font-size:clamp(28px,3.2vw,44px);letter-spacing:.02em}
+    .ig-title{max-width:620px;margin-top:7px;font-family:var(--display);font-size:clamp(34px,4.3vw,62px);line-height:.9;letter-spacing:.02em;text-transform:uppercase}
     .ig-body p{margin:10px 0 16px;max-width:520px;font-size:14px;line-height:1.6;color:var(--dim)}
+    .ig-handle{display:block;margin-bottom:16px;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
     .ig-cta{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:2px 18px 0;border:1px solid var(--accent);color:var(--accent);font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .14s,color .14s}
     .ig-cta:hover{background:var(--accent);color:var(--bg)}
 
@@ -249,6 +264,13 @@
       .ch-thumb{grid-row:1/3}.ch-watch{display:none}
       .ch-title{display:block;max-height:2.7em;overflow:hidden;white-space:normal;text-overflow:clip;overflow-wrap:anywhere;line-height:1.35}
       .tile-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .experience-head{grid-template-columns:1fr;gap:8px}
+      .experience-route{grid-template-columns:1fr}
+      .experience-route::before{top:24px;bottom:24px;left:39px;width:1px;height:auto}
+      .route-step{padding:20px 18px 22px 68px;border-right:0;border-bottom:1px solid var(--line)}
+      .route-step:last-child{border-bottom:0}
+      .route-node{position:absolute;top:21px;left:18px;width:42px;height:32px}
+      .route-title{margin-top:0}
       .ig-panel{grid-template-columns:1fr}
       .infobox{padding:12px var(--pad) 18px}
       .ib-media,.ib-cap{display:none}
@@ -465,13 +487,38 @@
         <div class="sec-h"><span class="hnum">7</span><h2>Episode Guide</h2><span class="cjk">話数 / EPISODE</span><span class="edit">Season 1</span></div>
         <div id="showSections"></div>
 
+        <section class="experience-guide" aria-labelledby="experience-title">
+          <div class="experience-head">
+            <span class="experience-kicker mono-sm">// How to Follow the Series</span>
+            <h3 class="experience-title" id="experience-title">One Story. Three Points of Entry.</h3>
+          </div>
+          <div class="experience-route">
+            <article class="route-step">
+              <span class="route-node">01</span>
+              <h4 class="route-title">Watch the Main Story</h4>
+              <p class="route-copy">Start with After School Agents. The numbered episodes form the ongoing canon storyline and are designed to be watched in order.</p>
+            </article>
+            <article class="route-step">
+              <span class="route-node">02</span>
+              <h4 class="route-title">Return to the Database</h4>
+              <p class="route-copy">Come back as the series grows. New episodes, character files, organizations, threats, and pieces of lore will continue to be added here.</p>
+            </article>
+            <article class="route-step">
+              <span class="route-node">03</span>
+              <h4 class="route-title">Follow the Field Feed</h4>
+              <p class="route-copy">Instagram carries shorter fragments from their world: clues around canon episodes, everyday chaos, visual studies, and candid moments between missions.</p>
+            </article>
+          </div>
+        </section>
+
         <div class="ig-panel">
           <figure class="ig-fig"><img loading="lazy" decoding="async" src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/image_files/IMG_SARIPLOY/SP_IG.png?raw=true" alt="Sari &amp; Ploy on Instagram"></figure>
           <div class="ig-body">
-            <span class="mono-sm">// Beyond the Episodes</span>
-            <h3 class="ig-title">@sariploy.mxvdxn</h3>
-            <p>After School Agents carries the canon story, but the world of Sari &amp; Ploy continues between episodes. Discover candid character moments, visual and aesthetic explorations, everyday fragments, and other snackable stories that add more texture to their personalities and world. Follow the Instagram for a more immersive Sari &amp; Ploy experience.</p>
-            <a class="ig-cta" href="https://www.instagram.com/sariploy.mxvdxn/" target="_blank" rel="noopener noreferrer">Explore More on Instagram</a>
+            <span class="mono-sm">// Field Feed / Instagram</span>
+            <h3 class="ig-title">Stay With Them Between Missions.</h3>
+            <p>Some moments move the plot. Others reveal who Sari and Ploy are when nobody is briefing them. Follow the field feed for clues, everyday trouble, visual experiments, and small moments that make their world feel lived in.</p>
+            <span class="ig-handle">@sariploy.mxvdxn</span>
+            <a class="ig-cta" href="https://www.instagram.com/sariploy.mxvdxn/" target="_blank" rel="noopener noreferrer">Follow the Field Feed ↗</a>
           </div>
         </div>
       </section>
