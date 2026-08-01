@@ -348,9 +348,9 @@
     #gsi .prose{max-width:58ch;color:#f2efe8}
     #gsi .prose p:first-child{font-size:clamp(18px,1.7vw,26px);line-height:1.44;letter-spacing:-.005em;color:#f2efe8}
     #gsi .prose p+p{color:var(--dim)}
-    #gsi .figure{display:flex;flex-direction:column;justify-content:center;align-self:start;padding:clamp(26px,4vw,52px)!important;border:1px solid var(--line)!important}
-    #gsi .figure img{width:100%;max-width:330px;margin:0 auto;aspect-ratio:auto;object-fit:contain}
-    #gsi .figcap{margin-top:clamp(22px,3vw,38px)!important;padding-top:13px;border-top:1px solid var(--line)!important}
+    #gsi .figure{display:block;align-self:start;padding:0!important;border:0!important;background:none!important}
+    #gsi .figure img{width:100%;max-width:none;margin:0;aspect-ratio:1/1;object-fit:cover;object-position:center}
+    #gsi .figcap{margin-top:0!important;padding:12px 0 0;border-top:0!important}
 
     /* ============================================================
        05 / SUPPORTING CAST, directory
@@ -532,7 +532,7 @@
       #world .prose{max-width:66ch;padding-top:0}
       #gsi .split{grid-template-columns:minmax(0,1fr);row-gap:clamp(28px,4vw,44px)}
       #gsi .prose{max-width:66ch}
-      #gsi .figure{align-items:center}
+      #gsi .figure{max-width:520px;margin-inline:auto}
       #characters>.prose{columns:1}
       .char-entry,#characters .char-entry:last-of-type{grid-template-columns:minmax(0,1fr);row-gap:clamp(20px,3vw,32px);align-items:start}
       #characters .char-entry:last-of-type .char-figure{grid-column:1;grid-row:1}
@@ -540,6 +540,7 @@
       .char-figure{max-width:520px}
       .char-name{font-size:clamp(62px,11vw,120px)}
       .special-card,#showSections .ep-block:nth-child(3) .special-card{grid-template-columns:minmax(0,1fr)}
+      .special-title{font-size:clamp(28px,6.6vw,60px)}
       #showSections .ep-block:nth-child(3) .special-media{grid-column:1;grid-row:1}
       #showSections .ep-block:nth-child(3) .special-body{grid-column:1;grid-row:2}
       .ig-panel{grid-template-columns:minmax(0,1fr);row-gap:clamp(26px,4vw,40px)}
@@ -985,7 +986,7 @@
           ]
         },
         {
-          "title":"Dreamina Seedance 2.5<br>Special Episode",
+          "title":"Dreamina<br>Seedance 2.5<br>Special Episode",
           "kicker":"Special Film / Seedance 2.5 Launch",
           "cta":"Watch the Special",
           "count":"Special Film",
