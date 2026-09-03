@@ -3,76 +3,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M X V D X N</title>
+<title>MXVDXN</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;900&family=Barlow+Condensed:wght@800;900&display=swap');
 
 *, *::before, *::after {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-  --white:#fff;
-  --dim:rgba(255,255,255,0.68);
-  --quiet:rgba(255,255,255,0.42);
-  --display:'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
-  --sans:'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --white: #fff;
+  --dim: rgba(255,255,255,0.68);
+  --quiet: rgba(255,255,255,0.42);
+  --display: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+  --sans: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 html,
 body {
-  width:100%;
-  min-height:100%;
+  width: 100%;
+  min-height: 100%;
 }
 
 body {
-  overflow-x:hidden;
-  background:#000;
-  color:var(--white);
-  font-family:var(--sans);
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
+  overflow-x: hidden;
+  background: #000;
+  color: var(--white);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body::before {
-  content:'';
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background:rgba(0,0,0,0.14);
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: rgba(0,0,0,0.14);
 }
 
 ::selection {
-  background:var(--white);
-  color:#000;
+  background: var(--white);
+  color: #000;
 }
 
 #video-bg {
-  position:fixed;
-  inset:0;
-  z-index:-2;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:0.42;
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.42;
 }
 
 .hero-index {
-  min-height:100vh;
-  min-height:100dvh;
-  display:grid;
-  grid-template-rows:minmax(0, 1fr) auto;
-  padding:clamp(24px, 3vw, 44px) 5vw clamp(22px, 2.5vw, 36px);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  padding: clamp(24px, 3vw, 44px) 5vw clamp(22px, 2.5vw, 36px);
 }
 
 .credit-stage {
-  width:min(100%, 1160px);
-  margin:auto;
-  padding:clamp(20px, 4vh, 48px) 0;
-  text-align:center;
+  width: min(100%, 1160px);
+  margin: auto;
+  padding: clamp(20px, 4vh, 48px) 0;
+  text-align: center;
 }
 
 .identity-meta,
@@ -81,308 +81,498 @@ body::before {
 .hero-tagline,
 .partnerships,
 .copyright {
-  text-transform:uppercase;
+  text-transform: uppercase;
 }
 
 .identity-meta {
-  margin-bottom:clamp(12px, 1.8vh, 20px);
-  font-size:clamp(9px, 0.72vw, 12px);
-  font-weight:600;
-  line-height:1.45;
-  letter-spacing:0.2em;
-  color:var(--dim);
+  margin-bottom: clamp(12px, 1.8vh, 20px);
+  font-size: clamp(9px, 0.72vw, 12px);
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: 0.2em;
+  color: var(--dim);
 }
 
 .identity-title {
-  font-family:var(--sans);
-  font-size:clamp(80px, 13vw, 190px);
-  font-weight:900;
-  line-height:0.76;
-  letter-spacing:-0.055em;
-  text-transform:uppercase;
+  font-family: var(--sans);
+  font-size: clamp(80px, 13vw, 190px);
+  font-weight: 900;
+  line-height: 0.76;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
 }
 
 .col-label {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:14px;
-  margin:clamp(34px, 5vh, 58px) auto clamp(24px, 3.5vh, 38px);
-  font-size:10px;
-  font-weight:700;
-  line-height:1;
-  letter-spacing:0.38em;
-  color:var(--quiet);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: clamp(34px, 5vh, 58px) auto clamp(24px, 3.5vh, 38px);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.38em;
+  color: var(--quiet);
 }
 
 .col-label::before,
 .col-label::after {
-  content:'';
-  width:28px;
-  height:1px;
-  background:rgba(255,255,255,0.26);
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: rgba(255,255,255,0.26);
 }
 
 .hero-nav {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:clamp(20px, 3vh, 34px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(20px, 3vh, 34px);
 }
 
 .hero-group {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-meta {
-  margin-bottom:6px;
-  font-size:clamp(9px, 0.72vw, 11px);
-  font-weight:600;
-  line-height:1.2;
-  letter-spacing:0.25em;
-  color:var(--dim);
+  margin-bottom: 6px;
+  font-size: clamp(9px, 0.72vw, 11px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.25em;
+  color: var(--dim);
 }
 
 .hero-link {
-  position:relative;
-  display:inline-block;
-  color:var(--white);
-  font-family:var(--display);
-  font-size:clamp(54px, 6.3vw, 94px);
-  font-weight:900;
-  line-height:0.82;
-  letter-spacing:0;
-  text-decoration:none;
-  text-transform:uppercase;
-  transition:opacity 80ms linear, transform 80ms linear;
+  position: relative;
+  display: inline-block;
+  color: var(--white);
+  font-family: var(--display);
+  font-size: clamp(54px, 6.3vw, 94px);
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 80ms linear, transform 80ms linear;
 }
 
 .hero-link::after {
-  content:'';
-  position:absolute;
-  right:0;
-  bottom:-5px;
-  left:0;
-  height:2px;
-  background:var(--white);
-  transform:scaleX(0);
-  transition:transform 80ms linear;
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  left: 0;
+  height: 2px;
+  background: var(--white);
+  transform: scaleX(0);
+  transition: transform 80ms linear;
 }
 
 .hero-tagline {
-  margin-top:clamp(10px, 1.5vh, 15px);
-  font-size:clamp(10px, 0.78vw, 13px);
-  font-weight:600;
-  line-height:1.4;
-  letter-spacing:0.16em;
-  color:var(--dim);
+  margin-top: clamp(10px, 1.5vh, 15px);
+  font-size: clamp(10px, 0.78vw, 13px);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.16em;
+  color: var(--dim);
 }
 
 .hero-nav:hover .hero-group:not(:hover) .hero-link,
 .hero-nav:hover .hero-group:not(:hover) .hero-tagline,
 .hero-nav:hover .hero-group:not(:hover) .hero-meta {
-  opacity:0.34;
+  opacity: 0.34;
 }
 
 .hero-group:hover .hero-link,
 .hero-link:focus-visible {
-  transform:translateY(-2px);
+  transform: translateY(-2px);
 }
 
 .hero-group:hover .hero-link::after,
 .hero-link:focus-visible::after {
-  transform:scaleX(1);
+  transform: scaleX(1);
 }
 
 .hero-link:focus-visible,
 .hero-social-link:focus-visible {
-  outline:1px solid var(--white);
-  outline-offset:7px;
+  outline: 1px solid var(--white);
+  outline-offset: 7px;
 }
 
 .hero-info {
-  width:100%;
-  display:grid;
-  grid-template-columns:minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items:end;
-  gap:clamp(20px, 3vw, 48px);
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: end;
+  gap: clamp(20px, 3vw, 48px);
 }
 
 .partnerships {
-  max-width:520px;
-  font-size:clamp(7px, 0.55vw, 9px);
-  font-weight:500;
-  line-height:1.55;
-  letter-spacing:0.11em;
-  color:var(--quiet);
+  max-width: 520px;
+  font-size: clamp(7px, 0.55vw, 9px);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0.11em;
+  color: var(--quiet);
 }
 
 .partnerships strong {
-  display:block;
-  margin-bottom:4px;
-  font-size:clamp(8px, 0.62vw, 10px);
-  font-weight:700;
-  color:var(--white);
+  display: block;
+  margin-bottom: 4px;
+  font-size: clamp(8px, 0.62vw, 10px);
+  font-weight: 700;
+  color: var(--white);
 }
 
 .copyright {
-  padding-bottom:2px;
-  font-size:clamp(8px, 0.58vw, 10px);
-  font-weight:600;
-  line-height:1.4;
-  letter-spacing:0.13em;
-  color:rgba(255,255,255,0.52);
-  text-align:center;
-  white-space:nowrap;
+  padding-bottom: 2px;
+  font-size: clamp(8px, 0.58vw, 10px);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.13em;
+  color: rgba(255,255,255,0.52);
+  text-align: center;
+  white-space: nowrap;
 }
 
 .hero-socials {
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:clamp(14px, 1.8vw, 28px);
-  flex-wrap:wrap;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(14px, 1.8vw, 28px);
+  flex-wrap: wrap;
 }
 
 .hero-social-link {
-  color:var(--white);
-  font-family:var(--display);
-  font-size:clamp(17px, 1.7vw, 27px);
-  font-weight:800;
-  line-height:1;
-  letter-spacing:0;
-  text-decoration:none;
-  text-transform:uppercase;
-  transition:opacity 80ms linear;
+  color: var(--white);
+  font-family: var(--display);
+  font-size: clamp(17px, 1.7vw, 27px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 80ms linear;
 }
 
 .hero-socials:hover .hero-social-link:not(:hover) {
-  opacity:0.36;
+  opacity: 0.36;
 }
 
-@media (max-width:900px) {
+.biography {
+  position: relative;
+  z-index: 1;
+  padding: clamp(72px, 8vw, 124px) 5vw clamp(92px, 11vw, 164px);
+  background: #080808;
+  color: #f3f0e8;
+}
+
+.biography::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  background: #e2291b;
+}
+
+.bio-inner {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+}
+
+.press-kicker,
+.press-meta,
+.press-section-title {
+  text-transform: uppercase;
+}
+
+.press-kicker {
+  margin-bottom: clamp(24px, 3vw, 42px);
+  color: #e2291b;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.28em;
+}
+
+.press-title {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(64px, 9vw, 132px);
+  font-weight: 900;
+  line-height: 0.78;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.press-title span {
+  color: #e2291b;
+}
+
+.press-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-top: clamp(30px, 4vw, 52px);
+  padding: 18px 0;
+  border-top: 1px solid rgba(243,240,232,0.28);
+  border-bottom: 1px solid rgba(243,240,232,0.28);
+  color: rgba(243,240,232,0.66);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.15em;
+}
+
+.press-deck {
+  width: min(100%, 900px);
+  margin-top: clamp(48px, 6vw, 82px);
+  font-size: clamp(23px, 2.2vw, 34px);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+.press-deck p + p {
+  margin-top: 1em;
+}
+
+.press-body {
+  margin-top: clamp(76px, 9vw, 126px);
+}
+
+.press-section {
+  display: grid;
+  grid-template-columns: minmax(130px, 190px) minmax(0, 760px);
+  justify-content: space-between;
+  gap: 32px clamp(44px, 7vw, 104px);
+  padding: clamp(42px, 5vw, 72px) 0;
+  border-top: 1px solid rgba(243,240,232,0.28);
+}
+
+.press-section-title {
+  color: #e2291b;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.22em;
+}
+
+.press-copy {
+  font-size: clamp(16px, 1.22vw, 19px);
+  font-weight: 500;
+  line-height: 1.78;
+  letter-spacing: 0;
+}
+
+.press-copy p + p {
+  margin-top: 1.55em;
+}
+
+.press-copy strong {
+  color: #f3f0e8;
+  font-weight: 800;
+}
+
+.press-pullquote {
+  display: block;
+  margin: clamp(38px, 5vw, 64px) 0 0;
+  padding-top: 20px;
+  border-top: 4px solid #e2291b;
+  color: #e2291b;
+  font-family: var(--display);
+  font-size: clamp(44px, 5.4vw, 76px);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.press-work-title {
+  margin-bottom: 18px;
+  font-family: var(--display);
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.press-closing {
+  font-size: clamp(21px, 2vw, 29px);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.018em;
+}
+
+@media (max-width: 900px) {
   .hero-index {
-    padding-right:28px;
-    padding-left:28px;
+    padding-right: 28px;
+    padding-left: 28px;
   }
 
   .hero-info {
-    grid-template-columns:1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .copyright {
-    grid-column:1 / -1;
-    grid-row:2;
-    text-align:left;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    text-align: left;
+  }
+
+  .press-section {
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 28px;
   }
 }
 
-@media (max-width:640px) {
+@media (max-width: 640px) {
   .hero-index {
-    min-height:100svh;
-    padding:20px;
+    min-height: 100svh;
+    padding: 20px;
   }
 
   .credit-stage {
-    padding:16px 0 26px;
+    padding: 16px 0 26px;
   }
 
   .identity-meta {
-    max-width:310px;
-    margin-right:auto;
-    margin-left:auto;
-    font-size:8px;
-    line-height:1.55;
+    max-width: 310px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 8px;
+    line-height: 1.55;
   }
 
   .identity-title {
-    font-size:clamp(58px, 19vw, 78px);
+    font-size: clamp(58px, 19vw, 78px);
   }
 
   .col-label {
-    margin-top:30px;
-    margin-bottom:22px;
+    margin-top: 30px;
+    margin-bottom: 22px;
   }
 
   .hero-nav {
-    gap:23px;
+    gap: 23px;
   }
 
   .hero-link {
-    font-size:clamp(49px, 16vw, 68px);
+    font-size: clamp(49px, 16vw, 68px);
   }
 
   .hero-tagline {
-    max-width:330px;
-    font-size:9px;
-    letter-spacing:0.13em;
+    max-width: 330px;
+    font-size: 9px;
+    letter-spacing: 0.13em;
   }
 
   .hero-info {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:12px;
-    text-align:center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
   }
 
   .hero-socials {
-    order:1;
-    justify-content:center;
-    gap:12px 20px;
+    order: 1;
+    justify-content: center;
+    gap: 12px 20px;
   }
 
   .hero-social-link {
-    font-size:19px;
+    font-size: 19px;
   }
 
   .partnerships {
-    order:2;
-    max-width:350px;
-    font-size:7px;
+    order: 2;
+    max-width: 350px;
+    font-size: 7px;
   }
 
   .copyright {
-    order:3;
-    white-space:normal;
-    text-align:center;
+    order: 3;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .biography {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .press-title {
+    font-size: clamp(58px, 20vw, 90px);
+  }
+
+  .press-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+  }
+
+  .press-deck {
+    font-size: clamp(21px, 6.4vw, 28px);
+    line-height: 1.42;
+  }
+
+  .press-body {
+    margin-top: 72px;
+  }
+
+  .press-section {
+    display: block;
+    padding: 42px 0 52px;
+  }
+
+  .press-section-title {
+    margin-bottom: 28px;
+  }
+
+  .press-pullquote {
+    font-size: clamp(48px, 15vw, 68px);
   }
 }
 
-@media (max-height:700px) and (min-width:641px) {
+@media (max-height: 700px) and (min-width: 641px) {
   .hero-index {
-    padding-top:20px;
-    padding-bottom:18px;
+    padding-top: 20px;
+    padding-bottom: 18px;
   }
 
   .credit-stage {
-    padding:12px 0 20px;
+    padding: 12px 0 20px;
   }
 
   .identity-title {
-    font-size:clamp(82px, 11vw, 150px);
+    font-size: clamp(82px, 11vw, 150px);
   }
 
   .col-label {
-    margin-top:26px;
-    margin-bottom:20px;
+    margin-top: 26px;
+    margin-bottom: 20px;
   }
 
   .hero-nav {
-    gap:18px;
+    gap: 18px;
   }
 
   .hero-link {
-    font-size:clamp(48px, 7.5vh, 72px);
+    font-size: clamp(48px, 7.5vh, 72px);
   }
 }
 
-@media (prefers-reduced-motion:reduce) {
+@media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
-    scroll-behavior:auto !important;
-    transition:none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
   }
 }
 </style>
@@ -390,24 +580,42 @@ body::before {
 <body>
 
 <video id="video-bg" autoplay muted loop playsinline>
-  <source src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/MXVDXN_LOOOP.mp4" type="video/mp4">
+  <source
+    src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/MXVDXN_LOOOP.mp4"
+    type="video/mp4"
+  >
 </video>
 
 <div class="hero-index" id="top">
   <main class="credit-stage">
-    <div class="identity-meta">DAN PRADANA / COPYWRITER / 10+ YEARS IN APAC ADS / GEN-AI</div>
+    <div class="identity-meta">
+      DAN PRADANA / COPYWRITER / 10+ YEARS IN APAC ADS / GEN-AI
+    </div>
+
     <h1 class="identity-title">MXVDXN</h1>
 
     <div class="col-label">PROJECTS</div>
+
     <nav class="hero-nav" aria-label="Projects">
       <div class="hero-group">
         <span class="hero-meta">01 // AI ACTION SERIES</span>
-        <a href="https://sariploy.mxvdxn.xyz/" target="_blank" rel="noopener noreferrer" class="hero-link">SARI &amp; PLOY</a>
+        <a
+          href="https://sariploy.mxvdxn.xyz/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hero-link"
+        >SARI &amp; PLOY</a>
         <span class="hero-tagline">CLASS DISMISSED. MISSION ACTIVE.</span>
       </div>
+
       <div class="hero-group">
         <span class="hero-meta">02 // AI MICRO-DRAMA</span>
-        <a href="https://www.youtube.com/playlist?list=PLZBrEQhuFKew" target="_blank" rel="noopener noreferrer" class="hero-link">9 NAILS</a>
+        <a
+          href="https://www.youtube.com/playlist?list=PLZBrEQhuFKew"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hero-link"
+        >9 NAILS</a>
         <span class="hero-tagline">THE CITY WANTS HER HOUSE. BAD IDEA.</span>
       </div>
     </nav>
@@ -418,15 +626,197 @@ body::before {
       <strong>CREATIVE PARTNERSHIPS</strong>
       KLING AI / HAILUO MINIMAX / MAGNIFIC / DREAMINA / DZINE
     </div>
-    <div class="copyright">&copy; 2026 DAN PRADANA / MXVDXN. ALL RIGHTS RESERVED.</div>
+
+    <div class="copyright">
+      &copy; 2026 DAN PRADANA / MXVDXN. ALL RIGHTS RESERVED.
+    </div>
+
     <div class="hero-socials" aria-label="MXVDXN links">
-      <a class="hero-social-link" href="https://x.com/mxvdxn" target="_blank" rel="noopener noreferrer">X</a>
-      <a class="hero-social-link" href="https://www.instagram.com/mxvdxn/" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a class="hero-social-link" href="https://www.youtube.com/@mxvdxn-studio" target="_blank" rel="noopener noreferrer">YouTube</a>
-      <a class="hero-social-link" href="mailto:mxvdxn@gmail.com">Contact</a>
+      <a
+        class="hero-social-link"
+        href="https://x.com/mxvdxn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >X</a>
+
+      <a
+        class="hero-social-link"
+        href="https://www.instagram.com/mxvdxn/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Instagram</a>
+
+      <a
+        class="hero-social-link"
+        href="https://www.youtube.com/@mxvdxn-studio"
+        target="_blank"
+        rel="noopener noreferrer"
+      >YouTube</a>
+
+      <a
+        class="hero-social-link"
+        href="mailto:mxvdxn@gmail.com"
+      >Contact</a>
     </div>
   </footer>
 </div>
+
+<section class="biography" aria-label="Dan Pradana biography">
+  <div class="bio-inner">
+    <header class="press-header">
+      <div class="press-kicker">Profile / 2026</div>
+
+      <h2 class="press-title">
+        Dan Pradana <span>[MXVDXN]</span>
+      </h2>
+
+      <div class="press-meta">
+        <span>Copywriter</span>
+        <span>Creator</span>
+        <span>Gen-AI Fiction</span>
+        <span>Jakarta</span>
+        <span>10+ Years in APAC Advertising</span>
+      </div>
+
+      <div class="press-deck">
+        <p>
+          Dan Pradana [MXVDXN] builds original gen-AI fiction through a raw,
+          lo-fi vision of Jakarta and Bangkok. His images return to kos-kosan,
+          Indonesia&rsquo;s rented-room boarding houses where people live close
+          together around shared corridors, kitchens, and laundry yards.
+        </p>
+
+        <p>
+          That world extends into modest flats, working-class housing, roadside
+          food stalls, narrow alleys, fluorescent minimarts, wet concrete, and
+          overheated streets. It is Southeast Asia seen from inside: crowded,
+          funny, sensual, class-conscious, and far from the polished tropical
+          fantasy usually exported to outsiders.
+        </p>
+      </div>
+    </header>
+
+    <div class="press-body">
+      <section class="press-section">
+        <h3 class="press-section-title">01 / Practice</h3>
+
+        <div class="press-copy">
+          <p>
+            For more than a decade, Dan has worked as a copywriter in APAC
+            advertising, creating work for brands across food and beverage,
+            condoms, automotive, telecommunications, financial technology,
+            and lifestyle.
+          </p>
+
+          <p>
+            Advertising trained him to find a strong idea inside a messy brief,
+            understand what different audiences desire, and execute creative
+            work through deadlines, feedback, and limited resources.
+          </p>
+
+          <p>
+            As he moves into a more corporate phase of his career, he keeps
+            MXVDXN alive between business trips, airport lounges, hotel rooms,
+            and whatever time remains after work. It is his creative playground,
+            where he can unleash his lizard brain and explore the strange,
+            sensual, violent, or ridiculous ideas that have no place in his
+            day job.
+          </p>
+
+          <p>
+            AI gives him the freedom to turn those impulses into characters,
+            cities, and stories that would otherwise remain inside his head.
+          </p>
+        </div>
+      </section>
+
+      <section class="press-section">
+        <h3 class="press-section-title">02 / Visual Language</h3>
+
+        <div class="press-copy">
+          <p>
+            Girls with braces are a recurring visual signature. So are the
+            figures known as cabe-cabean in Jakarta and skoi in Bangkok.
+          </p>
+
+          <p>
+            Cabe-cabean is a loaded Indonesian label for flashy,
+            street-racing-adjacent girls associated with motorbike crews,
+            cheap accessories, dyed hair, and visible braces. Skoi is its
+            loose Thai cultural cousin, originally describing girls who rode
+            behind illegal street racers and later becoming shorthand for
+            loud, rebellious working-class femininity.
+          </p>
+
+          <p>
+            Dan is drawn to how these girls dress, speak, flirt, fight, and
+            occupy public space despite being dismissed as tacky or
+            troublesome by polite society.
+          </p>
+
+          <p>
+            His work does not treat them as interchangeable exotic objects.
+            They are funny, vulgar, stylish, contradictory, and fully aware
+            of the attention they attract. Their beauty matters, but so do
+            their appetites, anger, humor, ambition, and agency.
+          </p>
+
+          <strong class="press-pullquote">Pretty ones bite.</strong>
+        </div>
+      </section>
+
+      <section class="press-section">
+        <h3 class="press-section-title">03 / Fictional Worlds</h3>
+
+        <div class="press-copy">
+          <h4 class="press-work-title">Sari &amp; Ploy</h4>
+
+          <p>
+            SARI &amp; PLOY is the clearest expression of Dan&rsquo;s schoolcore
+            aesthetic. Heavily inspired by Hideaki Anno&rsquo;s
+            <em>Love &amp; Pop</em>, it combines the pop-team glamour of
+            <em>Charlie&rsquo;s Angels</em> with silat, Muay Thai, surveillance,
+            after-school friendship, and Southeast Asian street life.
+          </p>
+
+          <p>
+            Its heroines may wear school uniforms, but their world is built
+            around loyalty, danger, humor, and the physical force of two girls
+            moving through the city together.
+          </p>
+
+          <p>
+            His other worlds include <strong>9 NAILS</strong>, a bizarre
+            supernatural dark comedy set in an occult Java-Thai city;
+            <strong>BAD GOLD</strong>, about sexy, voluptuous Southeast Asian
+            aunties whose money, luxury, and morality remain impossible to
+            verify; and <strong>KISS KILL</strong>, an adult action anime about
+            two female assassins caught between the urge to kill each other
+            and kiss each other.
+          </p>
+        </div>
+      </section>
+
+      <section class="press-section">
+        <h3 class="press-section-title">04 / MXVDXN</h3>
+
+        <div class="press-copy press-closing">
+          <p>
+            A distinctive sensuality runs through all of Dan&rsquo;s work,
+            sometimes intentionally and sometimes as instinct.
+          </p>
+
+          <p>
+            Taken together, MXVDXN feels less like an AI studio and more like
+            a living piece of ALT media: part cultural zine, part bootleg
+            cinema, and part feverish archive of Southeast Asian girls,
+            streets, appetites, and danger.
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
 
 </body>
 </html>
