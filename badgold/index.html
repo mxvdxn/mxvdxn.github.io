@@ -3,9 +3,694 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BAD GOLD</title>
+  <meta name="theme-color" content="#070706">
+  <title>BAD GOLD / MXVDXN</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;900&family=Barlow+Condensed:wght@700;800;900&display=swap');
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #070706;
+      --ink: #11100d;
+      --paper: #e9e2d2;
+      --gold: #c6a13d;
+      --red: #d52718;
+      --line: rgba(233, 226, 210, 0.24);
+      --sans: 'Archivo', Helvetica, Arial, sans-serif;
+      --display: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-width: 320px;
+      overflow-x: hidden;
+      background: var(--black);
+      color: var(--paper);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    button,
+    a {
+      color: inherit;
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .masthead {
+      position: relative;
+      background: #000;
+      border-bottom: 8px solid var(--gold);
+    }
+
+    .masthead img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 2048 / 1185;
+      object-fit: cover;
+    }
+
+    .masthead-index {
+      position: absolute;
+      top: clamp(14px, 2.4vw, 34px);
+      right: clamp(14px, 2.4vw, 34px);
+      display: flex;
+      gap: 16px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: clamp(8px, 0.7vw, 11px);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    main {
+      width: min(100%, 1600px);
+      margin: 0 auto;
+      padding:
+        clamp(58px, 8vw, 130px)
+        clamp(18px, 4vw, 64px)
+        clamp(90px, 11vw, 170px);
+    }
+
+    .statement {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(250px, 0.55fr);
+      align-items: end;
+      gap: 32px clamp(36px, 7vw, 120px);
+      padding-bottom: clamp(58px, 7vw, 108px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .statement h1 {
+      max-width: 8.5ch;
+      font-family: var(--display);
+      font-size: clamp(72px, 10.5vw, 172px);
+      font-weight: 900;
+      line-height: 0.72;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .statement h1 span {
+      display: block;
+      color: var(--gold);
+    }
+
+    .statement-copy {
+      padding-top: 18px;
+      border-top: 5px solid var(--red);
+    }
+
+    .statement-copy p {
+      max-width: 32ch;
+      font-size: clamp(16px, 1.4vw, 21px);
+      font-weight: 600;
+      line-height: 1.55;
+    }
+
+    .statement-copy small {
+      display: block;
+      margin-top: 28px;
+      color: rgba(233, 226, 210, 0.48);
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .archive-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      padding: clamp(42px, 5vw, 72px) 0 24px;
+    }
+
+    .archive-head h2 {
+      font-family: var(--display);
+      font-size: clamp(38px, 5vw, 72px);
+      font-weight: 900;
+      line-height: 0.85;
+      text-transform: uppercase;
+    }
+
+    .archive-head span {
+      color: var(--gold);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .records {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .record {
+      position: relative;
+      grid-column: span 4;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background-color: #17140d;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--paper);
+      text-align: left;
+      isolation: isolate;
+    }
+
+    .record::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: rgba(0, 0, 0, 0.48);
+      transition: background 160ms linear;
+    }
+
+    .record::after {
+      content: '';
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      width: 14px;
+      height: 14px;
+      background: var(--red);
+      transition: transform 160ms ease;
+    }
+
+    .record:nth-child(1) {
+      background-image: url('covers/record-01.jpg');
+    }
+
+    .record:nth-child(2) {
+      background-image: url('covers/record-02.jpg');
+    }
+
+    .record:nth-child(3) {
+      background-image: url('covers/record-03.jpg');
+    }
+
+    .record:nth-child(4) {
+      background-image: url('covers/record-04.jpg');
+    }
+
+    .record:nth-child(5) {
+      background-image: url('covers/record-05.jpg');
+    }
+
+    .record:nth-child(6) {
+      background-image: url('covers/record-06.jpg');
+    }
+
+    .record:nth-child(7) {
+      grid-column: 5 / span 4;
+      background-image: url('covers/record-07.jpg');
+    }
+
+    .record-number {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      font-family: var(--display);
+      font-size: clamp(54px, 6vw, 94px);
+      font-weight: 900;
+      line-height: 0.72;
+    }
+
+    .record-type {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      max-width: 14ch;
+      color: rgba(233, 226, 210, 0.7);
+      font-size: 8px;
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: 0.2em;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .record:hover::before,
+    .record:focus-visible::before {
+      background: rgba(0, 0, 0, 0.18);
+    }
+
+    .record:hover::after,
+    .record:focus-visible::after {
+      transform: rotate(45deg) scale(1.35);
+    }
+
+    .record:focus-visible,
+    .modal-close:focus-visible,
+    .modal-link:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: -4px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding-top: 32px;
+      color: rgba(233, 226, 210, 0.46);
+      font-size: 8px;
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    footer a {
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--gold);
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      place-items: center;
+      padding: 18px;
+      background: rgba(0, 0, 0, 0.92);
+    }
+
+    .modal.is-open {
+      display: grid;
+    }
+
+    .modal-shell {
+      position: relative;
+      width: min(100%, 620px);
+    }
+
+    .modal-media {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border: 1px solid var(--gold);
+    }
+
+    .modal-media::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+      height: 8px;
+      pointer-events: none;
+      background: var(--gold);
+    }
+
+    .modal iframe {
+      position: absolute;
+      top: -56px;
+      left: 0;
+      width: 100%;
+      height: 900px;
+      border: 0;
+      background: #fff;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: -52px;
+      right: 0;
+      width: 46px;
+      height: 46px;
+      background: var(--gold);
+      color: var(--ink);
+      font-family: var(--display);
+      font-size: 29px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .modal-link {
+      position: absolute;
+      top: -36px;
+      left: 0;
+      color: var(--paper);
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+      .statement {
+        grid-template-columns: 1fr;
+      }
+
+      .statement-copy {
+        width: min(100%, 560px);
+        margin-left: auto;
+      }
+
+      .record {
+        grid-column: span 6;
+      }
+
+      .record:nth-child(7) {
+        grid-column: 4 / span 6;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .masthead {
+        border-bottom-width: 5px;
+      }
+
+      .masthead img {
+        aspect-ratio: 2048 / 1185;
+      }
+
+      .masthead-index {
+        display: none;
+      }
+
+      main {
+        padding-right: 14px;
+        padding-left: 14px;
+      }
+
+      .statement h1 {
+        font-size: clamp(66px, 21vw, 98px);
+      }
+
+      .archive-head {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .archive-head span {
+        text-align: left;
+      }
+
+      .records {
+        display: block;
+      }
+
+      .record,
+      .record:nth-child(7) {
+        display: block;
+        width: 100%;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+
+      .modal {
+        padding: 52px 10px 10px;
+      }
+
+      .modal-shell {
+        width: min(100%, 430px);
+      }
+
+      .modal-close {
+        top: -46px;
+        right: 0;
+        width: 40px;
+        height: 40px;
+      }
+
+      .modal-link {
+        top: -31px;
+        right: auto;
+        left: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Hello, BAD GOLD</h1>
+  <header class="masthead">
+    <img
+      src="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/badgold/badgold_index.png?raw=true"
+      alt="BAD GOLD"
+    >
+
+    <div class="masthead-index" aria-hidden="true">
+      <span>MXVDXN</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="statement" aria-labelledby="page-title">
+      <h1 id="page-title">
+        The Gold May Be Fake.
+        <span>The Power Isn&rsquo;t.</span>
+      </h1>
+
+      <div class="statement-copy">
+        <p>
+          Women whose glamour, money, and power are impossible to explain.
+        </p>
+        <small>Southeast Asian crime anthology</small>
+      </div>
+    </section>
+
+    <section aria-labelledby="archive-title">
+      <div class="archive-head">
+        <h2 id="archive-title">The Records</h2>
+        <span>Rooms go quiet<br>Danger steps aside</span>
+      </div>
+
+      <div class="records">
+        <button
+          class="record"
+          type="button"
+          data-reel="DZzdU-PSFld"
+          data-url="https://www.instagram.com/reel/DZzdU-PSFld/"
+          aria-label="Watch BAD GOLD record 01"
+        >
+          <span class="record-number">01</span>
+          <span class="record-type">Unverified record</span>
+        </button>
+
+        <button
+          class="record"
+          type="button"
+          data-reel="DZ2mOsbS8d3"
+          data-url="https://www.instagram.com/reel/DZ2mOsbS8d3/"
+          aria-label="Watch BAD GOLD record 02"
+        >
+          <span class="record-number">02</span>
+          <span class="record-type">Unverified record</span>
+        </button>
+
+        <button
+          class="record"
+          type="button"
+          data-reel="DZ7d0c9SqXT"
+          data-url="https://www.instagram.com/reel/DZ7d0c9SqXT/"
+          aria-label="Watch BAD GOLD record 03"
+        >
+          <span class="record-number">03</span>
+          <span class="record-type">Unverified record</span>
+        </button>
+
+        <button
+          class="record"
+          type="button"
+          data-reel="DaDJx0vyYHR"
+          data-url="https://www.instagram.com/reel/DaDJx0vyYHR/"
+          aria-label="Watch BAD GOLD record 04"
+        >
+          <span class="record-number">04</span>
+          <span class="record-type">Unverified record</span>
+        </button>
+
+        <button
+          class="record"
+          type="button"
+          data-reel="DaKtLq5SOAN"
+          data-url="https://www.instagram.com/reel/DaKtLq5SOAN/"
+          aria-label="Watch BAD GOLD record 05"
+        >
+          <span class="record-number">05</span>
+          <span class="record-type">Unverified record</span>
+        </button>
+
+        <button
+          class="record"
+          type="button"
+          data-reel="Dap5Bnuy_0q"
+          data-url="https://www.instagram.com/reel/Dap5Bnuy_0q/"
+          aria-label="Watch BAD GOLD record 06"
+        >
+          <span class="record-number">06</span>
+          <span class="record-type">Unverified record</span>
+        </button>
+
+        <button
+          class="record"
+          type="button"
+          data-reel="DbgDuBYyOu7"
+          data-url="https://www.instagram.com/reel/DbgDuBYyOu7/"
+          aria-label="Watch BAD GOLD record 07"
+        >
+          <span class="record-number">07</span>
+          <span class="record-type">Unverified record</span>
+        </button>
+      </div>
+    </section>
+
+    <footer>
+      <span>
+        Written &amp; Directed by DAN PRADANA / Produced by MXVDXN
+      </span>
+
+      <a href="https://mxvdxn.github.io/">
+        Back to MXVDXN
+      </a>
+    </footer>
+  </main>
+
+  <div
+    class="modal"
+    id="reel-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Instagram Reel"
+    aria-hidden="true"
+  >
+    <div class="modal-shell">
+      <button
+        class="modal-close"
+        type="button"
+        aria-label="Close video"
+      >
+        ×
+      </button>
+
+      <a
+        class="modal-link"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View on Instagram
+      </a>
+
+      <div class="modal-media">
+        <iframe
+          id="reel-frame"
+          title="BAD GOLD Instagram Reel"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('reel-modal');
+    const frame = document.getElementById('reel-frame');
+    const closeButton = modal.querySelector('.modal-close');
+    const instagramLink = modal.querySelector('.modal-link');
+
+    let lastTrigger = null;
+
+    function openReel(button) {
+      lastTrigger = button;
+
+      frame.src =
+        `https://www.instagram.com/reel/${button.dataset.reel}/embed/`;
+
+      instagramLink.href = button.dataset.url;
+
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+
+      closeButton.focus();
+    }
+
+    function closeReel() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+
+      frame.src = '';
+
+      if (lastTrigger) {
+        lastTrigger.focus();
+      }
+    }
+
+    document.querySelectorAll('.record').forEach((button) => {
+      button.addEventListener('click', () => openReel(button));
+    });
+
+    closeButton.addEventListener('click', closeReel);
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeReel();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (
+        event.key === 'Escape' &&
+        modal.classList.contains('is-open')
+      ) {
+        closeReel();
+      }
+    });
+  </script>
 </body>
 </html>
