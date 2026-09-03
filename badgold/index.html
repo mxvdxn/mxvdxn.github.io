@@ -39,19 +39,9 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    body.modal-open {
-      overflow: hidden;
-    }
-
-    button,
     a {
       color: inherit;
       font: inherit;
-    }
-
-    button {
-      border: 0;
-      cursor: pointer;
     }
 
     ::selection {
@@ -77,8 +67,6 @@
       position: absolute;
       top: clamp(14px, 2.4vw, 34px);
       right: clamp(14px, 2.4vw, 34px);
-      display: flex;
-      gap: 16px;
       color: rgba(255, 255, 255, 0.72);
       font-size: clamp(8px, 0.7vw, 11px);
       font-weight: 700;
@@ -170,23 +158,22 @@
     .records {
       display: grid;
       grid-template-columns: repeat(12, minmax(0, 1fr));
-      border-top: 1px solid var(--line);
-      border-left: 1px solid var(--line);
+      gap: 1px;
+      background: var(--line);
     }
 
     .record {
       position: relative;
-      grid-column: span 4;
+      grid-column: span 3;
       aspect-ratio: 16 / 9;
       overflow: hidden;
       background-color: #17140d;
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
       color: var(--paper);
       text-align: left;
+      text-decoration: none;
       isolation: isolate;
     }
 
@@ -235,8 +222,11 @@
     }
 
     .record:nth-child(7) {
-      grid-column: 5 / span 4;
       background-image: url('covers/record-07.jpg');
+    }
+
+    .record:nth-child(n+5) {
+      grid-column: span 4;
     }
 
     .record-number {
@@ -263,6 +253,18 @@
       text-transform: uppercase;
     }
 
+    .record-title {
+      position: absolute;
+      bottom: 18px;
+      left: 18px;
+      max-width: calc(100% - 68px);
+      font-family: var(--display);
+      font-size: clamp(22px, 2.2vw, 34px);
+      font-weight: 800;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
     .record:hover::before,
     .record:focus-visible::before {
       background: rgba(0, 0, 0, 0.18);
@@ -273,9 +275,7 @@
       transform: rotate(45deg) scale(1.35);
     }
 
-    .record:focus-visible,
-    .modal-close:focus-visible,
-    .modal-link:focus-visible {
+    .record:focus-visible {
       outline: 2px solid var(--gold);
       outline-offset: -4px;
     }
@@ -301,82 +301,6 @@
       color: var(--gold);
     }
 
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      display: none;
-      place-items: center;
-      padding: 18px;
-      background: rgba(0, 0, 0, 0.92);
-    }
-
-    .modal.is-open {
-      display: grid;
-    }
-
-    .modal-shell {
-      position: relative;
-      width: min(100%, 620px);
-    }
-
-    .modal-media {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      aspect-ratio: 16 / 9;
-      background: #000;
-      border: 1px solid var(--gold);
-    }
-
-    .modal-media::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 2;
-      height: 8px;
-      pointer-events: none;
-      background: var(--gold);
-    }
-
-    .modal iframe {
-      position: absolute;
-      top: -56px;
-      left: 0;
-      width: 100%;
-      height: 900px;
-      border: 0;
-      background: #fff;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: -52px;
-      right: 0;
-      width: 46px;
-      height: 46px;
-      background: var(--gold);
-      color: var(--ink);
-      font-family: var(--display);
-      font-size: 29px;
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    .modal-link {
-      position: absolute;
-      top: -36px;
-      left: 0;
-      color: var(--paper);
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-
     @media (max-width: 900px) {
       .statement {
         grid-template-columns: 1fr;
@@ -387,22 +311,19 @@
         margin-left: auto;
       }
 
-      .record {
+      .record,
+      .record:nth-child(n+5) {
         grid-column: span 6;
       }
 
       .record:nth-child(7) {
-        grid-column: 4 / span 6;
+        grid-column: span 12;
       }
     }
 
     @media (max-width: 600px) {
       .masthead {
         border-bottom-width: 5px;
-      }
-
-      .masthead img {
-        aspect-ratio: 2048 / 1185;
       }
 
       .masthead-index {
@@ -429,37 +350,18 @@
 
       .records {
         display: block;
+        background: transparent;
       }
 
       .record,
       .record:nth-child(7) {
         display: block;
         width: 100%;
+        margin-bottom: 1px;
       }
 
       footer {
         flex-direction: column;
-      }
-
-      .modal {
-        padding: 52px 10px 10px;
-      }
-
-      .modal-shell {
-        width: min(100%, 430px);
-      }
-
-      .modal-close {
-        top: -46px;
-        right: 0;
-        width: 40px;
-        height: 40px;
-      }
-
-      .modal-link {
-        top: -31px;
-        right: auto;
-        left: 0;
       }
     }
 
@@ -498,6 +400,7 @@
         <p>
           Women whose glamour, money, and power are impossible to explain.
         </p>
+
         <small>Southeast Asian crime anthology</small>
       </div>
     </section>
@@ -505,86 +408,97 @@
     <section aria-labelledby="archive-title">
       <div class="archive-head">
         <h2 id="archive-title">The Records</h2>
-        <span>Rooms go quiet<br>Danger steps aside</span>
+
+        <span>
+          Rooms go quiet<br>
+          Danger steps aside
+        </span>
       </div>
 
       <div class="records">
-        <button
+        <a
           class="record"
-          type="button"
-          data-reel="DZzdU-PSFld"
-          data-url="https://www.instagram.com/reel/DZzdU-PSFld/"
-          aria-label="Watch BAD GOLD record 01"
+          href="https://www.instagram.com/reel/DZzdU-PSFld/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open TWO TAPS on Instagram"
         >
           <span class="record-number">01</span>
           <span class="record-type">Unverified record</span>
-        </button>
+          <span class="record-title">「TWO TAPS」</span>
+        </a>
 
-        <button
+        <a
           class="record"
-          type="button"
-          data-reel="DZ2mOsbS8d3"
-          data-url="https://www.instagram.com/reel/DZ2mOsbS8d3/"
-          aria-label="Watch BAD GOLD record 02"
+          href="https://www.instagram.com/reel/DZ2mOsbS8d3/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open THE CEASEFIRE on Instagram"
         >
           <span class="record-number">02</span>
           <span class="record-type">Unverified record</span>
-        </button>
+          <span class="record-title">「THE CEASEFIRE」</span>
+        </a>
 
-        <button
+        <a
           class="record"
-          type="button"
-          data-reel="DZ7d0c9SqXT"
-          data-url="https://www.instagram.com/reel/DZ7d0c9SqXT/"
-          aria-label="Watch BAD GOLD record 03"
+          href="https://www.instagram.com/reel/DZ7d0c9SqXT/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open THE ROOM KEY on Instagram"
         >
           <span class="record-number">03</span>
           <span class="record-type">Unverified record</span>
-        </button>
+          <span class="record-title">「THE ROOM KEY」</span>
+        </a>
 
-        <button
+        <a
           class="record"
-          type="button"
-          data-reel="DaDJx0vyYHR"
-          data-url="https://www.instagram.com/reel/DaDJx0vyYHR/"
-          aria-label="Watch BAD GOLD record 04"
+          href="https://www.instagram.com/reel/DaDJx0vyYHR/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open BORROWED NAMES on Instagram"
         >
           <span class="record-number">04</span>
           <span class="record-type">Unverified record</span>
-        </button>
+          <span class="record-title">「BORROWED NAMES」</span>
+        </a>
 
-        <button
+        <a
           class="record"
-          type="button"
-          data-reel="DaKtLq5SOAN"
-          data-url="https://www.instagram.com/reel/DaKtLq5SOAN/"
-          aria-label="Watch BAD GOLD record 05"
+          href="https://www.instagram.com/reel/DaKtLq5SOAN/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open THE BLOOD BILL on Instagram"
         >
           <span class="record-number">05</span>
           <span class="record-type">Unverified record</span>
-        </button>
+          <span class="record-title">「THE BLOOD BILL」</span>
+        </a>
 
-        <button
+        <a
           class="record"
-          type="button"
-          data-reel="Dap5Bnuy_0q"
-          data-url="https://www.instagram.com/reel/Dap5Bnuy_0q/"
-          aria-label="Watch BAD GOLD record 06"
+          href="https://www.instagram.com/reel/Dap5Bnuy_0q/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open THE NEW BODYGUARD on Instagram"
         >
           <span class="record-number">06</span>
           <span class="record-type">Unverified record</span>
-        </button>
+          <span class="record-title">「THE NEW BODYGUARD」</span>
+        </a>
 
-        <button
+        <a
           class="record"
-          type="button"
-          data-reel="DbgDuBYyOu7"
-          data-url="https://www.instagram.com/reel/DbgDuBYyOu7/"
-          aria-label="Watch BAD GOLD record 07"
+          href="https://www.instagram.com/reel/DbgDuBYyOu7/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open THE GUEST LIST on Instagram"
         >
           <span class="record-number">07</span>
           <span class="record-type">Unverified record</span>
-        </button>
+          <span class="record-title">「THE GUEST LIST」</span>
+        </a>
       </div>
     </section>
 
@@ -598,99 +512,5 @@
       </a>
     </footer>
   </main>
-
-  <div
-    class="modal"
-    id="reel-modal"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Instagram Reel"
-    aria-hidden="true"
-  >
-    <div class="modal-shell">
-      <button
-        class="modal-close"
-        type="button"
-        aria-label="Close video"
-      >
-        ×
-      </button>
-
-      <a
-        class="modal-link"
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        View on Instagram
-      </a>
-
-      <div class="modal-media">
-        <iframe
-          id="reel-frame"
-          title="BAD GOLD Instagram Reel"
-          allow="autoplay; encrypted-media; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const modal = document.getElementById('reel-modal');
-    const frame = document.getElementById('reel-frame');
-    const closeButton = modal.querySelector('.modal-close');
-    const instagramLink = modal.querySelector('.modal-link');
-
-    let lastTrigger = null;
-
-    function openReel(button) {
-      lastTrigger = button;
-
-      frame.src =
-        `https://www.instagram.com/reel/${button.dataset.reel}/embed/`;
-
-      instagramLink.href = button.dataset.url;
-
-      modal.classList.add('is-open');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('modal-open');
-
-      closeButton.focus();
-    }
-
-    function closeReel() {
-      modal.classList.remove('is-open');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.classList.remove('modal-open');
-
-      frame.src = '';
-
-      if (lastTrigger) {
-        lastTrigger.focus();
-      }
-    }
-
-    document.querySelectorAll('.record').forEach((button) => {
-      button.addEventListener('click', () => openReel(button));
-    });
-
-    closeButton.addEventListener('click', closeReel);
-
-    modal.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        closeReel();
-      }
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (
-        event.key === 'Escape' &&
-        modal.classList.contains('is-open')
-      ) {
-        closeReel();
-      }
-    });
-  </script>
 </body>
 </html>
