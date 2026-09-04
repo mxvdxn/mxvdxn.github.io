@@ -69,7 +69,7 @@ body::before {
 }
 
 .credit-stage {
-  width: min(100%, 1160px);
+  width: min(100%, 1240px);
   margin: auto;
   padding: clamp(20px, 4vh, 48px) 0;
   text-align: center;
@@ -124,16 +124,19 @@ body::before {
 }
 
 .hero-nav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(20px, 3vh, 34px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 3.5vh, 40px) clamp(28px, 5vw, 82px);
+  width: min(100%, 1040px);
+  margin: 0 auto;
 }
 
 .hero-group {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,255,255,0.3);
 }
 
 .hero-meta {
@@ -150,7 +153,7 @@ body::before {
   display: inline-block;
   color: var(--white);
   font-family: var(--display);
-  font-size: clamp(54px, 6.3vw, 94px);
+  font-size: clamp(48px, 5.4vw, 80px);
   font-weight: 900;
   line-height: 0.82;
   letter-spacing: 0;
@@ -212,7 +215,7 @@ body::before {
 
 .partnerships {
   max-width: 520px;
-  font-size: clamp(7px, 0.55vw, 9px);
+  font-size: clamp(9px, 0.72vw, 12px);
   font-weight: 500;
   line-height: 1.55;
   letter-spacing: 0.11em;
@@ -221,8 +224,8 @@ body::before {
 
 .partnerships strong {
   display: block;
-  margin-bottom: 4px;
-  font-size: clamp(8px, 0.62vw, 10px);
+  margin-bottom: 6px;
+  font-size: clamp(11px, 0.85vw, 14px);
   font-weight: 700;
   color: var(--white);
 }
@@ -342,13 +345,18 @@ body::before {
   margin-top: 1em;
 }
 
+.press-deck .red-emphasis {
+  color: #e2291b;
+  font-weight: 800;
+}
+
 .press-body {
   margin-top: clamp(76px, 9vw, 126px);
 }
 
 .press-section {
   display: grid;
-  grid-template-columns: minmax(130px, 190px) minmax(0, 760px);
+  grid-template-columns: minmax(190px, 250px) minmax(0, 760px);
   justify-content: space-between;
   gap: 32px clamp(44px, 7vw, 104px);
   padding: clamp(42px, 5vw, 72px) 0;
@@ -357,10 +365,10 @@ body::before {
 
 .press-section-title {
   color: #e2291b;
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1.5;
-  letter-spacing: 0.22em;
+  font-size: clamp(18px, 1.45vw, 24px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
 }
 
 .press-copy {
@@ -427,7 +435,7 @@ body::before {
   }
 
   .press-section {
-    grid-template-columns: 130px minmax(0, 1fr);
+    grid-template-columns: 190px minmax(0, 1fr);
     gap: 28px;
   }
 }
@@ -460,11 +468,13 @@ body::before {
   }
 
   .hero-nav {
+    grid-template-columns: 1fr;
     gap: 23px;
+    width: min(100%, 390px);
   }
 
   .hero-link {
-    font-size: clamp(49px, 16vw, 68px);
+    font-size: clamp(45px, 14vw, 62px);
   }
 
   .hero-tagline {
@@ -494,7 +504,7 @@ body::before {
   .partnerships {
     order: 2;
     max-width: 350px;
-    font-size: 7px;
+    font-size: 9px;
   }
 
   .copyright {
@@ -561,11 +571,11 @@ body::before {
   }
 
   .hero-nav {
-    gap: 18px;
+    gap: 18px 52px;
   }
 
   .hero-link {
-    font-size: clamp(48px, 7.5vh, 72px);
+    font-size: clamp(42px, 6.5vh, 64px);
   }
 }
 
@@ -581,7 +591,7 @@ body::before {
 
 <video id="video-bg" autoplay muted loop playsinline>
   <source
-    src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/MXVDXN_LOOOP.mp4"
+    src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/MXVDXN_VIDEO_LOOP.mp4"
     type="video/mp4"
   >
 </video>
@@ -611,12 +621,34 @@ body::before {
       <div class="hero-group">
         <span class="hero-meta">02 // AI MICRO-DRAMA</span>
         <a
-          href="https://www.youtube.com/playlist?list=PLZBrEQhuFKew"
+          href="https://mxvdxn.github.io/9nails/"
           target="_blank"
           rel="noopener noreferrer"
           class="hero-link"
         >9 NAILS</a>
         <span class="hero-tagline">THE CITY WANTS HER HOUSE. BAD IDEA.</span>
+      </div>
+
+      <div class="hero-group">
+        <span class="hero-meta">03 // AI CRIME ANTHOLOGY</span>
+        <a
+          href="https://mxvdxn.github.io/badgold/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hero-link"
+        >BAD GOLD</a>
+        <span class="hero-tagline">THE GOLD MAY BE FAKE. THE POWER ISN'T.</span>
+      </div>
+
+      <div class="hero-group">
+        <span class="hero-meta">04 // ADULT ACTION ANIME</span>
+        <a
+          href="https://x.com/mxvdxn_kisskill"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hero-link"
+        >KISS KILL</a>
+        <span class="hero-tagline">KILL EACH OTHER. KISS EACH OTHER. REPEAT.</span>
       </div>
     </nav>
   </main>
@@ -624,7 +656,7 @@ body::before {
   <footer class="hero-info">
     <div class="partnerships">
       <strong>CREATIVE PARTNERSHIPS</strong>
-      KLING AI / HAILUO MINIMAX / MAGNIFIC / DREAMINA / DZINE
+      KLING AI / MINIMAX DESIGN / MAGNIFIC / DREAMINA / DZINE
     </div>
 
     <div class="copyright">
@@ -680,8 +712,10 @@ body::before {
 
       <div class="press-deck">
         <p>
-          Dan Pradana [MXVDXN] builds original gen-AI fiction through a raw,
-          lo-fi vision of Jakarta and Bangkok. His images return to kos-kosan,
+          <strong class="red-emphasis">Dan Pradana [MXVDXN]</strong> builds
+          <strong class="red-emphasis">original gen-AI fiction</strong> through a raw,
+          lo-fi vision of <strong class="red-emphasis">Jakarta and Bangkok</strong>.
+          His images return to kos-kosan,
           Indonesia&rsquo;s rented-room boarding houses where people live close
           together around shared corridors, kitchens, and laundry yards.
         </p>
@@ -689,7 +723,9 @@ body::before {
         <p>
           That world extends into modest flats, working-class housing, roadside
           food stalls, narrow alleys, fluorescent minimarts, wet concrete, and
-          overheated streets. It is Southeast Asia seen from inside: crowded,
+          overheated streets. It is
+          <strong class="red-emphasis">Southeast Asia seen from inside</strong>:
+          crowded,
           funny, sensual, class-conscious, and far from the polished tropical
           fantasy usually exported to outsiders.
         </p>
@@ -769,7 +805,7 @@ body::before {
         <h3 class="press-section-title">03 / Fictional Worlds</h3>
 
         <div class="press-copy">
-          <h4 class="press-work-title">Sari &amp; Ploy</h4>
+          <h4 class="press-work-title">AI Micro Series</h4>
 
           <p>
             SARI &amp; PLOY is the clearest expression of Dan&rsquo;s schoolcore
