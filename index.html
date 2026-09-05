@@ -2,857 +2,255 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MXVDXN</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080c10">
+<meta name="description" content="Original AI entertainment from Southeast Asia by Dan Pradana / MXVDXN. Watch SARI & PLOY, 9 NAILS, BAD GOLD, WE FOUND SOMETHING IN..., and CODENAME: WIDURI.">
+<title>MXVDXN — Original Series</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;900&family=Barlow+Condensed:wght@800;900&display=swap');
-
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --white: #fff;
-  --dim: rgba(255,255,255,0.68);
-  --quiet: rgba(255,255,255,0.42);
-  --display: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
-  --sans: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-html,
-body {
-  width: 100%;
-  min-height: 100%;
-}
-
-body {
-  overflow-x: hidden;
-  background: #000;
-  color: var(--white);
-  font-family: var(--sans);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: rgba(0,0,0,0.14);
-}
-
-::selection {
-  background: var(--white);
-  color: #000;
-}
-
-#video-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.42;
-}
-
-.hero-index {
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
-  padding: clamp(24px, 3vw, 44px) 5vw clamp(22px, 2.5vw, 36px);
-}
-
-.credit-stage {
-  width: min(100%, 1240px);
-  margin: auto;
-  padding: clamp(20px, 4vh, 48px) 0;
-  text-align: center;
-}
-
-.identity-meta,
-.col-label,
-.hero-meta,
-.hero-tagline,
-.partnerships,
-.copyright {
-  text-transform: uppercase;
-}
-
-.identity-meta {
-  margin-bottom: clamp(12px, 1.8vh, 20px);
-  font-size: clamp(9px, 0.72vw, 12px);
-  font-weight: 600;
-  line-height: 1.45;
-  letter-spacing: 0.2em;
-  color: var(--dim);
-}
-
-.identity-title {
-  font-family: var(--sans);
-  font-size: clamp(80px, 13vw, 190px);
-  font-weight: 900;
-  line-height: 0.76;
-  letter-spacing: -0.055em;
-  text-transform: uppercase;
-}
-
-.col-label {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  margin: clamp(34px, 5vh, 58px) auto clamp(24px, 3.5vh, 38px);
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.38em;
-  color: var(--quiet);
-}
-
-.col-label::before,
-.col-label::after {
-  content: '';
-  width: 28px;
-  height: 1px;
-  background: rgba(255,255,255,0.26);
-}
-
-.hero-nav {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(24px, 3.5vh, 40px) clamp(28px, 5vw, 82px);
-  width: min(100%, 1040px);
-  margin: 0 auto;
-}
-
-.hero-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 15px;
-  border-top: 1px solid rgba(255,255,255,0.3);
-}
-
-.hero-meta {
-  margin-bottom: 6px;
-  font-size: clamp(9px, 0.72vw, 11px);
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: 0.25em;
-  color: var(--dim);
-}
-
-.hero-link {
-  position: relative;
-  display: inline-block;
-  color: var(--white);
-  font-family: var(--display);
-  font-size: clamp(48px, 5.4vw, 80px);
-  font-weight: 900;
-  line-height: 0.82;
-  letter-spacing: 0;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: opacity 80ms linear, transform 80ms linear;
-}
-
-.hero-link::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: -5px;
-  left: 0;
-  height: 2px;
-  background: var(--white);
-  transform: scaleX(0);
-  transition: transform 80ms linear;
-}
-
-.hero-tagline {
-  margin-top: clamp(10px, 1.5vh, 15px);
-  font-size: clamp(10px, 0.78vw, 13px);
-  font-weight: 600;
-  line-height: 1.4;
-  letter-spacing: 0.16em;
-  color: var(--dim);
-}
-
-.hero-nav:hover .hero-group:not(:hover) .hero-link,
-.hero-nav:hover .hero-group:not(:hover) .hero-tagline,
-.hero-nav:hover .hero-group:not(:hover) .hero-meta {
-  opacity: 0.34;
-}
-
-.hero-group:hover .hero-link,
-.hero-link:focus-visible {
-  transform: translateY(-2px);
-}
-
-.hero-group:hover .hero-link::after,
-.hero-link:focus-visible::after {
-  transform: scaleX(1);
-}
-
-.hero-link:focus-visible,
-.hero-social-link:focus-visible {
-  outline: 1px solid var(--white);
-  outline-offset: 7px;
-}
-
-.hero-info {
-  width: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: end;
-  gap: clamp(20px, 3vw, 48px);
-}
-
-.partnerships {
-  max-width: 520px;
-  font-size: clamp(9px, 0.72vw, 12px);
-  font-weight: 500;
-  line-height: 1.55;
-  letter-spacing: 0.11em;
-  color: var(--quiet);
-}
-
-.partnerships strong {
-  display: block;
-  margin-bottom: 6px;
-  font-size: clamp(11px, 0.85vw, 14px);
-  font-weight: 700;
-  color: var(--white);
-}
-
-.copyright {
-  padding-bottom: 2px;
-  font-size: clamp(8px, 0.58vw, 10px);
-  font-weight: 600;
-  line-height: 1.4;
-  letter-spacing: 0.13em;
-  color: rgba(255,255,255,0.52);
-  text-align: center;
-  white-space: nowrap;
-}
-
-.hero-socials {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: clamp(14px, 1.8vw, 28px);
-  flex-wrap: wrap;
-}
-
-.hero-social-link {
-  color: var(--white);
-  font-family: var(--display);
-  font-size: clamp(17px, 1.7vw, 27px);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: 0;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: opacity 80ms linear;
-}
-
-.hero-socials:hover .hero-social-link:not(:hover) {
-  opacity: 0.36;
-}
-
-.biography {
-  position: relative;
-  z-index: 1;
-  padding: clamp(72px, 8vw, 124px) 5vw clamp(92px, 11vw, 164px);
-  background: #080808;
-  color: #f3f0e8;
-}
-
-.biography::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 4px;
-  background: #e2291b;
-}
-
-.bio-inner {
-  width: min(100%, 1120px);
-  margin: 0 auto;
-}
-
-.press-kicker,
-.press-meta,
-.press-section-title {
-  text-transform: uppercase;
-}
-
-.press-kicker {
-  margin-bottom: clamp(24px, 3vw, 42px);
-  color: #e2291b;
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.28em;
-}
-
-.press-title {
-  margin: 0;
-  font-family: var(--display);
-  font-size: clamp(64px, 9vw, 132px);
-  font-weight: 900;
-  line-height: 0.78;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.press-title span {
-  color: #e2291b;
-}
-
-.press-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 22px;
-  margin-top: clamp(30px, 4vw, 52px);
-  padding: 18px 0;
-  border-top: 1px solid rgba(243,240,232,0.28);
-  border-bottom: 1px solid rgba(243,240,232,0.28);
-  color: rgba(243,240,232,0.66);
-  font-size: 10px;
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: 0.15em;
-}
-
-.press-deck {
-  width: min(100%, 900px);
-  margin-top: clamp(48px, 6vw, 82px);
-  font-size: clamp(23px, 2.2vw, 34px);
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: -0.02em;
-}
-
-.press-deck p + p {
-  margin-top: 1em;
-}
-
-.press-deck .red-emphasis {
-  color: #e2291b;
-  font-weight: 800;
-}
-
-.press-body {
-  margin-top: clamp(76px, 9vw, 126px);
-}
-
-.press-section {
-  display: grid;
-  grid-template-columns: minmax(190px, 250px) minmax(0, 760px);
-  justify-content: space-between;
-  gap: 32px clamp(44px, 7vw, 104px);
-  padding: clamp(42px, 5vw, 72px) 0;
-  border-top: 1px solid rgba(243,240,232,0.28);
-}
-
-.press-section-title {
-  color: #e2291b;
-  font-size: clamp(18px, 1.45vw, 24px);
-  font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: 0.08em;
-}
-
-.press-copy {
-  font-size: clamp(16px, 1.22vw, 19px);
-  font-weight: 500;
-  line-height: 1.78;
-  letter-spacing: 0;
-}
-
-.press-copy p + p {
-  margin-top: 1.55em;
-}
-
-.press-copy strong {
-  color: #f3f0e8;
-  font-weight: 800;
-}
-
-.press-pullquote {
-  display: block;
-  margin: clamp(38px, 5vw, 64px) 0 0;
-  padding-top: 20px;
-  border-top: 4px solid #e2291b;
-  color: #e2291b;
-  font-family: var(--display);
-  font-size: clamp(44px, 5.4vw, 76px);
-  font-weight: 900;
-  line-height: 0.88;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.press-work-title {
-  margin-bottom: 18px;
-  font-family: var(--display);
-  font-size: clamp(36px, 4vw, 56px);
-  font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.press-closing {
-  font-size: clamp(21px, 2vw, 29px);
-  font-weight: 700;
-  line-height: 1.5;
-  letter-spacing: -0.018em;
-}
-
-@media (max-width: 900px) {
-  .hero-index {
-    padding-right: 28px;
-    padding-left: 28px;
-  }
-
-  .hero-info {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .copyright {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    text-align: left;
-  }
-
-  .press-section {
-    grid-template-columns: 190px minmax(0, 1fr);
-    gap: 28px;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero-index {
-    min-height: 100svh;
-    padding: 20px;
-  }
-
-  .credit-stage {
-    padding: 16px 0 26px;
-  }
-
-  .identity-meta {
-    max-width: 310px;
-    margin-right: auto;
-    margin-left: auto;
-    font-size: 8px;
-    line-height: 1.55;
-  }
-
-  .identity-title {
-    font-size: clamp(58px, 19vw, 78px);
-  }
-
-  .col-label {
-    margin-top: 30px;
-    margin-bottom: 22px;
-  }
-
-  .hero-nav {
-    grid-template-columns: 1fr;
-    gap: 23px;
-    width: min(100%, 390px);
-  }
-
-  .hero-link {
-    font-size: clamp(45px, 14vw, 62px);
-  }
-
-  .hero-tagline {
-    max-width: 330px;
-    font-size: 9px;
-    letter-spacing: 0.13em;
-  }
-
-  .hero-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    text-align: center;
-  }
-
-  .hero-socials {
-    order: 1;
-    justify-content: center;
-    gap: 12px 20px;
-  }
-
-  .hero-social-link {
-    font-size: 19px;
-  }
-
-  .partnerships {
-    order: 2;
-    max-width: 350px;
-    font-size: 9px;
-  }
-
-  .copyright {
-    order: 3;
-    white-space: normal;
-    text-align: center;
-  }
-
-  .biography {
-    padding-right: 18px;
-    padding-left: 18px;
-  }
-
-  .press-title {
-    font-size: clamp(58px, 20vw, 90px);
-  }
-
-  .press-meta {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px 16px;
-  }
-
-  .press-deck {
-    font-size: clamp(21px, 6.4vw, 28px);
-    line-height: 1.42;
-  }
-
-  .press-body {
-    margin-top: 72px;
-  }
-
-  .press-section {
-    display: block;
-    padding: 42px 0 52px;
-  }
-
-  .press-section-title {
-    margin-bottom: 28px;
-  }
-
-  .press-pullquote {
-    font-size: clamp(48px, 15vw, 68px);
-  }
-}
-
-@media (max-height: 700px) and (min-width: 641px) {
-  .hero-index {
-    padding-top: 20px;
-    padding-bottom: 18px;
-  }
-
-  .credit-stage {
-    padding: 12px 0 20px;
-  }
-
-  .identity-title {
-    font-size: clamp(82px, 11vw, 150px);
-  }
-
-  .col-label {
-    margin-top: 26px;
-    margin-bottom: 20px;
-  }
-
-  .hero-nav {
-    gap: 18px 52px;
-  }
-
-  .hero-link {
-    font-size: clamp(42px, 6.5vh, 64px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    scroll-behavior: auto !important;
-    transition: none !important;
-  }
+:root{color-scheme:dark;--bg:#080c10;--surface:#192129;--text:#f5f7f8;--muted:#b1b9c0;--red:#ff493f;--gutter:48px;font-family:Archivo,Arial,sans-serif;color:var(--text);background:var(--bg)}
+*{box-sizing:border-box;margin:0;padding:0;letter-spacing:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}body{min-width:320px}body.player-open{overflow:hidden}a{color:inherit;text-decoration:none}button,select{font:inherit}button,a,select{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid white;outline-offset:5px}button{color:inherit}svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}.icon-fill{fill:currentColor;stroke:none}::selection{background:var(--red);color:white}[hidden]{display:none!important}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:50;padding:0 var(--gutter);height:76px;display:flex;align-items:center;gap:56px;background:rgba(8,12,16,.94);backdrop-filter:blur(16px);border-bottom:1px solid #ffffff0d}.wordmark{font-size:25px;font-weight:900}.wordmark span{color:var(--red)}.site-nav{display:flex;gap:32px;font-size:15px;font-weight:600}.site-nav a{color:var(--muted);padding:26px 0}.site-nav a:hover,.site-nav a:focus-visible{color:white}.header-credit{margin-left:auto;font-size:12px;color:var(--muted)}
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:700px;height:calc(100svh - 48px);max-height:1100px;display:flex;align-items:flex-end;padding:120px var(--gutter) 100px;background:#080c10}.hero video,.series-hero video,.video-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3}.hero::after,.series-hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(8,12,16,.8),rgba(8,12,16,.1) 85%),linear-gradient(0deg,var(--bg),transparent 48%)}.hero-content{max-width:760px}.kicker{display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:22px}.hero-title{font-size:120px;font-weight:900;line-height:.9;margin-bottom:28px}.accent{color:var(--red)}.hero-sub{font-size:21px;line-height:1.55;max-width:680px;color:#e1e5e8}.hero-meta{display:flex;flex-wrap:wrap;gap:9px 20px;font-size:12px;color:var(--muted);margin:24px 0 30px}.primary,.secondary{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:17px 25px;border-radius:6px;min-height:56px;font-weight:700;font-size:17px;border:0;transition:background .18s,transform .18s}.primary{background:white;color:#080c10}.primary:hover{background:#dce4eb;transform:translateY(-2px)}.secondary{background:#ffffff1c;color:white}.secondary:hover{background:#ffffff30}.hero-actions{display:flex;flex-wrap:wrap;gap:12px}.motion-toggle{position:absolute;bottom:40px;right:var(--gutter);width:42px;height:42px;border:1px solid #ffffff70;border-radius:50%;background:#080c1070;display:grid;place-items:center}.motion-toggle:hover{background:#28323b}
+.series{scroll-margin-top:76px}.series-hero{min-height:680px;position:relative;isolation:isolate;display:flex;align-items:flex-end;padding:90px var(--gutter) 50px;overflow:hidden;background:#080c10}.series-hero::after{background:linear-gradient(90deg,rgba(8,12,16,.94),rgba(8,12,16,.48) 48%,transparent 80%),linear-gradient(0deg,var(--bg),transparent 80%)}.series-copy{max-width:710px}.series-copy .kicker{color:white}.series-copy h2{font-size:88px;line-height:.97;font-weight:900;margin-bottom:22px}.series-copy p{font-size:20px;line-height:1.6;color:#e1e5e8;margin-bottom:24px;max-width:690px}.series-meta{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14px;font-weight:600;color:var(--muted);margin-bottom:28px}
+.library{padding:12px var(--gutter) 90px}.library-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:22px;padding-bottom:24px}.season-select{position:relative;max-width:100%}.season-select select{appearance:none;border:1px solid #46515b;background:#28323b;color:white;font-weight:600;font-size:16px;padding:16px 48px 16px 18px;min-height:54px;border-radius:6px;max-width:100%;cursor:pointer}.season-select svg{position:absolute;right:16px;top:17px;pointer-events:none;width:18px;height:18px}.library-toolbar h3{font-size:20px;font-weight:600}.episode-tab{font-size:17px;font-weight:700;padding:0 0 18px;border-bottom:3px solid white;display:inline-block;margin-bottom:26px}.episode-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:24px;row-gap:44px;align-items:start}.episode-card{position:relative;min-width:0;isolation:isolate}.card-shell{position:relative;border-radius:8px;background:var(--bg)}.episode-card.expanded{z-index:12}.episode-card.expanded .card-shell{background:var(--surface);box-shadow:0 0 0 14px var(--surface),0 20px 35px #0008}.thumbnail{position:relative;width:100%;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:#202932}.play-episode{display:block;width:100%;height:100%;border:0;background:transparent}.play-episode img{width:100%;height:100%;object-fit:cover;display:block}.play-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;background:white;color:#080c10;display:grid;place-items:center;opacity:0;transition:opacity .16s}.play-badge svg{width:26px;height:26px}.expanded .play-badge,.play-episode:focus-visible .play-badge{opacity:1}.thumbnail iframe{width:100%;height:100%;border:0;display:block}.stop-episode{position:absolute;right:8px;bottom:8px;z-index:2;background:#080c10eb;border:1px solid #ffffff60;border-radius:4px;width:32px;height:32px;display:grid;place-items:center}.stop-episode svg{width:16px;height:16px}.card-copy{padding-top:16px}.card-copy h4{font-size:18px;line-height:1.4;font-weight:700;margin-bottom:12px;overflow-wrap:anywhere}.synopsis{font-size:15px;line-height:1.65;color:var(--muted);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;min-height:49.5px}.expanded .synopsis{display:block;max-height:174px;overflow:auto;scrollbar-width:thin;scrollbar-color:#84909b transparent}.synopsis-toggle{border:0;background:transparent;color:#dbe2e8;padding:7px 0;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px;margin-top:5px}.synopsis-toggle svg{width:14px;height:14px}.expanded .synopsis-toggle svg{transform:rotate(180deg)}.episode-card.expanded .card-copy{position:absolute;top:100%;left:-14px;right:-14px;padding:16px 14px 12px;background:var(--surface);border-radius:0 0 8px 8px;box-shadow:0 20px 26px #0005}.episode-card.expanded .card-shell{padding-bottom:0}.library-note{font-size:14px;color:var(--muted)}
+.section{padding:90px var(--gutter);border-top:1px solid #ffffff14}.section-head{margin-bottom:40px}.section-head h2{font-size:42px;line-height:1.15;font-weight:800}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1320px}.about-card .tag{font-size:13px;color:var(--red);font-weight:700}.about-card h3{font-size:25px;margin:14px 0 20px}.lede{font-size:17px;line-height:1.8;max-width:780px;color:#d9dfe4}.lede+.lede{margin-top:18px}.muted{color:var(--muted)}.contact{background:#0e141a}.contact-mail{font-size:52px;font-weight:800;display:inline-block;margin:6px 0 22px}.contact-mail:hover{color:var(--red)}.site-footer{padding:30px var(--gutter);display:flex;justify-content:space-between;gap:20px;font-size:12px;color:var(--muted)}.skip{position:fixed;top:-90px;left:20px;z-index:100;background:white;color:black;padding:14px}.skip:focus{top:10px}
+@media(min-width:1800px){:root{--gutter:64px}.series-hero{min-height:820px}.episode-grid{gap:48px 28px}}
+@media(max-width:1100px){:root{--gutter:30px}.hero-title{font-size:96px}.hero{min-height:660px}.series-copy h2{font-size:72px}.header-credit{display:none}.episode-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.about-grid{gap:40px}.series-hero{min-height:700px}.series-copy{max-width:660px}}
+@media(max-width:640px){:root{--gutter:20px}.site-header{height:64px;gap:22px}.wordmark{font-size:20px}.site-nav{gap:16px;font-size:12px}.site-nav a{padding:22px 0}.hero{min-height:650px;height:calc(100svh - 36px);max-height:none;padding:110px 20px 86px}.hero-title{font-size:60px}.hero-sub{font-size:17px}.hero-meta{font-size:11px;line-height:1.6;gap:6px 14px}.kicker{font-size:12px}.hero::after{background:linear-gradient(0deg,var(--bg),#080c1055 85%)}.motion-toggle{bottom:24px;width:36px;height:36px}.series{scroll-margin-top:64px}.series-hero{min-height:760px;padding:300px 20px 35px}.series-hero video,.series-hero .video-poster{height:380px;object-position:center top}.series-hero::after{background:linear-gradient(0deg,var(--bg) 48%,transparent 95%)}.series-copy h2{font-size:52px}.series-copy p{font-size:16px;line-height:1.6}.series-meta{font-size:12px;gap:10px 16px}.primary,.secondary{font-size:15px;min-height:50px;padding:14px 18px}.series-hero .motion-toggle{top:24px;bottom:auto}.library{padding-top:20px;padding-bottom:64px}.library-toolbar{gap:14px}.library-toolbar h3{font-size:16px}.season-select{width:100%}.season-select select{width:100%;font-size:15px}.episode-grid{grid-template-columns:1fr;row-gap:32px}.card-copy h4{font-size:18px}.synopsis{font-size:15px}.play-badge{opacity:1;width:48px;height:48px}.episode-card.expanded .card-copy{position:static;padding:16px 0 0;box-shadow:none}.episode-card.expanded .card-shell{box-shadow:0 0 0 10px var(--surface)}.section{padding:60px 20px}.section-head h2{font-size:32px}.about-grid{grid-template-columns:1fr;gap:38px}.lede{font-size:16px}.contact-mail{font-size:40px}.site-footer{flex-direction:column;gap:10px}.episode-tab{margin-bottom:22px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+
+/* Header links and the expanded series catalogue. */
+.header-socials{margin-left:auto;display:flex;align-items:center;gap:22px;font-size:13px;font-weight:600}
+.header-socials a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;color:var(--muted)}
+.header-socials a:hover{color:white}.header-socials svg{width:19px;height:19px}.x-mark{font-size:20px;color:white}
+.hero-sub{margin-bottom:30px}.season-field label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:10px}
+.library-toolbar{align-items:flex-end}.library-toolbar h3{padding-bottom:16px}
+.series-hero .long-title{font-size:64px;line-height:1.05;overflow-wrap:break-word}
+.additional-series .series-copy{max-width:760px}.additional-series .hero-actions{margin-top:28px}
+.additional-series .library{padding-top:28px}.additional-series{border-top:1px solid #ffffff0e}
+.player-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:clamp(18px,5vw,72px);background:rgba(4,6,8,.9);backdrop-filter:blur(12px)}
+.player-modal.open{display:flex}.player-dialog{position:relative;width:min(1120px,100%);background:#000;border:1px solid #56616b;box-shadow:0 34px 100px rgba(0,0,0,.75)}.player-frame{aspect-ratio:16/9;background:#000}.player-frame iframe{display:block;width:100%;height:100%;border:0}.player-close{position:absolute;z-index:2;right:0;top:0;transform:translateY(-100%);min-width:104px;height:40px;border:1px solid #697681;border-bottom:0;background:#080c10;color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;cursor:pointer}.player-close:hover{background:#fff;color:#080c10}
+.bio-profile{padding:clamp(80px,9vw,140px) var(--gutter) clamp(100px,11vw,170px);border-top:4px solid var(--red);background:#080808;color:#f3f0e8}.bio-wrap{width:min(100%,1240px);margin:0 auto}.bio-kicker{margin-bottom:clamp(24px,3vw,42px);color:var(--red);font-size:11px;font-weight:800;text-transform:uppercase}.bio-title{font-size:clamp(58px,8vw,118px);font-weight:900;line-height:.86;text-transform:uppercase}.bio-title span{color:var(--red)}.bio-meta{display:flex;flex-wrap:wrap;gap:9px 24px;margin-top:clamp(34px,4vw,54px);padding:18px 0;border-top:1px solid #f3f0e847;border-bottom:1px solid #f3f0e847;color:#f3f0e8a8;font-size:11px;font-weight:700;text-transform:uppercase}.bio-deck{width:min(100%,980px);margin-top:clamp(48px,6vw,82px);font-size:clamp(23px,2.2vw,34px);font-weight:700;line-height:1.42}.bio-deck p+p{margin-top:1em}.bio-deck strong{color:var(--red);font-weight:800}.bio-body{margin-top:clamp(76px,9vw,126px)}.bio-section{display:grid;grid-template-columns:minmax(190px,260px) minmax(0,780px);justify-content:space-between;gap:32px clamp(44px,7vw,110px);padding:clamp(44px,5vw,74px) 0;border-top:1px solid #f3f0e847}.bio-section-title{color:var(--red);font-size:clamp(18px,1.45vw,24px);font-weight:800;line-height:1.2;text-transform:uppercase}.bio-copy{font-size:clamp(16px,1.22vw,19px);font-weight:500;line-height:1.78}.bio-copy p+p{margin-top:1.55em}.bio-copy strong{font-weight:800}.bio-work-title{margin-bottom:20px;font-size:clamp(36px,4vw,58px);font-weight:900;line-height:.95;text-transform:uppercase}.bio-pullquote{display:block;margin:clamp(38px,5vw,64px) 0 0;padding-top:22px;border-top:4px solid var(--red);color:var(--red)!important;font-size:clamp(44px,5.4vw,76px);font-weight:900;line-height:.9;text-transform:uppercase}.bio-closing{font-size:clamp(21px,2vw,29px);font-weight:700;line-height:1.5}
+@media(max-width:1100px){.site-header{gap:32px}.header-socials{gap:18px}.series-hero .long-title{font-size:56px}}
+@media(max-width:640px){
+  .site-header{height:100px;display:grid;grid-template-columns:1fr auto;grid-template-rows:52px 48px;gap:0 16px}
+  .site-header>.wordmark{grid-column:1;grid-row:1}.header-socials{grid-column:2;grid-row:1;gap:14px}
+  .header-socials{font-size:11px;gap:12px}.header-socials a{min-width:18px}.site-nav{grid-row:2;grid-column:1 / -1;gap:28px;align-self:stretch;align-items:center}
+  .site-nav a{padding:15px 0}.series{scroll-margin-top:100px}html{scroll-padding-top:116px}
+  .hero{padding-top:140px}.series-hero .long-title{font-size:40px;line-height:1.1}.library-toolbar h3{padding-bottom:0}
+  .bio-profile{padding-right:20px;padding-left:20px}.bio-title{font-size:clamp(52px,17vw,78px)}.bio-meta{display:grid;grid-template-columns:1fr 1fr;gap:9px 16px}.bio-deck{font-size:clamp(21px,6.4vw,28px)}.bio-body{margin-top:72px}.bio-section{display:block;padding:42px 0 54px}.bio-section-title{margin-bottom:30px}.bio-pullquote{font-size:clamp(46px,14vw,68px)}
 }
 </style>
 </head>
 <body>
-
-<video id="video-bg" autoplay muted loop playsinline>
-  <source
-    src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/MXVDXN_VIDEO_LOOP.mp4"
-    type="video/mp4"
-  >
-</video>
-
-<div class="hero-index" id="top">
-  <main class="credit-stage">
-    <div class="identity-meta">
-      DAN PRADANA / COPYWRITER / 10+ YEARS IN APAC ADS / GEN-AI
-    </div>
-
-    <h1 class="identity-title">MXVDXN</h1>
-
-    <div class="col-label">PROJECTS</div>
-
-    <nav class="hero-nav" aria-label="Projects">
-      <div class="hero-group">
-        <span class="hero-meta">01 // AI ACTION SERIES</span>
-        <a
-          href="https://sariploy.mxvdxn.xyz/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hero-link"
-        >SARI &amp; PLOY</a>
-        <span class="hero-tagline">CLASS DISMISSED. MISSION ACTIVE.</span>
-      </div>
-
-      <div class="hero-group">
-        <span class="hero-meta">02 // AI MICRO-DRAMA</span>
-        <a
-          href="https://mxvdxn.github.io/9nails/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hero-link"
-        >9 NAILS</a>
-        <span class="hero-tagline">THE CITY WANTS HER HOUSE. BAD IDEA.</span>
-      </div>
-
-      <div class="hero-group">
-        <span class="hero-meta">03 // AI CRIME ANTHOLOGY</span>
-        <a
-          href="https://mxvdxn.github.io/badgold/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hero-link"
-        >BAD GOLD</a>
-        <span class="hero-tagline">THE GOLD MAY BE FAKE. THE POWER ISN'T.</span>
-      </div>
-
-      <div class="hero-group">
-        <span class="hero-meta">04 // ADULT ACTION ANIME</span>
-        <a
-          href="https://x.com/mxvdxn_kisskill"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hero-link"
-        >KISS KILL</a>
-        <span class="hero-tagline">KILL EACH OTHER. KISS EACH OTHER. REPEAT.</span>
-      </div>
-    </nav>
-  </main>
-
-  <footer class="hero-info">
-    <div class="partnerships">
-      <strong>CREATIVE PARTNERSHIPS</strong>
-      KLING AI / MINIMAX DESIGN / MAGNIFIC / DREAMINA / DZINE
-    </div>
-
-    <div class="copyright">
-      &copy; 2026 DAN PRADANA / MXVDXN. ALL RIGHTS RESERVED.
-    </div>
-
-    <div class="hero-socials" aria-label="MXVDXN links">
-      <a
-        class="hero-social-link"
-        href="https://x.com/mxvdxn"
-        target="_blank"
-        rel="noopener noreferrer"
-      >X</a>
-
-      <a
-        class="hero-social-link"
-        href="https://www.instagram.com/mxvdxn/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >Instagram</a>
-
-      <a
-        class="hero-social-link"
-        href="https://www.youtube.com/@mxvdxn-studio"
-        target="_blank"
-        rel="noopener noreferrer"
-      >YouTube</a>
-
-      <a
-        class="hero-social-link"
-        href="mailto:mxvdxn@gmail.com"
-      >Contact</a>
-    </div>
-  </footer>
-</div>
-
-<section class="biography" aria-label="Dan Pradana biography">
-  <div class="bio-inner">
-    <header class="press-header">
-      <div class="press-kicker">Profile / 2026</div>
-
-      <h2 class="press-title">
-        Dan Pradana <span>[MXVDXN]</span>
-      </h2>
-
-      <div class="press-meta">
-        <span>Copywriter</span>
-        <span>Creator</span>
-        <span>Gen-AI Fiction</span>
-        <span>Jakarta</span>
-        <span>10+ Years in APAC Advertising</span>
-      </div>
-
-      <div class="press-deck">
-        <p>
-          <strong class="red-emphasis">Dan Pradana [MXVDXN]</strong> builds
-          <strong class="red-emphasis">original gen-AI fiction</strong> through a raw,
-          lo-fi vision of <strong class="red-emphasis">Jakarta and Bangkok</strong>.
-          His images return to kos-kosan,
-          Indonesia&rsquo;s rented-room boarding houses where people live close
-          together around shared corridors, kitchens, and laundry yards.
-        </p>
-
-        <p>
-          That world extends into modest flats, working-class housing, roadside
-          food stalls, narrow alleys, fluorescent minimarts, wet concrete, and
-          overheated streets. It is
-          <strong class="red-emphasis">Southeast Asia seen from inside</strong>:
-          crowded,
-          funny, sensual, class-conscious, and far from the polished tropical
-          fantasy usually exported to outsiders.
-        </p>
+<a class="skip" href="#work">Skip to episodes</a>
+<header class="site-header"><a class="wordmark" href="#top" aria-label="MXVDXN home">MXVDXN<span>.</span></a><nav class="site-nav" aria-label="Main navigation"><a href="#work">Series</a><a href="#about">About</a><a href="#contact">Contact</a></nav><nav class="header-socials" aria-label="Social links"><a href="https://x.com/mxvdxn" target="_blank" rel="noopener noreferrer" aria-label="MXVDXN on X" title="X"><span class="x-mark" aria-hidden="true">X</span></a><a href="https://www.instagram.com/mxvdxn/" target="_blank" rel="noopener noreferrer" aria-label="MXVDXN on Instagram" title="Instagram"><span>Instagram</span></a><a href="https://www.youtube.com/@mxvdxn-studio" target="_blank" rel="noopener noreferrer" aria-label="MXVDXN on YouTube" title="YouTube"><span>YouTube</span></a></nav></header>
+<main>
+<section class="hero" id="top" aria-labelledby="studio-title">
+<video data-loop autoplay muted loop playsinline preload="metadata" aria-hidden="true" poster="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/image_files/sariploy_header.png?raw=true"><source src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/MXVDXN_VIDEO_LOOP.mp4" type="video/mp4"></video>
+<div class="hero-content"><span class="kicker">Independent Gen-AI Lab</span><h1 class="hero-title" id="studio-title">MXVDXN<span class="accent">.</span></h1><p class="hero-sub">Original AI entertainment IP, made in Southeast Asia. Serialized shows written, directed and produced end to end with generative AI.</p><a class="primary" href="#work"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg> Explore the series</a></div><button class="motion-toggle" aria-label="Pause background video" title="Pause background video"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="14" y="3" width="5" height="18" rx="1"/><rect x="5" y="3" width="5" height="18" rx="1"/></svg></button>
+</section>
+<article class="series" id="work" aria-labelledby="series-title">
+<section class="series-hero"><video data-loop autoplay muted loop playsinline preload="metadata" aria-hidden="true" poster="https://github.com/mxvdxn/mxvdxn.github.io/blob/main/image_files/sariploy_header.png?raw=true"><source src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/sari_ploy_home.mp4" type="video/mp4"></video><div class="series-copy"><span class="kicker">MXVDXN ORIGINAL</span><h2 id="series-title">SARI &amp; PLOY</h2><p>Indonesian student Sari and Thai exchange student Ploy balance school life with covert missions for a secret intelligence agency. But as whispers of their exploits spread, each assignment draws them deeper into a conspiracy reaching far beyond Jakarta.</p><div class="series-meta"><span>AI Action Series</span><span>Jakarta &times; Bangkok</span><span>2 seasons</span></div><div class="hero-actions"><button class="primary" id="watch-first"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg> Watch Season 2</button><button class="secondary" id="watch-intro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg> Introduction</button></div></div><button class="motion-toggle" aria-label="Pause background video" title="Pause background video"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="14" y="3" width="5" height="18" rx="1"/><rect x="5" y="3" width="5" height="18" rx="1"/></svg></button></section>
+<section class="library" aria-label="SARI & PLOY episodes"><div class="library-toolbar"><div class="season-field"><label for="season">Choose a season</label><div class="season-select"><select id="season"><option value="s1">Season 1</option><option value="s2" selected>Season 2</option><option value="extra">Extra Files</option></select><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></div></div><h3 id="season-title">Operation Wild Flowers</h3></div><span class="episode-tab">Episodes</span><div class="episode-grid" id="episodes" aria-live="polite"></div></section>
+</article>
+<article class="series additional-series" id="9nails" aria-labelledby="9nails-title">
+  <section class="series-hero">
+    <video data-loop muted loop playsinline preload="none" aria-hidden="true" poster="https://i.ytimg.com/vi/gUWgZKAy0QM/hqdefault.jpg"><source data-src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/9nails.mp4" type="video/mp4"></video>
+    <div class="series-copy"><span class="kicker">MXVDXN ORIGINAL</span><h2 id="9nails-title">9 NAILS</h2><p>An impossible landlady defending the last independent boarding house in a city owned legally, criminally, and magically by one very strange family.</p><div class="hero-actions"><button class="primary" data-watch-series="9nails"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg> Watch Episode 1</button></div></div>
+    <button class="motion-toggle" aria-label="Play background video" title="Play background video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg></button>
+  </section>
+  <section class="library" aria-label="9 NAILS episodes"><h3 class="episode-tab">Episodes</h3><div class="episode-grid" id="episodes-9nails"></div></section>
+</article>
+<article class="series additional-series" id="bad-gold" aria-labelledby="bad-gold-title">
+  <section class="series-hero">
+    <video data-loop muted loop playsinline preload="none" aria-hidden="true" poster="https://i.ytimg.com/vi/TpJ1uZjPQUo/hqdefault.jpg"><source data-src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/bad_gold.mp4" type="video/mp4"></video>
+    <div class="series-copy"><span class="kicker">MXVDXN ORIGINAL</span><h2 id="bad-gold-title">BAD GOLD</h2><p>Across Southeast Asia, a different woman steps into every story wrapped in gold, glamour, and unanswered questions. No one can tell where their money comes from, how much of the luxury is real, or why everyone seems to know their names. But wherever they go, rooms fall silent, danger keeps its distance, and the world bends around them as if they were untouchable.</p><div class="hero-actions"><button class="primary" data-watch-series="bad-gold"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg> Watch Episode 1</button></div></div>
+    <button class="motion-toggle" aria-label="Play background video" title="Play background video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg></button>
+  </section>
+  <section class="library" aria-label="BAD GOLD episodes"><h3 class="episode-tab">Episodes</h3><div class="episode-grid" id="episodes-bad-gold"></div></section>
+</article>
+<article class="series additional-series" id="we-found-something-in" aria-labelledby="we-found-something-in-title">
+  <section class="series-hero">
+    <video data-loop muted loop playsinline preload="none" aria-hidden="true" poster="https://i.ytimg.com/vi/qqn44lPWjMs/hqdefault.jpg"><source data-src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/WFSI.mp4" type="video/mp4"></video>
+    <div class="series-copy"><span class="kicker">MXVDXN ORIGINAL</span><h2 id="we-found-something-in-title" class="long-title">WE FOUND SOMETHING IN...</h2><p>Dira, Lina, Adel and their crew don't look for trouble. Trouble just tends to be wherever they end up. An abandoned mall at 2 a.m. A luxury mansion mid dinner party. A lo-fi found footage comedy following Jakarta's loudest, most fearless all-female scooter gang through the city's strangest corners. Whatever they find, they never run. No fear. No plan. Just the gang.</p><div class="hero-actions"><button class="primary" data-watch-series="we-found-something-in"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg> Watch Episode 1</button></div></div>
+    <button class="motion-toggle" aria-label="Play background video" title="Play background video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg></button>
+  </section>
+  <section class="library" aria-label="WE FOUND SOMETHING IN... episodes"><h3 class="episode-tab">Episodes</h3><div class="episode-grid" id="episodes-we-found-something-in"></div></section>
+</article>
+<article class="series additional-series" id="codename-widuri" aria-labelledby="codename-widuri-title">
+  <section class="series-hero">
+    <video data-loop muted loop playsinline preload="none" aria-hidden="true" poster="https://i.ytimg.com/vi/SsjmTbNIKJ4/hqdefault.jpg"><source data-src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/0319.mp4" type="video/mp4"></video>
+    <div class="series-copy"><span class="kicker">MXVDXN ORIGINAL</span><h2 id="codename-widuri-title">CODENAME: WIDURI</h2><p>Ratu Sunyi, the Silent Queens, is an all-female assassin syndicate built on one insight: a woman dressed for a ceremony moves through Southeast Asia without suspicion. Trained in Pencak Silat, poison, blades and social infiltration, their contracts are exclusively drug lords, corrupt officials and traffickers who bought their way out of justice. Widuri is their best. Her real name no longer exists.</p><div class="hero-actions"><button class="primary" data-watch-series="codename-widuri"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg> Watch Episode 1</button></div></div>
+    <button class="motion-toggle" aria-label="Play background video" title="Play background video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg></button>
+  </section>
+  <section class="library" aria-label="CODENAME: WIDURI episodes"><h3 class="episode-tab">Episodes</h3><div class="episode-grid" id="episodes-codename-widuri"></div></section>
+</article>
+<section class="bio-profile" id="about" aria-labelledby="bio-title">
+  <div class="bio-wrap">
+    <header class="bio-header">
+      <div class="bio-kicker">About the Showrunner / Profile 2026</div>
+      <h2 class="bio-title" id="bio-title">Dan Pradana <span>[MXVDXN]</span></h2>
+      <div class="bio-meta"><span>Copywriter</span><span>Creator</span><span>Gen-AI Fiction</span><span>Jakarta</span><span>10+ Years in APAC Advertising</span></div>
+      <div class="bio-deck">
+        <p><strong>Dan Pradana [MXVDXN]</strong> builds <strong>original gen-AI fiction</strong> through a raw, lo-fi vision of <strong>Jakarta</strong> and <strong>Bangkok</strong>. His images return to kos-kosan, Indonesia&rsquo;s rented-room boarding houses where people live close together around shared corridors, kitchens, and laundry yards.</p>
+        <p>That world extends into modest flats, working-class housing, roadside food stalls, narrow alleys, fluorescent minimarts, wet concrete, and overheated streets. It is <strong>Southeast Asia seen from inside</strong>: crowded, funny, sensual, class-conscious, and far from the polished tropical fantasy usually exported to outsiders.</p>
       </div>
     </header>
-
-    <div class="press-body">
-      <section class="press-section">
-        <h3 class="press-section-title">01 / Practice</h3>
-
-        <div class="press-copy">
-          <p>
-            For more than a decade, Dan has worked as a copywriter in APAC
-            advertising, creating work for brands across food and beverage,
-            condoms, automotive, telecommunications, financial technology,
-            and lifestyle.
-          </p>
-
-          <p>
-            Advertising trained him to find a strong idea inside a messy brief,
-            understand what different audiences desire, and execute creative
-            work through deadlines, feedback, and limited resources.
-          </p>
-
-          <p>
-            As he moves into a more corporate phase of his career, he keeps
-            MXVDXN alive between business trips, airport lounges, hotel rooms,
-            and whatever time remains after work. It is his creative playground,
-            where he can unleash his lizard brain and explore the strange,
-            sensual, violent, or ridiculous ideas that have no place in his
-            day job.
-          </p>
-
-          <p>
-            AI gives him the freedom to turn those impulses into characters,
-            cities, and stories that would otherwise remain inside his head.
-          </p>
+    <div class="bio-body">
+      <section class="bio-section">
+        <h3 class="bio-section-title">01 / Practice</h3>
+        <div class="bio-copy">
+          <p>For more than a decade, Dan has worked as a copywriter in APAC advertising, creating work for brands across food and beverage, condoms, automotive, telecommunications, financial technology, and lifestyle.</p>
+          <p>Advertising trained him to find a strong idea inside a messy brief, understand what different audiences desire, and execute creative work through deadlines, feedback, and limited resources.</p>
+          <p>As he moves into a more corporate phase of his career, he keeps MXVDXN alive between business trips, airport lounges, hotel rooms, and whatever time remains after work. It is his creative playground, where he can unleash his lizard brain and explore the strange, sensual, violent, or ridiculous ideas that have no place in his day job.</p>
+          <p>AI gives him the freedom to turn those impulses into characters, cities, and stories that would otherwise remain inside his head.</p>
         </div>
       </section>
-
-      <section class="press-section">
-        <h3 class="press-section-title">02 / Visual Language</h3>
-
-        <div class="press-copy">
-          <p>
-            Girls with braces are a recurring visual signature. So are the
-            figures known as cabe-cabean in Jakarta and skoi in Bangkok.
-          </p>
-
-          <p>
-            Cabe-cabean is a loaded Indonesian label for flashy,
-            street-racing-adjacent girls associated with motorbike crews,
-            cheap accessories, dyed hair, and visible braces. Skoi is its
-            loose Thai cultural cousin, originally describing girls who rode
-            behind illegal street racers and later becoming shorthand for
-            loud, rebellious working-class femininity.
-          </p>
-
-          <p>
-            Dan is drawn to how these girls dress, speak, flirt, fight, and
-            occupy public space despite being dismissed as tacky or
-            troublesome by polite society.
-          </p>
-
-          <p>
-            His work does not treat them as interchangeable exotic objects.
-            They are funny, vulgar, stylish, contradictory, and fully aware
-            of the attention they attract. Their beauty matters, but so do
-            their appetites, anger, humor, ambition, and agency.
-          </p>
-
-          <strong class="press-pullquote">Pretty ones bite.</strong>
+      <section class="bio-section">
+        <h3 class="bio-section-title">02 / Visual Language</h3>
+        <div class="bio-copy">
+          <p>Girls with braces are a recurring visual signature. So are the figures known as cabe-cabean in Jakarta and skoi in Bangkok.</p>
+          <p>Cabe-cabean is a loaded Indonesian label for flashy, street-racing-adjacent girls associated with motorbike crews, cheap accessories, dyed hair, and visible braces. Skoi is its loose Thai cultural cousin, originally describing girls who rode behind illegal street racers and later becoming shorthand for loud, rebellious working-class femininity.</p>
+          <p>Dan is drawn to how these girls dress, speak, flirt, fight, and occupy public space despite being dismissed as tacky or troublesome by polite society.</p>
+          <p>His work does not treat them as interchangeable exotic objects. They are funny, vulgar, stylish, contradictory, and fully aware of the attention they attract. Their beauty matters, but so do their appetites, anger, humor, ambition, and agency.</p>
+          <strong class="bio-pullquote">Pretty ones bite.</strong>
         </div>
       </section>
-
-      <section class="press-section">
-        <h3 class="press-section-title">03 / Fictional Worlds</h3>
-
-        <div class="press-copy">
-          <h4 class="press-work-title">AI Micro Series</h4>
-
-          <p>
-            SARI &amp; PLOY is the clearest expression of Dan&rsquo;s schoolcore
-            aesthetic. Heavily inspired by Hideaki Anno&rsquo;s
-            <em>Love &amp; Pop</em>, it combines the pop-team glamour of
-            <em>Charlie&rsquo;s Angels</em> with silat, Muay Thai, surveillance,
-            after-school friendship, and Southeast Asian street life.
-          </p>
-
-          <p>
-            Its heroines may wear school uniforms, but their world is built
-            around loyalty, danger, humor, and the physical force of two girls
-            moving through the city together.
-          </p>
-
-          <p>
-            His other worlds include <strong>9 NAILS</strong>, a bizarre
-            supernatural dark comedy set in an occult Java-Thai city;
-            <strong>BAD GOLD</strong>, about sexy, voluptuous Southeast Asian
-            aunties whose money, luxury, and morality remain impossible to
-            verify; and <strong>KISS KILL</strong>, an adult action anime about
-            two female assassins caught between the urge to kill each other
-            and kiss each other.
-          </p>
+      <section class="bio-section">
+        <h3 class="bio-section-title">03 / Fictional Worlds</h3>
+        <div class="bio-copy">
+          <h4 class="bio-work-title">AI Micro Series</h4>
+          <p>SARI &amp; PLOY is the clearest expression of Dan&rsquo;s schoolcore aesthetic. Heavily inspired by Hideaki Anno&rsquo;s <em>Love &amp; Pop</em>, it combines the pop-team glamour of <em>Charlie&rsquo;s Angels</em> with silat, Muay Thai, surveillance, after-school friendship, and Southeast Asian street life. Its heroines may wear school uniforms, but their world is built around loyalty, danger, humor, and the physical force of two girls moving through the city together.</p>
+          <p>Dan embraces microseries because the format matches how he thinks: fast, fragmentary, and always moving. Each piece can introduce a character, mood, or unexplored corner of his universe without forcing the idea into a long production before it is ready. It also gives him a practical way to test how AI technology is evolving through real creative work, experiment with new possibilities, and let unexpected results shape the next story without committing to a feature-length project.</p>
         </div>
       </section>
-
-      <section class="press-section">
-        <h3 class="press-section-title">04 / MXVDXN</h3>
-
-        <div class="press-copy press-closing">
-          <p>
-            A distinctive sensuality runs through all of Dan&rsquo;s work,
-            sometimes intentionally and sometimes as instinct.
-          </p>
-
-          <p>
-            Taken together, MXVDXN feels less like an AI studio and more like
-            a living piece of ALT media: part cultural zine, part bootleg
-            cinema, and part feverish archive of Southeast Asian girls,
-            streets, appetites, and danger.
-          </p>
+      <section class="bio-section">
+        <h3 class="bio-section-title">04 / MXVDXN</h3>
+        <div class="bio-copy bio-closing">
+          <p>A distinctive sensuality runs through all of Dan&rsquo;s work, sometimes intentionally and sometimes as instinct.</p>
+          <p>Taken together, MXVDXN feels less like an AI studio and more like a living piece of ALT media: part cultural zine, part bootleg cinema, and part feverish archive of Southeast Asian girls, streets, appetites, and danger.</p>
         </div>
       </section>
     </div>
   </div>
 </section>
-
-</body>
-</html>
+<section class="section contact" id="contact">
+  <div class="reveal">
+    <span class="kicker">Contact</span><br>
+    <a class="contact-mail" href="mailto:mxvdxn@gmail.com">Inquiries &rarr;</a>
+    <p class="lede muted contact-note">For commissions, creative partnerships, licensing or press. The link above opens an email directly. Based in Jakarta, working across time zones.</p>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <span>MXVDXN // Dan Pradana // &copy; 2026</span>
+  <span>All Rights Reserved</span>
+</footer>
+<div class="player-modal" id="player-modal" aria-hidden="true">
+  <div class="player-dialog" role="dialog" aria-modal="true" aria-label="Video player">
+    <button class="player-close" id="player-close" type="button">Close</button>
+    <div class="player-frame" id="player-frame"></div>
+  </div>
+</div>
+<script>
+const seasons = {"s1":{"title":"After School Agents","episodes":[{"title":"The Exchange Student","synopsis":"For one year, Ploy has played the role of a perfect exchange student. But when her cover starts to crack, the secret beneath their school pulls her and Sari back in.","id":"davYXgXl5d0"},{"title":"The Scam Center","synopsis":"A scam center hidden inside a cheap shophouse pulls Sari and Ploy into a messy back-door operation. But when the room falls apart, someone watching from the shadows confirms a rumor no one was supposed to believe.","id":"nkeYjzqwX-E"},{"title":"Too Many People Know","synopsis":"After the scam center raid, Sari and Ploy return to their boarding house, where food and a neighborhood invitation pull them back into ordinary life. But one harmless comment leaves Sari with the feeling that her name is traveling further than it should.","id":"8jEa_NkapAM"},{"title":"Mystic Arts","synopsis":"Sari takes the stage at a neighborhood gathering and for one late afternoon, she is just a girl who moves beautifully. Ploy finds the food. Their old friend Rendi, a G.S.I agent from Bandung shows up. But between the applause and the gamelan, a question goes unanswered. And Sari catches a glimpse of something she was not meant to see yet.","id":"AVM-pYn6TFs"},{"title":"The Weight of a Name","synopsis":"While the neighborhood gathering carries on around them, Sari, Ploy, and their old friend G.S.I agent Rendi find a quiet corner away from the crowd. The dangdut plays. The food is good. But the conversation goes somewhere none of them were ready for.","id":"8ChdKh3Zy68"},{"title":"The Flower of Death","synopsis":"Rendi tells the story of Sekar Pati, an ancient and rare silat lineage carried in Sari's blood long before she even knew it existed. Ploy listens. And just when the afternoon feels settled, a familiar kind of trouble finds Sari at the worst possible moment.","id":"GuRqJ62O-oM"},{"title":"The Confirmation","synopsis":"A routine security shakedown at the neighborhood gathering turns into a fight Sari and Ploy did not expect, with Rendi stepping in beside them. None of them notice the voice on the phone nearby, confirming the one thing Sari has been quietly worried about ever since the scam center event.","id":"PctBCmyI1_E"},{"title":"Something's Coming","synopsis":"Today's tough assignment for Sari and Ploy: go to school and pretend to study. But one chicken noodle order from Rendi, and a piece of intel nobody saw coming, turn their boring ordinary day into something exciting.","id":"hHC0oTzDsu0"},{"title":"The Price on Their Names","synopsis":"Rendi finally delivers the intel he promised. Someone has been paying to track down Sari and Ploy, and wants them out of the picture for good. Before either of them can process what they've just learned, an alarm tears through the room.","id":"_WdxXbnFtWY"},{"title":"The Woman in the Fire","synopsis":"The bounty on Sari and Ploy is real. But the woman sent to collect may be even hotter than the fire she brings.","id":"sGquR2_Ez5Q"},{"title":"The Other Agents","synopsis":"Pushed to their limits by Agni, Sari and Ploy refuse to stay down. But when two familiar rivals enter the fight, they discover they may not be the only students living a dangerous double life.","id":"jGSz4t8FUsQ"},{"title":"Wild Flowers","synopsis":"When Sekar and Busaba step in, Sari and Ploy realize their enemies may be playing a much bigger game.","id":"Vr3ifr3sCE0"},{"title":"The Bloom","synopsis":"The battle reaches its final stage, but an unexpected observer reveals that the fight was only part of a much larger plan. In the final episode of Season 1, the agents learn that the real hunt has only just begun.","id":"J-EZwauJhUI"}]},"s2":{"title":"Operation Wild Flowers","episodes":[{"title":"Picture Day","synopsis":"Sari and Ploy came for one ordinary school photo. Then the room started feeling wrong.","id":"VlENiaws-nU"},{"title":"The Private Party","synopsis":"While Sari & Ploy took a day off, Sekar and Busaba’s loyal units were assigned to a wealthy man’s private pool party. The service he received from them was not what he expected.","id":"GlLoWoRu3ZM"},{"title":"The Ambush","synopsis":"When Arumi detects a hostile unit moving toward Sari and Ploy’s boarding house, Sekar and Busaba race across Jakarta to warn them. But with the house already surrounded, reaching them may be only the beginning.","id":"oohDO-rnDqQ"},{"title":"Katana & Scythe","synopsis":"As Sari and Ploy become the targets of massive armored cyborgs, Sekar and Busaba step in to protect them, turning a rooftop chase into a fierce counterattack.","id":"_8aiY1pZ-Sk"}]},"extra":{"title":"Extra Files","episodes":[{"title":"SARI & PLOY: INTRODUCTION VIDEO","synopsis":"New to the SARI & PLOY universe? Start with this video.","id":"4dRL0CdVr-M"},{"title":"SARI & PLOY: PROTOCOL/ZERO","synopsis":"Before AFTER SCHOOL AGENTS existed, SARI & PLOY began as a series of experiments created to test Seedance 2.0.","id":"ScnrfvDuR6o"},{"title":"SEKAR & BUSABA // SARI & PLOY // DREAMINA SEEDANCE 2.5","synopsis":"Sekar and Busaba take the lead in a fast action showcase built around close-range combat, armed opponents, and chaotic urban spaces. Created as a Dreamina Seedance 2.5 demonstration, this is a visual experiment rather than a numbered canon episode.","id":"d1ZrMjiAu7I"},{"title":"SARI & PLOY // SEKAR & BUSABA","synopsis":"Sari, Ploy, Sekar, and Busaba collide in a rapid character and combat showcase that moves from school corridors to a full-scale confrontation. The short explores how the two rival partnerships look and fight together outside the numbered episode storyline.","id":"-IGKLyTSnwk"}]}};
+const icons = {"play":"<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z\"/></svg>","pause":"<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"14\" y=\"3\" width=\"5\" height=\"18\" rx=\"1\"/><rect x=\"5\" y=\"3\" width=\"5\" height=\"18\" rx=\"1\"/></svg>","close":"<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M18 6 6 18\"/><path d=\"m6 6 12 12\"/></svg>","chevron":"<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg>"};
+const additionalSeries = [{"slug":"9nails","title":"9 NAILS","loop":"9nails.mp4","description":"An impossible landlady defending the last independent boarding house in a city owned legally, criminally, and magically by one very strange family.","episodes":[{"title":"The Aunt's Debt","id":"gUWgZKAy0QM","synopsis":"When a giant comes to collect an old debt, Sukma's first morning as landlady quickly spirals into dirty jokes, unpaid rent and one problem she never saw coming."},{"title":"First Warning","id":"TLCXIbafrZY","synopsis":"The Nine Nails Family sends a sealed threat. Sukma answers with fire, and a day of dripping pipes leaves her soaked, and what she burned still warm from a touch she didn't see."},{"title":"It Comes Back","id":"AX4NXm0AEkI","synopsis":"After Sukma’s warning letter survives both fire and the drain, a new problem begins to take shape at the boarding house, and this time it may be closer than she thinks."}]},{"slug":"bad-gold","title":"BAD GOLD","loop":"bad_gold.mp4","description":"Across Southeast Asia, a different woman steps into every story wrapped in gold, glamour, and unanswered questions. No one can tell where their money comes from, how much of the luxury is real, or why everyone seems to know their names. But wherever they go, rooms fall silent, danger keeps its distance, and the world bends around them as if they were untouchable.","episodes":[{"title":"Two Taps","id":"TpJ1uZjPQUo","synopsis":"At a crowded local Muay Thai match, a woman seated at ringside taps her vape twice against a gold bracelet. One fighter sees the signal, and the entire match ends exactly the way she planned."},{"title":"The Ceasefire","id":"h_u9c1c1kmU","synopsis":"A gunfight tears through a wet seafood market until a black SUV arrives and a woman steps into the open lane. She never asks anyone to stop firing, but every weapon lowers before she reaches the refrigerated truck."},{"title":"The Room Key","id":"p0F7kemgyqs","synopsis":"Near midnight, a woman enters a quiet Jakarta hotel and asks for the key to a room that is already occupied. When the receptionist reaches for the manager, she reveals that he is the reason she knows exactly which door to open."},{"title":"Borrowed Names","id":"HaMxwiBjtcs","synopsis":"A small-time thug collects protection money using the names of three women he should have never mentioned."},{"title":"The Blood Bill","id":"WT7kWIw16Ow","synopsis":"A desperate thug interrupts a woman's roadside lunch with a knife and a demand for blood. He thinks she is alone until the entire street quietly reveals whose side it is on."},{"title":"The New Bodyguard","id":"2Lp5BmFys_I","synopsis":"A bartender catches her eye in a room full of drawn guns. By night, he's in her bed. By morning, he's her bodyguard, and the men who've guarded her for years can't hide their jealousy."},{"title":"The Guest List","id":"AIQOLJRaXJo","synopsis":"A tactical unit storms an illegal floating casino, but the raid begins to unravel when its unshaken host reveals whose name sits at the top of the guest list. Face-to-face with power, the officers discover exactly where their authority ends."},{"title":"The Day Shift","id":"oO2u3K3mTRE","synopsis":"Three women walk through a crowded market where everyone seems to know exactly who they are. High above the crowd, a stranger watches through a scope."}]},{"slug":"we-found-something-in","title":"WE FOUND SOMETHING IN...","loop":"WFSI.mp4","description":"Dira, Lina, Adel and their crew don't look for trouble. Trouble just tends to be wherever they end up. An abandoned mall at 2 a.m. A luxury mansion mid dinner party. A lo-fi found footage comedy following Jakarta's loudest, most fearless all-female scooter gang through the city's strangest corners. Whatever they find, they never run. No fear. No plan. Just the gang.","episodes":[{"title":"WE FOUND SOMETHING IN... [THE DEAD MALL]","id":"qqn44lPWjMs","synopsis":"A female gang and their scooter storms into an abandoned mall at 2 a.m. Inside, they stumble on something that has no business being there. Instead of running, they stay, and what follows spirals into total, chaotic madness."},{"title":"WE FOUND SOMETHING IN... [MR. RUDI’S MANSION]","id":"GG9yarIj6zM","synopsis":"A girl gang and their scooters crash a luxury Jakarta mansion party uninvited. Nobody stopped them at the gate. Nobody could stop them after that either. The host Mr. Rudi seems to know one of them and can't keep his eyes off her. His wife is losing her mind. And the answer at the end will surprise you."},{"title":"WE FOUND SOMETHING IN... [THE NEIGHBOURHOOD]","id":"UzIUfAqKOtc","synopsis":"Dira, Lina, and Adel enter a Jakarta neighborhood already overwhelmed by soldiers, barricades, and something far beyond ordinary crowd control. Instead of turning back, the women ride straight into the chaos and discover why the army needed help."},{"title":"WE FOUND SOMETHING IN... [THE NIGHT MARKET]","id":"FOV0u4FaKyo","synopsis":"At a crowded night market, Dira, Lina, and Adel discover that two giant ondel-ondel figures are actually fighting robots. When one of them chooses the big red one and starts pressing its controls, the market becomes an improvised mech arena."}]},{"slug":"codename-widuri","title":"CODENAME: WIDURI","loop":"0319.mp4","description":"Ratu Sunyi, the Silent Queens, is an all-female assassin syndicate built on one insight: a woman dressed for a ceremony moves through Southeast Asia without suspicion. Trained in Pencak Silat, poison, blades and social infiltration, their contracts are exclusively drug lords, corrupt officials and traffickers who bought their way out of justice. Widuri is their best. Her real name no longer exists.","episodes":[{"title":"Episode 1","numbered":false,"id":"SsjmTbNIKJ4","synopsis":"Widuri has one contract: retrieve a mysterious sealed envelope from a low-life scammer in Jametkarta. Killing him wasn't on the brief, but hey, let her decide on that."},{"title":"Episode 2","numbered":false,"id":"IH9rhvYE2Qg","synopsis":"A corrupt official goes missing in Jametkarta. Nobody saw anything. Nobody heard anything. Just a woman in a red kebaya, sitting on a wooden boat, with an old song playing from her phone. A song that her late father used to hum when she was a kid. Someone is also with her, but not for long."}]}];
+const grid = document.querySelector('#episodes');
+const select = document.querySelector('#season');
+const playerModal = document.querySelector('#player-modal');
+const playerFrame = document.querySelector('#player-frame');
+const playerClose = document.querySelector('#player-close');
+let lastPlayerTrigger = null;
+function restorePlayer(){
+  if(!playerModal.classList.contains('open')) return;
+  playerFrame.replaceChildren();playerModal.classList.remove('open');playerModal.setAttribute('aria-hidden','true');document.body.classList.remove('player-open');
+  if(lastPlayerTrigger){lastPlayerTrigger.focus({preventScroll:true});lastPlayerTrigger=null;}
+  document.querySelectorAll('[data-loop]').forEach(video=>{if(video.dataset.visible==='true'&&video.dataset.paused!=='true'&&!reduced.matches&&!document.hidden)video.play().catch(()=>{});});
+}
+function play(card,entry){
+  restorePlayer();
+  lastPlayerTrigger=card?.querySelector('.play-episode')||document.activeElement;
+  const frame=document.createElement('iframe');
+  frame.src='https://www.youtube.com/embed/'+entry.id+'?autoplay=1&rel=0';frame.title=entry.title;
+  frame.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';
+  playerFrame.replaceChildren(frame);playerModal.classList.add('open');playerModal.setAttribute('aria-hidden','false');document.body.classList.add('player-open');
+  document.querySelectorAll('[data-loop]').forEach(v=>v.pause());
+  playerClose.focus();
+}
+function collapse(card){card.classList.remove('expanded');card.style.minHeight='';card.querySelector('.synopsis-toggle')?.setAttribute('aria-expanded','false');}
+function expand(card){
+  document.querySelectorAll('.episode-card.expanded').forEach(c=>{if(c!==card)collapse(c)});
+  if(!card.classList.contains('expanded'))card.style.minHeight=card.getBoundingClientRect().height+'px';
+  card.classList.add('expanded');card.querySelector('.synopsis-toggle')?.setAttribute('aria-expanded','true');
+}
+function renderEpisodes(target, entries, numbered=true){
+  target.replaceChildren();
+  entries.forEach((entry,i)=>{
+    const card=document.createElement('article');card.className='episode-card';card.dataset.id=entry.id;
+    card.innerHTML='<div class="card-shell"><div class="thumbnail"><button class="play-episode"><img loading="lazy" width="480" height="270"><span class="play-badge" aria-hidden="true">'+icons.play+'</span></button></div><div class="card-copy"><h4></h4><p class="synopsis"></p><button class="synopsis-toggle" aria-expanded="false">Synopsis '+icons.chevron+'</button></div></div>';
+    const button=card.querySelector('.play-episode');button.setAttribute('aria-label','Play '+entry.title);button.onclick=()=>play(card,entry);
+    const img=card.querySelector('img');img.src='https://i.ytimg.com/vi/'+entry.id+'/hqdefault.jpg';img.alt=entry.title;
+    card.querySelector('h4').textContent=(numbered && entry.numbered!==false?(i+1)+'. ':'')+entry.title;
+    const synopsis=card.querySelector('.synopsis');synopsis.textContent=entry.synopsis;synopsis.id='synopsis-'+entry.id;
+    const toggle=card.querySelector('.synopsis-toggle');toggle.setAttribute('aria-controls',synopsis.id);toggle.setAttribute('aria-label','Full synopsis for '+entry.title);
+    toggle.onclick=()=>card.classList.contains('expanded')?collapse(card):expand(card);
+    card.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')expand(card)});
+    card.addEventListener('pointerleave',()=>{if(!card.contains(document.activeElement))collapse(card)});
+    card.addEventListener('focusin',e=>{if(e.target!==toggle)expand(card)});
+    card.addEventListener('focusout',()=>setTimeout(()=>{if(!card.contains(document.activeElement))collapse(card)},0));
+    if(entry.synopsis==='No synopsis is currently listed.'){toggle.hidden=true;}
+    target.append(card);
+  });
+}
+function render(key){
+  restorePlayer();document.querySelector('#season-title').textContent=seasons[key].title;
+  renderEpisodes(grid,seasons[key].episodes,key!=='extra');
+}
+const latestSeason=Object.keys(seasons).filter(key=>/^s[0-9]+$/.test(key)).sort((a,b)=>Number(b.slice(1))-Number(a.slice(1)))[0];
+select.addEventListener('change',()=>render(select.value));select.value=latestSeason;render(latestSeason);
+additionalSeries.forEach(series=>{
+  const target=document.querySelector('#episodes-'+series.slug);
+  renderEpisodes(target,series.episodes);
+  document.querySelector('[data-watch-series="'+series.slug+'"]').onclick=()=>{
+    const card=target.querySelector('.episode-card');
+    card.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+    play(card,series.episodes[0]);
+  };
+});
+window.addEventListener('resize',()=>document.querySelectorAll('.episode-card.expanded').forEach(collapse));
+function start(key,id){select.value=key;render(key);const card=grid.querySelector('[data-id="'+id+'"]');card.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});play(card,seasons[key].episodes.find(e=>e.id===id));}
+document.querySelector('#watch-first').innerHTML=icons.play+' Watch Season '+latestSeason.slice(1);
+document.querySelector('#watch-first').onclick=()=>start(latestSeason,seasons[latestSeason].episodes[0].id);
+document.querySelector('#watch-intro').onclick=()=>start('extra','4dRL0CdVr-M');
+playerClose.addEventListener('click',restorePlayer);
+playerModal.addEventListener('click',e=>{if(e.target===playerModal)restorePlayer();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){restorePlayer();document.querySelectorAll('.episode-card.expanded').forEach(collapse)}});
+document.addEventListener('pointerdown',e=>{if(!e.target.closest('.episode-card'))document.querySelectorAll('.episode-card.expanded').forEach(collapse)});
+const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+function loadLoop(video){
+  const source=video.querySelector('source[data-src]');
+  if(source){source.src=source.dataset.src;source.removeAttribute('data-src');video.load();}
+}
+const preloadObserver=new IntersectionObserver(entries=>entries.forEach(({target,isIntersecting})=>{
+  if(isIntersecting&&!reduced.matches){loadLoop(target);preloadObserver.unobserve(target);}
+}),{rootMargin:'200px'});
+const observer=new IntersectionObserver(entries=>entries.forEach(({target,isIntersecting})=>{
+  target.dataset.visible=String(isIntersecting);
+  if(isIntersecting&&!reduced.matches&&target.dataset.paused!=='true'&&!playerModal.classList.contains('open')&&!document.hidden){loadLoop(target);target.play().catch(()=>{});}else target.pause();
+}),{threshold:.15});
+document.querySelectorAll('[data-loop]').forEach(video=>{
+  const control=video.parentElement.querySelector('.motion-toggle');
+  const sync=()=>{control.innerHTML=video.paused?icons.play:icons.pause;const label=video.paused?'Play background video':'Pause background video';control.setAttribute('aria-label',label);control.title=label;};
+  video.addEventListener('play',sync);video.addEventListener('pause',sync);
+  control.onclick=()=>{video.dataset.paused=String(!video.paused);if(video.paused){loadLoop(video);video.play().catch(()=>{});}else video.pause();sync()};
+  if(reduced.matches)video.pause();sync();preloadObserver.observe(video);observer.observe(video);
+});
+document.addEventListener('visibilitychange',()=>document.querySelectorAll('[data-loop]').forEach(v=>{if(document.hidden)v.pause();else if(v.dataset.visible==='true'&&v.dataset.paused!=='true'&&!reduced.matches&&!playerModal.classList.contains('open'))v.play().catch(()=>{})}));
+</script>
+</body></html>
