@@ -589,8 +589,8 @@ button:focus-visible, a:focus-visible, select:focus-visible, summary:focus-visib
       <details class="project-card" id="sari-ploy" name="visual-projects">
         <summary class="strip-summary"><div class="strip-caption"><p>MXVDXN / Action series</p><h3>SARI &amp; PLOY</h3></div><span class="strip-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></summary>
         <article class="series" id="case-sari-ploy" aria-labelledby="series-title">
-<section class="series-hero"><video data-loop autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/sari_ploy_home.mp4" type="video/mp4"></video><div class="series-copy"><span class="kicker">MXVDXN ORIGINAL</span><h2 id="series-title">SARI &amp; PLOY</h2><p>School life meets covert operations in an expanding action series following two young agents through Jakarta, Bangkok and a conspiracy that keeps growing.</p><div class="series-meta"><span>Action microdrama</span><span>Jakarta &times; Bangkok</span><span>3 seasons</span></div><div class="hero-actions"><button class="primary" id="watch-first"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg> Watch Season 3</button><button class="secondary" id="watch-intro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg> Introduction</button></div></div><button class="motion-toggle" aria-label="Pause background video" title="Pause background video"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="14" y="3" width="5" height="18" rx="1"/><rect x="5" y="3" width="5" height="18" rx="1"/></svg></button></section>
-<section class="library" aria-label="SARI & PLOY episodes"><div class="library-toolbar"><div class="season-field"><label for="season">Choose a season</label><div class="season-select"><select id="season"><option value="s1">Season 1</option><option value="s2">Season 2</option><option value="s3" selected>Season 3</option><option value="extra">Extra Files</option></select><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></div></div><h3 id="season-title">Sangra Island</h3></div><span class="episode-tab">Episodes</span><div class="episode-grid" id="episodes" aria-live="polite"></div></section>
+<section class="series-hero"><video data-loop autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://github.com/mxvdxn/mxvdxn.github.io/raw/refs/heads/main/video_files/sari_ploy_home.mp4" type="video/mp4"></video><div class="series-copy"><span class="kicker">MXVDXN ORIGINAL</span><h2 id="series-title">SARI &amp; PLOY</h2><p>School life meets covert operations in an expanding action series following two young agents through Jakarta, Bangkok and a conspiracy that keeps growing.</p><div class="series-meta"><span>Action microdrama</span><span>Jakarta &times; Bangkok</span><span>3 seasons</span></div><div class="hero-actions"><button class="primary" id="watch-first"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg> Watch Season 1</button><button class="secondary" id="watch-intro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg> Introduction</button></div></div><button class="motion-toggle" aria-label="Pause background video" title="Pause background video"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="14" y="3" width="5" height="18" rx="1"/><rect x="5" y="3" width="5" height="18" rx="1"/></svg></button></section>
+<section class="library" aria-label="SARI & PLOY episodes"><div class="library-toolbar"><div class="season-field"><label for="season">Choose a season</label><div class="season-select"><select id="season"><option value="s1" selected>Season 1</option><option value="s2">Season 2</option><option value="s3">Season 3</option><option value="extra">Extra Files</option></select><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></div></div><h3 id="season-title">After School Agents</h3></div><span class="episode-tab">Episodes</span><div class="episode-grid" id="episodes" aria-live="polite"></div></section>
 </article>
       </details>
     </div>
@@ -818,8 +818,8 @@ function render(key){
   restorePlayer();document.querySelector('#season-title').textContent=seasons[key].title;
   renderEpisodes(grid,seasons[key].episodes,key!=='extra');
 }
-const latestSeason=Object.keys(seasons).filter(key=>/^s[0-9]+$/.test(key)).sort((a,b)=>Number(b.slice(1))-Number(a.slice(1)))[0];
-select.addEventListener('change',()=>render(select.value));select.value=latestSeason;render(latestSeason);
+const defaultSeason='s1';
+select.addEventListener('change',()=>render(select.value));select.value=defaultSeason;render(defaultSeason);
 additionalSeries.forEach(series=>{
   const target=document.querySelector('#episodes-'+series.slug);
   renderEpisodes(target,series.episodes,series.numbered!==false);
@@ -831,8 +831,8 @@ additionalSeries.forEach(series=>{
 });
 window.addEventListener('resize',()=>document.querySelectorAll('.episode-card.expanded').forEach(collapse));
 function start(key,id){select.value=key;render(key);const card=grid.querySelector('[data-id="'+id+'"]');card.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});play(card,seasons[key].episodes.find(e=>e.id===id));}
-document.querySelector('#watch-first').innerHTML=icons.play+' Watch Season '+latestSeason.slice(1);
-document.querySelector('#watch-first').onclick=()=>start(latestSeason,seasons[latestSeason].episodes[0].id);
+document.querySelector('#watch-first').innerHTML=icons.play+' Watch Season '+defaultSeason.slice(1);
+document.querySelector('#watch-first').onclick=()=>start(defaultSeason,seasons[defaultSeason].episodes[0].id);
 document.querySelector('#watch-intro').onclick=()=>start('extra','4dRL0CdVr-M');
 playerClose.addEventListener('click',restorePlayer);
 playerModal.addEventListener('click',e=>{if(e.target===playerModal)restorePlayer();});
